@@ -1,4 +1,4 @@
-/* Submenú Bootstrap */
+/* ========= Submenús ========= */
 
 .dropdown-submenu {
     position: relative;
@@ -8,15 +8,25 @@
     top: 0;
     left: 100%;
     margin-top: -1px;
+    display: none;
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
     display: block;
 }
 
-.dropdown-submenu>a::after {
-    content: "▶";
+/* Flecha */
+
+.dropdown-submenu>.dropdown-toggle::after {
+
+    content: "\f285";
+
+    font-family: bootstrap-icons;
+
+    border: 0;
+
     float: right;
-    font-size: 0.75rem;
-    margin-top: 4px;
+
+    margin-top: 3px;
+
 }
