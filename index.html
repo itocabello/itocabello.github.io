@@ -178,29 +178,19 @@
 
         <div class="container">
 
-            <a class="navbar-brand" href="index.html">
-                Inicio
-            </a>
+            <a class="navbar-brand" href="index.html">Inicio</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
 
                 <ul class="navbar-nav ms-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Inicio
-                        </a>
-                    </li>
-
                     <li class="nav-item dropdown">
 
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
 
                             Contenido del curso
 
@@ -223,12 +213,15 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
-                                    data-bs-toggle="dropdown">
 
+                            <!-- Submenú Lecciones -->
+
+                            <li class="dropdown-submenu">
+
+                                <a class="dropdown-item dropdown-toggle" href="#">
                                     Lecciones
-
                                 </a>
+
                                 <ul class="dropdown-menu">
 
                                     <li>
@@ -262,19 +255,7 @@
                                     </li>
 
                                 </ul>
-                            </li>
 
-
-                            <li>
-                                <a class="dropdown-item" href="ejercicios/ejercicio1/index.html">
-                                    Ejercicio 1
-                                </a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="ejercicios/ejercicio2/index.html">
-                                    Ejercicio 2
-                                </a>
                             </li>
 
                         </ul>
