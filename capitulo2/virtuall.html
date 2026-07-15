@@ -87,38 +87,126 @@
 
         <!-- Contenido principal -->
 
-        <!-- Contenido principal -->
+        <!-- ======================= CONTENIDO ======================= -->
 
         <h2 class="text-success mb-4">
-            Virtualización ligera mediante contenedores
+            Docker: Plataforma de virtualización basada en contenedores
         </h2>
 
         <p class="lead">
 
-            La <strong>virtualización ligera</strong> es una tecnología que permite ejecutar múltiples
-            entornos aislados sobre un mismo sistema operativo, compartiendo el mismo núcleo
-            (kernel) del sistema anfitrión. A diferencia de las máquinas virtuales tradicionales,
-            los contenedores no requieren un sistema operativo completo para cada instancia,
-            lo que reduce considerablemente el consumo de recursos y mejora el rendimiento.
+            Docker es una plataforma de <strong>código abierto</strong> que permite crear, distribuir y
+            ejecutar aplicaciones dentro de contenedores de forma rápida, portable y eficiente.
+
+            Desde su aparición, Docker ha revolucionado el despliegue de aplicaciones al facilitar
+            la creación de entornos reproducibles y ligeros, reduciendo considerablemente el tiempo
+            de instalación y configuración.
 
         </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Docker proporciona un modelo basado en <strong>imágenes</strong>, a partir de las cuales se crean
+            los contenedores que ejecutan las aplicaciones.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            ¿Qué es una imagen Docker?
+        </h3>
 
         <p>
 
-            Esta tecnología permite aprovechar mejor el hardware disponible, incrementando la
-            eficiencia en el uso de la CPU, la memoria y el almacenamiento, facilitando además
-            el despliegue rápido y reproducible de aplicaciones.
+            Una <strong>imagen Docker</strong> es un paquete ejecutable de solo lectura formado por varias
+            capas que contiene todo lo necesario para ejecutar una aplicación.
 
         </p>
 
+        <div class="row g-4">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h5 class="text-success">
+
+                            <i class="bi bi-box"></i>
+
+                            Contenido de una imagen
+
+                        </h5>
+
+                        <ul>
+
+                            <li>Código fuente.</li>
+
+                            <li>Bibliotecas.</li>
+
+                            <li>Dependencias.</li>
+
+                            <li>Variables de entorno.</li>
+
+                            <li>Archivos de configuración.</li>
+
+                            <li>Sistema base.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h5 class="text-success">
+
+                            <i class="bi bi-layers"></i>
+
+                            Características
+
+                        </h5>
+
+                        <ul>
+
+                            <li>Es inmutable.</li>
+
+                            <li>Está formada por múltiples capas.</li>
+
+                            <li>Puede reutilizarse.</li>
+
+                            <li>Permite crear múltiples contenedores.</li>
+
+                            <li>Facilita la distribución de aplicaciones.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
         <div class="text-center my-5">
 
-            <img src="../img/contenedores.png" class="img-fluid rounded shadow"
-                alt="Virtualización mediante contenedores">
+            <img src="../img/docker-image-container.png" class="img-fluid rounded shadow" alt="Imagen Docker">
 
             <p class="text-muted mt-2">
 
-                <strong>Figura 3.</strong> Virtualización ligera mediante contenedores.
+                <strong>Figura 7.</strong> Relación entre una imagen Docker y los contenedores generados.
 
             </p>
 
@@ -128,156 +216,91 @@
 
         <h3 class="text-success">
 
-            ¿Qué es un contenedor?
+            Dockerfile
 
         </h3>
 
         <p>
 
-            Los <strong>contenedores</strong> constituyen una forma de virtualización ligera que permite
-            ejecutar aplicaciones de forma aislada compartiendo el mismo kernel del sistema
-            operativo anfitrión.
-
-            Cada contenedor incluye:
+            Las imágenes Docker se construyen normalmente mediante un archivo denominado
+            <strong>Dockerfile</strong>, donde se describen todos los pasos necesarios para construir la imagen.
 
         </p>
 
-        <div class="row g-4">
+        <pre class="bg-light border rounded p-3"><code>FROM ubuntu:24.04
+    
+    RUN apt-get update
+    
+    RUN apt-get install -y python3
+    
+    COPY app.py /app
+    
+    CMD ["python3","/app/app.py"]
+    </code></pre>
 
-            <div class="col-md-3">
+        <p>
 
-                <div class="card text-center shadow-sm h-100">
+            Una vez construida la imagen, ésta puede reutilizarse tantas veces como sea necesario
+            para crear nuevos contenedores.
 
-                    <div class="card-body">
-
-                        <i class="bi bi-box-seam display-5 text-success"></i>
-
-                        <h5 class="mt-3">Aplicación</h5>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card text-center shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <i class="bi bi-collection display-5 text-success"></i>
-
-                        <h5 class="mt-3">Bibliotecas</h5>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card text-center shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <i class="bi bi-gear display-5 text-success"></i>
-
-                        <h5 class="mt-3">Configuración</h5>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card text-center shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <i class="bi bi-file-earmark-code display-5 text-success"></i>
-
-                        <h5 class="mt-3">Dependencias</h5>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+        </p>
 
         <hr class="my-5">
 
         <h3 class="text-success">
 
-            ¿Por qué utilizar contenedores?
+            Docker Hub
 
         </h3>
 
-        <div class="alert alert-success">
+        <p>
 
-            Los contenedores han revolucionado la forma de desplegar aplicaciones debido a su
-            rapidez, eficiencia y facilidad de mantenimiento.
+            Docker Hub es el repositorio oficial donde la comunidad publica imágenes listas para
+            utilizar.
 
-        </div>
+            Desde Docker Hub pueden descargarse imágenes oficiales de:
+
+        </p>
 
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-4">
 
                 <ul class="list-group">
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Consumo reducido de recursos.
-                    </li>
+                    <li class="list-group-item">Ubuntu</li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Inicio prácticamente instantáneo.
-                    </li>
+                    <li class="list-group-item">Debian</li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Mayor densidad de aplicaciones por servidor.
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Portabilidad entre diferentes plataformas.
-                    </li>
+                    <li class="list-group-item">Alpine</li>
 
                 </ul>
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
 
                 <ul class="list-group">
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Entornos completamente reproducibles.
-                    </li>
+                    <li class="list-group-item">Apache Hadoop</li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Aislamiento entre aplicaciones.
-                    </li>
+                    <li class="list-group-item">Apache Spark</li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Fácil actualización y despliegue.
-                    </li>
+                    <li class="list-group-item">Kafka</li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Ideal para arquitecturas de microservicios.
-                    </li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">PostgreSQL</li>
+
+                    <li class="list-group-item">MySQL</li>
+
+                    <li class="list-group-item">MongoDB</li>
 
                 </ul>
 
@@ -287,21 +310,144 @@
 
         <hr class="my-5">
 
+        <h2 class="text-success">
+
+            Arquitectura Docker
+
+        </h2>
+
+        <p>
+
+            Docker implementa una arquitectura <strong>cliente-servidor</strong> donde el cliente se comunica
+            con el servidor Docker mediante una API REST para gestionar todo el ciclo de vida de
+            los contenedores.
+
+        </p>
+
+        <div class="text-center my-5">
+
+            <img src="../img/docker-arquitectura.png" class="img-fluid rounded shadow" alt="Arquitectura Docker">
+
+            <p class="text-muted">
+
+                <strong>Figura 8.</strong> Arquitectura cliente-servidor de Docker.
+
+            </p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            <i class="bi bi-hdd-network"></i>
+
+                            Servidor
+
+                        </h4>
+
+                        <p>
+
+                            Representado por el proceso <strong>dockerd</strong>, administra imágenes,
+                            contenedores, redes y volúmenes.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            <i class="bi bi-arrow-left-right"></i>
+
+                            API REST
+
+                        </h4>
+
+                        <p>
+
+                            Permite la comunicación entre el cliente y el servidor Docker,
+                            gestionando todas las operaciones disponibles.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            <i class="bi bi-terminal"></i>
+
+                            Cliente
+
+                        </h4>
+
+                        <p>
+
+                            Representado por el comando <strong>docker</strong>, utilizado para crear,
+                            ejecutar y administrar imágenes y contenedores.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
         <h3 class="text-success">
 
-            Contenedores frente a máquinas virtuales
+            Docker Registry
 
         </h3>
 
-        <table class="table table-bordered table-hover">
+        <p>
+
+            Los <strong>Docker Registry</strong> son repositorios públicos o privados donde se almacenan
+            las imágenes Docker.
+
+            Los registros permiten compartir imágenes entre desarrolladores y automatizar el
+            despliegue de aplicaciones.
+
+        </p>
+
+        <table class="table table-striped">
 
             <thead class="table-success">
 
                 <tr>
 
-                    <th>Máquinas virtuales</th>
+                    <th>Registro</th>
 
-                    <th>Contenedores</th>
+                    <th>Descripción</th>
 
                 </tr>
 
@@ -311,41 +457,33 @@
 
                 <tr>
 
-                    <td>Cada máquina dispone de su propio sistema operativo.</td>
+                    <td>Docker Hub</td>
 
-                    <td>Comparten el kernel del sistema anfitrión.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Mayor consumo de CPU y memoria.</td>
-
-                    <td>Consumo muy reducido de recursos.</td>
+                    <td>Registro oficial de Docker.</td>
 
                 </tr>
 
                 <tr>
 
-                    <td>Tiempo de arranque elevado.</td>
+                    <td>GitHub Container Registry</td>
 
-                    <td>Inicio prácticamente instantáneo.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Menor número de instancias por servidor.</td>
-
-                    <td>Mayor densidad de aplicaciones.</td>
+                    <td>Registro integrado con GitHub.</td>
 
                 </tr>
 
                 <tr>
 
-                    <td>Mayor tamaño en disco.</td>
+                    <td>Harbor</td>
 
-                    <td>Imágenes ligeras y portables.</td>
+                    <td>Registro privado empresarial.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Azure Container Registry</td>
+
+                    <td>Registro de Microsoft Azure.</td>
 
                 </tr>
 
@@ -353,45 +491,7 @@
 
         </table>
 
-        <div class="text-center my-5">
-
-            <img src="../img/docker-vs-vm.png" class="img-fluid rounded shadow"
-                alt="Comparativa entre máquinas virtuales y contenedores">
-
-            <p class="text-muted mt-2">
-
-                <strong>Figura 4.</strong> Comparativa entre virtualización tradicional y virtualización mediante
-                contenedores.
-
-            </p>
-
-        </div>
-
         <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Docker como plataforma de virtualización ligera
-
-        </h3>
-
-        <p>
-
-            En este Proyecto Fin de Grado los contenedores constituyen la unidad básica de
-            despliegue del ecosistema Big Data.
-
-            Para ello se emplea <strong>Docker</strong>, una plataforma que facilita la creación,
-            distribución y ejecución de contenedores de forma sencilla y reproducible.
-
-        </p>
-
-        <p>
-
-            Docker permite empaquetar una aplicación junto con todas sus bibliotecas,
-            dependencias y archivos de configuración, garantizando que pueda ejecutarse de
-            forma idéntica en cualquier equipo.
-
-        </p>
 
         <div class="alert alert-primary">
 
@@ -405,13 +505,12 @@
 
             <p class="mb-0">
 
-                La virtualización mediante contenedores representa actualmente una de las tecnologías
-                fundamentales para el despliegue de infraestructuras Big Data y aplicaciones basadas
-                en microservicios. Su reducido consumo de recursos, rapidez de ejecución y elevada
-                portabilidad la convierten en la solución idónea para entornos docentes, de
-                investigación y computación en la nube. En este proyecto se utilizará <strong>Docker</strong>
-                como herramienta principal para desplegar el clúster Hadoop sobre una única máquina
-                física.
+                Docker constituye actualmente una de las tecnologías más utilizadas para el despliegue
+                de aplicaciones distribuidas. Su modelo basado en imágenes, junto con su arquitectura
+                cliente-servidor y la utilización de registros de imágenes, facilita la creación de
+                infraestructuras reproducibles, escalables y fácilmente mantenibles. Estas
+                características convierten a Docker en la plataforma idónea para desplegar el clúster
+                Hadoop utilizado durante el desarrollo de este Proyecto Fin de Grado.
 
             </p>
 
