@@ -138,6 +138,25 @@
     </style>
 
 </head>
+<script>
+
+    document.querySelectorAll('.dropdown-submenu > a').forEach(function (element) {
+
+        element.addEventListener('click', function (e) {
+
+            if (window.innerWidth < 992) {
+
+                e.preventDefault();
+
+                this.nextElementSibling.classList.toggle('show');
+
+            }
+
+        });
+
+    });
+
+</script>
 
 <body>
 
