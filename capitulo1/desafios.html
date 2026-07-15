@@ -55,7 +55,15 @@
                 Inicio
             </a>
 
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 1
+
+            </a>
+
         </div>
+
+
 
     </nav>
 
@@ -78,28 +86,18 @@
         </nav>
 
         <h2 class="text-success mb-4">
-            Características del Big Data
+            Desafíos del Big Data
         </h2>
 
-        <div class="text-center mb-5">
-
-            <img src="../img/5v-bigdata.png" class="img-fluid rounded shadow" style="max-width:700px;">
-
-            <p class="text-muted mt-2">
-
-                <strong>Figura 1.</strong> Las cinco dimensiones del Big Data.
-
-            </p>
-
-        </div>
 
         <div class="alert alert-success">
 
-            El Big Data se caracteriza por el tratamiento de grandes volúmenes de información
-            procedentes de múltiples fuentes y generados a gran velocidad. Tradicionalmente
-            estas características se resumían en las tres "V": <strong>Volumen, Velocidad y Variedad</strong>.
-            Actualmente se incorporan dos dimensiones adicionales:
-            <strong>Valor</strong> y <strong>Veracidad</strong>.
+            El crecimiento exponencial de los datos ha introducido una serie de desafíos técnicos y organizativos que
+            deben ser
+            abordados para poder explotar el potencial del Big Data de manera eficiente. Estos desafíos no solo están
+            relacionados
+            con el volumen de informa-ción, sino también con la complejidad inherente a su procesamiento, almacenamiento
+            y análisis.
 
         </div>
 
@@ -115,18 +113,21 @@
 
                             <i class="bi bi-database"></i>
 
-                            Volumen
+                            escalabilidad
 
                         </h3>
 
                         <p>
 
-                            Representa la enorme cantidad de datos generados por organizaciones,
-                            usuarios, sensores, dispositivos IoT y aplicaciones.
-
-                            El procesamiento de esta información requiere tecnologías distribuidas
-                            como Hadoop o Spark.
-
+                            Uno de los principales retos es la escalabilidad, es decir, la capacidad del sistema para
+                            adaptarse al incremento
+                            continuo de datos sin degradar su rendimiento. En este ca-so, dicha escalabilidad se apoya
+                            en la arquitectura
+                            distribuida de Hadoop, compuesta por nodos como NameNode y DataNodes, que permiten repartir
+                            el almacenamiento y el
+                            pro-cesamiento de los datos de forma horizontal. El uso de contenedores facilita además la
+                            replicación y ampliación del
+                            clúster de manera sencilla.
                         </p>
 
                     </div>
@@ -145,17 +146,42 @@
 
                             <i class="bi bi-speedometer2"></i>
 
-                            Velocidad
+                            heterogeneidad
 
                         </h3>
 
                         <p>
 
-                            Hace referencia a la rapidez con la que los datos son generados,
-                            transmitidos y procesados.
+                            Otro desafío relevante es la heterogeneidad de los datos, ya que la información puede
+                            proceder de fuentes muy diversas,
+                            incluyendo formatos estructurados, semiestructura-dos o no estructurados. En la arquitectura
+                            propuesta, esta diversidad
+                            se gestiona me-diante herramientas del ecosistema Hadoop como HDFS, así como mediante
+                            formatos de datos flexibles como
+                            CSV, Avro o Parquet utilizados en el procesamiento.
 
-                            Muchos escenarios requieren procesamiento en tiempo real para obtener
-                            información útil.
+                            • Datos estructurados:
+                            o Datos que están guardados en bases de datos relacionales.
+
+
+                            • Datos no estructurados:
+
+                            o Ejemplos incluyen texto, video, audio, actividad en el smartphone, acti-vidad en las redes
+                            sociales, imágenes
+                            satelitales, imágenes de vigilancia. un ejemplo de esto son los formatos Java Script Object
+                            Notation Notation (JSON) y Extensible Markup Language (XML) utiliza-dos en el intercambio de
+                            información a nivel de
+                            Internet.
+
+                            • Datos semiestructurados:
+                            o Los documentos de bases de datos NoSQL son considerados semi-estructurados porque
+                            contienen palabras claves que
+                            pueden ser usadas para procesarlos.
+                            • Formatos de archivos optimizados para Apache Hadoop:
+                            o Apache Optimized Row Columnar (ORC)
+                            o Apache Parquet
+                            o Apache Avro (almacenamiento en fila)
+
 
                         </p>
 
@@ -175,15 +201,19 @@
 
                             <i class="bi bi-diagram-3"></i>
 
-                            Variedad
+                            velocidad de procesamiento
 
                         </h3>
 
                         <p>
 
-                            Los datos pueden presentarse en formatos estructurados,
-                            semiestructurados y no estructurados, incluyendo texto,
-                            imágenes, vídeos, audio y registros de actividad.
+                            Asimismo, la velocidad de procesamiento constituye un factor crítico, especialmente en
+                            entornos donde se requiere
+                            análisis eficiente de grandes volúmenes de datos. En este proyecto, el procesamiento se basa
+                            principalmente en
+                            MapReduce y Hadoop Streaming, aunque la arquitectura es extensible a motores más eficientes
+                            como Apache Spark,
+                            que permiten reducir la latencia mediante procesamiento en memoria.
 
                         </p>
 
@@ -193,64 +223,7 @@
 
             </div>
 
-            <div class="col-md-6">
 
-                <div class="card h-100 shadow">
-
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-
-                            <i class="bi bi-gem"></i>
-
-                            Valor
-
-                        </h3>
-
-                        <p>
-
-                            El objetivo del Big Data consiste en transformar los datos
-                            en conocimiento útil que facilite la toma de decisiones y aporte
-                            ventaja competitiva a las organizaciones.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-12">
-
-                <div class="card shadow">
-
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-
-                            <i class="bi bi-shield-check"></i>
-
-                            Veracidad
-
-                        </h3>
-
-                        <p>
-
-                            La calidad y fiabilidad de los datos resulta esencial para obtener
-                            resultados consistentes.
-
-                            Es necesario aplicar procesos de validación, limpieza y control
-                            de calidad que eliminen inconsistencias y reduzcan el impacto de
-                            datos erróneos o incompletos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
 
         </div>
 
