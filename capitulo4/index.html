@@ -96,7 +96,7 @@
         <div class="col-lg-9">
 
             <h2 class="text-success mb-4">
-                Capítulo 3. Ecosistema de Hadoop
+                Capítulo 4. Detalle de la propuesta
             </h2>
 
             <p class="lead">
@@ -108,349 +108,36 @@
 
             </p>
 
-            <div class="alert alert-success">
-
-                <i class="bi bi-info-circle-fill"></i>
-
-                En la actualidad, gracias a Hadoop, Linux, Docker y la computación en la nube,
-                cualquier organización puede construir plataformas Big Data de forma económica y
-                escalable.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Evolución del Big Data
-            </h3>
-
-            <p>
-
-                En sus inicios, únicamente grandes compañías como <strong>Google</strong>,
-                <strong>Walmart</strong> o importantes entidades financieras disponían de los recursos
-                necesarios para almacenar y procesar grandes cantidades de datos.
-
-            </p>
-
-            <p>
-
-                La aparición del proyecto <strong>Apache Hadoop</strong>, junto con el uso de hardware de
-                bajo coste (<em>commodity hardware</em>), sistemas operativos Linux y servicios de
-                computación en la nube, permitió democratizar el acceso a estas tecnologías,
-                haciendo posible que universidades, pequeñas empresas y centros de investigación
-                también pudieran desarrollar soluciones Big Data.
-
-            </p>
-
-            <div class="text-center my-5">
-
-                <img src="../img/hadoop-ecosistema.png" class="img-fluid rounded shadow" alt="Ecosistema Hadoop">
-
-                <p class="text-muted">
-
-                    <strong>Figura 1.</strong> Ecosistema Hadoop para el procesamiento distribuido de datos.
-
-                </p>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                ¿Qué es Apache Hadoop?
-            </h3>
-
-            <p>
-
-                El proyecto <strong>Apache™ Hadoop®</strong> desarrolla un conjunto de herramientas
-                de código abierto destinadas al almacenamiento y procesamiento distribuido de grandes
-                volúmenes de datos.
-
-            </p>
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-body">
-
-                    <h5 class="text-success">
-
-                        <i class="bi bi-server"></i>
-
-                        Definición
-
-                    </h5>
-
-                    <p>
-
-                        Hadoop es un framework distribuido diseñado para procesar enormes conjuntos de datos
-                        utilizando grupos de ordenadores conectados en red, aplicando modelos de programación
-                        simples y escalables.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <p>
-
-                El sistema ha sido diseñado para crecer desde un único servidor hasta miles de nodos,
-                aprovechando tanto la capacidad de almacenamiento como la potencia de procesamiento
-                de cada máquina.
-
-            </p>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Características de Hadoop
-            </h3>
-
-            <div class="row g-4">
-
-                <div class="col-md-6">
-
-                    <div class="card h-100 shadow-sm">
-
-                        <div class="card-body">
-
-                            <h5 class="text-success">
-
-                                <i class="bi bi-diagram-3"></i>
-
-                                Procesamiento distribuido
-
-                            </h5>
-
-                            <p>
-
-                                Los datos se procesan simultáneamente en varios nodos del clúster,
-                                reduciendo significativamente los tiempos de ejecución.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card h-100 shadow-sm">
-
-                        <div class="card-body">
-
-                            <h5 class="text-success">
-
-                                <i class="bi bi-arrows-fullscreen"></i>
-
-                                Escalabilidad
-
-                            </h5>
-
-                            <p>
-
-                                Permite ampliar el clúster simplemente incorporando nuevos servidores
-                                sin modificar la arquitectura existente.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card h-100 shadow-sm">
-
-                        <div class="card-body">
-
-                            <h5 class="text-success">
-
-                                <i class="bi bi-shield-check"></i>
-
-                                Tolerancia a fallos
-
-                            </h5>
-
-                            <p>
-
-                                Hadoop detecta automáticamente el fallo de un nodo y continúa el
-                                procesamiento gracias a la replicación de los datos.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card h-100 shadow-sm">
-
-                        <div class="card-body">
-
-                            <h5 class="text-success">
-
-                                <i class="bi bi-hdd-network"></i>
-
-                                Alta disponibilidad
-
-                            </h5>
-
-                            <p>
-
-                                El sistema ofrece un servicio continuo incluso cuando alguno de los
-                                servidores del clúster deja de funcionar.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Gestión del ciclo de vida del Big Data (BDLM)
-            </h3>
-
-            <p>
-
-                Para comprender el funcionamiento de una plataforma Big Data es necesario estudiar
-                el <strong>Big Data Lifecycle Management (BDLM)</strong>, que describe las diferentes
-                transformaciones que experimentan los datos desde su captura hasta la obtención de
-                conocimiento útil.
-
-            </p>
-
-            <div class="row text-center g-3">
-
-                <div class="col">
-
-                    <div class="card shadow-sm">
-
-                        <div class="card-body">
-
-                            Captura
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col">
-
-                    <div class="card shadow-sm">
-
-                        <div class="card-body">
-
-                            Almacenamiento
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col">
-
-                    <div class="card shadow-sm">
-
-                        <div class="card-body">
-
-                            Procesamiento
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col">
-
-                    <div class="card shadow-sm">
-
-                        <div class="card-body">
-
-                            Análisis
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col">
-
-                    <div class="card shadow-sm">
-
-                        <div class="card-body">
-
-                            Visualización
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <p class="mt-4">
-
-                Durante este ciclo los datos son almacenados, transformados y analizados con el
-                objetivo de extraer información útil que facilite la toma de decisiones.
-
-            </p>
-
-            <hr class="my-5">
-
-            <div class="alert alert-primary">
-
-                <h4>
-
-                    <i class="bi bi-lightbulb"></i>
-
-                    Conclusión
-
-                </h4>
+            <div class="alert alert-info mt-4">
+
+                <h5 class="mb-3">
+                    Objetivo del capítulo
+                </h5>
 
                 <p class="mb-0">
-
-                    Apache Hadoop constituye la base de numerosos sistemas Big Data actuales gracias a
-                    su capacidad para almacenar y procesar grandes volúmenes de información de forma
-                    distribuida, escalable y tolerante a fallos. Su integración con tecnologías como
-                    Docker y Docker Compose facilita además el despliegue de clústeres completos en
-                    entornos docentes y de investigación.
-
+                    El propósito principal de este capítulo consiste en que el estudiante
+                    comprenda el proceso completo de despliegue de una infraestructura Big
+                    Data basada en Hadoop utilizando tecnologías de virtualización ligera,
+                    Docker, Docker Compose y Cloud Computing. Además de aprender la
+                    instalación y configuración de cada componente, se pretende
+                    familiarizar al alumno con un entorno real de administración de
+                    infraestructuras distribuidas, preparándolo para la realización de los
+                    ejercicios prácticos desarrollados en los capítulos posteriores.
                 </p>
 
             </div>
 
-        </div>
+            <footer class="bg-success text-white mt-5">
 
-        <footer class="bg-success text-white mt-5">
+                <div class="container py-3 text-center">
 
-            <div class="container py-3 text-center">
+                    Proyecto Fin de Grado · UNED
 
-                Proyecto Fin de Grado · UNED
+                </div>
 
-            </div>
+            </footer>
 
-        </footer>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
