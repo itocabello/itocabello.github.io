@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 3 - Ecosistema de Hadoop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 3. Ecosistema de Hadoop
+                    </h1>
+
+                    <p class="lead">
+                        Estructura de Hadoop
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 3
+
+            </a>
+
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 3
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <h2 class="text-success mb-4">
+            YARN (Yet Another Resource Negotiator)
+        </h2>
+
+        <p class="lead">
+
+            Apache Hadoop dispone de diversos módulos que amplían sus funcionalidades. Entre los
+            más importantes destacan <strong>HDFS</strong>, <strong>YARN</strong>,
+            <strong>Hadoop Common</strong> y <strong>MapReduce</strong>, que constituyen el núcleo del
+            ecosistema Hadoop.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            YARN es el componente encargado de administrar todos los recursos del clúster Hadoop,
+            planificando la ejecución de aplicaciones y distribuyendo las tareas entre los distintos
+            nodos.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            ¿Qué es YARN?
+        </h3>
+
+        <p>
+
+            YARN (<strong>Yet Another Resource Negotiator</strong>) actúa como el sistema operativo
+            del clúster Hadoop. Su función principal consiste en administrar los recursos de todas
+            las máquinas que forman el clúster y decidir dónde debe ejecutarse cada aplicación.
+
+        </p>
+
+        <p>
+
+            Además de asignar recursos, YARN monitoriza continuamente el estado de los nodos,
+            gestiona el acceso de los usuarios y supervisa la correcta ejecución de las tareas.
+
+        </p>
+
+        <div class="text-center my-5">
+
+            <img src="../img/yarn-arquitectura.png" class="img-fluid rounded shadow" alt="Arquitectura YARN">
+
+            <p class="text-muted">
+
+                <strong>Figura 10.</strong> Arquitectura general de YARN.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Funciones principales
+        </h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            <i class="bi bi-calendar-check"></i>
+
+                            Programación de trabajos
+
+                        </h4>
+
+                        <p>
+
+                            Divide un trabajo de gran tamaño en múltiples tareas más pequeñas para que puedan
+                            ejecutarse de forma paralela sobre diferentes nodos del clúster.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            <i class="bi bi-cpu"></i>
+
+                            Gestión de recursos
+
+                        </h4>
+
+                        <p>
+
+                            Administra la memoria, CPU y almacenamiento disponibles en el clúster,
+                            asignando los recursos necesarios a cada aplicación.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Arquitectura de YARN
+        </h3>
+
+        <p>
+
+            Para separar la planificación de tareas del procesamiento MapReduce, YARN incorpora
+            dos procesos principales.
+
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-lg-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        ResourceManager
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Existe un único ResourceManager por clúster y es el responsable de administrar
+                            todos los recursos disponibles.
+
+                        </p>
+
+                        <h6>Componentes</h6>
+
+                        <ul>
+
+                            <li><strong>Job Scheduler</strong>: planifica los trabajos según prioridades.</li>
+
+                            <li><strong>Application Manager</strong>: inicia el Application Master de cada aplicación.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        NodeManager
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Existe un NodeManager en cada nodo del clúster.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Lanza los contenedores.</li>
+
+                            <li>Monitoriza su ejecución.</li>
+
+                            <li>Controla memoria y CPU.</li>
+
+                            <li>Comunica el estado al ResourceManager.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            Ejecución de aplicaciones
+
+        </h3>
+
+        <p>
+
+            Cuando un usuario envía una aplicación al clúster, el ResourceManager asigna un
+            <strong>contenedor</strong> con los recursos necesarios (CPU, memoria y almacenamiento).
+
+            Posteriormente, el NodeManager ejecuta la aplicación dentro de dicho contenedor y
+            supervisa toda su ejecución.
+
+        </p>
+
+        <div class="alert alert-primary">
+
+            <i class="bi bi-box"></i>
+
+            Un <strong>contenedor</strong> representa una unidad de ejecución que dispone de recursos
+            asignados exclusivamente para una aplicación.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            Ventajas de YARN
+
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">Escalabilidad hasta miles de nodos.</li>
+
+                    <li class="list-group-item">Alta disponibilidad.</li>
+
+                    <li class="list-group-item">Gestión eficiente de recursos.</li>
+
+                    <li class="list-group-item">Compatibilidad con MapReduce.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">Mayor utilización del clúster.</li>
+
+                    <li class="list-group-item">Soporte para distintos motores.</li>
+
+                    <li class="list-group-item">Planificación inteligente.</li>
+
+                    <li class="list-group-item">Monitorización centralizada.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success">
+
+            Frameworks compatibles con YARN
+
+        </h2>
+
+        <p>
+
+            Una de las principales ventajas de YARN es que permite ejecutar diferentes motores de
+            procesamiento, además de MapReduce.
+
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            Apache Spark
+
+                        </h4>
+
+                        <p>
+
+                            Motor de procesamiento distribuido en memoria que acelera el análisis de grandes
+                            volúmenes de datos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            Apache Flink
+
+                        </h4>
+
+                        <p>
+
+                            Framework especializado en procesamiento continuo y análisis de datos en tiempo real.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body">
+
+                        <h4 class="text-success">
+
+                            Apache Storm
+
+                        </h4>
+
+                        <p>
+
+                            Sistema distribuido para el procesamiento de flujos de datos con baja latencia.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            MapReduce
+
+        </h3>
+
+        <p>
+
+            MapReduce constituye el modelo clásico de procesamiento paralelo de Hadoop.
+            Se ejecuta sobre YARN y permite dividir grandes volúmenes de información en tareas
+            Map y Reduce distribuidas entre todos los nodos del clúster.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/hadoop-frameworks.png" class="img-fluid rounded shadow" alt="Frameworks Hadoop">
+
+            <p class="text-muted">
+
+                <strong>Figura 11.</strong> Principales tecnologías del ecosistema Hadoop.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            Federación YARN
+
+        </h3>
+
+        <p>
+
+            La federación de YARN consiste en dividir un gran clúster Hadoop en varios
+            subclústeres independientes, cada uno administrado por su propio ResourceManager.
+
+        </p>
+
+        <p>
+
+            Esta arquitectura mejora considerablemente la escalabilidad, reduce los cuellos de
+            botella y aumenta la disponibilidad del sistema, siendo especialmente útil en grandes
+            infraestructuras Big Data.
+
+        </p>
+
+        <div class="alert alert-primary">
+
+            <h4>
+
+                <i class="bi bi-lightbulb"></i>
+
+                Conclusión
+
+            </h4>
+
+            <p class="mb-0">
+
+                YARN constituye el núcleo de la gestión de recursos en Hadoop. Gracias a su
+                arquitectura distribuida permite administrar miles de nodos, ejecutar múltiples
+                frameworks de procesamiento y optimizar la utilización del clúster, convirtiéndose
+                en uno de los componentes fundamentales del ecosistema Big Data.
+
+            </p>
+
+        </div>
+
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
