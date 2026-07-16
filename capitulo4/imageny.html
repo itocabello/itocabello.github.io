@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </h1>
+
+                    <p class="lead">
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 4.
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 4
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <!-- ======================= CONTENIDO ======================= -->
+
+        <h2 class="text-success mb-4">
+            4.4 Construcción de la imagen Docker del NameNode
+        </h2>
+
+        <p class="lead">
+
+            El <strong>NameNode</strong> es el componente principal del sistema de archivos
+            distribuido de Hadoop (<strong>HDFS</strong>). Su función consiste en gestionar la
+            estructura lógica del sistema de almacenamiento distribuido, manteniendo la información
+            sobre la ubicación de los bloques de datos y la organización de directorios y archivos.
+
+        </p>
+
+        <p>
+
+            Aunque los datos se almacenan físicamente en los <strong>DataNodes</strong>, el
+            NameNode actúa como punto central de coordinación del clúster, permitiendo que los
+            clientes y aplicaciones localicen rápidamente la información distribuida. Debido a esta
+            responsabilidad, constituye uno de los componentes más críticos de toda la arquitectura
+            Hadoop.
+
+        </p>
+
+        <div class="alert alert-success">
+            <i class="bi bi-info-circle-fill"></i>
+            La imagen Docker del NameNode se construye a partir de la imagen
+            <strong>hadoop-base</strong>, incorporando todas las herramientas necesarias para el
+            desarrollo de las prácticas del curso.
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            1. Importación de la imagen base
+        </h3>
+
+        <p>
+
+            La construcción comienza utilizando como punto de partida la imagen
+            <strong>hadoop-base</strong>, desarrollada previamente. Esta imagen ya incorpora Ubuntu,
+            Java, Hadoop, Python, Jupyter Notebook y la configuración básica del clúster.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/docker-hadoop-base.png" class="img-fluid rounded shadow" alt="Imagen base Hadoop">
+
+            <p class="text-muted">
+                Figura. Imagen base utilizada para construir el NameNode.
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            2. Instalación de dependencias adicionales
+        </h3>
+
+        <p>
+
+            Sobre la imagen base se instalan diferentes herramientas necesarias para ampliar las
+            funcionalidades del nodo principal del clúster.
+
+        </p>
+
+        <table class="table table-striped">
+
+            <thead class="table-success">
+
+                <tr>
+                    <th>Componente</th>
+                    <th>Finalidad</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Herramientas Linux</td>
+                    <td>Administración del sistema.</td>
+                </tr>
+
+                <tr>
+                    <td>Utilidades de red</td>
+                    <td>Comunicación entre servicios.</td>
+                </tr>
+
+                <tr>
+                    <td>Librerías Python</td>
+                    <td>Prácticas Big Data.</td>
+                </tr>
+
+                <tr>
+                    <td>Supervisor</td>
+                    <td>Gestión automática de procesos.</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="text-center my-4">
+
+            <img src="../img/namenode-dependencies.png" class="img-fluid rounded shadow" alt="Dependencias NameNode">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            3. Instalación de Jupyter Notebook
+        </h3>
+
+        <p>
+
+            La imagen incorpora Jupyter Notebook y las librerías necesarias para el desarrollo de
+            ejercicios prácticos basados en Python y Hadoop Streaming.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul>
+
+                    <li>Python 3</li>
+
+                    <li>pip</li>
+
+                    <li>Jupyter Notebook</li>
+
+                    <li>Librerías científicas</li>
+
+                    <li>Herramientas de análisis</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                <img src="../img/jupyter-hadoop.png" class="img-fluid rounded shadow" alt="Jupyter Notebook">
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            4. Instalación de Apache Hive 3.1.3
+        </h3>
+
+        <p>
+
+            Se instala Apache Hive como infraestructura de almacenamiento y consulta de datos
+            sobre HDFS, permitiendo ejecutar consultas SQL mediante HiveQL.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/hive-install.png" class="img-fluid rounded shadow" alt="Hive">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            5. Instalación de Apache Flume 1.11.0
+        </h3>
+
+        <p>
+
+            La imagen incorpora Apache Flume para facilitar la ingestión de datos desde sistemas
+            externos hacia HDFS.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/flume-install.png" class="img-fluid rounded shadow" alt="Flume">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            6. Inicialización del NameNode
+        </h3>
+
+        <p>
+
+            Durante la construcción de la imagen se crea el directorio destinado al almacenamiento
+            de los metadatos del sistema HDFS, se realiza el formateo inicial del NameNode y se
+            configuran los puertos necesarios para el acceso a los diferentes servicios.
+
+        </p>
+
+        <table class="table table-bordered">
+
+            <thead class="table-success">
+
+                <tr>
+                    <th>Acción</th>
+                    <th>Descripción</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Creación del directorio namenode</td>
+                    <td>Almacenamiento de metadatos HDFS.</td>
+                </tr>
+
+                <tr>
+                    <td>Formato inicial</td>
+                    <td>Inicialización del sistema de archivos.</td>
+                </tr>
+
+                <tr>
+                    <td>Puertos</td>
+                    <td>Exposición de los servicios del NameNode.</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="text-center my-4">
+
+            <img src="../img/hdfs-format.png" class="img-fluid rounded shadow" alt="Formato NameNode">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            7. Creación de la base de datos Metastore
+        </h3>
+
+        <p>
+
+            Para permitir el funcionamiento de Apache Hive se crea automáticamente la base de
+            datos <strong>metastore_db</strong>, donde se almacenan los metadatos del catálogo de
+            Hive.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/hive-metastore.png" class="img-fluid rounded shadow" alt="Hive Metastore">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            8. Arranque mediante Supervisor
+        </h3>
+
+        <p>
+
+            Finalmente, todos los servicios necesarios del NameNode son gestionados mediante
+            <strong>Supervisor</strong>, encargado de iniciar automáticamente Hadoop, HDFS, YARN,
+            Hive y el resto de procesos cuando el contenedor se pone en funcionamiento.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/supervisor-namenode.png" class="img-fluid rounded shadow" alt="Supervisor">
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>Conclusión</h4>
+
+            <p>
+
+                La imagen Docker del NameNode constituye el núcleo de la infraestructura Hadoop
+                propuesta. A partir de la imagen base se incorporan todas las herramientas necesarias
+                para gestionar HDFS, ejecutar consultas mediante Hive, desarrollar prácticas con
+                Jupyter Notebook e integrar mecanismos de ingestión de datos mediante Apache Flume,
+                proporcionando un entorno completo para el aprendizaje de tecnologías Big Data.
+
+            </p>
+
+            <p class="mb-0">
+
+                El código completo empleado para construir esta imagen puede consultarse en el
+                <strong>Anexo 7.1.2 — Dockerfile NameNode</strong>.
+
+            </p>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
