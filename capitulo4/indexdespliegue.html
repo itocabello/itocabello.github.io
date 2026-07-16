@@ -114,241 +114,65 @@
 
         <!-- Contenido -->
 
-        <div class="col-lg-9">
+        <div class="card-header bg-primary text-white">
 
-            <!-- ======================= CONTENIDO ======================= -->
-
-            <h2 class="text-success mb-4">
-                4.1 Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+            <h2>
+                4.2 Despliegue de la infraestructura
             </h2>
 
-            <p class="lead">
+        </div>
 
-                Con el objetivo de disponer de un entorno distribuido, reproducible, escalable y sencillo
-                de desplegar, la infraestructura utilizada en este proyecto se implementa mediante
-                <strong>Docker</strong> y se orquesta utilizando <strong>Docker Compose</strong>. Esta
-                arquitectura permite encapsular cada componente del ecosistema Hadoop en un
-                contenedor independiente, simplificando tanto la instalación como la administración del
-                clúster.
+        <div class="card-body">
 
-            </p>
+            <div class="text-center mb-4">
 
-            <div class="alert alert-success">
+                <img src="img/docker-hadoop-cluster.png" class="img-fluid rounded shadow" style="max-width:900px;"
+                    alt="Clúster Hadoop">
 
-                <i class="bi bi-info-circle-fill"></i>
-
-                La utilización de contenedores permite desplegar un entorno Big Data completo en pocos
-                minutos, facilitando su utilización tanto en entornos docentes como profesionales.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Objetivos del despliegue
-            </h3>
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-
-                    <div class="card shadow h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Acceso abierto
-
-                        </div>
-
-                        <div class="card-body">
-
-                            La infraestructura se basa exclusivamente en tecnologías de código abierto,
-                            garantizando disponibilidad, documentación y soporte por parte de la comunidad.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="card shadow h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Perfil del alumnado
-
-                        </div>
-
-                        <div class="card-body">
-
-                            La plataforma está diseñada para estudiantes de ingeniería y titulaciones técnicas,
-                            facilitando el aprendizaje práctico del ecosistema Hadoop.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="card shadow h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Consumo de recursos
-
-                        </div>
-
-                        <div class="card-body">
-
-                            El despliegue puede ejecutarse sobre un ordenador personal con requisitos hardware
-                            moderados, permitiendo realizar prácticas sin necesidad de servidores dedicados.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="alert alert-primary mt-4">
-
-                <strong>Recomendación:</strong>
-
-                Para un funcionamiento fluido se aconseja asignar al menos <strong>1 GB de memoria
-                    RAM</strong> a la máquina virtual. Aunque es posible trabajar con menos memoria, el
-                rendimiento disminuirá al desplegar servicios adicionales.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Arquitectura propuesta
-            </h3>
-
-            <p>
-
-                Tras analizar las distintas alternativas existentes en los capítulos anteriores, se ha
-                seleccionado una arquitectura basada en <strong>Docker</strong> y
-                <strong>Docker Compose</strong>, cuyo objetivo es maximizar el aprovechamiento de los
-                recursos hardware disponibles.
-
-            </p>
-
-            <p>
-
-                Toda la infraestructura se construye a partir de una <strong>imagen base común</strong>,
-                desde la cual se generan los diferentes contenedores especializados que forman el
-                clúster Hadoop.
-
-            </p>
-
-            <div class="text-center my-5">
-
-                <img src="../img/docker-hadoop-cluster.png" class="img-fluid rounded shadow"
-                    alt="Arquitectura Docker Hadoop">
-
-                <p class="text-muted">
-
-                    <strong>Figura.</strong> Arquitectura propuesta basada en Docker y Docker Compose.
-
+                <p class="text-muted mt-2">
+                    <strong>Figura 19.</strong> Clúster Hadoop desplegado mediante Docker y Docker Compose.
                 </p>
 
             </div>
 
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Docker Compose como herramienta de orquestación
+            <h3 class="text-primary">
+                Introducción
             </h3>
 
-            <p>
+            <p class="text-justify">
 
-                El despliegue completo se realiza mediante un único fichero
-                <strong>docker-compose.yml</strong>, encargado de automatizar la creación del entorno
-                Big Data.
+                Una de las principales ventajas de utilizar Docker para implementar un
+                clúster Hadoop es la elevada portabilidad y escalabilidad que ofrecen los
+                contenedores. Cada servicio puede desplegarse de forma independiente,
+                replicarse fácilmente y trasladarse entre diferentes equipos sin necesidad
+                de repetir todo el proceso de instalación.
 
             </p>
 
-            <div class="row">
+            <p class="text-justify">
 
-                <div class="col-md-6">
-
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            Creación automática de contenedores.
-                        </li>
-
-                        <li class="list-group-item">
-                            Configuración de la red privada.
-                        </li>
-
-                        <li class="list-group-item">
-                            Definición de dependencias entre servicios.
-                        </li>
-
-                        <li class="list-group-item">
-                            Persistencia mediante volúmenes Docker.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            Inicio coordinado del clúster.
-                        </li>
-
-                        <li class="list-group-item">
-                            Escalabilidad sencilla.
-                        </li>
-
-                        <li class="list-group-item">
-                            Configuración centralizada.
-                        </li>
-
-                        <li class="list-group-item">
-                            Reproducibilidad del entorno.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Arquitectura del clúster Hadoop
-            </h3>
-
-            <p>
-
-                La infraestructura desarrollada está formada por un conjunto de contenedores Docker
-                que representan los distintos nodos del clúster Hadoop.
+                Con el objetivo de proporcionar un entorno de trabajo aislado,
+                reproducible y fácilmente mantenible, la infraestructura desarrollada en
+                este proyecto se despliega sobre una máquina virtual gestionada mediante
+                <strong>VMware® Workstation 17 Pro</strong>. Esta solución permite ejecutar un
+                sistema operativo independiente del equipo anfitrión, facilitando la
+                instalación y administración de todas las herramientas que forman parte del
+                ecosistema Big Data.
 
             </p>
 
-            <table class="table table-striped table-hover">
+            <h3 class="text-primary mt-4">
+                Entorno de ejecución
+            </h3>
 
-                <thead class="table-success">
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-primary">
 
                     <tr>
 
                         <th>Componente</th>
-                        <th>Cantidad</th>
-                        <th>Función</th>
+                        <th>Configuración</th>
 
                     </tr>
 
@@ -357,220 +181,146 @@
                 <tbody>
 
                     <tr>
-
-                        <td>NameNode</td>
-
-                        <td>1</td>
-
-                        <td>Gestión del sistema de archivos HDFS y metadatos.</td>
-
+                        <td>Software de virtualización</td>
+                        <td>VMware® Workstation 17 Pro</td>
                     </tr>
 
                     <tr>
-
-                        <td>DataNode</td>
-
-                        <td>4</td>
-
-                        <td>Almacenamiento distribuido de bloques de datos.</td>
-
+                        <td>Sistema operativo anfitrión</td>
+                        <td>Microsoft Windows 11</td>
                     </tr>
 
                     <tr>
-
-                        <td>ResourceManager</td>
-
-                        <td>1</td>
-
-                        <td>Gestión global de recursos YARN.</td>
-
+                        <td>Sistema operativo invitado</td>
+                        <td>Ubuntu 22.04.4 LTS</td>
                     </tr>
 
                     <tr>
+                        <td>Memoria RAM</td>
+                        <td>9 GB</td>
+                    </tr>
 
-                        <td>NodeManager</td>
+                    <tr>
+                        <td>Disco virtual</td>
+                        <td>53,7 GB</td>
+                    </tr>
 
-                        <td>4</td>
-
-                        <td>Ejecución de tareas distribuidas.</td>
-
+                    <tr>
+                        <td>Memoria de vídeo</td>
+                        <td>128 MB</td>
                     </tr>
 
                 </tbody>
 
             </table>
 
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Proceso de despliegue
+            <h3 class="text-primary mt-4">
+                Virtualización tradicional frente a contenedores
             </h3>
 
-            <div class="row g-4">
+            <p class="text-justify">
 
-                <div class="col-md-6">
+                En un escenario convencional, la construcción de un clúster Hadoop
+                requiere múltiples máquinas virtuales, cada una con su propio sistema
+                operativo, aplicaciones y dependencias instaladas de forma independiente.
+                Este enfoque incrementa considerablemente el consumo de recursos y el
+                tiempo necesario para desplegar el entorno.
 
-                    <div class="card shadow h-100">
+            </p>
 
-                        <div class="card-header bg-success text-white">
+            <p class="text-justify">
 
-                            1. Configuración del clúster
+                En el laboratorio desarrollado para este proyecto se adopta una estrategia
+                basada en virtualización ligera mediante contenedores Docker. Todos los
+                servicios comparten una imagen base común que incorpora previamente las
+                dependencias necesarias, reduciendo significativamente el consumo de
+                memoria, el espacio en disco y el tiempo de despliegue.
 
-                        </div>
+            </p>
 
-                        <div class="card-body">
+            <p class="text-justify">
 
-                            Se define la infraestructura mediante Docker Compose, permitiendo adaptar el número
-                            de nodos a los recursos disponibles.
+                Gracias a esta arquitectura, la creación de nuevos nodos consiste
+                únicamente en replicar la imagen base y lanzar nuevos contenedores,
+                facilitando enormemente la escalabilidad del clúster.
 
-                        </div>
+            </p>
 
-                    </div>
+            <div class="alert alert-info mt-4">
 
-                </div>
+                <h5>
+                    Arquitectura del clúster
+                </h5>
 
-                <div class="col-md-6">
+                <p>
 
-                    <div class="card shadow h-100">
+                    El laboratorio está formado por un total de seis nodos virtuales:
 
-                        <div class="card-header bg-success text-white">
+                </p>
 
-                            2. Creación de contenedores
+                <ul>
 
-                        </div>
+                    <li>
+                        <strong>1 NameNode</strong>, encargado de administrar HDFS e
+                        incorporando Jupyter Notebook, Apache Hive y Apache Flume.
+                    </li>
 
-                        <div class="card-body">
+                    <li>
+                        <strong>1 YarnManager</strong>, responsable de la gestión de
+                        recursos del clúster y de coordinar la ejecución de aplicaciones
+                        distribuidas.
+                    </li>
 
-                            Cada contenedor representa un componente específico del ecosistema Hadoop, como
-                            NameNode, DataNode o ResourceManager.
+                    <li>
+                        <strong>4 DataNodes</strong>, donde se almacenan los bloques de
+                        datos de HDFS y se ejecutan las tareas MapReduce.
+                    </li>
 
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card shadow h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            3. Configuración de servicios
-
-                        </div>
-
-                        <div class="card-body">
-
-                            Los servicios se conectan automáticamente mediante una red privada Docker y se
-                            establecen las dependencias necesarias para el funcionamiento del clúster.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card shadow h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            4. Persistencia de datos
-
-                        </div>
-
-                        <div class="card-body">
-
-                            Los datos se almacenan en HDFS utilizando volúmenes Docker para mantener la
-                            información incluso después de reiniciar los contenedores.
-
-                        </div>
-
-                    </div>
-
-                </div>
+                </ul>
 
             </div>
 
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Ventajas de la arquitectura propuesta
+            <h3 class="text-primary mt-4">
+                Descarga del proyecto
             </h3>
 
-            <div class="row">
+            <p class="text-justify">
 
-                <div class="col-md-6">
+                Todos los archivos necesarios para desplegar el laboratorio se encuentran
+                publicados en un repositorio GitHub. El estudiante únicamente deberá
+                descargar el proyecto completo y ejecutar Docker Compose para disponer de
+                una infraestructura Big Data completamente operativa.
 
-                    <ul>
+            </p>
 
-                        <li>Despliegue completamente automatizado.</li>
+            <div class="alert alert-success">
 
-                        <li>Escalabilidad horizontal.</li>
+                <strong>Resultado.</strong>
 
-                        <li>Portabilidad entre equipos.</li>
+                <p class="mb-0 mt-2">
 
-                        <li>Facilidad de mantenimiento.</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <ul>
-
-                        <li>Infraestructura reproducible.</li>
-
-                        <li>Consumo reducido de recursos.</li>
-
-                        <li>Separación entre servicios.</li>
-
-                        <li>Ideal para laboratorios docentes.</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <div class="alert alert-primary">
-
-                <h4>
-
-                    <i class="bi bi-lightbulb"></i>
-
-                    Conclusión
-
-                </h4>
-
-                <p class="mb-0">
-
-                    La arquitectura propuesta combina Docker y Docker Compose para desplegar un clúster
-                    Hadoop completamente funcional mediante contenedores. Este enfoque proporciona una
-                    infraestructura ligera, escalable y fácilmente reproducible, permitiendo a los estudiantes
-                    centrarse en el aprendizaje de las tecnologías Big Data sin afrontar procesos de
-                    instalación complejos.
+                    Mediante esta arquitectura basada en Docker se obtiene un entorno
+                    distribuido, portable, reproducible y fácilmente escalable, capaz de
+                    simular el funcionamiento de un clúster Hadoop real utilizando un único
+                    equipo físico.
 
                 </p>
 
             </div>
 
-            <footer class="bg-success text-white mt-5">
+        </div>
 
-                <div class="container py-3 text-center">
+        <footer class="bg-success text-white mt-5">
 
-                    Proyecto Fin de Grado · UNED
+            <div class="container py-3 text-center">
 
-                </div>
+                Proyecto Fin de Grado · UNED
 
-            </footer>
+            </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
