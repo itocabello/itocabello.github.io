@@ -85,50 +85,65 @@
         </nav>
 
 
-
-        <!-- ======================= CONTENIDO ======================= -->
+        <!-- ===================================================== -->
+        <!-- 4.X IMAGEN YARNMANAGER -->
+        <!-- ===================================================== -->
 
         <h2 class="text-success mb-4">
-            4.4 Construcción de la imagen Docker del NameNode
+            4.5 Construcción de la imagen Docker del ResourceManager (YARN)
         </h2>
 
         <p class="lead">
 
-            El <strong>NameNode</strong> es el componente principal del sistema de archivos
-            distribuido de Hadoop (<strong>HDFS</strong>). Su función consiste en gestionar la
-            estructura lógica del sistema de almacenamiento distribuido, manteniendo la información
-            sobre la ubicación de los bloques de datos y la organización de directorios y archivos.
+            El <strong>ResourceManager</strong> es el componente principal de
+            <strong>YARN (Yet Another Resource Negotiator)</strong>, el sistema encargado de
+            administrar los recursos computacionales del clúster Hadoop.
 
         </p>
 
         <p>
 
-            Aunque los datos se almacenan físicamente en los <strong>DataNodes</strong>, el
-            NameNode actúa como punto central de coordinación del clúster, permitiendo que los
-            clientes y aplicaciones localicen rápidamente la información distribuida. Debido a esta
-            responsabilidad, constituye uno de los componentes más críticos de toda la arquitectura
-            Hadoop.
+            Su responsabilidad consiste en coordinar la ejecución de las aplicaciones
+            distribuidas, asignando memoria y capacidad de procesamiento a las tareas que
+            se ejecutan en los distintos nodos del clúster.
+
+            Cuando un usuario lanza un trabajo <strong>MapReduce</strong>, el
+            <strong>ResourceManager</strong> decide dónde deben ejecutarse las tareas,
+            planifica su ejecución y supervisa el uso eficiente de los recursos disponibles.
+
+        </p>
+
+        <p>
+
+            Gracias a este mecanismo, múltiples aplicaciones pueden compartir la
+            infraestructura Hadoop de forma equilibrada, optimizando el rendimiento global
+            del sistema y garantizando un uso eficiente de la CPU y la memoria disponibles.
 
         </p>
 
         <div class="alert alert-success">
+
             <i class="bi bi-info-circle-fill"></i>
-            La imagen Docker del NameNode se construye a partir de la imagen
-            <strong>hadoop-base</strong>, incorporando todas las herramientas necesarias para el
-            desarrollo de las prácticas del curso.
+
+            La imagen Docker del <strong>ResourceManager</strong> se construye a partir de la
+            imagen <strong>hadoop-base</strong>, reutilizando toda la infraestructura
+            desarrollada anteriormente.
+
         </div>
 
         <hr class="my-5">
 
         <h3 class="text-success">
+
             1. Importación de la imagen base
+
         </h3>
 
         <p>
 
             La construcción comienza utilizando como punto de partida la imagen
-            <strong>hadoop-base</strong>, desarrollada previamente. Esta imagen ya incorpora Ubuntu,
-            Java, Hadoop, Python, Jupyter Notebook y la configuración básica del clúster.
+            <strong>hadoop-base</strong>, que ya incorpora Ubuntu, Java, Hadoop,
+            Python, Jupyter Notebook y el resto de componentes comunes del clúster.
 
         </p>
 
@@ -137,7 +152,10 @@
             <img src="../img/docker-hadoop-base.png" class="img-fluid rounded shadow" alt="Imagen base Hadoop">
 
             <p class="text-muted">
-                Figura. Imagen base utilizada para construir el NameNode.
+
+                <strong>Figura.</strong> Imagen Docker base utilizada para construir el
+                ResourceManager.
+
             </p>
 
         </div>
@@ -145,69 +163,16 @@
         <hr class="my-5">
 
         <h3 class="text-success">
-            2. Instalación de dependencias adicionales
+
+            2. Copia del fichero de configuración
+
         </h3>
 
         <p>
 
-            Sobre la imagen base se instalan diferentes herramientas necesarias para ampliar las
-            funcionalidades del nodo principal del clúster.
-
-        </p>
-
-        <table class="table table-striped">
-
-            <thead class="table-success">
-
-                <tr>
-                    <th>Componente</th>
-                    <th>Finalidad</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Herramientas Linux</td>
-                    <td>Administración del sistema.</td>
-                </tr>
-
-                <tr>
-                    <td>Utilidades de red</td>
-                    <td>Comunicación entre servicios.</td>
-                </tr>
-
-                <tr>
-                    <td>Librerías Python</td>
-                    <td>Prácticas Big Data.</td>
-                </tr>
-
-                <tr>
-                    <td>Supervisor</td>
-                    <td>Gestión automática de procesos.</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <div class="text-center my-4">
-
-            <img src="../img/namenode-dependencies.png" class="img-fluid rounded shadow" alt="Dependencias NameNode">
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            3. Instalación de Jupyter Notebook
-        </h3>
-
-        <p>
-
-            La imagen incorpora Jupyter Notebook y las librerías necesarias para el desarrollo de
-            ejercicios prácticos basados en Python y Hadoop Streaming.
+            A continuación se copia al contenedor el fichero de configuración específico
+            del servicio, encargado de iniciar automáticamente el
+            <strong>ResourceManager</strong> mediante <strong>Supervisor</strong>.
 
         </p>
 
@@ -215,25 +180,48 @@
 
             <div class="col-md-6">
 
-                <ul>
+                <table class="table table-bordered">
 
-                    <li>Python 3</li>
+                    <thead class="table-success">
 
-                    <li>pip</li>
+                        <tr>
 
-                    <li>Jupyter Notebook</li>
+                            <th>Archivo</th>
 
-                    <li>Librerías científicas</li>
+                            <th>Descripción</th>
 
-                    <li>Herramientas de análisis</li>
+                        </tr>
 
-                </ul>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>yarnmanager.conf</td>
+
+                            <td>Configuración del servicio ResourceManager.</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Supervisor</td>
+
+                            <td>Gestión automática del proceso.</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
 
             </div>
 
             <div class="col-md-6 text-center">
 
-                <img src="../img/jupyter-hadoop.png" class="img-fluid rounded shadow" alt="Jupyter Notebook">
+                <img src="../img/yarnmanager-config.png" class="img-fluid rounded shadow"
+                    alt="Configuración ResourceManager">
 
             </div>
 
@@ -242,130 +230,124 @@
         <hr class="my-5">
 
         <h3 class="text-success">
-            4. Instalación de Apache Hive 3.1.3
+
+            3. Ejecución mediante Supervisor
+
         </h3>
 
         <p>
 
-            Se instala Apache Hive como infraestructura de almacenamiento y consulta de datos
-            sobre HDFS, permitiendo ejecutar consultas SQL mediante HiveQL.
+            Una vez finalizada la configuración, el contenedor utiliza
+            <strong>Supervisor</strong> como gestor de procesos para iniciar
+            automáticamente el servicio <strong>ResourceManager</strong> cuando el
+            contenedor arranca.
 
         </p>
 
-        <div class="text-center my-4">
+        <div class="row">
 
-            <img src="../img/hive-install.png" class="img-fluid rounded shadow" alt="Hive">
+            <div class="col-md-5">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        ✔ Inicio automático del servicio
+                    </li>
+
+                    <li class="list-group-item">
+                        ✔ Monitorización del proceso
+                    </li>
+
+                    <li class="list-group-item">
+                        ✔ Reinicio automático ante fallos
+                    </li>
+
+                    <li class="list-group-item">
+                        ✔ Gestión centralizada de servicios
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-7 text-center">
+
+                <img src="../img/supervisor-yarnmanager.png" class="img-fluid rounded shadow"
+                    alt="Supervisor ResourceManager">
+
+            </div>
 
         </div>
 
         <hr class="my-5">
 
         <h3 class="text-success">
-            5. Instalación de Apache Flume 1.11.0
+
+            Funciones principales del ResourceManager
+
         </h3>
 
-        <p>
+        <div class="row">
 
-            La imagen incorpora Apache Flume para facilitar la ingestión de datos desde sistemas
-            externos hacia HDFS.
+            <div class="col-md-6">
 
-        </p>
+                <div class="card shadow-sm mb-3">
 
-        <div class="text-center my-4">
+                    <div class="card-header bg-success text-white">
 
-            <img src="../img/flume-install.png" class="img-fluid rounded shadow" alt="Flume">
+                        Planificación de recursos
 
-        </div>
+                    </div>
 
-        <hr class="my-5">
+                    <div class="card-body">
 
-        <h3 class="text-success">
-            6. Inicialización del NameNode
-        </h3>
+                        <ul>
 
-        <p>
+                            <li>Asignación de memoria.</li>
 
-            Durante la construcción de la imagen se crea el directorio destinado al almacenamiento
-            de los metadatos del sistema HDFS, se realiza el formateo inicial del NameNode y se
-            configuran los puertos necesarios para el acceso a los diferentes servicios.
+                            <li>Asignación de CPU.</li>
 
-        </p>
+                            <li>Planificación de aplicaciones.</li>
 
-        <table class="table table-bordered">
+                            <li>Gestión de prioridades.</li>
 
-            <thead class="table-success">
+                        </ul>
 
-                <tr>
-                    <th>Acción</th>
-                    <th>Descripción</th>
-                </tr>
+                    </div>
 
-            </thead>
+                </div>
 
-            <tbody>
+            </div>
 
-                <tr>
-                    <td>Creación del directorio namenode</td>
-                    <td>Almacenamiento de metadatos HDFS.</td>
-                </tr>
+            <div class="col-md-6">
 
-                <tr>
-                    <td>Formato inicial</td>
-                    <td>Inicialización del sistema de archivos.</td>
-                </tr>
+                <div class="card shadow-sm">
 
-                <tr>
-                    <td>Puertos</td>
-                    <td>Exposición de los servicios del NameNode.</td>
-                </tr>
+                    <div class="card-header bg-success text-white">
 
-            </tbody>
+                        Coordinación del clúster
 
-        </table>
+                    </div>
 
-        <div class="text-center my-4">
+                    <div class="card-body">
 
-            <img src="../img/hdfs-format.png" class="img-fluid rounded shadow" alt="Formato NameNode">
+                        <ul>
 
-        </div>
+                            <li>Comunicación con NodeManagers.</li>
 
-        <hr class="my-5">
+                            <li>Monitorización del estado del clúster.</li>
 
-        <h3 class="text-success">
-            7. Creación de la base de datos Metastore
-        </h3>
+                            <li>Control de recursos disponibles.</li>
 
-        <p>
+                            <li>Alta disponibilidad.</li>
 
-            Para permitir el funcionamiento de Apache Hive se crea automáticamente la base de
-            datos <strong>metastore_db</strong>, donde se almacenan los metadatos del catálogo de
-            Hive.
+                        </ul>
 
-        </p>
+                    </div>
 
-        <div class="text-center my-4">
+                </div>
 
-            <img src="../img/hive-metastore.png" class="img-fluid rounded shadow" alt="Hive Metastore">
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            8. Arranque mediante Supervisor
-        </h3>
-
-        <p>
-
-            Finalmente, todos los servicios necesarios del NameNode son gestionados mediante
-            <strong>Supervisor</strong>, encargado de iniciar automáticamente Hadoop, HDFS, YARN,
-            Hive y el resto de procesos cuando el contenedor se pone en funcionamiento.
-
-        </p>
-
-        <div class="text-center my-4">
-
-            <img src="../img/supervisor-namenode.png" class="img-fluid rounded shadow" alt="Supervisor">
+            </div>
 
         </div>
 
@@ -373,24 +355,40 @@
 
         <div class="alert alert-primary">
 
-            <h4>Conclusión</h4>
+            <h4>
+
+                Conclusión
+
+            </h4>
 
             <p>
 
-                La imagen Docker del NameNode constituye el núcleo de la infraestructura Hadoop
-                propuesta. A partir de la imagen base se incorporan todas las herramientas necesarias
-                para gestionar HDFS, ejecutar consultas mediante Hive, desarrollar prácticas con
-                Jupyter Notebook e integrar mecanismos de ingestión de datos mediante Apache Flume,
-                proporcionando un entorno completo para el aprendizaje de tecnologías Big Data.
+                La imagen Docker del <strong>ResourceManager</strong> constituye el núcleo del
+                sistema YARN. Gracias a este componente es posible distribuir de forma eficiente
+                los recursos del clúster entre las distintas aplicaciones Big Data,
+                garantizando un uso óptimo de la infraestructura y permitiendo la ejecución
+                paralela de múltiples trabajos sobre Hadoop.
 
             </p>
 
             <p class="mb-0">
 
-                El código completo empleado para construir esta imagen puede consultarse en el
-                <strong>Anexo 7.1.2 — Dockerfile NameNode</strong>.
+                El código completo utilizado para construir esta imagen puede consultarse en el
+                <strong>Anexo 7.1</strong>, apartado
+                <strong>7.1.3 Dockerfile ResourceManager (YARN)</strong>.
 
             </p>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="index.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+                Volver al índice
+
+            </a>
 
         </div>
         <footer class="bg-success text-white mt-5">
