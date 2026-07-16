@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </h1>
+
+                    <p class="lead">
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 4.
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 4
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <!-- ======================= CONTENIDO ======================= -->
+
+        <h2 class="text-success mb-4">
+            4.3 Construcción de la imagen base Docker
+        </h2>
+
+        <p class="lead">
+
+            La arquitectura desarrollada en este proyecto se fundamenta en una
+            <strong>imagen base Docker</strong> común a todos los nodos del clúster Hadoop.
+            Su objetivo es proporcionar un entorno homogéneo, reproducible y completamente
+            preconfigurado sobre el que posteriormente se construyen los diferentes servicios
+            especializados, como el <strong>NameNode</strong>, los <strong>DataNodes</strong>,
+            el <strong>ResourceManager</strong> y los <strong>NodeManagers</strong>.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Utilizar una única imagen base simplifica el mantenimiento del sistema y garantiza
+            que todos los nodos compartan exactamente las mismas versiones de software y
+            configuración.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            1. Sistema operativo base
+        </h3>
+
+        <p>
+
+            La imagen Docker parte de <strong>Ubuntu 22.04 LTS</strong>, seleccionado por su
+            estabilidad, soporte a largo plazo y amplia compatibilidad con el ecosistema
+            Big Data.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/docker-ubuntu-base.png" class="img-fluid rounded shadow" alt="Ubuntu 22.04">
+
+            <p class="text-muted">
+
+                <strong>Figura.</strong> Imagen base Ubuntu 22.04 utilizada para construir todos los
+                contenedores.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            2. Instalación de Python y Jupyter Notebook
+        </h3>
+
+        <p>
+
+            La imagen incorpora <strong>Python 3</strong> y
+            <strong>Jupyter Notebook</strong>, herramientas que serán utilizadas durante
+            todo el curso para desarrollar ejercicios prácticos y ejecutar aplicaciones
+            MapReduce mediante Hadoop Streaming.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul>
+
+                    <li>Python 3.</li>
+
+                    <li>pip.</li>
+
+                    <li>Jupyter Notebook.</li>
+
+                    <li>Librerías necesarias para prácticas.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                <img src="../img/python-jupyter.png" class="img-fluid rounded shadow" alt="Python y Jupyter">
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            3. Instalación de Java y herramientas del sistema
+        </h3>
+
+        <p>
+
+            Dado que Apache Hadoop está desarrollado sobre Java, la imagen instala
+            <strong>OpenJDK 8</strong>, además de otras utilidades necesarias para el
+            funcionamiento de los contenedores.
+
+        </p>
+
+        <table class="table table-striped">
+
+            <thead class="table-success">
+
+                <tr>
+
+                    <th>Componente</th>
+
+                    <th>Finalidad</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>OpenJDK 8</td>
+
+                    <td>Ejecución de Hadoop.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Supervisor</td>
+
+                    <td>Gestión de procesos dentro del contenedor.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>SSH</td>
+
+                    <td>Comunicación entre nodos.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Herramientas Linux</td>
+
+                    <td>Administración del sistema.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="text-center my-4">
+
+            <img src="../img/openjdk-supervisor.png" class="img-fluid rounded shadow" alt="OpenJDK">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            4. Instalación de Apache Hadoop 3.4.0
+        </h3>
+
+        <p>
+
+            Una vez instalado Java, se descarga e instala
+            <strong>Apache Hadoop 3.4.0</strong>, versión utilizada durante todo el
+            proyecto.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/install-hadoop.png" class="img-fluid rounded shadow" alt="Instalación Hadoop">
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            5. Configuración de variables de entorno
+        </h3>
+
+        <p>
+
+            Durante la construcción de la imagen se configuran las variables de entorno
+            necesarias para facilitar el funcionamiento de Hadoop y Java.
+
+        </p>
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white">
+
+                Variables principales
+
+            </div>
+
+            <div class="card-body">
+
+                <pre class="mb-0">
+    JAVA_HOME
+    HADOOP_HOME
+    HADOOP_CONF_DIR
+    HADOOP_COMMON_HOME
+    HADOOP_HDFS_HOME
+    HADOOP_MAPRED_HOME
+    HADOOP_YARN_HOME
+    PATH
+    </pre>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            6. Copia de los archivos de configuración
+        </h3>
+
+        <p>
+
+            Finalmente, la imagen incorpora los archivos de configuración personalizados
+            que definen el comportamiento del clúster Hadoop.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        core-site.xml
+                    </li>
+
+                    <li class="list-group-item">
+                        hdfs-site.xml
+                    </li>
+
+                    <li class="list-group-item">
+                        mapred-site.xml
+                    </li>
+
+                    <li class="list-group-item">
+                        yarn-site.xml
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6 text-center">
+
+                <img src="../img/hadoop-config-files.png" class="img-fluid rounded shadow" alt="Configuración Hadoop">
+
+            </div>
+
+        </div>
+
+        <p class="mt-4">
+
+            Estos archivos contienen toda la configuración relativa al sistema HDFS, el
+            motor MapReduce y el gestor de recursos YARN, permitiendo que todos los
+            contenedores compartan exactamente la misma configuración.
+
+        </p>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Ventajas de utilizar una imagen base
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul>
+
+                    <li>Configuración homogénea.</li>
+
+                    <li>Facilidad de mantenimiento.</li>
+
+                    <li>Despliegue automatizado.</li>
+
+                    <li>Menor tiempo de instalación.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <ul>
+
+                    <li>Reutilización de imágenes.</li>
+
+                    <li>Mayor consistencia.</li>
+
+                    <li>Escalabilidad del clúster.</li>
+
+                    <li>Actualizaciones centralizadas.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>
+
+                Conclusión
+
+            </h4>
+
+            <p>
+
+                La utilización de una imagen Docker común constituye uno de los pilares de la
+                arquitectura propuesta. Gracias a este enfoque, todos los nodos del clúster
+                comparten la misma configuración, reduciendo considerablemente la complejidad
+                del despliegue y facilitando la administración de la infraestructura Hadoop.
+
+            </p>
+
+            <p class="mb-0">
+
+                El código completo utilizado para construir esta imagen puede consultarse en el
+                <strong>Anexo 7.1</strong>, correspondiente al
+                <strong>Dockerfile base</strong> del proyecto.
+
+            </p>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
