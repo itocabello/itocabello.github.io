@@ -260,6 +260,42 @@
                 </div>
 
             </div>
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Virtualización ligera mediante Docker
+            </h3>
+
+            <p>
+
+                En una infraestructura Hadoop tradicional es necesario desplegar varias
+                máquinas virtuales, cada una con su propio sistema operativo y con todas las
+                dependencias necesarias para ejecutar los diferentes servicios del clúster.
+                Este enfoque incrementa el consumo de recursos y dificulta la administración
+                del entorno.
+
+            </p>
+
+            <p>
+
+                La arquitectura propuesta en este proyecto sustituye este modelo por una
+                infraestructura basada en <strong>contenedores Docker</strong>, utilizando una
+                única imagen base previamente configurada. A partir de ella se generan los
+                distintos nodos del clúster, simplificando el despliegue, reduciendo el consumo
+                de recursos y facilitando la escalabilidad del sistema.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                El uso de Docker permite construir un laboratorio Hadoop completamente
+                funcional sobre una única máquina virtual, manteniendo un entorno reproducible,
+                portable y fácil de administrar mediante Docker Compose.
+
+            </div>
+
 
             <hr class="my-5">
 
