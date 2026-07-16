@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </h1>
+
+                    <p class="lead">
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 3
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <!-- =================== CONTENIDO =================== -->
+
+        <h2 class="text-success mb-4">
+            4.2 Tecnologías utilizadas en la infraestructura
+        </h2>
+
+        <p class="lead">
+
+            El ecosistema Hadoop permite integrar diferentes herramientas especializadas para el
+            desarrollo de infraestructuras Big Data. En este proyecto se han seleccionado
+            tecnologías de código abierto ampliamente utilizadas tanto en entornos profesionales
+            como académicos, permitiendo construir un laboratorio completamente funcional para
+            el despliegue, procesamiento y análisis de datos masivos.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Todas las tecnologías empleadas son de código abierto, ampliamente documentadas y
+            compatibles entre sí, facilitando la reproducción del entorno en cualquier equipo.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Tecnologías empleadas
+        </h3>
+
+        <div class="row g-4">
+
+            <!-- Ubuntu -->
+
+            <div class="col-lg-6">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-success text-white">
+                        Ubuntu 22.04 LTS
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Ubuntu 22.04 LTS ha sido seleccionado como sistema operativo base
+                            para toda la infraestructura del proyecto. Esta distribución GNU/Linux,
+                            desarrollada por Canonical y basada en Debian, destaca por su
+                            estabilidad, seguridad, facilidad de administración y amplio soporte
+                            para herramientas del ecosistema Big Data.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Distribución Linux de soporte extendido (LTS).</li>
+
+                            <li>Gran estabilidad y fiabilidad.</li>
+
+                            <li>Amplia documentación.</li>
+
+                            <li>Excelente compatibilidad con Docker y Hadoop.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Jupyter -->
+
+            <div class="col-lg-6">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-success text-white">
+                        Jupyter Notebook
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Jupyter Notebook se utiliza como entorno interactivo para el desarrollo
+                            de las prácticas del curso. Permite crear documentos que combinan
+                            código, explicaciones, gráficos y resultados de ejecución.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Programación interactiva.</li>
+
+                            <li>Visualización de datos.</li>
+
+                            <li>Documentación integrada.</li>
+
+                            <li>Compatible con Python, R, Julia y otros lenguajes.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Hadoop -->
+
+            <div class="col-lg-6">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-success text-white">
+                        Apache Hadoop 3.4.0
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Hadoop constituye el núcleo de la infraestructura Big Data desplegada.
+                            Sobre esta versión se instalan los diferentes componentes del
+                            ecosistema utilizados durante las prácticas del proyecto.
+
+                        </p>
+
+                        <ul>
+
+                            <li>HDFS.</li>
+
+                            <li>YARN.</li>
+
+                            <li>MapReduce.</li>
+
+                            <li>Procesamiento distribuido.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Hive -->
+
+            <div class="col-lg-6">
+
+                <div class="card shadow h-100">
+
+                    <div class="card-header bg-success text-white">
+                        Apache Hive 3.1.3
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Apache Hive proporciona una capa de almacenamiento y consulta sobre
+                            Hadoop, permitiendo trabajar con grandes volúmenes de información
+                            mediante un lenguaje similar a SQL denominado HiveQL.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Consultas SQL sobre HDFS.</li>
+
+                            <li>Análisis de datos.</li>
+
+                            <li>Integración con Hadoop.</li>
+
+                            <li>Ideal para procesamiento Batch.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Repositorio Docker Hub
+        </h3>
+
+        <p>
+
+            Las imágenes Docker desarrolladas para este proyecto se encuentran publicadas en un
+            repositorio Docker Hub, permitiendo que cualquier estudiante pueda descargar el
+            entorno completo sin necesidad de construir manualmente cada imagen.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/dockerhub-repository.png" class="img-fluid rounded shadow" alt="Repositorio Docker Hub">
+
+            <p class="text-muted">
+
+                <strong>Figura.</strong> Repositorio Docker Hub utilizado para distribuir las imágenes
+                del proyecto.
+
+            </p>
+
+        </div>
+
+        <div class="alert alert-primary">
+
+            <h5>
+
+                Ventajas del uso de Docker Hub
+
+            </h5>
+
+            <ul class="mb-0">
+
+                <li>Distribución sencilla de imágenes.</li>
+
+                <li>Versionado del entorno.</li>
+
+                <li>Actualizaciones centralizadas.</li>
+
+                <li>Reutilización de imágenes.</li>
+
+                <li>Facilidad de despliegue para los estudiantes.</li>
+
+            </ul>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Resumen de la infraestructura
+        </h3>
+
+        <table class="table table-striped table-bordered">
+
+            <thead class="table-success">
+
+                <tr>
+
+                    <th>Tecnología</th>
+                    <th>Versión</th>
+                    <th>Finalidad</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Ubuntu</td>
+
+                    <td>22.04 LTS</td>
+
+                    <td>Sistema operativo base.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Docker</td>
+
+                    <td>Última estable</td>
+
+                    <td>Virtualización ligera mediante contenedores.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Docker Compose</td>
+
+                    <td>Última estable</td>
+
+                    <td>Orquestación del clúster.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Apache Hadoop</td>
+
+                    <td>3.4.0</td>
+
+                    <td>Procesamiento y almacenamiento distribuido.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Apache Hive</td>
+
+                    <td>3.1.3</td>
+
+                    <td>Consultas SQL sobre Hadoop.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Jupyter Notebook</td>
+
+                    <td>Actual</td>
+
+                    <td>Desarrollo de prácticas.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <hr class="my-5">
+
+        <div class="alert alert-success">
+
+            <h4>
+
+                Conclusión
+
+            </h4>
+
+            <p class="mb-0">
+
+                La combinación de Ubuntu, Docker, Docker Compose, Apache Hadoop, Hive y Jupyter
+                Notebook proporciona una plataforma Big Data moderna, ligera y fácilmente
+                reproducible. Esta infraestructura permite a los estudiantes desplegar un clúster
+                Hadoop completo en un entorno local y realizar prácticas de procesamiento distribuido
+                sin necesidad de disponer de hardware especializado.
+
+            </p>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
