@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 3 - Ecosistema de Hadoop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 3. Ecosistema de Hadoop
+                    </h1>
+
+                    <p class="lead">
+                        Estructura de Hadoop
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 3
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <!-- ======================= CONTENIDO ======================= -->
+
+        <h2 class="text-success mb-4">
+            3.4 Serialización y formatos de almacenamiento en Hadoop
+        </h2>
+
+        <p class="lead">
+
+            Uno de los principales retos en los sistemas Big Data consiste en almacenar y procesar
+            grandes volúmenes de información de forma eficiente. En Hadoop, la elección del formato
+            de almacenamiento influye directamente en el rendimiento del procesamiento, el espacio
+            ocupado y la velocidad de acceso a los datos.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Los formatos de almacenamiento permiten optimizar el rendimiento de aplicaciones
+            MapReduce, Spark y otras herramientas del ecosistema Hadoop.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            ¿Por qué son necesarios nuevos formatos?
+        </h3>
+
+        <p>
+
+            Uno de los principales cuellos de botella en aplicaciones basadas en HDFS es el tiempo
+            necesario para localizar, leer y volver a escribir grandes volúmenes de información.
+
+        </p>
+
+        <p>
+
+            Además, Hadoop almacena los datos de forma redundante para garantizar tolerancia a
+            fallos, lo que incrementa considerablemente el espacio utilizado.
+
+        </p>
+
+        <p>
+
+            A medida que aumenta el volumen de información también lo hacen los costes de:
+
+        </p>
+
+        <ul>
+
+            <li>Almacenamiento.</li>
+
+            <li>Procesamiento.</li>
+
+            <li>Transferencia de datos.</li>
+
+            <li>Administración de grandes datasets.</li>
+
+        </ul>
+
+        <div class="text-center my-5">
+
+            <img src="../img/formatos-hadoop.png" class="img-fluid rounded shadow" alt="Formatos Hadoop">
+
+            <p class="text-muted">
+
+                <strong>Figura.</strong> Importancia de los formatos de almacenamiento en Hadoop.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Ventajas de utilizar formatos optimizados
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        Lecturas más rápidas.
+                    </li>
+
+                    <li class="list-group-item">
+                        Escrituras más eficientes.
+                    </li>
+
+                    <li class="list-group-item">
+                        Archivos divisibles.
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+                        Compresión avanzada.
+                    </li>
+
+                    <li class="list-group-item">
+                        Evolución del esquema.
+                    </li>
+
+                    <li class="list-group-item">
+                        Mayor rendimiento en sistemas distribuidos.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Serialización de datos
+        </h3>
+
+        <p>
+
+            La serialización consiste en convertir datos estructurados en un formato adecuado para
+            ser almacenados, transmitidos o procesados de forma eficiente.
+
+        </p>
+
+        <p>
+
+            En Hadoop este proceso resulta fundamental para intercambiar información entre los
+            diferentes nodos del clúster.
+
+        </p>
+
+        <div class="alert alert-primary">
+
+            La serialización reduce el tamaño de los datos, mejora la velocidad de transmisión y
+            permite la interoperabilidad entre distintas aplicaciones del ecosistema Hadoop.
+
+        </div>
+
+        <p>
+
+            Los datos pueden serializarse en:
+
+        </p>
+
+        <ul>
+
+            <li>Formato binario.</li>
+
+            <li>Formato texto.</li>
+
+        </ul>
+
+        <hr class="my-5">
+
+        <h2 class="text-success">
+            3.4.1 Apache Parquet
+        </h2>
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <p>
+
+                    Apache Parquet es un formato de almacenamiento columnar desarrollado inicialmente por
+                    Twitter y Cloudera, posteriormente incorporado como proyecto oficial de Apache.
+
+                </p>
+
+                <p>
+
+                    Al almacenar la información por columnas, consigue una mayor compresión y un acceso
+                    mucho más eficiente durante las consultas analíticas.
+
+                </p>
+
+                <h5>Ventajas</h5>
+
+                <ul>
+
+                    <li>Almacenamiento por columnas.</li>
+
+                    <li>Alta compresión.</li>
+
+                    <li>Lecturas muy rápidas.</li>
+
+                    <li>Excelente rendimiento analítico.</li>
+
+                    <li>Compatible con Spark, Hive, Impala y Hadoop.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <img src="../img/parquet-columnar.png" class="img-fluid rounded shadow" alt="Apache Parquet">
+
+            <p class="text-muted">
+
+                Almacenamiento columnar utilizado por Apache Parquet.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success">
+            3.4.2 Apache Avro
+        </h2>
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <p>
+
+                    Apache Avro almacena los datos por filas y está especialmente orientado al intercambio
+                    de información entre aplicaciones distribuidas.
+
+                </p>
+
+                <p>
+
+                    Su esquema se define mediante archivos JSON y viaja junto con los propios datos,
+                    permitiendo que cualquier aplicación pueda interpretar automáticamente la estructura
+                    del fichero.
+
+                </p>
+
+                <h5>Características</h5>
+
+                <ul>
+
+                    <li>Almacenamiento por filas.</li>
+
+                    <li>Esquema definido en JSON.</li>
+
+                    <li>Ideal para intercambio de datos.</li>
+
+                    <li>Muy utilizado en HDFS.</li>
+
+                    <li>Compatible con Schema Registry.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <img src="../img/avro-row.png" class="img-fluid rounded shadow" alt="Apache Avro">
+
+            <p class="text-muted">
+
+                Funcionamiento del formato Apache Avro.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success">
+            3.4.3 Hadoop Writable
+        </h2>
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <p>
+
+                    Writable es el mecanismo de serialización nativo de Apache Hadoop.
+
+                </p>
+
+                <p>
+
+                    Permite convertir objetos Java en una representación binaria compacta para reducir el
+                    coste de almacenamiento y acelerar la comunicación entre nodos durante la ejecución
+                    de trabajos MapReduce.
+
+                </p>
+
+                <h5>Principales ventajas</h5>
+
+                <ul>
+
+                    <li>Formato binario muy compacto.</li>
+
+                    <li>Optimizado para MapReduce.</li>
+
+                    <li>Alto rendimiento.</li>
+
+                    <li>Baja sobrecarga de comunicación.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success">
+            3.4.4 SequenceFile
+        </h2>
+
+        <div class="card shadow">
+
+            <div class="card-body">
+
+                <p>
+
+                    SequenceFile es un formato binario nativo de Hadoop diseñado para almacenar pares
+                    <strong>&lt;clave, valor&gt;</strong> serializados.
+
+                </p>
+
+                <p>
+
+                    Se utiliza habitualmente para almacenar resultados intermedios de aplicaciones
+                    MapReduce y para optimizar operaciones de lectura y escritura sobre HDFS.
+
+                </p>
+
+                <h5>Características</h5>
+
+                <ul>
+
+                    <li>Formato binario.</li>
+
+                    <li>Almacenamiento de pares clave-valor.</li>
+
+                    <li>Compresión integrada.</li>
+
+                    <li>Compatible con Writable.</li>
+
+                    <li>Optimizado para HDFS.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <img src="../img/sequencefile.png" class="img-fluid rounded shadow" alt="SequenceFile">
+
+            <p class="text-muted">
+
+                Formato SequenceFile utilizado en Apache Hadoop.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Comparativa de formatos
+        </h3>
+
+        <table class="table table-striped table-hover">
+
+            <thead class="table-success">
+
+                <tr>
+
+                    <th>Formato</th>
+                    <th>Organización</th>
+                    <th>Uso principal</th>
+                    <th>Ventaja</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Parquet</td>
+
+                    <td>Columnas</td>
+
+                    <td>Análisis Big Data</td>
+
+                    <td>Consultas muy rápidas</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Avro</td>
+
+                    <td>Filas</td>
+
+                    <td>Intercambio de datos</td>
+
+                    <td>Esquema JSON</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Writable</td>
+
+                    <td>Binario</td>
+
+                    <td>MapReduce</td>
+
+                    <td>Máximo rendimiento</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>SequenceFile</td>
+
+                    <td>Clave-Valor</td>
+
+                    <td>Datos intermedios</td>
+
+                    <td>Optimizado para HDFS</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>
+
+                <i class="bi bi-lightbulb"></i>
+
+                Conclusión
+
+            </h4>
+
+            <p class="mb-0">
+
+                La elección del formato de almacenamiento constituye un aspecto fundamental en los
+                entornos Big Data. Tecnologías como <strong>Parquet</strong>,
+                <strong>Avro</strong>, <strong>Writable</strong> y
+                <strong>SequenceFile</strong> permiten optimizar el almacenamiento, reducir el
+                consumo de recursos y mejorar significativamente el rendimiento de aplicaciones
+                distribuidas desarrolladas sobre Apache Hadoop.
+
+            </p>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
