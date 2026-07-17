@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </h1>
+
+                    <p class="lead">
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="indexdespliegue.html" class="navbar-brand">
+
+                Volver al índice del capítulo 4.
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 4
+                </li>
+
+            </ol>
+
+        </nav>
+        <!-- ===================================================== -->
+        <!-- 4.2.5 ACCESO MEDIANTE JUPYTER NOTEBOOK -->
+        <!-- ===================================================== -->
+
+        <h2 class="text-success mb-4">
+            4.2.5 Acceso mediante Jupyter Notebook
+        </h2>
+
+        <p class="lead">
+            Jupyter Notebook constituye el entorno de desarrollo utilizado durante las
+            prácticas del proyecto para la creación, ejecución y documentación de código
+            Python integrado con el ecosistema Hadoop.
+        </p>
+
+        <p>
+            Un Notebook combina código ejecutable, texto enriquecido, imágenes,
+            ecuaciones y gráficos dentro de un único documento interactivo, facilitando la
+            experimentación y la comprensión de los procesos desarrollados. Esta
+            herramienta resulta especialmente adecuada para la enseñanza de tecnologías
+            Big Data al permitir documentar paso a paso cada uno de los ejercicios
+            realizados.
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            En este proyecto Jupyter Notebook se utilizará para descargar datasets,
+            procesarlos mediante Python e incorporarlos posteriormente al sistema de
+            archivos distribuido HDFS, desde donde podrán ser explotados mediante
+            MapReduce, Hive y el resto de herramientas del ecosistema Hadoop.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Servidor Jupyter Notebook
+        </h3>
+
+        <p>
+
+            El servicio Jupyter se encuentra instalado en el contenedor
+            <strong>NameNode</strong>, que actúa como nodo principal del clúster y como
+            entorno de trabajo para el desarrollo de los ejercicios prácticos.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el equipo anfitrión
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://localhost:8888/tree
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el clúster
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://namenode:8888/tree
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Funciones principales
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Desarrollo
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Programación en Python.</li>
+
+                            <li>Ejecución interactiva de código.</li>
+
+                            <li>Visualización de resultados.</li>
+
+                            <li>Documentación de prácticas.</li>
+
+                            <li>Creación de notebooks.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Integración con Hadoop
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Descarga de datasets.</li>
+
+                            <li>Preparación de datos.</li>
+
+                            <li>Generación de archivos CSV.</li>
+
+                            <li>Carga de información en HDFS.</li>
+
+                            <li>Preparación de datos para Hive y MapReduce.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Acceso a la interfaz web
+        </h3>
+
+        <p>
+
+            Una vez iniciado el contenedor NameNode, el servidor Jupyter queda disponible
+            a través del navegador, ofreciendo acceso al árbol de directorios donde se
+            almacenarán los notebooks desarrollados durante las prácticas.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/jupyter-access.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+
+
+
+            <p class="text-muted mt-2">
+
+                Figura 30. Acceso web al servidor Jupyter Notebook.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>Conclusión</h4>
+
+            <p>
+
+                Jupyter Notebook constituye el entorno principal de desarrollo utilizado en
+                este proyecto. Desde esta herramienta se crearán los programas Python
+                empleados para descargar datasets, generar archivos de datos, preparar la
+                información y cargarla posteriormente en HDFS para su procesamiento mediante
+                las diferentes tecnologías del ecosistema Hadoop.
+
+            </p>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="index.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice
+
+            </a>
+
+        </div>
+
+
+        <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            jupyter-access
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img src="../img/namenode-web.png" class="img-fluid">
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
