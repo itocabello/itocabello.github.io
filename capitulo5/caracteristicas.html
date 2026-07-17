@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 Soporte Teórico y Validación Práctica del Proyecto.
+                    </h1>
+
+                    <p class="lead">
+                        Soporte Teórico y Validación Práctica del Proyecto
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+        </div>
+
+    </nav>
+
+    <div class="row">
+
+        <!-- Menú lateral -->
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Capítulo 5
+
+                </div>
+
+                <a href="instdocker.html" class="list-group-item list-group-item-action">
+
+                    5.1.1 Objetivos del aprendizaje.
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+        <!-- Contenido -->
+
+        <div class="col-lg-9">
+
+
+            <!-- ===================================================== -->
+            <!-- 4.3.1 INTRODUCCIÓN A BIG DATA -->
+            <!-- ===================================================== -->
+
+            <h2 class="text-success mb-4">
+                4.3.1 Introducción al ecosistema Big Data
+            </h2>
+
+            <p class="lead">
+
+                Este capítulo constituye el punto de partida de la formación práctica del proyecto y
+                tiene como finalidad proporcionar al estudiante una comprensión sólida de los
+                fundamentos de <strong>Big Data</strong> y de su aplicación sobre una infraestructura
+                distribuida basada en <strong>Apache Hadoop</strong>.
+
+            </p>
+
+            <p>
+
+                La metodología seguida combina el estudio de los conceptos teóricos con su
+                aplicación directa sobre el clúster Hadoop desplegado mediante tecnologías de
+                virtualización ligera utilizando Docker.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-lightbulb-fill"></i>
+
+                El conocimiento de los principios de Big Data constituye la base necesaria para
+                comprender el funcionamiento de las tecnologías distribuidas utilizadas durante el
+                desarrollo de las prácticas del proyecto.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                ¿Por qué estudiar Big Data?
+
+            </h3>
+
+            <p>
+
+                Comprender el paradigma Big Data resulta imprescindible para trabajar con
+                infraestructuras distribuidas como la desarrollada en este proyecto. El clúster Hadoop
+                implementado permite experimentar de forma práctica con las principales tecnologías
+                del ecosistema Apache.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-hdd-network-fill"></i>
+
+                            HDFS
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Comprender cómo los datos se almacenan de forma distribuida y replicada entre
+                                los diferentes nodos del clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-cpu-fill"></i>
+
+                            YARN
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Entender cómo se administran los recursos del clúster y cómo se distribuyen las
+                                tareas de procesamiento entre los distintos nodos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-diagram-3-fill"></i>
+
+                            MapReduce
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Analizar el modelo de procesamiento paralelo utilizado para ejecutar aplicaciones
+                                sobre grandes volúmenes de información.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Objetivos de aprendizaje
+
+            </h3>
+
+            <p>
+
+                Al finalizar este capítulo, el estudiante dispondrá de una base conceptual que le
+                permitirá comprender tanto la arquitectura desplegada como el funcionamiento de
+                las herramientas utilizadas durante el resto del proyecto.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-book-fill"></i>
+
+                            Conocimientos adquiridos
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender el concepto de Big Data.</li>
+
+                                <li>Conocer la importancia del procesamiento distribuido.</li>
+
+                                <li>Identificar los principales componentes del ecosistema Hadoop.</li>
+
+                                <li>Entender la relación entre teoría y práctica.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-bullseye"></i>
+
+                            Competencias
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Interpretar la arquitectura Hadoop desplegada.</li>
+
+                                <li>Comprender el funcionamiento de HDFS.</li>
+
+                                <li>Entender cómo YARN distribuye los recursos.</li>
+
+                                <li>Relacionar MapReduce con el procesamiento paralelo.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-mortarboard-fill"></i>
+
+                    Objetivo del capítulo
+
+                </h4>
+
+                <p>
+
+                    El propósito de este módulo consiste en proporcionar una base conceptual sólida
+                    sobre Big Data que permita al estudiante comprender cómo funcionan las
+                    infraestructuras distribuidas implementadas en el proyecto. Estos conocimientos
+                    servirán de apoyo para el desarrollo de las prácticas posteriores sobre el clúster
+                    Hadoop, facilitando la administración de los servicios, el almacenamiento de datos
+                    en HDFS y la ejecución de aplicaciones mediante MapReduce y Hadoop Streaming.
+
+                </p>
+
+            </div>
+
+            <div class="text-center mt-5">
+
+                <a href="index.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-arrow-left-circle"></i>
+
+                    Volver al índice
+
+                </a>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                Cluster Hadoop
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <footer class="bg-success text-white mt-5">
+
+                <div class="container py-3 text-center">
+
+                    Proyecto Fin de Grado · UNED
+
+                </div>
+
+            </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
