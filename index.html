@@ -409,17 +409,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 
-        document.querySelectorAll('.dropdown-submenu > a').forEach(function (element) {
+        document.addEventListener("DOMContentLoaded", function () {
 
-            element.addEventListener('click', function (e) {
+            document.querySelectorAll('.dropdown-submenu > a').forEach(function (element) {
 
-                if (window.innerWidth < 992) {
+                element.addEventListener('click', function (e) {
 
-                    e.preventDefault();
+                    if (window.innerWidth < 992) {
 
-                    this.nextElementSibling.classList.toggle('show');
+                        e.preventDefault();
 
-                }
+                        this.nextElementSibling.classList.toggle('show');
+
+                    }
+
+                });
 
             });
 
