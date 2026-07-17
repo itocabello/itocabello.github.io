@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </h1>
+
+                    <p class="lead">
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="indexdespliegue.html" class="navbar-brand">
+
+                Volver al índice del capítulo 4.
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 4
+                </li>
+
+            </ol>
+
+        </nav>
+        <!-- ===================================================== -->
+        <!-- 4.2.4 SUPERVISIÓN Y MONITORIZACIÓN DEL CLÚSTER -->
+        <!-- ===================================================== -->
+
+        <h2 class="text-success mb-4">
+            4.2.4 Supervisión y monitorización del clúster vía web
+        </h2>
+
+        <p class="lead">
+            Una vez desplegada la infraestructura Big Data, todos los componentes del
+            ecosistema Hadoop ofrecen interfaces web que permiten administrar y
+            supervisar el estado del clúster de forma centralizada.
+        </p>
+
+        <p>
+            Estas aplicaciones facilitan la monitorización del sistema de archivos HDFS,
+            la gestión de recursos mediante YARN y el seguimiento de los trabajos
+            MapReduce, proporcionando una visión completa del funcionamiento del entorno
+            distribuido desarrollado en este proyecto.
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Las interfaces web permiten verificar en tiempo real el estado de los
+            servicios, consultar información sobre los nodos del clúster y supervisar la
+            ejecución de las tareas distribuidas.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success mb-4">
+            4.2.4.1 Interfaz Hadoop NameNode
+        </h2>
+
+        <p>
+
+            El NameNode incorpora una interfaz web desde la que es posible consultar el
+            estado del sistema HDFS, visualizar los DataNodes registrados, comprobar la
+            ocupación del almacenamiento y analizar la distribución de los bloques de
+            datos.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el equipo anfitrión
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://localhost:9870/
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el clúster
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://namenode:9870/
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <a href="../img/namenode-web.png" target="_blank">
+
+                <img src="../img/namenode-web.png" class="img-fluid rounded shadow" alt="Interfaz NameNode">
+
+            </a>
+
+            <p class="text-muted mt-2">
+
+                Figura 27. Interfaz web del NameNode.
+
+            </p>
+
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-success text-white">
+
+                Información disponible
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Estado del sistema HDFS.</li>
+
+                    <li>DataNodes registrados.</li>
+
+                    <li>Capacidad de almacenamiento utilizada.</li>
+
+                    <li>Distribución de bloques.</li>
+
+                    <li>Estado de replicación.</li>
+
+                    <li>Información general del clúster.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Administración de HDFS desde terminal
+        </h3>
+
+        <p>
+
+            Además de la interfaz gráfica, HDFS puede administrarse mediante comandos
+            ejecutados desde la consola del NameNode.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-success text-white">
+
+                        Listar directorio raíz
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    hdfs dfs -ls /
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-header bg-success text-white">
+
+                        Crear directorio dataset
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    hdfs dfs -mkdir /dataset
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <a href="../img/hdfs-ls.png" target="_blank">
+
+                <img src="../img/hdfs-ls.png" class="img-fluid rounded shadow" alt="HDFS comandos">
+
+            </a>
+
+            <p class="text-muted">
+
+                Figura 28. Administración básica del sistema HDFS.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="text-success mb-4">
+            4.2.4.2 Interfaz YARN ResourceManager
+        </h2>
+
+        <p>
+
+            YARN dispone igualmente de una interfaz web que permite supervisar la gestión
+            de recursos del clúster y controlar la ejecución de las aplicaciones
+            MapReduce.
+
+        </p>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el equipo anfitrión
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://localhost:8088/cluster
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Acceso desde el clúster
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <pre class="mb-0">
+    http://yarnmanager:8088/cluster
+    </pre>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+
+            <a href="../img/yarn-manager.png" target="_blank">
+
+                <img src="../img/yarn-manager.png" class="img-fluid rounded shadow" alt="YARN Manager">
+
+            </a>
+
+            <p class="text-muted">
+
+                Figura 29. Interfaz web del ResourceManager.
+
+            </p>
+
+        </div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-success text-white">
+
+                Información disponible
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Aplicaciones MapReduce en ejecución.</li>
+
+                    <li>Estado de las tareas.</li>
+
+                    <li>Uso de memoria y CPU.</li>
+
+                    <li>Nodos registrados en YARN.</li>
+
+                    <li>Historial de aplicaciones.</li>
+
+                    <li>Monitorización del clúster.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>Conclusión</h4>
+
+            <p>
+
+                Una vez desplegado el entorno distribuido, las interfaces web de Hadoop
+                permiten supervisar de forma sencilla el funcionamiento del clúster, verificar
+                el estado de HDFS y controlar la ejecución de los trabajos MapReduce mediante
+                YARN.
+
+            </p>
+
+            <p class="mb-0">
+
+                Con esta infraestructura completamente operativa, el estudiante dispone ya de
+                un entorno Big Data funcional preparado para desarrollar, ejecutar y analizar
+                programas MapReduce sobre un clúster Hadoop distribuido.
+
+            </p>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="index.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice
+
+            </a>
+
+        </div>
+        <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            docker-compose-up
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img src="../img/docker-version.png" class="img-fluid">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
