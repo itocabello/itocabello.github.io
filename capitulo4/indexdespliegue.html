@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 4.2 - Despliegue de la infraestructura</title>
+    <title>Capítulo 4 - Arquitectura de Contenedores para el Despliegue del Entorno Big Data</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,11 +26,11 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Capítulo 4.2 Despliegue de la infraestructura
+                        Capítulo 4. Arquitectura de Contenedores para el Despliegue del Entorno Big Data
                     </h1>
 
                     <p class="lead">
-                        Despliegue de la infraestructura
+                        Arquitectura de Contenedores para el Despliegue del Entorno Big Data
                     </p>
 
                 </div>
@@ -54,389 +54,219 @@
             <a class="navbar-brand" href="../index.html">
                 Inicio
             </a>
-            <a class="navbar-brand" href="index.html">
+
+            <a href="indexdespliegue.html" class="navbar-brand">
+
                 Volver al índice del capítulo 4.
+
             </a>
         </div>
 
+
+
     </nav>
 
-    <div class="row">
+    <div class="container mt-5">
 
-        <!-- Menú lateral -->
+        <nav aria-label="breadcrumb">
 
-        <div class="col-lg-3">
+            <ol class="breadcrumb">
 
-            <div class="list-group shadow">
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
 
-                <div class="list-group-item active bg-success border-success">
+                <li class="breadcrumb-item active">
+                    Capítulo 4
+                </li>
 
-                    <i class="bi bi-book"></i>
+            </ol>
 
-                    Capítulo 4.2
+        </nav>
+        <h2 class="text-success mb-4">
+            4.2.1 Instalación de Docker y Docker Compose
+        </h2>
 
-                </div>
+        <p class="lead">
 
-                <a href="instdocker.html" class="list-group-item list-group-item-action">
+            Como paso previo al despliegue de la infraestructura Big Data, es necesario
+            preparar el entorno de ejecución mediante la instalación de
+            <strong>Docker Engine</strong> y <strong>Docker Compose</strong>, herramientas
+            encargadas de la creación, administración y orquestación de los contenedores que
+            forman el clúster Hadoop.
 
-                    4.2.1 Instalación de Docker y docker compose.
+        </p>
 
-                </a>
+        <p>
 
-                <a href="creacioncont.html" class="list-group-item list-group-item-action">
+            En este proyecto, Docker proporciona el motor de virtualización ligera sobre el
+            que se ejecutan todos los servicios, mientras que Docker Compose permite definir
+            la infraestructura completa mediante un único archivo
+            <strong>docker-compose.yml</strong>, simplificando el despliegue y la gestión
+            del entorno distribuido.
 
-                    4.2.2 Creación de contenedores.
+        </p>
 
-                </a>
-                <a href="imagenn.html" class="list-group-item list-group-item-action">
+        <div class="alert alert-success">
 
-                    4.2.3 Gestión de contenedores.
+            <i class="bi bi-info-circle-fill"></i>
 
-                </a>
+            El fichero <strong>docker-compose.yml</strong> utilizado durante el desarrollo
+            del proyecto puede descargarse desde el repositorio GitHub del proyecto para
+            reproducir el despliegue completo del clúster Hadoop.
 
-                <a href="imageny.html" class="list-group-item list-group-item-action">
+        </div>
 
-                    4.2.4 Supervisión y monitorización del clúster vía web.
+        <hr class="my-5">
 
-                </a>
-                <a href="imagend.html" class="list-group-item list-group-item-action">
+        <h3 class="text-success">
+            Instalación de Docker Engine
+        </h3>
 
-                    4.2.5 Acceso mediante Júpiter Notebook.
+        <p>
 
-                </a>
+            Una vez instalado Ubuntu 22.04, se actualizan los repositorios del sistema y se
+            instalan Docker Engine y los servicios necesarios para su ejecución automática.
 
+        </p>
 
+        <div class="card shadow-sm">
 
+            <div class="card-header bg-success text-white">
+
+                Comandos de instalación
+
+            </div>
+
+            <div class="card-body">
+
+                <pre class="mb-0"><code>sudo apt update
+sudo apt install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker</code></pre>
 
             </div>
 
         </div>
 
-        <!-- Contenido -->
+        <hr class="my-5">
 
-        <div class="col-lg-9">
+        <h3 class="text-success">
+            Verificación de la instalación
+        </h3>
 
-            <!-- ======================= CONTENIDO ======================= -->
+        <p>
 
-            <!-- ===================================================== -->
-            <!-- 4.2 DESPLIEGUE DE LA INFRAESTRUCTURA -->
-            <!-- ===================================================== -->
+            Una vez finalizada la instalación, es recomendable comprobar que Docker se ha
+            instalado correctamente verificando la versión disponible en el sistema.
 
-            <h2 class="text-success mb-4">
-                4.2 Despliegue de la infraestructura
-            </h2>
+        </p>
 
-            <p class="lead">
-                Una de las principales ventajas de utilizar <strong>Docker</strong> para implementar
-                un clúster Hadoop es la elevada portabilidad y escalabilidad que ofrecen los
-                contenedores. Estos pueden trasladarse fácilmente entre distintos equipos y
-                replicarse de forma rápida para aumentar la capacidad del clúster sin necesidad
-                de realizar configuraciones complejas.
-            </p>
+        <div class="row">
 
-            <p>
-                Con el objetivo de proporcionar un entorno de trabajo aislado, reproducible y
-                fácilmente distribuible, la infraestructura desarrollada en este proyecto se ha
-                desplegado sobre una máquina virtual gestionada mediante
-                <strong>VMware® Workstation 17 Pro</strong>. Esta solución permite ejecutar un
-                sistema operativo invitado completamente independiente del sistema anfitrión,
-                facilitando la instalación, configuración y mantenimiento de todas las
-                herramientas que forman parte del ecosistema Big Data.
-            </p>
+            <div class="col-lg-6">
 
-            <div class="alert alert-success">
+                <div class="card shadow-sm">
 
-                <i class="bi bi-info-circle-fill"></i>
+                    <div class="card-header bg-success text-white">
 
-                Toda la infraestructura puede trasladarse a cualquier equipo simplemente
-                copiando la máquina virtual y ejecutando Docker Compose, garantizando un
-                entorno totalmente reproducible.
+                        Comandos de comprobación
 
-            </div>
+                    </div>
 
-            <h3 class="text-success">
-                Entorno de virtualización
-            </h3>
+                    <div class="card-body">
 
-            <p>
-
-                El sistema anfitrión ejecuta <strong>Microsoft Windows 11</strong>, mientras que
-                la máquina virtual utiliza <strong>Ubuntu 22.04.4 LTS</strong>, distribución
-                seleccionada por su estabilidad, compatibilidad con Docker y soporte de largo
-                plazo.
-
-                Los recursos asignados han sido dimensionados para permitir la ejecución
-                simultánea del clúster Hadoop y del resto de aplicaciones empleadas durante el
-                desarrollo del proyecto.
-
-            </p>
-
-            <div class="row">
-
-                <div class="col-lg-7">
-
-                    <table class="table table-bordered table-striped">
-
-                        <thead class="table-success">
-
-                            <tr>
-
-                                <th>Componente</th>
-
-                                <th>Configuración</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-
-                                <td>Software de virtualización</td>
-
-                                <td>VMware® Workstation 17 Pro</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Sistema operativo anfitrión</td>
-
-                                <td>Microsoft Windows 11</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Sistema operativo invitado</td>
-
-                                <td>Ubuntu 22.04.4 LTS</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Memoria RAM</td>
-
-                                <td>9 GB</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Disco virtual</td>
-
-                                <td>53,7 GB</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td>Memoria de vídeo</td>
-
-                                <td>128 MB</td>
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-                <div class="col-lg-5 text-center">
-
-                    <img src="../img/vmware-ubuntu.png" class="img-fluid rounded shadow" alt="Máquina virtual Ubuntu">
-
-                    <p class="text-muted mt-3">
-
-                        Figura. Entorno de virtualización utilizado para el despliegue del laboratorio.
-
-                    </p>
-
-                </div>
-
-            </div>
-            <hr class="my-5">
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Virtualización ligera del clúster Hadoop
-            </h3>
-
-            <p>
-
-                En una infraestructura Hadoop tradicional es necesario desplegar múltiples
-                máquinas virtuales, cada una con su propio sistema operativo, aplicaciones,
-                dependencias y configuraciones específicas. Este enfoque incrementa el consumo
-                de memoria, almacenamiento y recursos de procesamiento, además de obligar a
-                repetir el mismo proceso de instalación y configuración en cada nodo del
-                clúster.
-
-            </p>
-
-            <p>
-
-                La infraestructura desarrollada en este proyecto adopta un enfoque basado en
-                <strong>virtualización ligera mediante contenedores Docker</strong>. Para ello
-                se utiliza una imagen base previamente configurada con todas las tecnologías
-                necesarias, que posteriormente se replica para construir los diferentes nodos
-                del clúster. Esta estrategia reduce significativamente el consumo de recursos,
-                simplifica el despliegue, facilita la administración del entorno y permite
-                escalar la infraestructura de forma rápida y reproducible mediante Docker
-                Compose.
-
-            </p>
-
-            <div class="alert alert-success">
-
-                <i class="bi bi-check-circle-fill"></i>
-
-                Gracias al uso de una imagen Docker común, todos los nodos comparten una misma
-                configuración software, garantizando consistencia, facilidad de mantenimiento y
-                un despliegue completamente automatizado.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Arquitectura del clúster Hadoop
-            </h3>
-
-            <p>
-
-                A partir de la imagen base se construye un clúster Hadoop compuesto por un
-                total de <strong>seis nodos especializados</strong>, cada uno con una función
-                específica dentro de la arquitectura distribuida.
-
-            </p>
-
-            <div class="row">
-
-                <div class="col-lg-6">
-
-                    <table class="table table-bordered table-striped">
-
-                        <thead class="table-success">
-
-                            <tr>
-
-                                <th>Nodo</th>
-
-                                <th>Función</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-
-                                <td><strong>1 NameNode</strong></td>
-
-                                <td>Gestiona HDFS y coordina el sistema de archivos distribuido. Además incorpora
-                                    Jupyter Notebook, Apache Hive y Apache Flume.</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td><strong>1 YarnManager</strong></td>
-
-                                <td>Administra los recursos del clúster y coordina la ejecución de trabajos
-                                    MapReduce mediante YARN.</td>
-
-                            </tr>
-
-                            <tr>
-
-                                <td><strong>4 DataNodes</strong></td>
-
-                                <td>Almacenan los bloques de datos en HDFS y ejecutan las tareas distribuidas de
-                                    procesamiento MapReduce.</td>
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-                <div class="col-lg-6 text-center">
-
-                    <img src="../img/docker-hadoop-cluster.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                        style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
-                    <p class="text-muted mt-3">
-
-                        <strong>Figura 19.</strong> Arquitectura del clúster Hadoop desplegado mediante
-                        contenedores Docker.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="alert alert-primary mt-4">
-
-                <h5>Resultado del despliegue</h5>
-
-                <p class="mb-0">
-
-                    La utilización de contenedores Docker permite disponer de un entorno distribuido
-                    completamente funcional capaz de simular un clúster Hadoop real para el
-                    desarrollo de prácticas de Big Data. Toda la infraestructura puede desplegarse,
-                    replicarse y actualizarse de forma sencilla utilizando Docker Compose y los
-                    archivos del proyecto disponibles en el repositorio GitHub.
-
-                </p>
-
-            </div>
-
-            <div class="modal fade" id="imgClusterModal" tabindex="-1">
-
-                <div class="modal-dialog modal-xl modal-dialog-centered">
-
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-
-                            <h5 class="modal-title">
-                                Cluster Hadoop
-                            </h5>
-
-                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                            </button>
-
-                        </div>
-
-                        <div class="modal-body text-center">
-
-                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
-
-                        </div>
+                        <pre class="mb-0"><code>docker --version
+docker compose version</code></pre>
 
                     </div>
 
                 </div>
 
             </div>
-            <footer class="bg-success text-white mt-5">
 
-                <div class="container py-3 text-center">
+            <div class="col-lg-6 text-center">
 
-                    Proyecto Fin de Grado · UNED
+
+                <img src="../img/docker-version.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+
+                <p class="text-muted mt-3">
+
+                    <strong>Figura 22.</strong> Comprobación de las versiones instaladas de Docker y
+                    Docker Compose.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>Resultado</h4>
+
+            <p class="mb-0">
+
+                Tras completar este proceso, el sistema queda preparado para descargar las
+                imágenes Docker del proyecto y desplegar automáticamente toda la
+                infraestructura Hadoop mediante Docker Compose.
+
+            </p>
+
+        </div>
+        <div class="text-center mt-5">
+
+            <a href="indexdespliegue.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice
+
+            </a>
+
+        </div>
+        <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            docker version
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img src="../img/docker-version.png" class="img-fluid">
+
+                    </div>
 
                 </div>
 
-            </footer>
+            </div>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
