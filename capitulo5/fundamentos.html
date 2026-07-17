@@ -100,45 +100,43 @@
 
             <p class="lead">
 
-                Este capítulo constituye el punto de partida de la formación práctica del proyecto y
-                tiene como finalidad proporcionar al estudiante una comprensión sólida de los
-                fundamentos de <strong>Big Data</strong> y de su aplicación sobre una infraestructura
-                distribuida basada en <strong>Apache Hadoop</strong>.
+                Este capítulo introduce los fundamentos del <strong>ecosistema Apache Hadoop</strong>,
+                una de las plataformas más utilizadas para el almacenamiento y procesamiento
+                distribuido de grandes volúmenes de datos dentro del ámbito Big Data.
 
             </p>
 
             <p>
 
-                La metodología seguida combina el estudio de los conceptos teóricos con su
-                aplicación directa sobre el clúster Hadoop desplegado mediante tecnologías de
-                virtualización ligera utilizando Docker.
+                Su finalidad es proporcionar una visión global de la arquitectura Hadoop,
+                explicando cómo sus distintos componentes colaboran para ofrecer un sistema
+                escalable, tolerante a fallos y preparado para el procesamiento distribuido de
+                información.
 
             </p>
 
             <div class="alert alert-success">
 
-                <i class="bi bi-lightbulb-fill"></i>
+                <i class="bi bi-diagram-3-fill"></i>
 
-                El conocimiento de los principios de Big Data constituye la base necesaria para
-                comprender el funcionamiento de las tecnologías distribuidas utilizadas durante el
-                desarrollo de las prácticas del proyecto.
+                Comprender el funcionamiento de Hadoop resulta imprescindible para interpretar
+                la arquitectura desplegada durante el proyecto y entender cómo interactúan los
+                diferentes servicios del clúster.
 
             </div>
 
             <hr class="my-5">
 
             <h3 class="text-success">
-
-                ¿Por qué estudiar Big Data?
-
+                Hadoop dentro del proyecto
             </h3>
 
             <p>
 
-                Comprender el paradigma Big Data resulta imprescindible para trabajar con
-                infraestructuras distribuidas como la desarrollada en este proyecto. El clúster Hadoop
-                implementado permite experimentar de forma práctica con las principales tecnologías
-                del ecosistema Apache.
+                Desde una perspectiva práctica, Hadoop constituye el núcleo tecnológico sobre el
+                que se construye toda la infraestructura desarrollada. El clúster desplegado
+                mediante Docker permite simular un entorno distribuido real donde múltiples
+                nodos colaboran para almacenar y procesar información de forma paralela.
 
             </p>
 
@@ -152,7 +150,7 @@
 
                             <i class="bi bi-hdd-network-fill"></i>
 
-                            HDFS
+                            Almacenamiento
 
                         </div>
 
@@ -160,8 +158,8 @@
 
                             <p>
 
-                                Comprender cómo los datos se almacenan de forma distribuida y replicada entre
-                                los diferentes nodos del clúster.
+                                Los datos se distribuyen entre varios nodos mediante HDFS,
+                                garantizando redundancia y alta disponibilidad.
 
                             </p>
 
@@ -179,7 +177,7 @@
 
                             <i class="bi bi-cpu-fill"></i>
 
-                            YARN
+                            Procesamiento
 
                         </div>
 
@@ -187,8 +185,8 @@
 
                             <p>
 
-                                Entender cómo se administran los recursos del clúster y cómo se distribuyen las
-                                tareas de procesamiento entre los distintos nodos.
+                                Los trabajos se ejecutan de forma distribuida utilizando
+                                MapReduce y Hadoop Streaming.
 
                             </p>
 
@@ -204,9 +202,9 @@
 
                         <div class="card-header bg-success text-white">
 
-                            <i class="bi bi-diagram-3-fill"></i>
+                            <i class="bi bi-server"></i>
 
-                            MapReduce
+                            Administración
 
                         </div>
 
@@ -214,8 +212,8 @@
 
                             <p>
 
-                                Analizar el modelo de procesamiento paralelo utilizado para ejecutar aplicaciones
-                                sobre grandes volúmenes de información.
+                                YARN coordina la asignación de recursos y distribuye las
+                                tareas entre los diferentes nodos del clúster.
 
                             </p>
 
@@ -230,16 +228,14 @@
             <hr class="my-5">
 
             <h3 class="text-success">
-
-                Objetivos de aprendizaje
-
+                Características principales de Hadoop
             </h3>
 
             <p>
 
-                Al finalizar este capítulo, el estudiante dispondrá de una base conceptual que le
-                permitirá comprender tanto la arquitectura desplegada como el funcionamiento de
-                las herramientas utilizadas durante el resto del proyecto.
+                El ecosistema Hadoop ha sido diseñado para trabajar con grandes volúmenes de
+                datos mediante arquitecturas distribuidas, ofreciendo importantes ventajas para
+                el procesamiento masivo de información.
 
             </p>
 
@@ -251,9 +247,9 @@
 
                         <div class="card-header bg-success text-white">
 
-                            <i class="bi bi-book-fill"></i>
+                            <i class="bi bi-check-circle-fill"></i>
 
-                            Conocimientos adquiridos
+                            Capacidades
 
                         </div>
 
@@ -261,13 +257,17 @@
 
                             <ul>
 
-                                <li>Comprender el concepto de Big Data.</li>
+                                <li>Escalabilidad horizontal.</li>
 
-                                <li>Conocer la importancia del procesamiento distribuido.</li>
+                                <li>Procesamiento distribuido.</li>
 
-                                <li>Identificar los principales componentes del ecosistema Hadoop.</li>
+                                <li>Alta disponibilidad.</li>
 
-                                <li>Entender la relación entre teoría y práctica.</li>
+                                <li>Tolerancia a fallos.</li>
+
+                                <li>Replicación automática de datos.</li>
+
+                                <li>Optimización para grandes volúmenes de información.</li>
 
                             </ul>
 
@@ -283,9 +283,9 @@
 
                         <div class="card-header bg-success text-white">
 
-                            <i class="bi bi-bullseye"></i>
+                            <i class="bi bi-boxes"></i>
 
-                            Competencias
+                            Arquitectura
 
                         </div>
 
@@ -293,13 +293,15 @@
 
                             <ul>
 
-                                <li>Interpretar la arquitectura Hadoop desplegada.</li>
+                                <li>HDFS como sistema de almacenamiento distribuido.</li>
 
-                                <li>Comprender el funcionamiento de HDFS.</li>
+                                <li>YARN para la gestión de recursos.</li>
 
-                                <li>Entender cómo YARN distribuye los recursos.</li>
+                                <li>MapReduce como modelo de procesamiento.</li>
 
-                                <li>Relacionar MapReduce con el procesamiento paralelo.</li>
+                                <li>Hadoop Streaming para programas en Python.</li>
+
+                                <li>Integración con Docker y virtualización ligera.</li>
 
                             </ul>
 
@@ -313,24 +315,89 @@
 
             <hr class="my-5">
 
+            <h3 class="text-success">
+                Objetivos de aprendizaje
+            </h3>
+
+            <p>
+
+                Al finalizar este módulo, el estudiante dispondrá de los conocimientos necesarios
+                para comprender la arquitectura del clúster Hadoop desplegado durante el
+                proyecto y el papel que desempeña cada uno de sus componentes.
+
+            </p>
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Objetivo</th>
+
+                        <th>Resultado esperado</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Comprender Hadoop</td>
+
+                        <td>Conocer su arquitectura y funcionamiento general.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Identificar componentes</td>
+
+                        <td>Reconocer las funciones de HDFS, YARN y MapReduce.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Relacionar teoría y práctica</td>
+
+                        <td>Interpretar la infraestructura desplegada mediante Docker.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Entender sistemas distribuidos</td>
+
+                        <td>Comprender los conceptos de escalabilidad y tolerancia a fallos.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
             <div class="alert alert-primary">
 
                 <h4>
 
                     <i class="bi bi-mortarboard-fill"></i>
 
-                    Objetivo del capítulo
+                    Conclusión
 
                 </h4>
 
                 <p>
 
-                    El propósito de este módulo consiste en proporcionar una base conceptual sólida
-                    sobre Big Data que permita al estudiante comprender cómo funcionan las
-                    infraestructuras distribuidas implementadas en el proyecto. Estos conocimientos
-                    servirán de apoyo para el desarrollo de las prácticas posteriores sobre el clúster
-                    Hadoop, facilitando la administración de los servicios, el almacenamiento de datos
-                    en HDFS y la ejecución de aplicaciones mediante MapReduce y Hadoop Streaming.
+                    El estudio del ecosistema Hadoop constituye la base tecnológica sobre la que se
+                    desarrollan todas las prácticas del proyecto. Comprender cómo interactúan HDFS,
+                    YARN y MapReduce permite interpretar el funcionamiento interno del clúster,
+                    administrar sus recursos y ejecutar aplicaciones distribuidas sobre una
+                    infraestructura Big Data real desplegada mediante Docker.
 
                 </p>
 
