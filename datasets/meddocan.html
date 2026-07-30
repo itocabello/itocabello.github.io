@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 2 - Estado del arte</title>
+    <title>5.2.2 Fuente de datos MEDDOCAN</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,11 +26,11 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Datos clínicos Synthea
+                        Fuente de datos MEDDOCAN
                     </h1>
 
                     <p class="lead">
-                        Datos clínicos Synthea
+                        Fuente de datos MEDDOCAN
                     </p>
 
                 </div>
@@ -78,7 +78,7 @@
                 </li>
 
                 <li class="breadcrumb-item active">
-                    Capítulo 2
+                    Fuente de datos MEDDOCAN
                 </li>
 
             </ol>
@@ -87,195 +87,139 @@
 
         <!-- Contenido principal -->
 
-        <!-- ===================================================== -->
-        <!-- DATASET SYNTHEA -->
-        <!-- ===================================================== -->
-
         <h2 class="text-success mb-4">
-
-            Dataset clínico sintético: Synthea™
-
+            Dataset MEDDOCAN (Anonimización de Documentos Clínicos)
         </h2>
 
         <p class="lead">
+            Como segunda fuente de datos utilizada durante el desarrollo de las prácticas,
+            se emplea el corpus <strong>MEDDOCAN</strong> (Medical Document Anonymization),
+            un conjunto de documentos clínicos sintéticos diseñado para la investigación
+            en Procesamiento del Lenguaje Natural (NLP) y anonimización de información
+            sanitaria.
+        </p>
 
-            Para la recogida de datos se utilizará el conjunto de datos sintéticos generado mediante
-            <strong>Synthea™</strong>, una herramienta de código abierto ampliamente utilizada en
-            investigación, docencia y desarrollo de aplicaciones sanitarias.
+        <p>
+
+            MEDDOCAN fue desarrollado en el marco de la competición
+            <strong>MEDDOCAN IberLEF</strong>, cuyo objetivo consiste en fomentar la
+            investigación sobre técnicas automáticas de anonimización de documentos
+            clínicos escritos en español.
+
+            El corpus contiene información médica anonimizada y puede utilizarse con fines
+            académicos y de investigación sin comprometer la privacidad de pacientes reales.
 
         </p>
 
         <div class="alert alert-success">
 
-            <i class="bi bi-database-fill"></i>
+            <i class="bi bi-shield-check"></i>
 
-            <strong>Synthea™</strong> genera pacientes virtuales completos con historiales clínicos
-            realistas, evitando los problemas derivados de la utilización de datos médicos reales y
-            garantizando la privacidad de la información.
+            <strong>Objetivo del dataset</strong>
 
-        </div>
+            <ul class="mt-3 mb-0">
 
-        <div class="row my-5">
+                <li>Anonimización de información clínica.</li>
 
-            <div class="col-lg-8">
+                <li>Procesamiento de lenguaje natural (NLP).</li>
 
-                <p>
+                <li>Procesamiento distribuido mediante Hadoop.</li>
 
-                    Synthea™ permite generar automáticamente información clínica estructurada que incluye
-                    datos demográficos, diagnósticos, procedimientos médicos, tratamientos,
-                    medicación, episodios clínicos y evolución temporal de cada paciente.
+                <li>Prácticas de Big Data sobre datos no estructurados.</li>
 
-                    Gracias a ello es posible disponer de un conjunto de datos con características muy
-                    similares a las historias clínicas reales, manteniendo la confidencialidad de la
-                    información sanitaria.
-
-                </p>
-
-                <p>
-
-                    Los datos generados serán utilizados como base para el procesamiento distribuido
-                    dentro del clúster Hadoop desarrollado en este proyecto, almacenándose inicialmente
-                    en formato CSV para posteriormente ser procesados mediante tecnologías como
-                    <strong>HDFS</strong>, <strong>MapReduce</strong>,
-                    <strong>Hive</strong> y <strong>Parquet</strong>.
-
-                </p>
-
-            </div>
-
-            <div class="col-lg-4 text-center">
-
-                <img src="../img/synthea.png" class="img-fluid rounded shadow" alt="Synthea">
-
-                <p class="text-muted mt-3">
-
-                    Figura. Herramienta Synthea™ para la generación de pacientes sintéticos.
-
-                </p>
-
-                <a href="https://synthea.mitre.org/" target="_blank" class="btn btn-success">
-
-                    <i class="bi bi-box-arrow-up-right"></i>
-
-                    Página oficial de Synthea™
-
-                </a>
-
-            </div>
+            </ul>
 
         </div>
 
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            ¿Por qué utilizar Synthea?
-
+            Características generales del corpus
         </h3>
 
-        <div class="row g-4">
+        <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-7">
 
-                <div class="card h-100 shadow-sm">
+                <p>
 
-                    <div class="card-body text-center">
+                    MEDDOCAN contiene una colección de
+                    <strong>1.000 documentos clínicos sintéticos</strong>
+                    redactados en español.
 
-                        <i class="bi bi-shield-lock fs-1 text-success"></i>
+                    En conjunto, el corpus supera las
+                    <strong>33.000 oraciones</strong> y las
+                    <strong>495.000 palabras</strong>, con una media aproximada de
+                    494 términos por documento.
 
-                        <h5 class="mt-3">
+                    Gracias a este volumen de información, constituye un excelente caso práctico
+                    para experimentar con tecnologías Big Data orientadas al procesamiento de texto.
 
-                            Privacidad
-
-                        </h5>
-
-                        <p>
-
-                            No contiene información sanitaria real.
-
-                        </p>
-
-                    </div>
-
-                </div>
+                </p>
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-5">
 
-                <div class="card h-100 shadow-sm">
+                <table class="table table-bordered">
 
-                    <div class="card-body text-center">
+                    <thead class="table-success">
 
-                        <i class="bi bi-person-lines-fill fs-1 text-success"></i>
+                        <tr>
 
-                        <h5 class="mt-3">
+                            <th>Característica</th>
 
-                            Pacientes virtuales
+                            <th>Valor</th>
 
-                        </h5>
+                        </tr>
 
-                        <p>
+                    </thead>
 
-                            Generación automática de historiales clínicos completos.
+                    <tbody>
 
-                        </p>
+                        <tr>
 
-                    </div>
+                            <td>Documentos</td>
 
-                </div>
+                            <td>1.000</td>
 
-            </div>
+                        </tr>
 
-            <div class="col-md-3">
+                        <tr>
 
-                <div class="card h-100 shadow-sm">
+                            <td>Idioma</td>
 
-                    <div class="card-body text-center">
+                            <td>Español</td>
 
-                        <i class="bi bi-diagram-3 fs-1 text-success"></i>
+                        </tr>
 
-                        <h5 class="mt-3">
+                        <tr>
 
-                            Big Data
+                            <td>Oraciones</td>
 
-                        </h5>
+                            <td>≈ 33.000</td>
 
-                        <p>
+                        </tr>
 
-                            Compatible con Hadoop, Hive, Spark y otros sistemas distribuidos.
+                        <tr>
 
-                        </p>
+                            <td>Palabras</td>
 
-                    </div>
+                            <td>≈ 495.000</td>
 
-                </div>
+                        </tr>
 
-            </div>
+                        <tr>
 
-            <div class="col-md-3">
+                            <td>Formato</td>
 
-                <div class="card h-100 shadow-sm">
+                            <td>TXT (UTF-8)</td>
 
-                    <div class="card-body text-center">
+                        </tr>
 
-                        <i class="bi bi-repeat fs-1 text-success"></i>
+                    </tbody>
 
-                        <h5 class="mt-3">
-
-                            Reproducible
-
-                        </h5>
-
-                        <p>
-
-                            Ideal para investigación y entornos académicos.
-
-                        </p>
-
-                    </div>
-
-                </div>
+                </table>
 
             </div>
 
@@ -284,220 +228,85 @@
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            Modelo de datos utilizado
-
+            Integración con Hadoop
         </h3>
 
         <p>
 
-            El proyecto utiliza cuatro de las principales tablas generadas por Synthea™, las cuales
-            constituyen el núcleo del procesamiento distribuido realizado durante las prácticas.
+            Los documentos se distribuyen en formato
+            <strong>texto plano (.txt)</strong>, almacenándose cada caso clínico
+            en un fichero independiente codificado en UTF-8.
+
+            Esta organización facilita su integración con el ecosistema Hadoop,
+            permitiendo cargar directamente los archivos en HDFS y procesarlos mediante
+            MapReduce o Hadoop Streaming utilizando Python.
 
         </p>
 
-        <table class="table table-bordered table-hover">
+        <div class="alert alert-info">
 
-            <thead class="table-success">
+            <i class="bi bi-folder2-open"></i>
 
-                <tr>
+            Los documentos se almacenan dentro del directorio compartido:
 
-                    <th>Tabla</th>
+            <pre class="mt-3 mb-0">
+    /media/notebooks/txt
+    </pre>
 
-                    <th>Descripción</th>
+            Desde este directorio los archivos quedan disponibles automáticamente dentro
+            del contenedor <strong>NameNode</strong>, pudiendo ser procesados mediante
+            HDFS, Hadoop Streaming y MapReduce.
 
-                    <th>Uso en el proyecto</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td><strong>Patients</strong></td>
-
-                    <td>Información demográfica y administrativa de los pacientes.</td>
-
-                    <td>Identificación y análisis de pacientes.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Organizations</strong></td>
-
-                    <td>Hospitales, clínicas y centros sanitarios.</td>
-
-                    <td>Análisis geográfico y organizativo.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Providers</strong></td>
-
-                    <td>Médicos y profesionales sanitarios.</td>
-
-                    <td>Relación entre pacientes y profesionales.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td><strong>Encounters</strong></td>
-
-                    <td>Consultas, ingresos y episodios clínicos.</td>
-
-                    <td>Procesamiento distribuido de actividad clínica.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
+        </div>
 
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            Estructura de las tablas
-
+            Ejemplo de documento MEDDOCAN
         </h3>
 
-        <div class="accordion" id="syntheaAccordion">
+        <div class="text-center">
 
-            <!-- PATIENTS -->
+            <a href="../img/meddocan-txt.png" target="_blank">
 
-            <div class="accordion-item">
+                <img src="../img/meddocan-txt.png" class="img-fluid rounded shadow" alt="Documento MEDDOCAN">
 
-                <h2 class="accordion-header">
+            </a>
 
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#patients">
+            <p class="text-muted mt-3">
 
-                        Tabla Patients
+                Figura 31. Ejemplo de un documento clínico del corpus MEDDOCAN.
 
-                    </button>
+            </p>
 
-                </h2>
+        </div>
 
-                <div id="patients" class="accordion-collapse collapse show" data-bs-parent="#syntheaAccordion">
+        <hr class="my-5">
 
-                    <div class="accordion-body">
+        <h3 class="text-success">
+            Información contenida en los documentos
+        </h3>
 
-                        <p>
+        <p>
 
-                            Contiene la información demográfica, administrativa y socioeconómica de todos los
-                            pacientes generados por Synthea.
+            Cada documento incorpora información clínica anonimizada correspondiente a un
+            paciente, incluyendo datos personales, administrativos y médicos.
 
-                        </p>
+        </p>
 
-                        <ul>
+        <div class="row">
 
-                            <li>UUID del paciente</li>
+            <div class="col-md-6">
 
-                            <li>Fecha de nacimiento</li>
+                <div class="card shadow-sm h-100">
 
-                            <li>Sexo</li>
+                    <div class="card-header bg-success text-white">
 
-                            <li>Estado civil</li>
-
-                            <li>Dirección</li>
-
-                            <li>Ciudad</li>
-
-                            <li>Provincia</li>
-
-                            <li>Código postal</li>
-
-                            <li>Ingresos</li>
-
-                            <li>Gastos sanitarios</li>
-
-                            <li>Cobertura médica</li>
-
-                        </ul>
+                        Datos personales
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <!-- ORGANIZATIONS -->
-
-            <div class="accordion-item">
-
-                <h2 class="accordion-header">
-
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#organizations">
-
-                        Tabla Organizations
-
-                    </button>
-
-                </h2>
-
-                <div id="organizations" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Información correspondiente a hospitales, clínicas y organizaciones sanitarias.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Nombre del centro</li>
-
-                            <li>Dirección</li>
-
-                            <li>Ciudad</li>
-
-                            <li>Estado</li>
-
-                            <li>Teléfono</li>
-
-                            <li>Ingresos</li>
-
-                            <li>Nivel de utilización</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- PROVIDERS -->
-
-            <div class="accordion-item">
-
-                <h2 class="accordion-header">
-
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#providers">
-
-                        Tabla Providers
-
-                    </button>
-
-                </h2>
-
-                <div id="providers" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Profesionales sanitarios asociados a las organizaciones.
-
-                        </p>
+                    <div class="card-body">
 
                         <ul>
 
@@ -505,11 +314,25 @@
 
                             <li>Apellidos</li>
 
-                            <li>Especialidad</li>
+                            <li>NHC</li>
 
-                            <li>Género</li>
+                            <li>NASS</li>
 
-                            <li>Teléfono</li>
+                            <li>Domicilio</li>
+
+                            <li>Localidad</li>
+
+                            <li>Provincia</li>
+
+                            <li>Código Postal</li>
+
+                            <li>Fecha de nacimiento</li>
+
+                            <li>País</li>
+
+                            <li>Edad</li>
+
+                            <li>Sexo</li>
 
                         </ul>
 
@@ -519,48 +342,33 @@
 
             </div>
 
-            <!-- ENCOUNTERS -->
+            <div class="col-md-6">
 
-            <div class="accordion-item">
+                <div class="card shadow-sm h-100">
 
-                <h2 class="accordion-header">
+                    <div class="card-header bg-success text-white">
 
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#encounters">
+                        Información clínica
 
-                        Tabla Encounters
+                    </div>
 
-                    </button>
-
-                </h2>
-
-                <div id="encounters" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Registra cada episodio clínico asociado a un paciente.
-
-                        </p>
+                    <div class="card-body">
 
                         <ul>
 
-                            <li>Paciente</li>
-
-                            <li>Hospital</li>
+                            <li>Fecha de ingreso</li>
 
                             <li>Médico responsable</li>
 
-                            <li>Tipo de encuentro</li>
+                            <li>Número de colegiado</li>
 
-                            <li>Fecha inicio</li>
+                            <li>Informe clínico</li>
 
-                            <li>Fecha fin</li>
+                            <li>Profesional remitente</li>
 
-                            <li>Motivo</li>
+                            <li>Dirección del remitente</li>
 
-                            <li>Estado del episodio</li>
+                            <li>Correo electrónico</li>
 
                         </ul>
 
@@ -574,23 +382,48 @@
 
         <hr class="my-5">
 
+        <h3 class="text-success">
+            Aplicación práctica en el proyecto
+        </h3>
+
+        <p>
+
+            Durante las prácticas del curso, el corpus MEDDOCAN se utilizará para desarrollar
+            ejercicios relacionados con el procesamiento distribuido de texto utilizando
+            el ecosistema Apache Hadoop.
+
+            Los estudiantes podrán cargar los documentos en HDFS, procesarlos mediante
+            trabajos MapReduce implementados en Python, aplicar técnicas de anonimización,
+            extraer información relevante y analizar grandes volúmenes de texto clínico
+            de forma distribuida.
+
+        </p>
+
         <div class="alert alert-primary">
 
-            <h4>
-
-                Conclusión
-
-            </h4>
+            <h4>Conclusión</h4>
 
             <p>
 
-                El uso de Synthea™ proporciona un conjunto de datos clínicos completamente
-                sintéticos, reproducibles y libres de restricciones de privacidad, constituyendo una
-                base idónea para el desarrollo de prácticas de procesamiento distribuido mediante
-                Hadoop, HDFS, MapReduce, Hive y Parquet dentro del entorno Big Data desarrollado
-                en este proyecto.
+                MEDDOCAN constituye un excelente ejemplo de conjunto de datos no estructurados
+                para el aprendizaje de tecnologías Big Data. Su integración con Hadoop permite
+                combinar procesamiento distribuido, análisis documental y técnicas de
+                anonimización sobre un corpus clínico de gran tamaño, proporcionando un entorno
+                seguro y realista para la realización de prácticas académicas.
 
             </p>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="index.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice
+
+            </a>
 
         </div>
 
