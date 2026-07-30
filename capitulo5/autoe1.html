@@ -382,7 +382,26 @@
     <div id="resultado" class="mt-5"></div>
 
     <script>
+        function reiniciarTest() {
 
+            // Desmarca todas las respuestas
+            document.getElementById("quiz").reset();
+
+            // Elimina colores de respuestas
+            document.querySelectorAll(".form-check").forEach(function (item) {
+                item.classList.remove("correcta", "incorrecta");
+            });
+
+            // Borra el resultado
+            document.getElementById("resultado").innerHTML = "";
+
+            // Vuelve al inicio del test
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
         function corregir() {
 
             let nota = 0;
