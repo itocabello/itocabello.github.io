@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 2 - Estado del arte</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Datos clínicos Synthea
+                    </h1>
+
+                    <p class="lead">
+                        Datos clínicos Synthea
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del datasets
+
+            </a>
+
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 2
+                </li>
+
+            </ol>
+
+        </nav>
+
+        <!-- Contenido principal -->
+
+        <!-- ===================================================== -->
+        <!-- DATASET SYNTHEA -->
+        <!-- ===================================================== -->
+
+        <h2 class="text-success mb-4">
+
+            Dataset clínico sintético: Synthea™
+
+        </h2>
+
+        <p class="lead">
+
+            Para la recogida de datos se utilizará el conjunto de datos sintéticos generado mediante
+            <strong>Synthea™</strong>, una herramienta de código abierto ampliamente utilizada en
+            investigación, docencia y desarrollo de aplicaciones sanitarias.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-database-fill"></i>
+
+            <strong>Synthea™</strong> genera pacientes virtuales completos con historiales clínicos
+            realistas, evitando los problemas derivados de la utilización de datos médicos reales y
+            garantizando la privacidad de la información.
+
+        </div>
+
+        <div class="row my-5">
+
+            <div class="col-lg-8">
+
+                <p>
+
+                    Synthea™ permite generar automáticamente información clínica estructurada que incluye
+                    datos demográficos, diagnósticos, procedimientos médicos, tratamientos,
+                    medicación, episodios clínicos y evolución temporal de cada paciente.
+
+                    Gracias a ello es posible disponer de un conjunto de datos con características muy
+                    similares a las historias clínicas reales, manteniendo la confidencialidad de la
+                    información sanitaria.
+
+                </p>
+
+                <p>
+
+                    Los datos generados serán utilizados como base para el procesamiento distribuido
+                    dentro del clúster Hadoop desarrollado en este proyecto, almacenándose inicialmente
+                    en formato CSV para posteriormente ser procesados mediante tecnologías como
+                    <strong>HDFS</strong>, <strong>MapReduce</strong>,
+                    <strong>Hive</strong> y <strong>Parquet</strong>.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 text-center">
+
+                <img src="../img/synthea.png" class="img-fluid rounded shadow" alt="Synthea">
+
+                <p class="text-muted mt-3">
+
+                    Figura. Herramienta Synthea™ para la generación de pacientes sintéticos.
+
+                </p>
+
+                <a href="https://synthea.mitre.org/" target="_blank" class="btn btn-success">
+
+                    <i class="bi bi-box-arrow-up-right"></i>
+
+                    Página oficial de Synthea™
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            ¿Por qué utilizar Synthea?
+
+        </h3>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-shield-lock fs-1 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Privacidad
+
+                        </h5>
+
+                        <p>
+
+                            No contiene información sanitaria real.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-person-lines-fill fs-1 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Pacientes virtuales
+
+                        </h5>
+
+                        <p>
+
+                            Generación automática de historiales clínicos completos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-diagram-3 fs-1 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Big Data
+
+                        </h5>
+
+                        <p>
+
+                            Compatible con Hadoop, Hive, Spark y otros sistemas distribuidos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-repeat fs-1 text-success"></i>
+
+                        <h5 class="mt-3">
+
+                            Reproducible
+
+                        </h5>
+
+                        <p>
+
+                            Ideal para investigación y entornos académicos.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            Modelo de datos utilizado
+
+        </h3>
+
+        <p>
+
+            El proyecto utiliza cuatro de las principales tablas generadas por Synthea™, las cuales
+            constituyen el núcleo del procesamiento distribuido realizado durante las prácticas.
+
+        </p>
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-success">
+
+                <tr>
+
+                    <th>Tabla</th>
+
+                    <th>Descripción</th>
+
+                    <th>Uso en el proyecto</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td><strong>Patients</strong></td>
+
+                    <td>Información demográfica y administrativa de los pacientes.</td>
+
+                    <td>Identificación y análisis de pacientes.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Organizations</strong></td>
+
+                    <td>Hospitales, clínicas y centros sanitarios.</td>
+
+                    <td>Análisis geográfico y organizativo.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Providers</strong></td>
+
+                    <td>Médicos y profesionales sanitarios.</td>
+
+                    <td>Relación entre pacientes y profesionales.</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><strong>Encounters</strong></td>
+
+                    <td>Consultas, ingresos y episodios clínicos.</td>
+
+                    <td>Procesamiento distribuido de actividad clínica.</td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+
+            Estructura de las tablas
+
+        </h3>
+
+        <div class="accordion" id="syntheaAccordion">
+
+            <!-- PATIENTS -->
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#patients">
+
+                        Tabla Patients
+
+                    </button>
+
+                </h2>
+
+                <div id="patients" class="accordion-collapse collapse show" data-bs-parent="#syntheaAccordion">
+
+                    <div class="accordion-body">
+
+                        <p>
+
+                            Contiene la información demográfica, administrativa y socioeconómica de todos los
+                            pacientes generados por Synthea.
+
+                        </p>
+
+                        <ul>
+
+                            <li>UUID del paciente</li>
+
+                            <li>Fecha de nacimiento</li>
+
+                            <li>Sexo</li>
+
+                            <li>Estado civil</li>
+
+                            <li>Dirección</li>
+
+                            <li>Ciudad</li>
+
+                            <li>Provincia</li>
+
+                            <li>Código postal</li>
+
+                            <li>Ingresos</li>
+
+                            <li>Gastos sanitarios</li>
+
+                            <li>Cobertura médica</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ORGANIZATIONS -->
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#organizations">
+
+                        Tabla Organizations
+
+                    </button>
+
+                </h2>
+
+                <div id="organizations" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
+
+                    <div class="accordion-body">
+
+                        <p>
+
+                            Información correspondiente a hospitales, clínicas y organizaciones sanitarias.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Nombre del centro</li>
+
+                            <li>Dirección</li>
+
+                            <li>Ciudad</li>
+
+                            <li>Estado</li>
+
+                            <li>Teléfono</li>
+
+                            <li>Ingresos</li>
+
+                            <li>Nivel de utilización</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PROVIDERS -->
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#providers">
+
+                        Tabla Providers
+
+                    </button>
+
+                </h2>
+
+                <div id="providers" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
+
+                    <div class="accordion-body">
+
+                        <p>
+
+                            Profesionales sanitarios asociados a las organizaciones.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Nombre</li>
+
+                            <li>Apellidos</li>
+
+                            <li>Especialidad</li>
+
+                            <li>Género</li>
+
+                            <li>Teléfono</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ENCOUNTERS -->
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#encounters">
+
+                        Tabla Encounters
+
+                    </button>
+
+                </h2>
+
+                <div id="encounters" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
+
+                    <div class="accordion-body">
+
+                        <p>
+
+                            Registra cada episodio clínico asociado a un paciente.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Paciente</li>
+
+                            <li>Hospital</li>
+
+                            <li>Médico responsable</li>
+
+                            <li>Tipo de encuentro</li>
+
+                            <li>Fecha inicio</li>
+
+                            <li>Fecha fin</li>
+
+                            <li>Motivo</li>
+
+                            <li>Estado del episodio</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>
+
+                Conclusión
+
+            </h4>
+
+            <p>
+
+                El uso de Synthea™ proporciona un conjunto de datos clínicos completamente
+                sintéticos, reproducibles y libres de restricciones de privacidad, constituyendo una
+                base idónea para el desarrollo de prácticas de procesamiento distribuido mediante
+                Hadoop, HDFS, MapReduce, Hive y Parquet dentro del entorno Big Data desarrollado
+                en este proyecto.
+
+            </p>
+
+        </div>
+
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
