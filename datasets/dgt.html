@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 2 - Estado del arte</title>
+    <title>Accidentes de tráfico con víctimas en España - 2024 - dgt</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,11 +26,11 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Datos clínicos Synthea
+                        Accidentes de tráfico con víctimas en España - 2024 - dgt
                     </h1>
 
                     <p class="lead">
-                        Datos clínicos Synthea
+                        Accidentes de tráfico con víctimas en España - 2024 - dgt
                     </p>
 
                 </div>
@@ -85,23 +85,28 @@
 
         </nav>
 
-        <!-- Contenido principal -->
-
         <!-- ===================================================== -->
-        <!-- DATASET SYNTHEA -->
+        <!-- DATASET DGT ACCIDENTES 2024 -->
         <!-- ===================================================== -->
 
         <h2 class="text-success mb-4">
-
-            Dataset clínico sintético: Synthea™
-
+            Dataset DGT. Accidentes de tráfico con víctimas (España 2024)
         </h2>
 
         <p class="lead">
 
-            Para la recogida de datos se utilizará el conjunto de datos sintéticos generado mediante
-            <strong>Synthea™</strong>, una herramienta de código abierto ampliamente utilizada en
-            investigación, docencia y desarrollo de aplicaciones sanitarias.
+            Como tercera fuente de datos utilizada en el proyecto se emplea el conjunto de
+            <strong>Microdatos de Accidentes de Tráfico con Víctimas (2024)</strong>,
+            publicado por la Dirección General de Tráfico (DGT).
+
+        </p>
+
+        <p>
+
+            Este conjunto de datos constituye una fuente oficial de información sobre la
+            siniestralidad vial en España y contiene más de
+            <strong>101.996 registros</strong>, ofreciendo un elevado nivel de detalle
+            sobre los accidentes con víctimas ocurridos durante el año 2024.
 
         </p>
 
@@ -109,173 +114,107 @@
 
             <i class="bi bi-database-fill"></i>
 
-            <strong>Synthea™</strong> genera pacientes virtuales completos con historiales clínicos
-            realistas, evitando los problemas derivados de la utilización de datos médicos reales y
-            garantizando la privacidad de la información.
+            <strong>Fuente oficial</strong>
 
-        </div>
+            <ul class="mt-3 mb-0">
 
-        <div class="row my-5">
+                <li>Ministerio del Interior.</li>
 
-            <div class="col-lg-8">
+                <li>Dirección General de Tráfico (DGT).</li>
 
-                <p>
+                <li>Datos Abiertos de Accidentes con Víctimas.</li>
 
-                    Synthea™ permite generar automáticamente información clínica estructurada que incluye
-                    datos demográficos, diagnósticos, procedimientos médicos, tratamientos,
-                    medicación, episodios clínicos y evolución temporal de cada paciente.
+                <li>Actualización utilizada: Año 2024.</li>
 
-                    Gracias a ello es posible disponer de un conjunto de datos con características muy
-                    similares a las historias clínicas reales, manteniendo la confidencialidad de la
-                    información sanitaria.
-
-                </p>
-
-                <p>
-
-                    Los datos generados serán utilizados como base para el procesamiento distribuido
-                    dentro del clúster Hadoop desarrollado en este proyecto, almacenándose inicialmente
-                    en formato CSV para posteriormente ser procesados mediante tecnologías como
-                    <strong>HDFS</strong>, <strong>MapReduce</strong>,
-                    <strong>Hive</strong> y <strong>Parquet</strong>.
-
-                </p>
-
-            </div>
-
-            <div class="col-lg-4 text-center">
-
-                <img src="../img/synthea.png" class="img-fluid rounded shadow" alt="Synthea">
-
-                <p class="text-muted mt-3">
-
-                    Figura. Herramienta Synthea™ para la generación de pacientes sintéticos.
-
-                </p>
-
-                <a href="https://synthea.mitre.org/" target="_blank" class="btn btn-success">
-
-                    <i class="bi bi-box-arrow-up-right"></i>
-
-                    Página oficial de Synthea™
-
-                </a>
-
-            </div>
+            </ul>
 
         </div>
 
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            ¿Por qué utilizar Synthea?
-
+            Características del conjunto de datos
         </h3>
 
-        <div class="row g-4">
+        <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-7">
 
-                <div class="card h-100 shadow-sm">
+                <p>
 
-                    <div class="card-body text-center">
+                    Los microdatos proporcionan información detallada sobre las circunstancias del
+                    accidente, la localización geográfica, el tipo de vía, las condiciones
+                    meteorológicas, los vehículos implicados y las víctimas.
 
-                        <i class="bi bi-shield-lock fs-1 text-success"></i>
+                    Gracias a su gran volumen de registros y elevado número de variables, este
+                    dataset resulta especialmente adecuado para desarrollar prácticas de
+                    procesamiento distribuido mediante Hadoop.
 
-                        <h5 class="mt-3">
-
-                            Privacidad
-
-                        </h5>
-
-                        <p>
-
-                            No contiene información sanitaria real.
-
-                        </p>
-
-                    </div>
-
-                </div>
+                </p>
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-5">
 
-                <div class="card h-100 shadow-sm">
+                <table class="table table-bordered">
 
-                    <div class="card-body text-center">
+                    <thead class="table-success">
 
-                        <i class="bi bi-person-lines-fill fs-1 text-success"></i>
+                        <tr>
 
-                        <h5 class="mt-3">
+                            <th>Característica</th>
 
-                            Pacientes virtuales
+                            <th>Valor</th>
 
-                        </h5>
+                        </tr>
 
-                        <p>
+                    </thead>
 
-                            Generación automática de historiales clínicos completos.
+                    <tbody>
 
-                        </p>
+                        <tr>
 
-                    </div>
+                            <td>Organismo</td>
 
-                </div>
+                            <td>DGT</td>
 
-            </div>
+                        </tr>
 
-            <div class="col-md-3">
+                        <tr>
 
-                <div class="card h-100 shadow-sm">
+                            <td>Año</td>
 
-                    <div class="card-body text-center">
+                            <td>2024</td>
 
-                        <i class="bi bi-diagram-3 fs-1 text-success"></i>
+                        </tr>
 
-                        <h5 class="mt-3">
+                        <tr>
 
-                            Big Data
+                            <td>Registros</td>
 
-                        </h5>
+                            <td>101.996</td>
 
-                        <p>
+                        </tr>
 
-                            Compatible con Hadoop, Hive, Spark y otros sistemas distribuidos.
+                        <tr>
 
-                        </p>
+                            <td>Formato</td>
 
-                    </div>
+                            <td>CSV</td>
 
-                </div>
+                        </tr>
 
-            </div>
+                        <tr>
 
-            <div class="col-md-3">
+                            <td>Tipo</td>
 
-                <div class="card h-100 shadow-sm">
+                            <td>Datos estructurados</td>
 
-                    <div class="card-body text-center">
+                        </tr>
 
-                        <i class="bi bi-repeat fs-1 text-success"></i>
+                    </tbody>
 
-                        <h5 class="mt-3">
-
-                            Reproducible
-
-                        </h5>
-
-                        <p>
-
-                            Ideal para investigación y entornos académicos.
-
-                        </p>
-
-                    </div>
-
-                </div>
+                </table>
 
             </div>
 
@@ -284,29 +223,134 @@
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            Modelo de datos utilizado
-
+            Aplicación dentro del proyecto
         </h3>
 
         <p>
 
-            El proyecto utiliza cuatro de las principales tablas generadas por Synthea™, las cuales
-            constituyen el núcleo del procesamiento distribuido realizado durante las prácticas.
+            La relevancia de este conjunto de datos radica en su carácter oficial y en el
+            gran volumen de información disponible, lo que permite validar el funcionamiento
+            de arquitecturas Big Data basadas en Hadoop.
+
+            Los datos serán almacenados en HDFS y posteriormente procesados mediante
+            trabajos MapReduce implementados con Hadoop Streaming, obteniendo métricas y
+            patrones relacionados con la siniestralidad vial.
 
         </p>
 
-        <table class="table table-bordered table-hover">
+        <div class="alert alert-info">
+
+            <i class="bi bi-cpu-fill"></i>
+
+            Durante las prácticas este dataset será utilizado para:
+
+            <ul class="mt-3 mb-0">
+
+                <li>Almacenamiento distribuido en HDFS.</li>
+
+                <li>Procesamiento mediante MapReduce.</li>
+
+                <li>Análisis estadístico de accidentes.</li>
+
+                <li>Carga de resultados en MySQL.</li>
+
+                <li>Consulta mediante Apache Hive.</li>
+
+                <li>Conversión a formatos Parquet y Avro.</li>
+
+            </ul>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Análisis propuestos
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Análisis geográfico
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Accidentes por provincia.</li>
+
+                            <li>Accidentes por municipio.</li>
+
+                            <li>Distribución por tipo de vía.</li>
+
+                            <li>Carreteras con mayor siniestralidad.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Análisis estadístico
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <ul>
+
+                            <li>Número de víctimas.</li>
+
+                            <li>Fallecidos a 24 horas.</li>
+
+                            <li>Fallecidos a 30 días.</li>
+
+                            <li>Condiciones meteorológicas.</li>
+
+                            <li>Tipos de accidente.</li>
+
+                            <li>Distribución temporal.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Principales grupos de variables
+        </h3>
+
+        <table class="table table-striped table-bordered">
 
             <thead class="table-success">
 
                 <tr>
 
-                    <th>Tabla</th>
+                    <th>Categoría</th>
 
-                    <th>Descripción</th>
-
-                    <th>Uso en el proyecto</th>
+                    <th>Ejemplos de variables</th>
 
                 </tr>
 
@@ -316,41 +360,65 @@
 
                 <tr>
 
-                    <td><strong>Patients</strong></td>
+                    <td>Identificación</td>
 
-                    <td>Información demográfica y administrativa de los pacientes.</td>
-
-                    <td>Identificación y análisis de pacientes.</td>
+                    <td>ID_ACCIDENTE, ANYO, MES, DIA_SEMANA, HORA</td>
 
                 </tr>
 
                 <tr>
 
-                    <td><strong>Organizations</strong></td>
+                    <td>Localización</td>
 
-                    <td>Hospitales, clínicas y centros sanitarios.</td>
-
-                    <td>Análisis geográfico y organizativo.</td>
+                    <td>Provincia, Municipio, Isla, Carretera, Punto kilométrico</td>
 
                 </tr>
 
                 <tr>
 
-                    <td><strong>Providers</strong></td>
+                    <td>Características de la vía</td>
 
-                    <td>Médicos y profesionales sanitarios.</td>
-
-                    <td>Relación entre pacientes y profesionales.</td>
+                    <td>Tipo de vía, Titularidad, Zona, Nudo, Sentido</td>
 
                 </tr>
 
                 <tr>
 
-                    <td><strong>Encounters</strong></td>
+                    <td>Accidente</td>
 
-                    <td>Consultas, ingresos y episodios clínicos.</td>
+                    <td>Tipo de accidente, Vehículos implicados, Víctimas</td>
 
-                    <td>Procesamiento distribuido de actividad clínica.</td>
+                </tr>
+
+                <tr>
+
+                    <td>Condiciones ambientales</td>
+
+                    <td>Meteorología, Iluminación, Viento, Niebla</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Prioridad y señalización</td>
+
+                    <td>STOP, CEDA, Semáforo, Marcas viales</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Víctimas</td>
+
+                    <td>Fallecidos, Heridos graves, Heridos leves</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Tipo de usuario</td>
+
+                    <td>Peatones, Bicicletas, Motocicletas, Turismos, Autobuses</td>
 
                 </tr>
 
@@ -361,214 +429,69 @@
         <hr class="my-5">
 
         <h3 class="text-success">
-
-            Estructura de las tablas
-
+            Definiciones oficiales
         </h3>
 
-        <div class="accordion" id="syntheaAccordion">
+        <p>
 
-            <!-- PATIENTS -->
+            Las definiciones de los indicadores utilizados en este conjunto de datos
+            (accidente con víctimas, fallecido a 30 días, herido hospitalizado y herido no
+            hospitalizado) se encuentran reguladas por la
 
-            <div class="accordion-item">
+            <strong>Orden INT/2223/2014, de 27 de octubre</strong>,
 
-                <h2 class="accordion-header">
+            que establece los criterios de comunicación de información al Registro Nacional
+            de Víctimas de Accidentes de Tráfico.
 
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#patients">
+        </p>
 
-                        Tabla Patients
+        <hr class="my-5">
 
-                    </button>
+        <div class="text-center">
 
-                </h2>
+            <a href="../img/dgt-accidentes.png" target="_blank">
 
-                <div id="patients" class="accordion-collapse collapse show" data-bs-parent="#syntheaAccordion">
+                <img src="../img/dgt-accidentes.png" class="img-fluid rounded shadow" alt="Dataset DGT">
 
-                    <div class="accordion-body">
+            </a>
 
-                        <p>
+            <p class="text-muted mt-3">
 
-                            Contiene la información demográfica, administrativa y socioeconómica de todos los
-                            pacientes generados por Synthea.
+                Figura. Dataset oficial de accidentes de tráfico con víctimas publicado por la
+                Dirección General de Tráfico (DGT).
 
-                        </p>
+            </p>
 
-                        <ul>
+        </div>
 
-                            <li>UUID del paciente</li>
+        <hr class="my-5">
 
-                            <li>Fecha de nacimiento</li>
+        <div class="alert alert-primary">
 
-                            <li>Sexo</li>
+            <h4>Conclusión</h4>
 
-                            <li>Estado civil</li>
+            <p>
 
-                            <li>Dirección</li>
+                El conjunto de microdatos de accidentes con víctimas de la DGT constituye una
+                fuente oficial de datos estructurados especialmente adecuada para el aprendizaje
+                de tecnologías Big Data. Su volumen de información y la diversidad de variables
+                permiten desarrollar ejercicios completos de almacenamiento distribuido,
+                procesamiento MapReduce, consultas mediante Hive y análisis estadístico sobre
+                infraestructuras Hadoop.
 
-                            <li>Ciudad</li>
+            </p>
 
-                            <li>Provincia</li>
+        </div>
 
-                            <li>Código postal</li>
+        <div class="text-center mt-5">
 
-                            <li>Ingresos</li>
+            <a href="index.html" class="btn btn-success btn-lg">
 
-                            <li>Gastos sanitarios</li>
+                <i class="bi bi-arrow-left-circle"></i>
 
-                            <li>Cobertura médica</li>
+                Volver al índice
 
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- ORGANIZATIONS -->
-
-            <div class="accordion-item">
-
-                <h2 class="accordion-header">
-
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#organizations">
-
-                        Tabla Organizations
-
-                    </button>
-
-                </h2>
-
-                <div id="organizations" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Información correspondiente a hospitales, clínicas y organizaciones sanitarias.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Nombre del centro</li>
-
-                            <li>Dirección</li>
-
-                            <li>Ciudad</li>
-
-                            <li>Estado</li>
-
-                            <li>Teléfono</li>
-
-                            <li>Ingresos</li>
-
-                            <li>Nivel de utilización</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- PROVIDERS -->
-
-            <div class="accordion-item">
-
-                <h2 class="accordion-header">
-
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#providers">
-
-                        Tabla Providers
-
-                    </button>
-
-                </h2>
-
-                <div id="providers" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Profesionales sanitarios asociados a las organizaciones.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Nombre</li>
-
-                            <li>Apellidos</li>
-
-                            <li>Especialidad</li>
-
-                            <li>Género</li>
-
-                            <li>Teléfono</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- ENCOUNTERS -->
-
-            <div class="accordion-item">
-
-                <h2 class="accordion-header">
-
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#encounters">
-
-                        Tabla Encounters
-
-                    </button>
-
-                </h2>
-
-                <div id="encounters" class="accordion-collapse collapse" data-bs-parent="#syntheaAccordion">
-
-                    <div class="accordion-body">
-
-                        <p>
-
-                            Registra cada episodio clínico asociado a un paciente.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Paciente</li>
-
-                            <li>Hospital</li>
-
-                            <li>Médico responsable</li>
-
-                            <li>Tipo de encuentro</li>
-
-                            <li>Fecha inicio</li>
-
-                            <li>Fecha fin</li>
-
-                            <li>Motivo</li>
-
-                            <li>Estado del episodio</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
+            </a>
 
         </div>
 
