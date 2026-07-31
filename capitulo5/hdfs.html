@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 Soporte Teórico y Validación Práctica del Proyecto.
+                    </h1>
+
+                    <p class="lead">
+                        Soporte Teórico y Validación Práctica del Proyecto
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+            <a class="navbar-brand" href="index.html">
+                Volver al índice del capítulo 5.
+            </a>
+
+        </div>
+
+    </nav>
+
+    <div class="row">
+
+        <!-- Menú lateral -->
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Capítulo 5.1
+
+                </div>
+
+                <a href="autoe1.html" class="list-group-item list-group-item-action">
+
+                    5.1.1 Preguntas de autoevaluación.
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+        <!-- Contenido -->
+
+        <div class="col-lg-9">
+
+            <h2 class="text-success mb-4">
+                Lección 2. Sistema de archivos distribuido HDFS
+            </h2>
+
+            <p class="lead">
+
+                Aunque esta lección posee un enfoque eminentemente práctico, sus fundamentos
+                teóricos se desarrollan en el <strong>Capítulo 3</strong>, donde se estudia la
+                arquitectura del sistema de almacenamiento distribuido
+                <strong>HDFS (Hadoop Distributed File System)</strong>, uno de los pilares
+                fundamentales del ecosistema Apache Hadoop.
+
+            </p>
+
+            <p>
+
+                HDFS proporciona una plataforma de almacenamiento distribuido, escalable y
+                tolerante a fallos capaz de gestionar grandes volúmenes de información mediante
+                la distribución automática de los datos entre múltiples nodos del clúster.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-book-fill"></i>
+
+                <strong>Referencia teórica</strong>
+
+                <p class="mb-2 mt-2">
+
+                    Antes de continuar con esta lección se recomienda revisar el apartado
+                    <strong>3.2.2 Sistema de archivos distribuido HDFS</strong>, donde se explica
+                    la arquitectura interna, el mecanismo de replicación de bloques y el papel de
+                    cada uno de los componentes del sistema.
+
+                </p>
+
+                <a href="https://itocabello.github.io/capitulo3/index.html" target="_blank" class="btn btn-success">
+
+                    <i class="bi bi-box-arrow-up-right"></i>
+
+                    Consultar Capítulo 3
+
+                </a>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Objetivos de aprendizaje
+
+            </h3>
+
+            <p>
+
+                Tras completar esta lección el estudiante será capaz de comprender el
+                funcionamiento del almacenamiento distribuido implementado sobre el clúster
+                Hadoop desplegado durante el proyecto.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Competencias adquiridas
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender el funcionamiento de HDFS.</li>
+
+                                <li>Diferenciar NameNode y DataNode.</li>
+
+                                <li>Entender la división de archivos en bloques.</li>
+
+                                <li>Conocer la replicación de datos.</li>
+
+                                <li>Relacionar HDFS con Docker.</li>
+
+                                <li>Interpretar la arquitectura distribuida.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 text-center">
+
+                    <img src="../img/hdfs-architecture.png" class="img-fluid rounded shadow zoomable"
+                        alt="Arquitectura HDFS">
+
+                    <p class="text-muted mt-2">
+
+                        Figura. Arquitectura del sistema distribuido HDFS.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Arquitectura distribuida implementada
+
+            </h3>
+
+            <p>
+
+                En la infraestructura desarrollada durante este proyecto,
+                HDFS funciona sobre un clúster Hadoop desplegado mediante
+                contenedores Docker.
+
+                Cada uno de los <strong>DataNodes</strong> representa un nodo de almacenamiento
+                encargado de guardar físicamente los bloques de información,
+                mientras que el <strong>NameNode</strong> mantiene la información
+                sobre la estructura del sistema de archivos y coordina todas
+                las operaciones de lectura y escritura.
+
+            </p>
+
+            <div class="alert alert-light border">
+
+                <i class="bi bi-info-circle-fill text-success"></i>
+
+                Los archivos almacenados en HDFS se fragmentan automáticamente
+                en bloques que posteriormente son distribuidos entre los distintos
+                DataNodes del clúster para garantizar escalabilidad,
+                alto rendimiento y tolerancia frente a fallos.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Componentes principales
+
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            NameNode
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Gestiona el sistema HDFS.</li>
+
+                                <li>Controla la ubicación de los bloques.</li>
+
+                                <li>Mantiene los metadatos.</li>
+
+                                <li>Coordina las operaciones de lectura y escritura.</li>
+
+                                <li>Supervisa el estado del clúster.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            DataNodes
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Almacenan los bloques de datos.</li>
+
+                                <li>Ejecutan operaciones de lectura y escritura.</li>
+
+                                <li>Replican automáticamente la información.</li>
+
+                                <li>Informan periódicamente al NameNode.</li>
+
+                                <li>Participan en el procesamiento distribuido.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Replicación y tolerancia a fallos
+
+            </h3>
+
+            <p>
+
+                Uno de los aspectos más importantes de HDFS consiste en la
+                replicación automática de los bloques de datos.
+
+                Cada bloque puede almacenarse simultáneamente en distintos
+                DataNodes, garantizando que la información permanezca disponible
+                incluso cuando alguno de los nodos deja de estar operativo.
+
+            </p>
+
+            <div class="alert alert-warning">
+
+                <i class="bi bi-shield-check"></i>
+
+                La replicación constituye el principal mecanismo que proporciona
+                alta disponibilidad, tolerancia a fallos y continuidad del servicio
+                en infraestructuras Big Data.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Relación con la infraestructura del proyecto
+
+            </h3>
+
+            <p>
+
+                Durante las prácticas desarrolladas en este curso, todos los datos
+                procesados mediante MapReduce, Hadoop Streaming, Hive y el resto de
+                herramientas del ecosistema Hadoop serán almacenados previamente
+                en HDFS.
+
+                De esta forma, el estudiante podrá comprobar cómo el sistema
+                distribuye automáticamente la información entre los distintos
+                contenedores Docker que forman el clúster.
+
+            </p>
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-success text-white">
+
+                    Infraestructura utilizada
+
+                </div>
+
+                <div class="card-body">
+
+                    <ul>
+
+                        <li>1 NameNode.</li>
+
+                        <li>1 YarnManager.</li>
+
+                        <li>4 DataNodes.</li>
+
+                        <li>Docker Compose.</li>
+
+                        <li>Red privada Docker.</li>
+
+                        <li>Almacenamiento distribuido HDFS.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    Conclusión
+
+                </h4>
+
+                <p>
+
+                    El conocimiento del funcionamiento interno de HDFS constituye la base para comprender cómo Hadoop
+                    distribuye,
+                    replica y gestiona grandes volúmenes de información. Esta lección conecta los conceptos teóricos
+                    estudiados en
+                    el <strong>Capítulo 3</strong> con la infraestructura desplegada durante el proyecto, permitiendo al
+                    estudiante
+                    interpretar cómo los múltiples contenedores Docker cooperan para formar un único sistema de
+                    almacenamiento
+                    distribuido capaz de soportar el procesamiento masivo de datos.
+
+                </p>
+
+            </div>
+
+            <div class="text-center mt-5">
+
+                <a href="https://itocabello.github.io/capitulo3/index.html" target="_blank"
+                    class="btn btn-success btn-lg">
+
+                    <i class="bi bi-book"></i>
+
+                    Ampliar teoría en el Capítulo 3
+
+                </a>
+
+            </div>
+            <div class="text-center mt-5">
+
+                <a href="autoe1.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Realizar autoevaluación
+
+                </a>
+
+            </div>
+            <div class="text-center mt-5">
+
+                <a href="../index.html" class="btn btn-outline-success btn-lg">
+
+                    <i class="bi bi-arrow-left-circle"></i>
+
+                    Volver al índice del curso
+
+                </a>
+
+            </div>
+
+
+
+
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                Cluster Hadoop
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <footer class="bg-success text-white mt-5">
+
+                <div class="container py-3 text-center">
+
+                    Proyecto Fin de Grado · UNED
+
+                </div>
+
+            </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
