@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 Lección 3.HDFS y Almacenamiento Distribuido</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+    <title>Autoevaluación: HDFS y Almacenamiento Distribuido</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .correcta {
+            background: #d1e7dd !important;
+            border: 2px solid #198754;
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .incorrecta {
+            background: #f8d7da !important;
+            border: 2px solid #dc3545;
+            border-radius: 6px;
+            padding: 8px;
+        }
+
+        .pregunta {
+            margin-bottom: 40px;
+        }
+    </style>
+
+</head>
+
+<body class="container my-5">
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 Soporte Teórico y Validación Práctica del Proyecto.
+                    </h1>
+
+                    <p class="lead">
+                        Soporte Teórico y Validación Práctica del Proyecto
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+            <a class="navbar-brand" href="index.html">
+                Volver al índice del capítulo 5.
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <h2 class="text-success mb-5">
+
+        Autoevaluación – Fundamentos de Hadoop
+
+    </h2>
+
+    <form id="quizForm">
+
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 1
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Cuál es la función principal de HDFS?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" value="a">
+                    <label class="form-check-label">
+                        Ejecutar aplicaciones MapReduce.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" value="b">
+                    <label class="form-check-label">
+                        Almacenar grandes volúmenes de datos de forma distribuida entre los nodos del clúster.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" value="c">
+                    <label class="form-check-label">
+                        Administrar los recursos del sistema operativo.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 2
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Qué función realiza el NameNode dentro de HDFS?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" value="a">
+                    <label class="form-check-label">
+                        Almacena físicamente todos los archivos del sistema.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" value="b">
+                    <label class="form-check-label">
+                        Gestiona los metadatos del sistema de archivos y controla la ubicación de los bloques
+                        almacenados.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" value="c">
+                    <label class="form-check-label">
+                        Ejecuta los programas de usuario.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 3
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Cuál es la responsabilidad de los DataNodes?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" value="a">
+                    <label class="form-check-label">
+                        Administrar la memoria del sistema.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" value="b">
+                    <label class="form-check-label">
+                        Almacenar los bloques de datos y atender las solicitudes de lectura y escritura.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" value="c">
+                    <label class="form-check-label">
+                        Coordinar la ejecución de aplicaciones MapReduce.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 4
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Cómo almacena HDFS un archivo de gran tamaño?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" value="a">
+                    <label class="form-check-label">
+                        Lo guarda completo en un único servidor.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" value="b">
+                    <label class="form-check-label">
+                        Lo divide en bloques que se distribuyen entre varios DataNodes.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" value="c">
+                    <label class="form-check-label">
+                        Lo comprime automáticamente antes de almacenarlo.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 5
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Qué mecanismo utiliza HDFS para garantizar la tolerancia a fallos?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" value="a">
+                    <label class="form-check-label">
+                        Cifrar todos los archivos almacenados.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" value="b">
+                    <label class="form-check-label">
+                        Replicar los bloques de datos en diferentes DataNodes.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" value="c">
+                    <label class="form-check-label">
+                        Almacenar una única copia del archivo.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="a">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 6
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Qué ventaja ofrece HDFS frente a un sistema de archivos tradicional?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q6" value="a">
+                    <label class="form-check-label">
+                        Permite almacenar datos de forma distribuida y escalar horizontalmente.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q6" value="b">
+                    <label class="form-check-label">
+                        Solo funciona con archivos de pequeño tamaño.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q6" value="c">
+                    <label class="form-check-label">
+                        Está diseñado únicamente para ordenadores personales.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="a">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 7
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Cómo se integra HDFS con el ecosistema Hadoop?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q7" value="a">
+                    <label class="form-check-label">
+                        Actúa como el sistema de almacenamiento sobre el que trabajan componentes como MapReduce y YARN.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q7" value="b">
+                    <label class="form-check-label">
+                        Sustituye completamente a YARN.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q7" value="c">
+                    <label class="form-check-label">
+                        Se utiliza únicamente para almacenar archivos de configuración.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="a">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 8
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Cómo se implementa HDFS en la infraestructura desarrollada en este proyecto?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q8" value="a">
+                    <label class="form-check-label">
+                        Mediante contenedores Docker que ejecutan el NameNode y los diferentes DataNodes del clúster.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q8" value="b">
+                    <label class="form-check-label">
+                        Instalando todos los componentes en un único ordenador sin virtualización.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q8" value="c">
+                    <label class="form-check-label">
+                        Ejecutando HDFS exclusivamente sobre máquinas físicas independientes.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="b">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 9
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Qué ocurriría si un DataNode deja de estar disponible?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q9" value="a">
+                    <label class="form-check-label">
+                        Se perderían automáticamente todos los datos almacenados.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q9" value="b">
+                    <label class="form-check-label">
+                        HDFS continúa funcionando gracias a la replicación de los bloques en otros DataNodes.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q9" value="c">
+                    <label class="form-check-label">
+                        El NameNode deja de funcionar inmediatamente.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4 question" data-correct="a">
+
+            <div class="card-header bg-success text-white">
+                Pregunta 10
+            </div>
+
+            <div class="card-body">
+
+                <h5>¿Por qué HDFS es adecuado para entornos Big Data?</h5>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q10" value="a">
+                    <label class="form-check-label">
+                        Porque permite almacenar y procesar grandes volúmenes de información de forma distribuida,
+                        escalable
+                        y tolerante a fallos.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q10" value="b">
+                    <label class="form-check-label">
+                        Porque únicamente admite archivos de texto.
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q10" value="c">
+                    <label class="form-check-label">
+                        Porque solo puede utilizarse en un único servidor.
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+    <div id="resultado" class="mt-5"></div>
+
+    <script>
+        function reiniciarTest() {
+
+            // Desmarca todas las respuestas
+            document.getElementById("quiz").reset();
+
+            // Elimina colores de respuestas
+            document.querySelectorAll(".form-check").forEach(function (item) {
+                item.classList.remove("correcta", "incorrecta");
+            });
+
+            // Borra el resultado
+            document.getElementById("resultado").innerHTML = "";
+
+            // Vuelve al inicio del test
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+        function corregir() {
+
+            let nota = 0;
+
+            document.querySelectorAll(".form-check").forEach(x => {
+                x.classList.remove("correcta", "incorrecta");
+            });
+
+            document.querySelectorAll(".correcta-respuesta").forEach(r => {
+
+                let grupo = r.name;
+
+                let marcada = document.querySelector("input[name='" + grupo + "']:checked");
+
+                if (r.checked) {
+
+                    r.parentElement.classList.add("correcta");
+
+                    nota++;
+
+                }
+                else {
+
+                    r.parentElement.classList.add("correcta");
+
+                    if (marcada) {
+
+                        marcada.parentElement.classList.add("incorrecta");
+
+                    }
+
+                }
+
+            });
+
+            document.getElementById("resultado").innerHTML =
+                "<div class='alert alert-primary'><h3>Puntuación: " + nota + " / 10</h3></div>";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
