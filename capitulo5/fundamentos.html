@@ -94,222 +94,43 @@
         <div class="col-lg-9">
 
 
+            <!-- ===================================================== -->
+            <!-- LECCIÓN 2 -->
+            <!-- ECOSISTEMA HADOOP -->
+            <!-- ===================================================== -->
+
             <h2 class="text-success mb-4">
-                5.2 Fundamentos de Hadoop.
+                Lección 2. Fundamentos del ecosistema Hadoop
             </h2>
 
             <p class="lead">
-
-                Este capítulo introduce los fundamentos del <strong>ecosistema Apache Hadoop</strong>,
-                una de las plataformas más utilizadas para el almacenamiento y procesamiento
-                distribuido de grandes volúmenes de datos dentro del ámbito Big Data.
-
+                Esta lección continúa el itinerario formativo introduciendo al estudiante en los
+                principios fundamentales del ecosistema <strong>Apache Hadoop</strong>, una de las
+                tecnologías más relevantes dentro del ámbito del Big Data y del procesamiento
+                distribuido de datos.
             </p>
 
             <p>
-
-                Su finalidad es proporcionar una visión global de la arquitectura Hadoop,
-                explicando cómo sus distintos componentes colaboran para ofrecer un sistema
-                escalable, tolerante a fallos y preparado para el procesamiento distribuido de
-                información.
-
+                El objetivo es proporcionar una visión clara de la arquitectura de Hadoop y de los
+                componentes que permiten almacenar y procesar grandes volúmenes de información
+                de forma distribuida. Para comprender adecuadamente esta lección se recomienda
+                haber estudiado previamente el
+                <strong>Capítulo 3 de la memoria</strong>, donde se desarrolla en profundidad el
+                funcionamiento interno del ecosistema Hadoop y cada uno de sus servicios.
             </p>
 
             <div class="alert alert-success">
 
-                <i class="bi bi-diagram-3-fill"></i>
-
-                Comprender el funcionamiento de Hadoop resulta imprescindible para interpretar
-                la arquitectura desplegada durante el proyecto y entender cómo interactúan los
-                diferentes servicios del clúster.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Hadoop dentro del proyecto
-            </h3>
-
-            <p>
-
-                Desde una perspectiva práctica, Hadoop constituye el núcleo tecnológico sobre el
-                que se construye toda la infraestructura desarrollada. El clúster desplegado
-                mediante Docker permite simular un entorno distribuido real donde múltiples
-                nodos colaboran para almacenar y procesar información de forma paralela.
-
-            </p>
-
-            <div class="row">
-
-                <div class="col-md-4">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            <i class="bi bi-hdd-network-fill"></i>
-
-                            Almacenamiento
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <p>
-
-                                Los datos se distribuyen entre varios nodos mediante HDFS,
-                                garantizando redundancia y alta disponibilidad.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            <i class="bi bi-cpu-fill"></i>
-
-                            Procesamiento
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <p>
-
-                                Los trabajos se ejecutan de forma distribuida utilizando
-                                MapReduce y Hadoop Streaming.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-4">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            <i class="bi bi-server"></i>
-
-                            Administración
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <p>
-
-                                YARN coordina la asignación de recursos y distribuye las
-                                tareas entre los diferentes nodos del clúster.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Características principales de Hadoop
-            </h3>
-
-            <p>
-
-                El ecosistema Hadoop ha sido diseñado para trabajar con grandes volúmenes de
-                datos mediante arquitecturas distribuidas, ofreciendo importantes ventajas para
-                el procesamiento masivo de información.
-
-            </p>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            <i class="bi bi-check-circle-fill"></i>
-
-                            Capacidades
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>Escalabilidad horizontal.</li>
-
-                                <li>Procesamiento distribuido.</li>
-
-                                <li>Alta disponibilidad.</li>
-
-                                <li>Tolerancia a fallos.</li>
-
-                                <li>Replicación automática de datos.</li>
-
-                                <li>Optimización para grandes volúmenes de información.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            <i class="bi bi-boxes"></i>
-
-                            Arquitectura
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>HDFS como sistema de almacenamiento distribuido.</li>
-
-                                <li>YARN para la gestión de recursos.</li>
-
-                                <li>MapReduce como modelo de procesamiento.</li>
-
-                                <li>Hadoop Streaming para programas en Python.</li>
-
-                                <li>Integración con Docker y virtualización ligera.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                <i class="bi bi-book-fill"></i>
+
+                <strong>Recomendación previa</strong>
+
+                <p class="mb-0 mt-2">
+                    Antes de continuar con esta lección es aconsejable revisar el
+                    <strong>Capítulo 3: Ecosistema Hadoop</strong>, ya que en él se explican los
+                    conceptos teóricos sobre HDFS, YARN, MapReduce y la arquitectura distribuida
+                    que posteriormente serán utilizados durante las prácticas.
+                </p>
 
             </div>
 
@@ -319,85 +140,268 @@
                 Objetivos de aprendizaje
             </h3>
 
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Al finalizar esta lección el estudiante será capaz de:
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender la arquitectura general del ecosistema Hadoop.</li>
+
+                                <li>Identificar la función de HDFS dentro del almacenamiento distribuido.</li>
+
+                                <li>Conocer el papel de YARN en la gestión de recursos del clúster.</li>
+
+                                <li>Entender el modelo de programación MapReduce.</li>
+
+                                <li>Relacionar cada componente con el clúster desplegado mediante Docker.</li>
+
+                                <li>Interpretar cómo cooperan los distintos nodos en una infraestructura distribuida.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <img src="../img/docker-hadoop-cluster.png" class="img-fluid rounded shadow"
+                        alt="Arquitectura Hadoop">
+
+                    <p class="text-muted text-center mt-2">
+
+                        Arquitectura del clúster Hadoop desplegado durante el proyecto.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Relación con el Capítulo 3
+            </h3>
+
             <p>
 
-                Al finalizar este módulo, el estudiante dispondrá de los conocimientos necesarios
-                para comprender la arquitectura del clúster Hadoop desplegado durante el
-                proyecto y el papel que desempeña cada uno de sus componentes.
+                El contenido desarrollado en esta lección se apoya directamente en el
+                <strong>Capítulo 3</strong> de la memoria, donde se describen en detalle los
+                principales componentes que forman parte del ecosistema Hadoop.
 
             </p>
 
-            <table class="table table-bordered table-striped">
+            <p>
 
-                <thead class="table-success">
+                Durante este módulo el estudiante relacionará la teoría estudiada con la
+                infraestructura desplegada mediante Docker, observando cómo cada uno de los
+                servicios implementados participa en el funcionamiento del clúster distribuido.
 
-                    <tr>
+            </p>
 
-                        <th>Objetivo</th>
+            <div class="row">
 
-                        <th>Resultado esperado</th>
+                <div class="col-md-4">
 
-                    </tr>
+                    <div class="card shadow-sm h-100">
 
-                </thead>
+                        <div class="card-header bg-success text-white">
 
-                <tbody>
+                            HDFS
 
-                    <tr>
+                        </div>
 
-                        <td>Comprender Hadoop</td>
+                        <div class="card-body">
 
-                        <td>Conocer su arquitectura y funcionamiento general.</td>
+                            <p>
 
-                    </tr>
+                                Sistema de archivos distribuido encargado de almacenar los bloques de datos
+                                entre los distintos DataNodes del clúster.
 
-                    <tr>
+                            </p>
 
-                        <td>Identificar componentes</td>
+                        </div>
 
-                        <td>Reconocer las funciones de HDFS, YARN y MapReduce.</td>
+                    </div>
 
-                    </tr>
+                </div>
 
-                    <tr>
+                <div class="col-md-4">
 
-                        <td>Relacionar teoría y práctica</td>
+                    <div class="card shadow-sm h-100">
 
-                        <td>Interpretar la infraestructura desplegada mediante Docker.</td>
+                        <div class="card-header bg-success text-white">
 
-                    </tr>
+                            YARN
 
-                    <tr>
+                        </div>
 
-                        <td>Entender sistemas distribuidos</td>
+                        <div class="card-body">
 
-                        <td>Comprender los conceptos de escalabilidad y tolerancia a fallos.</td>
+                            <p>
 
-                    </tr>
+                                Administrador de recursos responsable de coordinar la ejecución de tareas
+                                distribuidas y asignar recursos a las aplicaciones.
 
-                </tbody>
+                            </p>
 
-            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            MapReduce
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Modelo de programación encargado de dividir el procesamiento en tareas
+                                paralelas que posteriormente serán combinadas para obtener el resultado final.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Aplicación práctica dentro del proyecto
+            </h3>
+
+            <p>
+
+                A diferencia de un estudio exclusivamente teórico, todos los conceptos tratados
+                durante esta lección podrán observarse directamente sobre el clúster Hadoop
+                desplegado en este proyecto.
+
+            </p>
+
+            <p>
+
+                Los servicios ejecutados mediante contenedores Docker permiten reproducir un
+                entorno distribuido real donde los distintos nodos cooperan para almacenar,
+                gestionar y procesar información utilizando las tecnologías propias del
+                ecosistema Hadoop.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-lightbulb-fill"></i>
+
+                Durante las siguientes prácticas el estudiante utilizará este mismo clúster
+                para ejecutar programas MapReduce, almacenar datos en HDFS, administrar los
+                recursos mediante YARN y analizar información utilizando Apache Hive.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Contenidos que se abordarán
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Arquitectura del ecosistema Hadoop.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Funcionamiento de HDFS.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Gestión de recursos mediante YARN.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Modelo de programación MapReduce.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Escalabilidad y tolerancia a fallos.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Relación entre la teoría y el clúster Docker del proyecto.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
 
             <hr class="my-5">
 
             <div class="alert alert-primary">
 
-                <h4>
-
-                    <i class="bi bi-mortarboard-fill"></i>
-
-                    Conclusión
-
-                </h4>
+                <h4>Conclusión</h4>
 
                 <p>
 
-                    El estudio del ecosistema Hadoop constituye la base tecnológica sobre la que se
-                    desarrollan todas las prácticas del proyecto. Comprender cómo interactúan HDFS,
-                    YARN y MapReduce permite interpretar el funcionamiento interno del clúster,
-                    administrar sus recursos y ejecutar aplicaciones distribuidas sobre una
-                    infraestructura Big Data real desplegada mediante Docker.
+                    Esta lección constituye el enlace entre los fundamentos teóricos estudiados en
+                    el <strong>Capítulo 3</strong> y su aplicación práctica dentro de la infraestructura
+                    Big Data desarrollada durante el proyecto.
+
+                </p>
+
+                <p class="mb-0">
+
+                    Al finalizar el estudio de este módulo, el estudiante comprenderá la función de
+                    los principales componentes del ecosistema Hadoop y estará preparado para
+                    utilizar el clúster desplegado mediante Docker en las siguientes actividades
+                    prácticas del curso.
 
                 </p>
 
