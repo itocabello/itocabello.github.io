@@ -88,8 +88,7 @@
 
     <h2 class="text-success mb-5">
 
-        Autoevaluación – Fundamentos de Hadoop
-
+        Autoevaluación – HDFS y Almacenamiento Distribuido
     </h2>
 
     <form id="quiz">
@@ -474,82 +473,83 @@
     </form>
 
     <div id="resultado" class="mt-5"></div>
+    <script>
 
-    ript>
+        function corregir() {
 
-    function corregir() {
+            let preguntas = document.querySelectorAll(".question");
+            let nota = 0;
 
-    let preguntas = document.querySelectorAll(".question");
-    let nota = 0;
+            preguntas.forEach(function (pregunta) {
 
-    preguntas.forEach(function (pregunta) {
+                let correcta = pregunta.dataset.correct;
 
-    let correcta = pregunta.dataset.correct;
+                let opciones = pregunta.querySelectorAll(".form-check");
 
-    let opciones = pregunta.querySelectorAll(".form-check");
+                opciones.forEach(opcion => {
+                    opcion.classList.remove("correcta", "incorrecta");
+                });
 
-    opciones.forEach(opcion => {
-    opcion.classList.remove("correcta", "incorrecta");
-    });
+                let marcada = pregunta.querySelector("input[type=radio]:checked");
 
-    let marcada = pregunta.querySelector("input[type=radio]:checked");
+                if (marcada) {
 
-    if (marcada) {
+                    if (marcada.value === correcta) {
 
-    if (marcada.value === correcta) {
+                        marcada.parentElement.classList.add("correcta");
+                        nota++;
 
-    marcada.parentElement.classList.add("correcta");
-    nota++;
+                    } else {
 
-    } else {
+                        marcada.parentElement.classList.add("incorrecta");
 
-    marcada.parentElement.classList.add("incorrecta");
+                    }
 
-    }
+                }
 
-    }
+                let respuestaCorrecta = pregunta.querySelector("input[value='" + correcta + "']");
 
-    let respuestaCorrecta = pregunta.querySelector("input[value='" + correcta + "']");
+                if (respuestaCorrecta) {
 
-    if (respuestaCorrecta) {
+                    respuestaCorrecta.parentElement.classList.add("correcta");
 
-    respuestaCorrecta.parentElement.classList.add("correcta");
+                }
 
-    }
+            });
 
-    });
-
-    document.getElementById("resultado").innerHTML =
-    `
+            document.getElementById("resultado").innerHTML =
+                `
     <div class="alert alert-primary text-center mt-4">
         <h3>Puntuación: ${nota} / ${preguntas.length}</h3>
         <h4>Nota: ${(nota * 10 / preguntas.length).toFixed(1)} / 10</h4>
     </div>
     `;
 
-    }
+        }
 
-    function reiniciarTest() {
+        function reiniciarTest() {
 
-    document.getElementById("quiz").reset();
+            document.getElementById("quiz").reset();
 
-    document.querySelectorAll(".form-check").forEach(opcion => {
+            document.querySelectorAll(".form-check").forEach(opcion => {
 
-    opcion.classList.remove("correcta");
-    opcion.classList.remove("incorrecta");
+                opcion.classList.remove("correcta");
+                opcion.classList.remove("incorrecta");
 
-    });
+            });
 
-    document.getElementById("resultado").innerHTML = "";
+            document.getElementById("resultado").innerHTML = "";
 
-    window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-    });
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-    }
+        }
 
     </script>
+
+
 
 </body>
 
