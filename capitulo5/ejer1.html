@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 3.HDFS y Almacenamiento Distribuido
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 5.3
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 5.3
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <p class="lead">
+
+            Tras haber desplegado la infraestructura Hadoop y cargar previamente en HDFS los
+            documentos clínicos del corpus <strong>MEDDOCAN</strong>, este ejercicio constituye
+            la primera práctica completa de procesamiento distribuido mediante
+            <strong>Hadoop Streaming</strong>. Su finalidad es introducir al estudiante en el
+            modelo de programación <strong>MapReduce</strong> utilizando scripts desarrollados
+            en Python que actuarán como <strong>Mapper</strong> y <strong>Reducer</strong>.
+
+        </p>
+
+        <p>
+
+            El objetivo consiste en procesar un fichero clínico almacenado en
+            <strong>HDFS</strong> para obtener el número de apariciones de cada palabra
+            contenida en el documento. De este modo, el estudiante comprenderá cómo Hadoop
+            divide automáticamente el trabajo entre los distintos nodos del clúster y cómo
+            coordina todas las fases del procesamiento distribuido.
+
+        </p>
+
+        <p>
+
+            La práctica se desarrolla íntegramente desde
+            <strong>Jupyter Notebook</strong>, utilizando la terminal integrada para ejecutar
+            los comandos Hadoop Streaming. Durante el ejercicio se utilizarán dos programas
+            escritos en Python:
+
+        </p>
+
+        <ul>
+
+            <li><strong>Mapper (mapper.py):</strong> encargado de leer el documento de entrada
+                y generar los pares clave-valor <strong>(palabra, 1)</strong>.</li>
+
+            <li><strong>Reducer (reducer.py):</strong> responsable de agrupar las palabras
+                iguales y calcular el número total de apariciones de cada una.</li>
+
+        </ul>
+
+        <p>
+
+            El fichero clínico utilizado procede del corpus
+            <strong>MEDDOCAN</strong> y se encuentra previamente almacenado en el sistema de
+            archivos distribuido HDFS. Hadoop se encargará automáticamente de leer el fichero,
+            distribuir el procesamiento entre los nodos disponibles del clúster y generar el
+            resultado final con la frecuencia de aparición de cada término.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-lightbulb-fill"></i>
+
+            <strong>Objetivo del ejercicio</strong>
+
+            <ul class="mb-0 mt-2">
+
+                <li>Cargar un documento clínico del corpus MEDDOCAN en HDFS.</li>
+
+                <li>Ejecutar un trabajo Hadoop Streaming desde Jupyter Notebook.</li>
+
+                <li>Comprender el funcionamiento del modelo MapReduce.</li>
+
+                <li>Desarrollar un programa Mapper en Python.</li>
+
+                <li>Desarrollar un programa Reducer en Python.</li>
+
+                <li>Observar las fases Map, Shuffle y Reduce ejecutadas automáticamente por Hadoop.</li>
+
+                <li>Obtener el número de apariciones de cada palabra del documento clínico.</li>
+
+            </ul>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
