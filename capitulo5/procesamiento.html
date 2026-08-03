@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 Soporte Teórico y Validación Práctica del Proyecto.
+                    </h1>
+
+                    <p class="lead">
+                        Soporte Teórico y Validación Práctica del Proyecto
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+            <a class="navbar-brand" href="index.html">
+                Volver al índice del capítulo 5.
+            </a>
+
+        </div>
+
+    </nav>
+
+    <div class="row">
+
+        <!-- Menú lateral -->
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Capítulo 5.3
+
+                </div>
+
+                <a href="autoe3.html" class="list-group-item list-group-item-action">
+
+                    5.3.1 Preguntas de autoevaluación.
+
+                </a>
+                <a href="ejer1.html" class="list-group-item list-group-item-action">
+
+                    5.3.2 Ejercicio Resuelto con Hadoop Streaming.
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+        <!-- Contenido -->
+
+        <div class="col-lg-9">
+
+            <!-- ===================================================== -->
+            <!-- 5.6 LECCIÓN 4. INYECCIÓN Y EXTRACCIÓN DE DATOS -->
+            <!-- ===================================================== -->
+
+            <h2 class="text-success mb-4">
+                5.6 Lección 4. Inyección y extracción de datos
+            </h2>
+
+            <p class="lead">
+
+                Una vez desplegada la infraestructura Hadoop y comprendidos los componentes
+                fundamentales del ecosistema, el siguiente paso consiste en aprender cómo
+                incorporar información al clúster y cómo recuperar posteriormente los
+                resultados generados durante el procesamiento distribuido.
+
+            </p>
+
+            <p>
+
+                La gestión del ciclo de vida de los datos constituye una de las tareas más
+                importantes dentro de cualquier plataforma Big Data. En esta lección se
+                estudian las técnicas necesarias para cargar información desde el sistema de
+                archivos local hacia HDFS, extraer posteriormente los resultados obtenidos y
+                automatizar la ingesta de datos mediante herramientas del ecosistema Hadoop.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                Durante esta lección el estudiante aprenderá a introducir datos en HDFS,
+                gestionar directorios distribuidos, automatizar procesos de ingesta y
+                recuperar los resultados generados por Hadoop Streaming y MapReduce.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Objetivos de aprendizaje
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Competencias
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender el ciclo de vida de los datos en Hadoop.</li>
+
+                                <li>Incorporar información al sistema HDFS.</li>
+
+                                <li>Extraer datos desde HDFS al sistema local.</li>
+
+                                <li>Gestionar directorios y ficheros distribuidos.</li>
+
+                                <li>Automatizar la ingesta mediante Apache Flume.</li>
+
+                                <li>Preparar los datos para Hadoop Streaming y MapReduce.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 text-center">
+
+                    <img src="../img/data-ingestion.png" class="img-fluid rounded shadow imagen-ampliable"
+                        alt="Inyección y extracción de datos">
+
+                    <p class="text-muted mt-2">
+
+                        Figura. Ciclo de vida de los datos dentro del clúster Hadoop.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Ciclo de vida de los datos
+            </h3>
+
+            <p>
+
+                Los conjuntos de datos utilizados durante el curso, descritos previamente en
+                el apartado de <strong>Datasets</strong>, serán incorporados al sistema de
+                archivos distribuido <strong>HDFS</strong> mediante los comandos Hadoop
+                correspondientes. Posteriormente serán procesados utilizando
+                <strong>Hadoop Streaming</strong> y los resultados obtenidos podrán ser
+                almacenados en sistemas externos como <strong>MySQL</strong> para facilitar
+                su explotación y análisis.
+
+            </p>
+
+            <p>
+
+                Durante este proceso, los datos podrán almacenarse utilizando diferentes
+                formatos de serialización como CSV, Avro o Parquet, optimizando tanto el
+                almacenamiento como el rendimiento de lectura y escritura dentro del
+                ecosistema Hadoop.
+
+            </p>
+
+            <div class="text-center my-4">
+
+                <img src="../img/cluster-uned-dataflow.png" class="img-fluid rounded shadow imagen-ampliable"
+                    alt="Arquitectura Cluster UNED">
+
+                <p class="text-muted">
+
+                    <strong>Figura 34.</strong> Flujo de datos dentro de la arquitectura Cluster-UNED.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Proceso de trabajo
+            </h3>
+
+            <div class="row text-center">
+
+                <div class="col-md-3">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Paso 1
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Carga de los conjuntos de datos desde el sistema local hacia HDFS.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Paso 2
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Procesamiento distribuido mediante Hadoop Streaming o MapReduce.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Paso 3
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Obtención de los resultados almacenados en HDFS.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Paso 4
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Extracción y almacenamiento de resultados en MySQL o formatos optimizados.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Conocimientos previos
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            Conocimientos teóricos
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Conceptos fundamentales de Big Data.</li>
+
+                                <li>Arquitectura Hadoop.</li>
+
+                                <li>Funcionamiento del sistema HDFS.</li>
+
+                                <li>Sistemas distribuidos.</li>
+
+                                <li>Fundamentos del almacenamiento de datos.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            Infraestructura necesaria
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Máquina virtual Ubuntu.</li>
+
+                                <li>Clúster Hadoop desplegado.</li>
+
+                                <li>Servicio HDFS operativo.</li>
+
+                                <li>Apache Flume instalado.</li>
+
+                                <li>Docker y Docker Compose.</li>
+
+                                <li>Jupyter Notebook disponible.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Dependencias con otras lecciones
+            </h3>
+
+            <div class="list-group shadow-sm">
+
+                <a href="../leccion1/index.html" class="list-group-item list-group-item-action">
+
+                    <strong>Lección 1.</strong> Introducción al Big Data
+
+                    <br>
+
+                    <small class="text-muted">
+                        Presenta el contexto y la necesidad de gestionar grandes volúmenes de información.
+                    </small>
+
+                </a>
+
+                <a href="../leccion2/index.html" class="list-group-item list-group-item-action">
+
+                    <strong>Lección 2.</strong> Fundamentos de Hadoop
+
+                    <br>
+
+                    <small class="text-muted">
+                        Describe la arquitectura general del ecosistema Hadoop y sus principales componentes.
+                    </small>
+
+                </a>
+
+                <a href="../leccion3/index.html" class="list-group-item list-group-item-action">
+
+                    <strong>Lección 3.</strong> HDFS: Sistema de archivos distribuido
+
+                    <br>
+
+                    <small class="text-muted">
+                        Explica el funcionamiento del sistema donde se almacenarán los datos utilizados en esta
+                        práctica.
+                    </small>
+
+                </a>
+
+                <div class="list-group-item">
+
+                    <strong>Lecciones posteriores</strong>
+
+                    <br>
+
+                    <small class="text-muted">
+
+                        Los datos cargados en HDFS serán utilizados posteriormente para desarrollar
+                        ejercicios de Hadoop Streaming, MapReduce, Apache Hive y serialización de datos.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p class="mb-0">
+
+                    La correcta gestión de la entrada y salida de datos constituye uno de los
+                    aspectos fundamentales en cualquier arquitectura Big Data. Tras completar esta
+                    lección, el estudiante será capaz de incorporar información al clúster Hadoop,
+                    administrar ficheros distribuidos, automatizar procesos de ingesta mediante
+                    Apache Flume y preparar los datos para su posterior procesamiento utilizando
+                    las distintas tecnologías del ecosistema Hadoop.
+
+                </p>
+
+            </div>
+
+
+            <div class="text-center mt-5">
+
+                <a href="../index.html" class="btn btn-outline-success btn-lg">
+
+                    <i class="bi bi-arrow-left-circle"></i>
+
+                    Volver al índice del curso
+
+                </a>
+
+            </div>
+
+
+
+
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                Cluster Hadoop
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <footer class="bg-success text-white mt-5">
+
+                <div class="container py-3 text-center">
+
+                    Proyecto Fin de Grado · UNED
+
+                </div>
+
+            </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
