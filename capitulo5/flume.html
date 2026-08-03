@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 4.Preparación del entorno para la ingesta de datos con Apache Flume.
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 5.4
+
+            </a>
+        </div>
+
+
+
+    </nav>
+
+    <div class="container mt-5">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Capítulo 5.4
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+
+        <!-- ===================================================== -->
+        <!-- 3.5.1 APACHE FLUME -->
+        <!-- ===================================================== -->
+
+        <h2 class="text-success mb-4">
+            3.5.1 Apache Flume
+        </h2>
+
+        <p class="lead">
+
+            Apache Flume es una de las herramientas que forman parte del ecosistema
+            <strong>Apache Hadoop</strong> y está diseñada para la recolección,
+            agregación y transferencia de grandes volúmenes de datos desde múltiples
+            fuentes hacia sistemas de almacenamiento distribuido como
+            <strong>HDFS</strong>.
+
+        </p>
+
+        <p>
+
+            Se trata de una aplicación desarrollada en Java que permite automatizar los
+            procesos de ingesta de datos mediante una arquitectura distribuida,
+            escalable y tolerante a fallos. Aunque su destino habitual es HDFS,
+            Apache Flume también puede enviar información a otros sistemas del
+            ecosistema Hadoop como <strong>HBase</strong>, <strong>Apache Solr</strong>
+            o diferentes sistemas de almacenamiento compatibles.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            Apache Flume constituye uno de los mecanismos más utilizados para automatizar
+            la incorporación de datos hacia Hadoop, evitando procesos manuales de copia
+            de archivos y facilitando la integración de flujos continuos de información.
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Arquitectura de Apache Flume
+        </h3>
+
+        <p>
+
+            El funcionamiento de Flume se basa en un flujo de eventos compuesto por tres
+            elementos principales que trabajan conjuntamente para transportar la
+            información desde el origen hasta su destino final.
+
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/flume-schema.png" class="img-fluid rounded shadow imagen-ampliable"
+                alt="Arquitectura Apache Flume">
+
+            <p class="text-muted">
+
+                <strong>Figura 17.</strong> Esquema general de funcionamiento de Apache Flume.
+
+            </p>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Componentes principales
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Source
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Representa el punto de entrada de la información.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Recibe los datos desde aplicaciones o ficheros.</li>
+
+                            <li>Genera eventos Flume.</li>
+
+                            <li>Envía los eventos al Channel.</li>
+
+                            <li>Puede monitorizar directorios automáticamente.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Channel
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Almacén temporal que conecta Source y Sink.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Guarda los eventos temporalmente.</li>
+
+                            <li>Desacopla origen y destino.</li>
+
+                            <li>Garantiza una transferencia fiable.</li>
+
+                            <li>Puede implementarse en memoria o disco.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-header bg-success text-white">
+
+                        Sink
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+
+                            Destino final de los datos.
+
+                        </p>
+
+                        <ul>
+
+                            <li>Recibe los eventos desde el Channel.</li>
+
+                            <li>Escribe la información en HDFS.</li>
+
+                            <li>También puede enviar datos a HBase o Solr.</li>
+
+                            <li>Finaliza el flujo de transferencia.</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Funcionamiento del agente Flume
+        </h3>
+
+        <p>
+
+            Para utilizar Apache Flume es necesario ejecutar un
+            <strong>Agente Flume</strong>, un proceso Java encargado de coordinar
+            el funcionamiento de los componentes Source, Channel y Sink.
+
+        </p>
+
+        <p>
+
+            Durante la ejecución, la Source detecta nuevos datos y genera eventos que
+            son almacenados temporalmente en el Channel. Posteriormente, el Sink recupera
+            dichos eventos y los escribe automáticamente en el sistema de almacenamiento
+            configurado.
+
+        </p>
+
+        <div class="alert alert-light border">
+
+            <pre class="mb-0">
+Aplicación / Archivo
+          │
+          ▼
+       Source
+          │
+          ▼
+      Channel
+          │
+          ▼
+        Sink
+          │
+          ▼
+         HDFS
+</pre>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Arquitectura distribuida
+        </h3>
+
+        <p>
+
+            Una instalación completa de Apache Flume puede estar formada por múltiples
+            agentes distribuidos dentro de una red. Cada agente ejecuta uno o varios
+            componentes Source, Channel y Sink, permitiendo construir arquitecturas de
+            ingesta altamente escalables.
+
+        </p>
+
+        <p>
+
+            Los agentes situados en los extremos de la infraestructura recopilan la
+            información desde diferentes fuentes, mientras que otros agentes intermedios
+            pueden agregar, transformar y reenviar los eventos hasta su almacenamiento
+            definitivo en HDFS.
+
+        </p>
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-success text-white">
+
+                Ventajas de Apache Flume
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>Automatiza completamente la ingesta de datos.</li>
+
+                    <li>Arquitectura distribuida y escalable.</li>
+
+                    <li>Tolerancia frente a fallos.</li>
+
+                    <li>Alta disponibilidad.</li>
+
+                    <li>Integración nativa con Hadoop.</li>
+
+                    <li>Configuración sencilla mediante archivos <strong>.conf</strong>.</li>
+
+                    <li>Compatible con diferentes orígenes y destinos de datos.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr class="my-5">
+
+        <h3 class="text-success">
+            Aplicación en este proyecto
+        </h3>
+
+        <p>
+
+            En la infraestructura desarrollada para este proyecto, Apache Flume será el
+            encargado de automatizar la transferencia del conjunto de datos
+            <strong>TABLA_ACCIDENTES_24.csv</strong> desde el sistema de archivos local
+            hasta el sistema distribuido HDFS.
+
+        </p>
+
+        <p>
+
+            El agente Flume se ejecutará sobre el contenedor
+            <strong>NameNode</strong>, donde supervisará continuamente un directorio
+            compartido. Cada vez que aparezca un nuevo fichero, éste será enviado
+            automáticamente al clúster Hadoop para su posterior procesamiento mediante
+            <strong>Hadoop Streaming</strong>, <strong>MapReduce</strong> y
+            <strong>Apache Hive</strong>.
+
+        </p>
+
+        <hr class="my-5">
+
+        <div class="alert alert-primary">
+
+            <h4>Conclusión</h4>
+
+            <p class="mb-0">
+
+                Apache Flume constituye una herramienta fundamental dentro del ecosistema
+                Hadoop para la automatización de la ingesta de datos. Gracias a su modelo
+                basado en agentes, Source, Channel y Sink, permite construir flujos de
+                transferencia robustos, escalables y completamente automatizados,
+                facilitando la incorporación continua de información hacia HDFS y sirviendo
+                como punto de partida para el procesamiento distribuido de grandes volúmenes
+                de datos.
+
+            </p>
+
+        </div>
+
+        <div class="text-center mt-5">
+
+            <a href="5.5.3.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-pencil-square"></i>
+
+                Consultar Solución Ejercicio 1.
+
+            </a>
+
+        </div>
+        <div class="text-center mt-5">
+
+            <a href="../index.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice del curso
+
+            </a>
+
+        </div>
+
+
+    </div>
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
