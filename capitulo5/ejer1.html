@@ -161,6 +161,82 @@
             </ul>
 
         </div>
+        <div class="card-body">
+
+            <h4>
+
+                5.5.3 Ejercicio Resuelto con Hadoop Streaming - Contador de palabras
+
+            </h4>
+
+            <p>
+
+                A continuación se presenta la resolución completa del ejercicio utilizando
+                <strong>Jupyter Notebook</strong>, el entorno de desarrollo integrado en el
+                contenedor <strong>NameNode</strong> del clúster Hadoop.
+
+            </p>
+
+            <p>
+
+                La solución reproduce paso a paso todo el proceso de ejecución del trabajo
+                <strong>Hadoop Streaming</strong>, desde la carga del documento clínico del
+                corpus <strong>MEDDOCAN</strong> en el sistema de archivos distribuido
+                <strong>HDFS</strong>, hasta la ejecución del programa MapReduce y la
+                visualización de los resultados obtenidos.
+
+            </p>
+
+            <p>
+
+                El cuaderno incluye los comandos necesarios para crear los directorios de
+                trabajo, copiar los ficheros al clúster, ejecutar los programas
+                <strong>mapper.py</strong> y <strong>reducer.py</strong>, lanzar el trabajo
+                Hadoop Streaming y consultar posteriormente la salida generada en HDFS. De
+                esta forma, el estudiante puede seguir cada una de las etapas del
+                procesamiento distribuido y comprender cómo interactúan los distintos
+                componentes del ecosistema Hadoop.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-journal-code"></i>
+
+                <strong>Contenido del Notebook</strong>
+
+                <ul class="mb-0 mt-2">
+
+                    <li>Preparación del entorno de trabajo.</li>
+
+                    <li>Carga del fichero clínico MEDDOCAN en HDFS.</li>
+
+                    <li>Creación de los programas <strong>mapper.py</strong> y <strong>reducer.py</strong>.</li>
+
+                    <li>Ejecución del trabajo mediante Hadoop Streaming.</li>
+
+                    <li>Consulta del resultado almacenado en HDFS.</li>
+
+                    <li>Análisis e interpretación de la salida obtenida.</li>
+
+                </ul>
+
+            </div>
+
+            <div class="text-center my-4">
+
+                <img src="../img/jupyter-wordcount.png" class="img-fluid rounded shadow imagen-ampliable"
+                    alt="Resolución del ejercicio mediante Jupyter Notebook">
+
+                <p class="text-muted mt-2">
+
+                    Figura. Resolución completa del ejercicio utilizando Jupyter Notebook sobre el clúster Hadoop.
+
+                </p>
+
+            </div>
+
+        </div>
         <footer class="bg-success text-white mt-5">
 
             <div class="container py-3 text-center">
