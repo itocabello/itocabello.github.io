@@ -6,16 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+    <title>5.5.3 Ejercicio Resuelto - Hadoop Streaming - Contador de palabras</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <link href="../css/estilos.css" rel="stylesheet">
 
 </head>
 
+
 <body>
+
+
+    <!-- ========================================================= -->
+    <!-- CABECERA -->
+    <!-- ========================================================= -->
 
     <header class="bg-white border-bottom shadow-sm">
 
@@ -26,22 +33,31 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
+
                         Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+
                     </h1>
 
                     <p class="lead">
-                        Lección 3.HDFS y Almacenamiento Distribuido
+
+                        5.5.3 Ejercicio resuelto con Hadoop Streaming:
+                        Contador de palabras
+
                     </p>
+
                     <p class="lead mt-4">
 
                         Trabajo Fin de Grado - Arturo Cabello Rodriguez
 
                     </p>
+
                 </div>
+
 
                 <div class="col-md-3 text-end">
 
-                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logotipo de la UNED">
 
                 </div>
 
@@ -51,37 +67,68 @@
 
     </header>
 
+
+    <!-- ========================================================= -->
+    <!-- MENU -->
+    <!-- ========================================================= -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house-fill"></i>
                 Inicio
+
             </a>
+
 
             <a href="index.html" class="navbar-brand">
 
-                Volver al índice del capítulo 5.3
+                <i class="bi bi-list"></i>
+                Índice del capítulo 5
 
             </a>
+
         </div>
-
-
 
     </nav>
 
-    <div class="container mt-5">
+
+    <!-- ========================================================= -->
+    <!-- CONTENIDO -->
+    <!-- ========================================================= -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
 
         <nav aria-label="breadcrumb">
 
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
+
+                    <a href="../index.html">
+                        Inicio
+                    </a>
+
+                </li>
+
+                <li class="breadcrumb-item">
+
+                    <a href="index.html">
+                        Capítulo 5
+                    </a>
+
                 </li>
 
                 <li class="breadcrumb-item active">
-                    Capítulo 5.3
+
+                    5.5.3 Contador de palabras
+
                 </li>
 
             </ol>
@@ -89,179 +136,796 @@
         </nav>
 
 
+        <!-- ===================================================== -->
+        <!-- INTRODUCCIÓN -->
+        <!-- ===================================================== -->
 
-        <p class="lead">
+        <div class="card shadow-sm mb-4">
 
-            Tras haber desplegado la infraestructura Hadoop y cargar previamente en HDFS los
-            documentos clínicos del corpus <strong>MEDDOCAN</strong>, este ejercicio constituye
-            la primera práctica completa de procesamiento distribuido mediante
-            <strong>Hadoop Streaming</strong>. Su finalidad es introducir al estudiante en el
-            modelo de programación <strong>MapReduce</strong> utilizando scripts desarrollados
-            en Python que actuarán como <strong>Mapper</strong> y <strong>Reducer</strong>.
+            <div class="card-header bg-success text-white">
 
-        </p>
+                <h2 class="h4 mb-0">
 
-        <p>
+                    <i class="bi bi-book"></i>
 
-            El objetivo consiste en procesar un fichero clínico almacenado en
-            <strong>HDFS</strong> para obtener el número de apariciones de cada palabra
-            contenida en el documento. De este modo, el estudiante comprenderá cómo Hadoop
-            divide automáticamente el trabajo entre los distintos nodos del clúster y cómo
-            coordina todas las fases del procesamiento distribuido.
+                    Ejercicio resuelto con Hadoop Streaming
 
-        </p>
+                </h2>
 
-        <p>
+            </div>
 
-            La práctica se desarrolla íntegramente desde
-            <strong>Jupyter Notebook</strong>, utilizando la terminal integrada para ejecutar
-            los comandos Hadoop Streaming. Durante el ejercicio se utilizarán dos programas
-            escritos en Python:
 
-        </p>
+            <div class="card-body">
 
-        <ul>
 
-            <li><strong>Mapper (mapper.py):</strong> encargado de leer el documento de entrada
-                y generar los pares clave-valor <strong>(palabra, 1)</strong>.</li>
+                <p class="lead">
 
-            <li><strong>Reducer (reducer.py):</strong> responsable de agrupar las palabras
-                iguales y calcular el número total de apariciones de cada una.</li>
+                    Si continuamos con los ejemplos prácticos propuestos para
+                    realizar por parte del estudiante de una forma ordenada, en
+                    el ejercicio del punto
+                    <a href="#ep1" class="fw-bold">5.5.1</a>,
+                    hemos cargado en HDFS los ficheros <strong>.txt</strong>
+                    con los cuales queremos comprender el funcionamiento del
+                    modelo <strong>MapReduce</strong>.
 
-        </ul>
+                </p>
 
-        <p>
 
-            El fichero clínico utilizado procede del corpus
-            <strong>MEDDOCAN</strong> y se encuentra previamente almacenado en el sistema de
-            archivos distribuido HDFS. Hadoop se encargará automáticamente de leer el fichero,
-            distribuir el procesamiento entre los nodos disponibles del clúster y generar el
-            resultado final con la frecuencia de aparición de cada término.
+                <p>
 
-        </p>
+                    En esta práctica se ejecuta una tarea de MapReduce basada
+                    en un documento médico perteneciente al corpus
+                    <strong>MEDDOCAN</strong>. La finalidad es enseñar al
+                    estudiante cómo funciona la programación distribuida y
+                    facilitar su familiarización con los diferentes elementos
+                    que intervienen en un trabajo Hadoop.
 
-        <div class="alert alert-success">
+                </p>
 
-            <i class="bi bi-lightbulb-fill"></i>
 
-            <strong>Objetivo del ejercicio</strong>
+                <p>
 
-            <ul class="mb-0 mt-2">
+                    Para ello se utilizan dos scripts desarrollados en
+                    <strong>Python</strong>, que actúan respectivamente como
+                    <strong>Mapper</strong> y <strong>Reducer</strong>.
+                    Estos programas serán ejecutados mediante
+                    <strong>Hadoop Streaming</strong> desde el entorno de
+                    trabajo utilizado durante el proyecto.
 
-                <li>Cargar un documento clínico del corpus MEDDOCAN en HDFS.</li>
+                </p>
 
-                <li>Ejecutar un trabajo Hadoop Streaming desde Jupyter Notebook.</li>
 
-                <li>Comprender el funcionamiento del modelo MapReduce.</li>
+            </div>
 
-                <li>Desarrollar un programa Mapper en Python.</li>
+        </div>
 
-                <li>Desarrollar un programa Reducer en Python.</li>
 
-                <li>Observar las fases Map, Shuffle y Reduce ejecutadas automáticamente por Hadoop.</li>
 
-                <li>Obtener el número de apariciones de cada palabra del documento clínico.</li>
+        <!-- ===================================================== -->
+        <!-- OBJETIVO -->
+        <!-- ===================================================== -->
+
+        <div class="alert alert-success shadow-sm">
+
+            <h3 class="h5">
+
+                <i class="bi bi-bullseye"></i>
+
+                Objetivo del ejercicio
+
+            </h3>
+
+
+            <p class="mb-2">
+
+                El objetivo del ejercicio consiste en cargar un archivo de
+                texto en <strong>HDFS</strong> y, mediante
+                <strong>Hadoop Streaming</strong>, lanzar los scripts
+                desarrollados en Python para realizar un contador de palabras.
+
+            </p>
+
+
+            <ul class="mb-0">
+
+                <li>
+
+                    Cargar un fichero <strong>.txt</strong> del corpus
+                    <strong>MEDDOCAN</strong> en HDFS.
+
+                </li>
+
+                <li>
+
+                    Ejecutar Hadoop Streaming desde
+                    <strong>Jupyter Notebook</strong>.
+
+                </li>
+
+                <li>
+
+                    Utilizar un programa Python como
+                    <strong>Mapper</strong>.
+
+                </li>
+
+                <li>
+
+                    Utilizar un programa Python como
+                    <strong>Reducer</strong>.
+
+                </li>
+
+                <li>
+
+                    Comprender las fases
+                    <strong>Map, Shuffle y Reduce</strong>.
+
+                </li>
+
+                <li>
+
+                    Obtener el número de apariciones de cada palabra del
+                    documento.
+
+                </li>
 
             </ul>
 
         </div>
-        <div class="card-body">
 
-            <h4>
 
-                Solución - Contador de palabras
 
-            </h4>
+        <!-- ===================================================== -->
+        <!-- DESCRIPCIÓN DEL PROCESO -->
+        <!-- ===================================================== -->
 
-            <p>
+        <div class="card shadow-sm mb-4">
 
-                A continuación se presenta la resolución completa del ejercicio utilizando
-                <strong>Jupyter Notebook</strong>, el entorno de desarrollo integrado en el
-                contenedor <strong>NameNode</strong> del clúster Hadoop.
+            <div class="card-header bg-success text-white">
 
-            </p>
+                <h2 class="h4 mb-0">
 
-            <p>
+                    <i class="bi bi-diagram-3"></i>
 
-                La solución reproduce paso a paso todo el proceso de ejecución del trabajo
-                <strong>Hadoop Streaming</strong>, desde la carga del documento clínico del
-                corpus <strong>MEDDOCAN</strong> en el sistema de archivos distribuido
-                <strong>HDFS</strong>, hasta la ejecución del programa MapReduce y la
-                visualización de los resultados obtenidos.
+                    Funcionamiento del ejercicio
 
-            </p>
-
-            <p>
-
-                El cuaderno incluye los comandos necesarios para crear los directorios de
-                trabajo, copiar los ficheros al clúster, ejecutar los programas
-                <strong>mapper.py</strong> y <strong>reducer.py</strong>, lanzar el trabajo
-                Hadoop Streaming y consultar posteriormente la salida generada en HDFS. De
-                esta forma, el estudiante puede seguir cada una de las etapas del
-                procesamiento distribuido y comprender cómo interactúan los distintos
-                componentes del ecosistema Hadoop.
-
-            </p>
-
-            <div class="alert alert-info">
-
-                <i class="bi bi-journal-code"></i>
-
-                <strong>Contenido del Notebook</strong>
-
-                <ul class="mb-0 mt-2">
-
-                    <li>Preparación del entorno de trabajo.</li>
-
-                    <li>Carga del fichero clínico MEDDOCAN en HDFS.</li>
-
-                    <li>Creación de los programas <strong>mapper.py</strong> y <strong>reducer.py</strong>.</li>
-
-                    <li>Ejecución del trabajo mediante Hadoop Streaming.</li>
-
-                    <li>Consulta del resultado almacenado en HDFS.</li>
-
-                    <li>Análisis e interpretación de la salida obtenida.</li>
-
-                </ul>
+                </h2>
 
             </div>
 
 
-            <div class="text-center mt-5">
+            <div class="card-body">
 
-                <a href="5.5.3.html" class="btn btn-success btn-lg">
 
-                    <i class="bi bi-pencil-square"></i>
+                <p>
 
-                    Consultar Solución Ejercicio 1.
+                    El ejercicio parte de un fichero de texto almacenado
+                    previamente en el sistema de archivos distribuido
+                    <strong>HDFS</strong>. Sobre este fichero se ejecuta un
+                    trabajo de procesamiento distribuido utilizando
+                    <strong>Hadoop Streaming</strong>.
 
-                </a>
+                </p>
+
+
+                <p>
+
+                    Durante la ejecución, Hadoop procesa el contenido del
+                    documento mediante las diferentes fases del modelo
+                    <strong>MapReduce</strong>.
+
+                </p>
+
+
+                <div class="row mt-4">
+
+
+                    <!-- MAP -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="card h-100 border-primary">
+
+                            <div class="card-header bg-primary text-white">
+
+                                <strong>
+                                    <i class="bi bi-1-circle"></i>
+                                    Map
+                                </strong>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>
+
+                                    El Mapper lee las líneas del documento
+                                    y genera pares clave-valor.
+
+                                </p>
+
+                                <p class="text-center">
+
+                                    <code>(palabra, 1)</code>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SHUFFLE -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="card h-100 border-warning">
+
+                            <div class="card-header bg-warning">
+
+                                <strong>
+                                    <i class="bi bi-2-circle"></i>
+                                    Shuffle
+                                </strong>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>
+
+                                    Hadoop agrupa automáticamente los pares
+                                    generados por el Mapper según su clave.
+
+                                </p>
+
+                                <p class="text-center">
+
+                                    <code>palabra → [1,1,1,1...]</code>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REDUCE -->
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="card h-100 border-success">
+
+                            <div class="card-header bg-success text-white">
+
+                                <strong>
+                                    <i class="bi bi-3-circle"></i>
+                                    Reduce
+                                </strong>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>
+
+                                    El Reducer suma los valores asociados a
+                                    cada palabra para obtener su frecuencia.
+
+                                </p>
+
+                                <p class="text-center">
+
+                                    <code>palabra → total</code>
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
 
             </div>
-            <div class="text-center mt-5">
 
-                <a href="index.html" class="btn btn-outline-success btn-lg">
+        </div>
 
-                    Volver al índice del capítulo 5.3
 
-                </a>
+
+        <!-- ===================================================== -->
+        <!-- SCRIPTS -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-success text-white">
+
+                <h2 class="h4 mb-0">
+
+                    <i class="bi bi-filetype-py"></i>
+
+                    Programas utilizados
+
+                </h2>
 
             </div>
+
+
+            <div class="card-body">
+
+
+                <p>
+
+                    Para realizar el procesamiento se utilizan dos programas
+                    escritos en Python, que son proporcionados a Hadoop
+                    Streaming mediante la línea de comandos.
+
+                </p>
+
+
+                <div class="row">
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card h-100">
+
+                            <div class="card-header">
+
+                                <strong>mapper.py</strong>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>
+
+                                    El programa Mapper se encarga de leer el
+                                    contenido del documento y generar un par
+                                    clave-valor por cada palabra encontrada.
+
+                                </p>
+
+
+                                <pre class="bg-light p-3 rounded"><code>palabra    1
+palabra    1
+palabra    1</code></pre>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6 mb-3">
+
+                        <div class="card h-100">
+
+                            <div class="card-header">
+
+                                <strong>reducer.py</strong>
+
+                            </div>
+
+                            <div class="card-body">
+
+                                <p>
+
+                                    El Reducer recibe las palabras agrupadas
+                                    y realiza la suma de sus apariciones.
+
+                                </p>
+
+
+                                <pre class="bg-light p-3 rounded"><code>palabra    5
+hadoop     8
+datos      12</code></pre>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- HADOOP STREAMING -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-dark text-white">
+
+                <h2 class="h4 mb-0">
+
+                    <i class="bi bi-terminal"></i>
+
+                    Ejecución mediante Hadoop Streaming
+
+                </h2>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+                <p>
+
+                    Una vez preparados los programas
+                    <strong>mapper.py</strong> y
+                    <strong>reducer.py</strong>, se ejecuta el trabajo
+                    utilizando Hadoop Streaming.
+
+                </p>
+
+
+                <div class="alert alert-info">
+
+                    <i class="bi bi-info-circle-fill"></i>
+
+                    La ejecución se realiza desde
+                    <strong>Jupyter Notebook</strong>, utilizando la terminal
+                    disponible en el entorno del proyecto.
+
+                </div>
+
+
+                <pre class="bg-dark text-white p-4 rounded"><code>hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
+-files mapper.py,reducer.py \
+-mapper mapper.py \
+-reducer reducer.py \
+-input /datasets/MEDDOCAN \
+-output /datasets/wordcount</code></pre>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- FASES -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-success text-white">
+
+                <h2 class="h4 mb-0">
+
+                    <i class="bi bi-arrow-repeat"></i>
+
+                    Secuencia de ejecución
+
+                </h2>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+                <p>
+
+                    El funcionamiento completo del ejercicio puede resumirse
+                    en las siguientes etapas:
+
+                </p>
+
+
+                <ol class="list-group list-group-numbered">
+
+
+                    <li class="list-group-item">
+
+                        Se dispone de un documento
+                        <strong>.txt</strong> perteneciente al corpus
+                        MEDDOCAN.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        El documento se encuentra almacenado en
+                        <strong>HDFS</strong>.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        Hadoop Streaming inicia el trabajo MapReduce.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        El <strong>Mapper</strong> lee el documento y genera
+                        los pares <strong>(palabra, 1)</strong>.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        Hadoop realiza automáticamente la fase
+                        <strong>Shuffle</strong>, agrupando las claves
+                        iguales.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        El <strong>Reducer</strong> suma los valores de cada
+                        palabra.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        El resultado se almacena nuevamente en
+                        <strong>HDFS</strong>.
+
+                    </li>
+
+
+                    <li class="list-group-item">
+
+                        Finalmente, el estudiante puede consultar el
+                        resultado obtenido.
+
+                    </li>
+
+
+                </ol>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- RESULTADO -->
+        <!-- ===================================================== -->
+
+        <div class="alert alert-success shadow-sm">
+
+            <h3 class="h5">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Resultado del ejercicio
+
+            </h3>
+
+
+            <p>
+
+                Como resultado del procesamiento se obtiene un listado de
+                términos junto con el número de veces que aparecen en el
+                documento utilizado como entrada.
+
+            </p>
+
+
+            <p class="mb-0">
+
+                De esta forma, el estudiante puede comprobar de manera
+                práctica cómo un documento almacenado en HDFS es procesado
+                mediante un trabajo distribuido de
+                <strong>MapReduce</strong> utilizando
+                <strong>Hadoop Streaming</strong>.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- SOLUCIÓN JUPYTER -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-5">
+
+            <div class="card-header bg-success text-white">
+
+                <h2 class="h4 mb-0">
+
+                    <i class="bi bi-journal-code"></i>
+
+                    Solución del ejercicio en Jupyter Notebook
+
+                </h2>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+                <p>
+
+                    A continuación se presenta la solución completa del
+                    ejercicio desarrollada mediante
+                    <strong>Jupyter Notebook</strong>.
+
+                </p>
+
+
+                <p>
+
+                    El cuaderno permite observar de forma ordenada los
+                    diferentes pasos necesarios para cargar el fichero
+                    MEDDOCAN en HDFS, preparar los programas Python y
+                    ejecutar el trabajo mediante Hadoop Streaming.
+
+                </p>
+
+
+                <div class="alert alert-primary">
+
+                    <i class="bi bi-lightbulb-fill"></i>
+
+                    <strong>Contenido de la solución:</strong>
+
+                    <ul class="mb-0 mt-2">
+
+                        <li>
+
+                            Preparación del entorno.
+
+                        </li>
+
+                        <li>
+
+                            Comprobación del fichero de entrada.
+
+                        </li>
+
+                        <li>
+
+                            Carga del documento en HDFS.
+
+                        </li>
+
+                        <li>
+
+                            Creación del Mapper.
+
+                        </li>
+
+                        <li>
+
+                            Creación del Reducer.
+
+                        </li>
+
+                        <li>
+
+                            Ejecución de Hadoop Streaming.
+
+                        </li>
+
+                        <li>
+
+                            Consulta del resultado generado.
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- BOTÓN -->
+
+                <div class="text-center mt-4">
+
+                    <a href="5.5.3-solucion.html" class="btn btn-success btn-lg">
+
+                        <i class="bi bi-journal-code"></i>
+
+                        Ver solución completa en Jupyter
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- NAVEGACIÓN -->
+        <!-- ===================================================== -->
+
+        <div class="d-flex justify-content-between align-items-center mb-5">
+
+
+            <a href="5.5.2.html" class="btn btn-outline-success">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Punto anterior
+
+            </a>
+
+
+            <a href="index.html" class="btn btn-outline-success">
+
+                <i class="bi bi-list"></i>
+
+                Índice del capítulo 5
+
+            </a>
+
+
+            <a href="5.6.html" class="btn btn-success">
+
+                Siguiente punto
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
 
 
         </div>
-        <footer class="bg-success text-white mt-5">
 
-            <div class="container py-3 text-center">
 
-                Proyecto Fin de Grado · UNED
+    </main>
 
-            </div>
 
-        </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED ·
+            Virtualización ligera para el despliegue de infraestructuras Big Data
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 
