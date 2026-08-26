@@ -6,16 +6,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
+    <title>Lección 5 - Serialización y deserialización de los datos</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Estilos del proyecto -->
     <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        .bloque-leccion {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque-leccion h3 {
+            color: #006633;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .objetivo h3 {
+            color: #006633;
+            margin-top: 0;
+        }
+
+        .dependencias {
+            background-color: #f1f1f1;
+            border-left: 5px solid #006633;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .dependencias h3 {
+            color: #006633;
+            margin-top: 0;
+        }
+
+        .formato-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            height: 100%;
+            background-color: white;
+        }
+
+        .formato-card h4 {
+            color: #006633;
+            font-weight: bold;
+        }
+
+        .icono-leccion {
+            font-size: 2.5rem;
+            color: #006633;
+            margin-bottom: 15px;
+        }
+
+        .referencia {
+            background-color: #f8f8f8;
+            border-left: 4px solid #006633;
+            padding: 18px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+    </style>
 
 </head>
 
+
 <body>
+
+
+    <!-- =====================================================
+         CABECERA
+    ====================================================== -->
 
     <header class="bg-white border-bottom shadow-sm">
 
@@ -26,22 +126,22 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Capítulo 5.6 Lección 4.Inyección/Extracción de datos.
+                        Curso práctico Big Data · Docker · Hadoop
                     </h1>
 
                     <p class="lead">
-                        Lección 4.Inyección/Extracción de datos
+                        Virtualización ligera para el despliegue de infraestructuras Big Data
                     </p>
+
                     <p class="lead mt-4">
-
                         Trabajo Fin de Grado - Arturo Cabello Rodriguez
-
                     </p>
+
                 </div>
 
                 <div class="col-md-3 text-end">
 
-                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo UNED">
 
                 </div>
 
@@ -51,486 +151,399 @@
 
     </header>
 
+
+    <!-- =====================================================
+         MENU
+    ====================================================== -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
-                <i class="bi bi-house-fill"></i>Inicio
+                Inicio
             </a>
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-list"></i>Volver al índice del capítulo 5.
+
+            <a href="index.html" class="navbar-brand">
+                Volver al índice del capítulo 5
             </a>
 
         </div>
 
     </nav>
 
-    <div class="row">
 
-        <!-- Menú lateral -->
+    <!-- =====================================================
+         TITULO
+    ====================================================== -->
 
-        <div class="col-lg-3">
+    <section class="bg-success text-white py-4">
 
-            <div class="list-group shadow">
+        <div class="container">
 
-                <div class="list-group-item active bg-success border-success">
+            <h1 class="fw-bold">
+                Lección 5. Serialización y deserialización de los datos
+            </h1>
 
-                    <i class="bi bi-book"></i>
+            <p class="mb-0 fs-5">
+                Formatos de almacenamiento para arquitecturas Big Data
+            </p>
 
-                    Capítulo 5.
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTENIDO
+    ====================================================== -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Capítulo 5</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Lección 5
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- =====================================================
+             INTRODUCCION
+        ====================================================== -->
+
+        <div class="bloque-leccion">
+
+            <h3>
+                <i class="bi bi-database"></i>
+                Introducción
+            </h3>
+
+            <p>
+                Cualquier arquitectura de datos Big Data requiere que los datos
+                estén organizados correctamente tanto para procesamiento como
+                para almacenamiento. Esto se alcanza mediante una infraestructura
+                que lleva las características de los datos desde su representación
+                inicial hasta la versión optimizada para almacenamiento o
+                distribución.
+            </p>
+
+            <p>
+                Este proceso se denomina
+                <strong>serialización</strong>; su operación contraria es la
+                <strong>deserialización</strong>.
+            </p>
+
+            <p>
+                En el ecosistema de Hadoop, estos procesos se utilizan para
+                cambiar la información entre los distintos elementos de la
+                arquitectura, mejorar el uso del almacenamiento distribuido y
+                aumentar el rendimiento de las tareas de procesamiento.
+            </p>
+
+            <p class="mb-0">
+                La utilización de formatos estándar redunda en un menor consumo
+                de almacenamiento por disco y en un menor tráfico de datos entre
+                nodos mientras se ejecutan las aplicaciones distribuidas.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             FORMATOS
+        ====================================================== -->
+
+        <div class="bloque-leccion">
+
+            <h3>
+                <i class="bi bi-file-earmark-code"></i>
+                Formatos de datos en Big Data
+            </h3>
+
+            <p>
+                Los formatos más frecuentes utilizados en plataformas de
+                Big Data son
+                <strong>Apache Avro</strong> y
+                <strong>Apache Parquet</strong>.
+            </p>
+
+            <p>
+                Estos formatos permiten organizar la información de manera
+                adecuada para su almacenamiento y posterior procesamiento
+                dentro del ecosistema Hadoop.
+            </p>
+
+
+            <div class="row mt-4">
+
+
+                <!-- AVRO -->
+
+                <div class="col-md-6 mb-4">
+
+                    <div class="formato-card text-center">
+
+                        <div class="icono-leccion">
+
+                            <i class="bi bi-file-earmark-binary"></i>
+
+                        </div>
+
+                        <h4>
+                            Apache Avro
+                        </h4>
+
+                        <p>
+                            Formato de serialización utilizado en arquitecturas
+                            Big Data para organizar y almacenar información de
+                            forma adecuada para su procesamiento distribuido.
+                        </p>
+
+                    </div>
 
                 </div>
 
-                <a href="ejer4.html" class="list-group-item list-group-item-action">
 
-                    Ejercicios Resueltos Lección 4
+                <!-- PARQUET -->
 
-                </a>
+                <div class="col-md-6 mb-4">
 
+                    <div class="formato-card text-center">
+
+                        <div class="icono-leccion">
+
+                            <i class="bi bi-table"></i>
+
+                        </div>
+
+                        <h4>
+                            Apache Parquet
+                        </h4>
+
+                        <p>
+                            Formato utilizado en plataformas Big Data para
+                            optimizar el almacenamiento y facilitar el
+                            procesamiento de los conjuntos de datos.
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-        <!-- Contenido -->
 
-        <div class="col-lg-9">
+        <!-- =====================================================
+             EJERCICIOS PRACTICOS
+        ====================================================== -->
 
+        <div class="bloque-leccion">
 
-            <h2 class="text-success mb-4">
-                Lección 4. Inyección y extracción de datos
-            </h2>
+            <h3>
+                <i class="bi bi-tools"></i>
+                Ejercicios prácticos
+            </h3>
 
-            <p class="lead">
-
-                Una vez desplegada la infraestructura Hadoop y comprendidos los componentes
-                fundamentales del ecosistema, el siguiente paso consiste en aprender cómo
-                incorporar información al clúster y cómo recuperar posteriormente los
-                resultados generados durante el procesamiento distribuido.
-
+            <p>
+                Además de los contenidos teóricos, se llevarán a cabo ejercicios
+                prácticos empleando conjuntos de datos presentes a lo largo de
+                la presente investigación.
             </p>
 
             <p>
-
-                La gestión del ciclo de vida de los datos constituye una de las tareas más
-                importantes dentro de cualquier plataforma Big Data. En esta lección se
-                estudian las técnicas necesarias para cargar información desde el sistema de
-                archivos local hacia HDFS, extraer posteriormente los resultados obtenidos y
-                automatizar la ingesta de datos mediante herramientas del ecosistema Hadoop.
-
+                El objetivo es que el estudiante pueda percibir la efectividad
+                de estos formatos al almacenarse y procesarse en un entorno
+                distribuido.
             </p>
 
-            <div class="alert alert-success">
+            <div class="alert alert-info mt-4">
 
                 <i class="bi bi-info-circle-fill"></i>
 
-                Durante esta lección el estudiante aprenderá a introducir datos en HDFS,
-                gestionar directorios distribuidos, automatizar procesos de ingesta y
-                recuperar los resultados generados por Hadoop Streaming y MapReduce.
+                <strong>
+                    Actividad práctica
+                </strong>
 
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Objetivos de aprendizaje
-            </h3>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Competencias
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>Comprender el ciclo de vida de los datos en Hadoop.</li>
-
-                                <li>Incorporar información al sistema HDFS.</li>
-
-                                <li>Extraer datos desde HDFS al sistema local.</li>
-
-                                <li>Gestionar directorios y ficheros distribuidos.</li>
-
-                                <li>Automatizar la ingesta mediante Apache Flume.</li>
-
-                                <li>Preparar los datos para Hadoop Streaming y MapReduce.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Ciclo de vida de los datos
-            </h3>
-
-            <p>
-
-                Los conjuntos de datos utilizados durante el curso, descritos previamente en
-                el apartado de <strong>Datasets</strong>, serán incorporados al sistema de
-                archivos distribuido <strong>HDFS</strong> mediante los comandos Hadoop
-                correspondientes. Posteriormente serán procesados utilizando
-                <strong>Hadoop Streaming</strong> y los resultados obtenidos podrán ser
-                almacenados en sistemas externos como <strong>MySQL</strong> para facilitar
-                su explotación y análisis.
-
-            </p>
-
-            <p>
-
-                Durante este proceso, los datos podrán almacenarse utilizando diferentes
-                formatos de serialización como CSV, Avro o Parquet, optimizando tanto el
-                almacenamiento como el rendimiento de lectura y escritura dentro del
-                ecosistema Hadoop.
-
-            </p>
-
-            <div class="text-center my-4">
-
-                <img src="../img/cluster-uned-dataflow.png" class="img-fluid rounded shadow imagen-ampliable"
-                    alt="Arquitectura Cluster UNED">
-
-                <p class="text-muted">
-
-                    Flujo de datos dentro de la arquitectura Cluster-UNED.
-
+                <p class="mb-0 mt-2">
+                    Los ejercicios permitirán preparar conjuntos de datos para
+                    su posterior explotación mediante
+                    <strong>Hadoop Streaming</strong> y otras herramientas del
+                    ecosistema Hadoop.
                 </p>
 
             </div>
 
-            <hr class="my-5">
+        </div>
 
-            <h3 class="text-success">
-                Proceso de trabajo
+
+        <!-- =====================================================
+             OBJETIVOS
+        ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-bullseye"></i>
+                Objetivos de la lección
             </h3>
 
-            <div class="row text-center">
+            <p>
+                Al finalizar este módulo, el estudiante será capaz de:
+            </p>
 
-                <div class="col-md-3">
+            <ul>
 
-                    <div class="card shadow-sm h-100">
+                <li>
+                    Identificar las ventajas de utilizar formatos serializados
+                    en arquitecturas Big Data.
+                </li>
 
-                        <div class="card-header bg-success text-white">
+                <li>
+                    Diferenciar entre formatos orientados a filas y formatos
+                    orientados a columnas.
+                </li>
 
-                            Paso 1
+                <li>
+                    Conocer el funcionamiento de
+                    <strong>Apache Avro</strong> y
+                    <strong>Apache Parquet</strong>.
+                </li>
 
-                        </div>
+                <li>
+                    Preparar conjuntos de datos para su explotación mediante
+                    <strong>Hadoop Streaming</strong>.
+                </li>
 
-                        <div class="card-body">
+                <li>
+                    Utilizar los conocimientos adquiridos con otras herramientas
+                    del ecosistema Hadoop.
+                </li>
 
-                            Carga de los conjuntos de datos desde el sistema local hacia HDFS.
+            </ul>
 
-                        </div>
+        </div>
 
-                    </div>
 
-                </div>
+        <!-- =====================================================
+             DEPENDENCIAS
+        ====================================================== -->
 
-                <div class="col-md-3">
+        <div class="dependencias">
 
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Paso 2
-
-                        </div>
-
-                        <div class="card-body">
-
-                            Procesamiento distribuido mediante Hadoop Streaming o MapReduce.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-3">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Paso 3
-
-                        </div>
-
-                        <div class="card-body">
-
-                            Obtención de los resultados almacenados en HDFS.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-3">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Paso 4
-
-                        </div>
-
-                        <div class="card-body">
-
-                            Extracción y almacenamiento de resultados en MySQL o formatos optimizados.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Conocimientos previos
+            <h3>
+                <i class="bi bi-diagram-3"></i>
+                5.7.1. Dependencias con otras lecciones
             </h3>
 
-            <div class="row">
+            <p>
+                Esta lección complementa los conocimientos adquiridos en los
+                módulos anteriores.
+            </p>
 
-                <div class="col-md-6">
+            <p>
+                La comprensión del funcionamiento de
+                <strong>HDFS</strong> y del procesamiento distribuido mediante
+                <strong>MapReduce</strong> resulta esencial para entender la
+                necesidad de utilizar formatos optimizados de almacenamiento.
+            </p>
 
-                    <div class="card shadow-sm">
+            <p>
+                Además, los conceptos desarrollados servirán de base para
+                futuros trabajos relacionados con
+                <strong>Hive</strong> y otras herramientas del ecosistema
+                Hadoop, donde la utilización de formatos como
+                <strong>Avro</strong> y <strong>Parquet</strong> constituye
+                una práctica habitual.
+            </p>
 
-                        <div class="card-header bg-success text-white">
+        </div>
 
-                            Conocimientos teóricos
 
-                        </div>
+        <!-- =====================================================
+             REFERENCIA CAPITULO 3.4
+        ====================================================== -->
 
-                        <div class="card-body">
+        <div class="referencia">
 
-                            <ul>
+            <h5>
+                <i class="bi bi-book"></i>
+                Referencia relacionada
+            </h5>
 
-                                <li>Conceptos fundamentales de Big Data.</li>
+            <p class="mb-0 mt-2">
 
-                                <li>Arquitectura Hadoop.</li>
+                Para ampliar los conceptos relacionados con la serialización
+                de datos, se puede consultar el
+                <strong>Capítulo 3.4. Serialización de datos</strong>
+                de la memoria del proyecto.
 
-                                <li>Funcionamiento del sistema HDFS.</li>
+            </p>
 
-                                <li>Sistemas distribuidos.</li>
+        </div>
 
-                                <li>Fundamentos del almacenamiento de datos.</li>
 
-                            </ul>
+        <!-- =====================================================
+             NAVEGACION
+        ====================================================== -->
 
-                        </div>
+        <div class="botones">
 
-                    </div>
+            <a href="javascript:history.back()" class="btn btn-uned">
 
-                </div>
+                ← Lección anterior
 
-                <div class="col-md-6">
+            </a>
 
-                    <div class="card shadow-sm">
+            <a href="index.html" class="btn btn-uned">
 
-                        <div class="card-header bg-success text-white">
+                Volver al índice →
 
-                            Infraestructura necesaria
+            </a>
 
-                        </div>
+        </div>
 
-                        <div class="card-body">
 
-                            <ul>
+    </main>
 
-                                <li>Máquina virtual Ubuntu.</li>
 
-                                <li>Clúster Hadoop desplegado.</li>
+    <!-- =====================================================
+         PIE DE PAGINA
+    ====================================================== -->
 
-                                <li>Servicio HDFS operativo.</li>
+    <footer class="bg-success text-white mt-5">
 
-                                <li>Apache Flume instalado.</li>
+        <div class="container py-3 text-center">
 
-                                <li>Docker y Docker Compose.</li>
+            Proyecto Fin de Grado · Ingeniería Informática · UNED
 
-                                <li>Jupyter Notebook disponible.</li>
+        </div>
 
-                            </ul>
+    </footer>
 
-                        </div>
 
-                    </div>
+    <!-- Bootstrap JS -->
 
-                </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Dependencias con otras lecciones
-            </h3>
-
-            <div class="list-group shadow-sm">
-
-                <a href="../capitulo5/caracteristicas.html" class="list-group-item list-group-item-action">
-
-                    <strong>Lección 1.</strong> Introducción al Big Data
-
-                    <br>
-
-                    <small class="text-muted">
-                        Presenta el contexto y la necesidad de gestionar grandes volúmenes de información.
-                    </small>
-
-                </a>
-
-                <a href="../capitulo5/hadoop.html" class="list-group-item list-group-item-action">
-
-                    <strong>Lección 2.</strong> Fundamentos de Hadoop
-
-                    <br>
-
-                    <small class="text-muted">
-                        Describe la arquitectura general del ecosistema Hadoop y sus principales componentes.
-                    </small>
-
-                </a>
-
-                <a href="../capitulo5/hdfs.html" class="list-group-item list-group-item-action">
-
-                    <strong>Lección 3.</strong> HDFS: Sistema de archivos distribuido
-
-                    <br>
-
-                    <small class="text-muted">
-                        Explica el funcionamiento del sistema donde se almacenarán los datos utilizados en esta
-                        práctica.
-                    </small>
-
-                </a>
-
-                <div class="list-group-item">
-
-                    <strong>Lecciones posteriores</strong>
-
-                    <br>
-
-                    <small class="text-muted">
-
-                        Los datos cargados en HDFS serán utilizados posteriormente para desarrollar
-                        ejercicios de Hadoop Streaming, MapReduce, Apache Hive y serialización de datos.
-
-                    </small>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <div class="alert alert-primary">
-
-                <h4>Conclusión</h4>
-
-                <p class="mb-0">
-
-                    La correcta gestión de la entrada y salida de datos constituye uno de los
-                    aspectos fundamentales en cualquier arquitectura Big Data. Tras completar esta
-                    lección, el estudiante será capaz de incorporar información al clúster Hadoop,
-                    administrar ficheros distribuidos, automatizar procesos de ingesta mediante
-                    Apache Flume y preparar los datos para su posterior procesamiento utilizando
-                    las distintas tecnologías del ecosistema Hadoop.
-
-                </p>
-
-            </div>
-
-            <div class="text-center mb-5">
-
-
-            </div>
-            <div class="text-center mb-5">
-
-                <a href="verificacion.html" class="btn btn-success btn-lg">
-
-                    <i class="bi bi-arrow-right-circle-fill"></i>
-                    Siguiente Lección.
-
-                </a>
-
-            </div>
-            <div class="text-center mt-5">
-
-                <a href="index.html" class="btn btn-outline-success btn-lg">
-
-                    <i class="bi bi-arrow-left-circle"></i>
-
-                    Volver al índice del capítulo 5.
-                </a>
-
-            </div>
-
-
-
-
-            <div class="modal fade" id="imgClusterModal" tabindex="-1">
-
-                <div class="modal-dialog modal-xl modal-dialog-centered">
-
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-
-                            <h5 class="modal-title">
-                                Cluster Hadoop
-                            </h5>
-
-                            <button type="button" class="btn-close" data-bs-dismiss="modal">
-                            </button>
-
-                        </div>
-
-                        <div class="modal-body text-center">
-
-                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-            <footer class="bg-success text-white mt-5">
-
-                <div class="container py-3 text-center">
-
-                    Proyecto Fin de Grado · UNED
-
-                </div>
-
-            </footer>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
