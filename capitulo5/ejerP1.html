@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>5.5.3 Ejercicio Resuelto - Hadoop Streaming - Contador de palabras</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================================= -->
+    <!-- CABECERA -->
+    <!-- ========================================================= -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+
+                    </h1>
+
+                    <p class="lead">
+
+                        5.5.3 Ejercicio resuelto con Hadoop Streaming:
+                        Contador de palabras
+
+                    </p>
+
+                    <p class="lead mt-4">
+
+                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
+
+                    </p>
+
+                </div>
+
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logotipo de la UNED">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- MENU -->
+    <!-- ========================================================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house-fill"></i>
+                Inicio
+
+            </a>
+
+
+            <a href="index.html" class="navbar-brand">
+
+                <i class="bi bi-list"></i>
+                Índice del capítulo 5
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ========================================================= -->
+    <!-- CONTENIDO -->
+    <!-- ========================================================= -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
+
+
+
+
+        <!-- ===================================================== -->
+        <!-- INTRODUCCIÓN -->
+        <!-- ===================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-header bg-success text-white">
+
+                <h2 class="h4 mb-0">
+
+                    <i class="bi bi-book"></i>
+
+                    Ejercicio resuelto con Hadoop Streaming
+
+                </h2>
+
+            </div>
+
+
+            <div class="card-body">
+
+
+                <h2>Ejercicio: Conversión de CSV a Apache Avro</h2>
+                <p> El objetivo de este ejercicio es entender cómo funciona el formato <strong>Apache Avro</strong>, lo
+                    cual implica
+                    convertir el conjunto de datos <strong>TABLA_ACCIDENTES_24.csv</strong> a un formato binario
+                    <strong>Avro</strong>.
+                    Esto permite al estudiante conocer los beneficios ofrecidos por Avro cuando se emplea para almacenar
+                    e intercambiar
+                    grandes cantidades de información dentro del ecosistema Hadoop. </p>
+                <p> Antes de realizar dicha transformación, el estudiante diseñará el <strong>esquema Avro
+                        (Schema)</strong>, expresado
+                    en formato JSON, que defina la estructura del archivo. Este esquema detalla los nombres de los
+                    atributos del
+                    conjunto de datos, su tipo de dato y los valores necesarios para asegurar la correcta serialización
+                    de la
+                    información. </p>
+                <h3>Definición del esquema Avro</h3>
+                <p> Para generar el esquema se recorre cada una de las columnas del conjunto de datos y se determina
+                    automáticamente su
+                    tipo de dato. Los campos enteros se convierten al tipo <code>long</code>, los valores decimales al
+                    tipo
+                    <code>double</code> y el resto de atributos se almacenan como cadenas de texto
+                    (<code>string</code>).
+                </p>
+                <div class="imagen-ejercicio"> <img src="img/esquema-avro.png"
+                        alt="Código Python utilizado para generar el esquema Apache Avro" class="imagen-pfg">
+                    <p class="pie-imagen"> Figura. Generación dinámica del esquema Avro a partir de las columnas del
+                        conjunto de datos.
+                    </p>
+                </div>
+                <p> El esquema se define mediante un registro de tipo <code>record</code>, denominado
+                    <code>Diccionario_Tabla_Accidentes_2024</code>, dentro del espacio de nombres
+                    <code>es.pfg.bigdata</code>. Cada
+                    campo del esquema contiene su nombre y el tipo de dato correspondiente.
+                </p>
+                <h3>Conversión del conjunto de datos</h3>
+                <p> Una vez definido el esquema, el archivo CSV será cargado utilizando <strong>pandas</strong>. Los
+                    registros serán
+                    preparados y posteriormente convertidos al nuevo formato mediante la biblioteca
+                    <strong>fastavro</strong>, encargada
+                    de realizar la serialización de los datos. </p>
+                <p> Como resultado del proceso se generará el archivo <strong>TABLA_ACCIDENTES_24.avro</strong>, que
+                    contendrá los
+                    registros del conjunto de datos original utilizando el formato binario de Apache Avro. </p>
+                <h3>Análisis de los formatos CSV y Avro</h3>
+                <p> Finalmente, se analizarán y compararán ambos formatos atendiendo a diferentes características, como
+                    el espacio
+                    ocupado en disco, la velocidad de acceso a los datos y la forma en la que la información se almacena
+                    internamente.
+                </p>
+                <p> También se mostrarán los primeros registros almacenados en el archivo Avro con el objetivo de
+                    comprobar que el
+                    proceso de transformación se ha realizado correctamente y verificar que las características
+                    originales del conjunto
+                    de datos se mantienen. </p>
+                <p> El resultado final consistirá en un fichero <strong>TABLA_ACCIDENTES_24.avro</strong> y en el
+                    análisis de su
+                    contenido y de las diferencias existentes entre los formatos CSV y Avro. </p>
+
+            </div>
+
+
+            <!-- BOTÓN -->
+
+            <div class="text-center mt-4">
+
+                <a href="5.5.3.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-journal-code"></i>
+
+                    Ver solución completa.
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+        </div>
+
+
+
+        <!-- ===================================================== -->
+        <!-- NAVEGACIÓN -->
+        <!-- ===================================================== -->
+
+        <div class="d-flex justify-content-between align-items-center mb-5">
+
+
+            <a href="hdfs.html" class="btn btn-outline-success">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Punto anterior
+
+            </a>
+
+
+            <a href="index.html" class="btn btn-outline-success">
+
+                <i class="bi bi-list"></i>
+
+                Índice del capítulo 5
+
+            </a>
+
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED ·
+            Virtualización ligera para el despliegue de infraestructuras Big Data
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
