@@ -6,116 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Lección 5 - Serialización y deserialización de los datos</title>
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Estilos del proyecto -->
     <link href="../css/estilos.css" rel="stylesheet">
-
-    <style>
-        .bloque-leccion {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 25px 0;
-            background-color: #fafafa;
-        }
-
-        .bloque-leccion h3 {
-            color: #006633;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .objetivo {
-            background-color: #eef7e8;
-            border-left: 5px solid #78be20;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 5px;
-        }
-
-        .objetivo h3 {
-            color: #006633;
-            margin-top: 0;
-        }
-
-        .dependencias {
-            background-color: #f1f1f1;
-            border-left: 5px solid #006633;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 5px;
-        }
-
-        .dependencias h3 {
-            color: #006633;
-            margin-top: 0;
-        }
-
-        .formato-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 25px;
-            height: 100%;
-            background-color: white;
-        }
-
-        .formato-card h4 {
-            color: #006633;
-            font-weight: bold;
-        }
-
-        .icono-leccion {
-            font-size: 2.5rem;
-            color: #006633;
-            margin-bottom: 15px;
-        }
-
-        .referencia {
-            background-color: #f8f8f8;
-            border-left: 4px solid #006633;
-            padding: 18px;
-            margin-top: 30px;
-            border-radius: 4px;
-        }
-
-        .botones {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 45px;
-            padding-top: 25px;
-            border-top: 1px solid #ddd;
-        }
-
-        .btn-uned {
-            background-color: #006633;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-        }
-
-        .btn-uned:hover {
-            background-color: #004d26;
-            color: white;
-        }
-    </style>
 
 </head>
 
-
 <body>
-
-
-    <!-- =====================================================
-         CABECERA
-    ====================================================== -->
 
     <header class="bg-white border-bottom shadow-sm">
 
@@ -126,22 +26,22 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Curso práctico Big Data · Docker · Hadoop
+                        Capítulo 5 Soporte Teórico y Validación Práctica del Proyecto.
                     </h1>
 
                     <p class="lead">
-                        Virtualización ligera para el despliegue de infraestructuras Big Data
+                        Soporte Teórico y Validación Práctica del Proyecto
                     </p>
-
                     <p class="lead mt-4">
-                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
-                    </p>
 
+                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
+
+                    </p>
                 </div>
 
                 <div class="col-md-3 text-end">
 
-                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo UNED">
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
 
                 </div>
 
@@ -151,421 +51,481 @@
 
     </header>
 
-
-    <!-- =====================================================
-         MENU
-    ====================================================== -->
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
-                Inicio
+                <i class="bi bi-house-fill"></i>Inicio
             </a>
-
-            <a href="index.html" class="navbar-brand">
-                Volver al índice del capítulo 5
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-list"></i>Volver al índice del capítulo 5.
             </a>
 
         </div>
 
     </nav>
 
-    <div class="col-lg-3">
+    <div class="row">
 
-        <div class="list-group shadow">
+        <!-- Menú lateral -->
 
-            <div class="list-group-item active bg-success border-success">
+        <div class="col-lg-3">
 
-                <i class="bi bi-book"></i>
+            <div class="list-group shadow">
 
-                Capítulo 5.2
+                <div class="list-group-item active bg-success border-success">
 
-            </div>
+                    <i class="bi bi-book"></i>
 
-            <a href="autoe2.html" class="list-group-item list-group-item-action">
-
-                5.2.1 Preguntas de autoevaluación.
-
-            </a>
-
-
-        </div>
-
-    </div>
-
-    <!-- =====================================================
-         TITULO
-    ====================================================== -->
-
-    <section class="bg-success text-white py-4">
-
-        <div class="container">
-
-            <h1 class="fw-bold">
-                Lección 5. Serialización y deserialización de los datos
-            </h1>
-
-            <p class="mb-0 fs-5">
-                Formatos de almacenamiento para arquitecturas Big Data
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTENIDO
-    ====================================================== -->
-
-    <main class="container mt-5">
-
-
-        <!-- BREADCRUMB -->
-
-        <nav aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li class="breadcrumb-item">
-                    <a href="index.html">Capítulo 5</a>
-                </li>
-
-                <li class="breadcrumb-item active">
-                    Lección 5
-                </li>
-
-            </ol>
-
-        </nav>
-
-
-        <!-- =====================================================
-             INTRODUCCION
-        ====================================================== -->
-
-        <div class="bloque-leccion">
-
-            <h3>
-                <i class="bi bi-database"></i>
-                Introducción
-            </h3>
-
-            <p>
-                Cualquier arquitectura de datos Big Data requiere que los datos
-                estén organizados correctamente tanto para procesamiento como
-                para almacenamiento. Esto se alcanza mediante una infraestructura
-                que lleva las características de los datos desde su representación
-                inicial hasta la versión optimizada para almacenamiento o
-                distribución.
-            </p>
-
-            <p>
-                Este proceso se denomina
-                <strong>serialización</strong>; su operación contraria es la
-                <strong>deserialización</strong>.
-            </p>
-
-            <p>
-                En el ecosistema de Hadoop, estos procesos se utilizan para
-                cambiar la información entre los distintos elementos de la
-                arquitectura, mejorar el uso del almacenamiento distribuido y
-                aumentar el rendimiento de las tareas de procesamiento.
-            </p>
-
-            <p class="mb-0">
-                La utilización de formatos estándar redunda en un menor consumo
-                de almacenamiento por disco y en un menor tráfico de datos entre
-                nodos mientras se ejecutan las aplicaciones distribuidas.
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
-             FORMATOS
-        ====================================================== -->
-
-        <div class="bloque-leccion">
-
-            <h3>
-                <i class="bi bi-file-earmark-code"></i>
-                Formatos de datos en Big Data
-            </h3>
-
-            <p>
-                Los formatos más frecuentes utilizados en plataformas de
-                Big Data son
-                <strong>Apache Avro</strong> y
-                <strong>Apache Parquet</strong>.
-            </p>
-
-            <p>
-                Estos formatos permiten organizar la información de manera
-                adecuada para su almacenamiento y posterior procesamiento
-                dentro del ecosistema Hadoop.
-            </p>
-
-
-            <div class="row mt-4">
-
-
-                <!-- AVRO -->
-
-                <div class="col-md-6 mb-4">
-
-                    <div class="formato-card text-center">
-
-                        <div class="icono-leccion">
-
-                            <i class="bi bi-file-earmark-binary"></i>
-
-                        </div>
-
-                        <h4>
-                            Apache Avro
-                        </h4>
-
-                        <p>
-                            Formato de serialización utilizado en arquitecturas
-                            Big Data para organizar y almacenar información de
-                            forma adecuada para su procesamiento distribuido.
-                        </p>
-
-                    </div>
+                    Capítulo 5.2
 
                 </div>
 
+                <a href="autoe2.html" class="list-group-item list-group-item-action">
 
-                <!-- PARQUET -->
+                    5.2.1 Preguntas de autoevaluación.
 
-                <div class="col-md-6 mb-4">
+                </a>
 
-                    <div class="formato-card text-center">
-
-                        <div class="icono-leccion">
-
-                            <i class="bi bi-table"></i>
-
-                        </div>
-
-                        <h4>
-                            Apache Parquet
-                        </h4>
-
-                        <p>
-                            Formato utilizado en plataformas Big Data para
-                            optimizar el almacenamiento y facilitar el
-                            procesamiento de los conjuntos de datos.
-                        </p>
-
-                    </div>
-
-                </div>
 
             </div>
 
         </div>
 
+        <!-- Contenido -->
 
-        <!-- =====================================================
-             EJERCICIOS PRACTICOS
-        ====================================================== -->
+        <div class="col-lg-9">
 
-        <div class="bloque-leccion">
+            <section class="bg-success text-white py-4">
 
-            <h3>
-                <i class="bi bi-tools"></i>
-                Ejercicios prácticos
-            </h3>
+                <div class="container">
 
-            <p>
-                Además de los contenidos teóricos, se llevarán a cabo ejercicios
-                prácticos empleando conjuntos de datos presentes a lo largo de
-                la presente investigación.
+                    <h2 class="text-success mb-4">
+                        Lección 5. Serialización y deserialización de los datos
+                    </h2>
+
+                    <p class="mb-0 fs-5">
+                        Formatos de almacenamiento para arquitecturas Big Data
+                    </p>
+
+                </div>
+
+            </section>
+
+            <p class="lead">
+                Esta lección continúa el itinerario formativo introduciendo al estudiante en los
+                principios fundamentales del ecosistema <strong>Apache Hadoop</strong>, una de las
+                tecnologías más relevantes dentro del ámbito del Big Data y del procesamiento
+                distribuido de datos.
             </p>
 
             <p>
-                El objetivo es que el estudiante pueda percibir la efectividad
-                de estos formatos al almacenarse y procesarse en un entorno
-                distribuido.
+                El objetivo es proporcionar una visión clara de la arquitectura de Hadoop y de los
+                componentes que permiten almacenar y procesar grandes volúmenes de información
+                de forma distribuida. Para comprender adecuadamente esta lección se recomienda
+                haber estudiado previamente el
+                <strong>Capítulo 3 de la memoria</strong>, donde se desarrolla en profundidad el
+                funcionamiento interno del ecosistema Hadoop y cada uno de sus servicios.
             </p>
 
-            <div class="alert alert-info mt-4">
+            <div class="alert alert-success">
 
-                <i class="bi bi-info-circle-fill"></i>
+                <i class="bi bi-book-fill"></i>
 
-                <strong>
-                    Actividad práctica
-                </strong>
+                <strong>Recomendación previa</strong>
 
-                <p class="mb-0 mt-2">
-                    Los ejercicios permitirán preparar conjuntos de datos para
-                    su posterior explotación mediante
-                    <strong>Hadoop Streaming</strong> y otras herramientas del
-                    ecosistema Hadoop.
+                <p>
+
+                    Por todo lo indicado, el estudiante debe comprender previamente los contenidos
+                    desarrollados en el
+                    <a href="https://itocabello.github.io/capitulo3/index.html" target="_blank"
+                        class="text-success fw-bold text-decoration-none">
+
+                        Capítulo 3: Ecosistema Hadoop
+
+                    </a>,
+                    donde se explican los fundamentos teóricos de HDFS, YARN, MapReduce y la
+                    arquitectura distribuida que sirve de base para el clúster desplegado durante
+                    este proyecto.
+
                 </p>
 
             </div>
 
-        </div>
+            <hr class="my-5">
 
+            <h3 class="text-success">
+                Objetivos de aprendizaje
+            </h3>
 
-        <!-- =====================================================
-             OBJETIVOS
-        ====================================================== -->
+            <div class="row">
 
-        <div class="objetivo">
+                <div class="col-md-6">
 
-            <h3>
-                <i class="bi bi-bullseye"></i>
-                Objetivos de la lección
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Al finalizar esta lección el estudiante será capaz de:
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender la arquitectura general del ecosistema Hadoop.</li>
+
+                                <li>Identificar la función de HDFS dentro del almacenamiento distribuido.</li>
+
+                                <li>Conocer el papel de YARN en la gestión de recursos del clúster.</li>
+
+                                <li>Entender el modelo de programación MapReduce.</li>
+
+                                <li>Relacionar cada componente con el clúster desplegado mediante Docker.</li>
+
+                                <li>Interpretar cómo cooperan los distintos nodos en una infraestructura distribuida.
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <img src="../img/docker-hadoop-cluster.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                        style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+                    <p class="text-muted mt-3">
+
+                    <p class="text-muted text-center mt-2">
+
+                        Arquitectura del clúster Hadoop desplegado durante el proyecto.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Relación con el Capítulo 3
             </h3>
 
             <p>
-                Al finalizar este módulo, el estudiante será capaz de:
+
+                El contenido desarrollado en esta lección se apoya directamente en el
+                <strong>Capítulo 3</strong> de la memoria, donde se describen en detalle los
+                principales componentes que forman parte del ecosistema Hadoop.
+
             </p>
 
-            <ul>
+            <p>
 
-                <li>
-                    Identificar las ventajas de utilizar formatos serializados
-                    en arquitecturas Big Data.
-                </li>
+                Durante este módulo el estudiante relacionará la teoría estudiada con la
+                infraestructura desplegada mediante Docker, observando cómo cada uno de los
+                servicios implementados participa en el funcionamiento del clúster distribuido.
 
-                <li>
-                    Diferenciar entre formatos orientados a filas y formatos
-                    orientados a columnas.
-                </li>
+            </p>
 
-                <li>
-                    Conocer el funcionamiento de
-                    <strong>Apache Avro</strong> y
-                    <strong>Apache Parquet</strong>.
-                </li>
+            <div class="row">
 
-                <li>
-                    Preparar conjuntos de datos para su explotación mediante
-                    <strong>Hadoop Streaming</strong>.
-                </li>
+                <div class="col-md-4">
 
-                <li>
-                    Utilizar los conocimientos adquiridos con otras herramientas
-                    del ecosistema Hadoop.
-                </li>
+                    <div class="card shadow-sm h-100">
 
-            </ul>
+                        <div class="card-header bg-success text-white">
 
-        </div>
+                            HDFS
 
+                        </div>
 
-        <!-- =====================================================
-             DEPENDENCIAS
-        ====================================================== -->
+                        <div class="card-body">
 
-        <div class="dependencias">
+                            <p>
 
-            <h3>
-                <i class="bi bi-diagram-3"></i>
-                5.7.1. Dependencias con otras lecciones
+                                Sistema de archivos distribuido encargado de almacenar los bloques de datos
+                                entre los distintos DataNodes del clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            YARN
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Administrador de recursos responsable de coordinar la ejecución de tareas
+                                distribuidas y asignar recursos a las aplicaciones.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            MapReduce
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Modelo de programación encargado de dividir el procesamiento en tareas
+                                paralelas que posteriormente serán combinadas para obtener el resultado final.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Aplicación práctica dentro del proyecto
             </h3>
 
             <p>
-                Esta lección complementa los conocimientos adquiridos en los
-                módulos anteriores.
+
+                A diferencia de un estudio exclusivamente teórico, todos los conceptos tratados
+                durante esta lección podrán observarse directamente sobre el clúster Hadoop
+                desplegado en este proyecto.
+
             </p>
 
             <p>
-                La comprensión del funcionamiento de
-                <strong>HDFS</strong> y del procesamiento distribuido mediante
-                <strong>MapReduce</strong> resulta esencial para entender la
-                necesidad de utilizar formatos optimizados de almacenamiento.
-            </p>
 
-            <p>
-                Además, los conceptos desarrollados servirán de base para
-                futuros trabajos relacionados con
-                <strong>Hive</strong> y otras herramientas del ecosistema
-                Hadoop, donde la utilización de formatos como
-                <strong>Avro</strong> y <strong>Parquet</strong> constituye
-                una práctica habitual.
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
-             REFERENCIA CAPITULO 3.4
-        ====================================================== -->
-
-        <div class="referencia">
-
-            <h5>
-                <i class="bi bi-book"></i>
-                Referencia relacionada
-            </h5>
-
-            <p class="mb-0 mt-2">
-
-                Para ampliar los conceptos relacionados con la serialización
-                de datos, se puede consultar el
-                <strong>Capítulo 3.4. Serialización de datos</strong>
-                de la memoria del proyecto.
+                Los servicios ejecutados mediante contenedores Docker permiten reproducir un
+                entorno distribuido real donde los distintos nodos cooperan para almacenar,
+                gestionar y procesar información utilizando las tecnologías propias del
+                ecosistema Hadoop.
 
             </p>
 
-        </div>
+            <div class="alert alert-info">
+
+                <i class="bi bi-lightbulb-fill"></i>
+
+                Durante las siguientes prácticas el estudiante utilizará este mismo clúster
+                para ejecutar programas MapReduce, almacenar datos en HDFS, administrar los
+                recursos mediante YARN y analizar información utilizando Apache Hive.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Contenidos que se abordarán
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Arquitectura del ecosistema Hadoop.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Funcionamiento de HDFS.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Gestión de recursos mediante YARN.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Modelo de programación MapReduce.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Escalabilidad y tolerancia a fallos.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Relación entre la teoría y el clúster Docker del proyecto.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p>
+
+                    Esta lección constituye el enlace entre los fundamentos teóricos estudiados en
+                    el <strong>Capítulo 3</strong> y su aplicación práctica dentro de la infraestructura
+                    Big Data desarrollada durante el proyecto.
+
+                </p>
+
+                <p class="mb-0">
+
+                    Al finalizar el estudio de este módulo, el estudiante comprenderá la función de
+                    los principales componentes del ecosistema Hadoop y estará preparado para
+                    utilizar el clúster desplegado mediante Docker en las siguientes actividades
+                    prácticas del curso.
+
+                </p>
+
+            </div>
+            <div class="text-center mt-5">
+
+                <a href="autoe2.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Realizar autoevaluación
+
+                </a>
+
+            </div>
+            <div class="text-center mb-5">
 
 
-        <!-- =====================================================
-             NAVEGACION
-        ====================================================== -->
+            </div>
+            <div class="text-center mb-5">
 
-        <div class="botones">
+                <a href="hdfs.html" class="btn btn-success btn-lg">
 
-            <a href="javascript:history.back()" class="btn btn-uned">
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente Lección.
 
-                ← Lección anterior
+                </a>
 
-            </a>
+            </div>
+            <div class="text-center mt-5">
 
-            <a href="index.html" class="btn btn-uned">
+                <a href="index.html" class="btn btn-success btn-lg">
 
-                Volver al índice →
+                    <i class="bi bi-arrow-left-circle"></i>
 
-            </a>
+                    Volver al índice del capítulo 5.
 
-        </div>
+                </a>
 
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
 
-    </main>
+                <div class="modal-dialog modal-xl modal-dialog-centered">
 
+                    <div class="modal-content">
 
-    <!-- =====================================================
-         PIE DE PAGINA
-    ====================================================== -->
+                        <div class="modal-header">
 
-    <footer class="bg-success text-white mt-5">
+                            <h5 class="modal-title">
+                                Cluster Hadoop
+                            </h5>
 
-        <div class="container py-3 text-center">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
 
-            Proyecto Fin de Grado · Ingeniería Informática · UNED
+                        </div>
 
-        </div>
+                        <div class="modal-body text-center">
 
-    </footer>
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
 
+                        </div>
 
-    <!-- Bootstrap JS -->
+                    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+                </div>
 
+            </div>
+            <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                docker-hadoop-cluster
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <footer class="bg-success text-white mt-5">
+
+                    <div class="container py-3 text-center">
+
+                        Proyecto Fin de Grado · UNED
+
+                    </div>
+
+                </footer>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
