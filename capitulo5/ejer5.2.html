@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ejercicio - Gestión de datos en HDFS</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- CABECERA -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 3. HDFS y almacenamiento distribuido
+                    </p>
+
+                    <p class="lead mt-4">
+                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logotipo de la UNED">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MENÚ -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+                Volver al índice del capítulo 5.3
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="container mt-5">
+
+        <!-- BREADCRUMB -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    Capítulo 5.3
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Ejercicio HDFS
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- TÍTULO -->
+
+        <h2 class="text-success fw-bold mb-4">
+            Ejercicio práctico: Gestión de datos en HDFS
+        </h2>
+
+
+        <!-- INTRODUCCIÓN -->
+
+        <p class="lead">
+
+            En esta lección se propone un ejercicio práctico cuyo objetivo es
+            familiarizar al estudiante con las operaciones básicas del sistema de
+            archivos distribuido <strong>HDFS</strong>. Para ello, se utilizarán
+            los comandos fundamentales de Hadoop que permiten crear directorios,
+            copiar archivos, consultar su contenido y gestionar la información
+            almacenada en el clúster.
+
+        </p>
+
+        <p>
+
+            El ejercicio se plantea de forma progresiva, comenzando con la
+            preparación de los archivos en el sistema de archivos local y
+            continuando con su incorporación al sistema distribuido HDFS.
+            Posteriormente, se verificará que los datos se han almacenado
+            correctamente y se realizarán diferentes operaciones de consulta
+            sobre ellos.
+
+        </p>
+
+        <div class="alert alert-success">
+
+            <i class="bi bi-bullseye"></i>
+
+            <strong>Objetivo del ejercicio</strong>
+
+            <p class="mb-0 mt-2">
+
+                El estudiante aprenderá a utilizar los principales comandos de
+                HDFS para crear directorios, cargar archivos desde el sistema
+                local, consultar su contenido y comprobar el espacio ocupado
+                por los datos dentro del clúster Hadoop.
+
+            </p>
+
+        </div>
+
+
+        <!-- TAREAS -->
+
+        <h3 class="text-success mt-5 mb-4">
+            Tareas a realizar
+        </h3>
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body">
+
+                <ol>
+
+                    <li class="mb-3">
+                        Crear, dentro de la carpeta perteneciente al volumen
+                        compartido, un directorio denominado
+                        <strong>txt</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Cargar dentro de dicho directorio los ficheros
+                        <strong>.txt</strong> que se deseen analizar, utilizando
+                        los datos proporcionados procedentes de la fuente
+                        <strong>MEDDOCAN</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Comprobar que el servicio HDFS se encuentra operativo
+                        mediante la interfaz web del <strong>NameNode</strong>
+                        o utilizando los comandos de administración de Hadoop.
+                    </li>
+
+                    <li class="mb-3">
+                        Crear en HDFS un directorio denominado
+                        <strong>/datasets/meddocan-hdfs</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Copiar los archivos <strong>.txt</strong> desde el
+                        sistema de archivos local al directorio creado en HDFS.
+                    </li>
+
+                    <li class="mb-3">
+                        Verificar que los archivos se han almacenado correctamente
+                        mostrando el listado del contenido del directorio
+                        <strong>/datasets</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Visualizar el contenido de los archivos almacenados en HDFS
+                        utilizando los comandos del sistema de archivos distribuido.
+                    </li>
+
+                    <li class="mb-3">
+                        Comprobar el tamaño de los archivos y el espacio ocupado
+                        dentro de HDFS.
+                    </li>
+
+                    <li class="mb-3">
+                        Crear, dentro de la carpeta perteneciente al volumen
+                        compartido, un directorio denominado
+                        <strong>Synthea</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Cargar dentro de dicho directorio los ficheros
+                        <strong>.csv</strong> que se desean incorporar a HDFS.
+                        En este ejercicio se utilizarán los archivos:
+
+                        <ul class="mt-2">
+
+                            <li><strong>encounters.csv</strong></li>
+                            <li><strong>organizations.csv</strong></li>
+                            <li><strong>patients.csv</strong></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="mb-3">
+                        Crear en HDFS un directorio denominado
+                        <strong>/datasets/Synthea</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Copiar los archivos <strong>.csv</strong> desde el
+                        sistema de archivos local al directorio creado
+                        <strong>/datasets/Synthea</strong>.
+                    </li>
+
+                    <li class="mb-3">
+                        Visualizar el contenido de los archivos almacenados en HDFS
+                        utilizando los comandos del sistema de archivos distribuido.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </div>
+
+
+        <!-- SOLUCIÓN -->
+
+        <h3 class="text-success mt-5 mb-4">
+            Solución del ejercicio
+        </h3>
+
+        <p>
+
+            La resolución del ejercicio se realiza mediante
+            <strong>Jupyter Notebook</strong>, utilizando la terminal integrada
+            en el entorno Hadoop. Desde ella se ejecutan los comandos necesarios
+            para preparar los directorios locales, crear las estructuras
+            correspondientes en HDFS y transferir los archivos al sistema
+            distribuido.
+
+        </p>
+
+        <p>
+
+            En primer lugar, se accede al directorio local donde se encuentran
+            almacenados los documentos del corpus <strong>MEDDOCAN</strong>.
+            Posteriormente, se crea el directorio correspondiente en HDFS y se
+            utilizan los comandos de Hadoop para copiar los archivos.
+
+        </p>
+
+
+        <!-- BLOQUE 1 -->
+
+        <div class="card shadow-sm mt-4">
+
+            <div class="card-header bg-success text-white">
+
+                <i class="bi bi-terminal"></i>
+
+                <strong>1. Carga de los archivos MEDDOCAN en HDFS</strong>
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+
+                    Una vez disponibles los archivos <strong>.txt</strong> en el
+                    directorio local, se crea el directorio de destino en HDFS
+                    mediante el comando:
+
+                </p>
+
+                <pre class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -mkdir /datasets/meddocan-hdfs</code></pre>
+
+                <p>
+
+                    A continuación, se copian los archivos de texto desde el
+                    sistema de archivos local al directorio creado en HDFS:
+
+                </p>
+
+                <pre
+                    class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -put *.txt /datasets/meddocan-hdfs</code></pre>
+
+                <p>
+
+                    Finalmente, se comprueba que los archivos han sido
+                    incorporados correctamente mediante el listado del directorio:
+
+                </p>
+
+                <pre class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -ls /datasets/meddocan-hdfs</code></pre>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGEN SOLUCIÓN 1-8 -->
+
+        <div class="text-center my-5">
+
+            <img src="../img/leccion3-hdfs-meddocan.png" class="img-fluid rounded shadow" style="max-width: 95%;"
+                alt="Ejecución en Jupyter Notebook de los comandos para cargar archivos MEDDOCAN en HDFS">
+
+            <p class="text-muted mt-3">
+
+                <strong>Figura.</strong>
+                Carga y verificación de los archivos del corpus MEDDOCAN en HDFS
+                mediante Jupyter Notebook.
+
+            </p>
+
+        </div>
+
+
+        <!-- EXPLICACIÓN IMAGEN -->
+
+        <div class="alert alert-info">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            <strong>Resultado de la operación</strong>
+
+            <p class="mb-0 mt-2">
+
+                La ejecución mostrada permite comprobar que los archivos
+                <strong>.txt</strong> han sido incorporados correctamente al
+                directorio <strong>/datasets/meddocan-hdfs</strong> de HDFS.
+                El comando <strong>hdfs dfs -ls</strong> permite consultar los
+                archivos almacenados y verificar sus propiedades básicas, como
+                permisos, propietario, tamaño y fecha de modificación.
+
+            </p>
+
+        </div>
+
+
+        <!-- BLOQUE 2 -->
+
+        <div class="card shadow-sm mt-5">
+
+            <div class="card-header bg-success text-white">
+
+                <i class="bi bi-folder-fill"></i>
+
+                <strong>2. Carga de los datos de Synthea</strong>
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+
+                    Una vez completada la carga de los documentos MEDDOCAN, el
+                    ejercicio continúa con la incorporación de datos procedentes
+                    del conjunto de datos sintético <strong>Synthea</strong>.
+
+                </p>
+
+                <p>
+
+                    Para esta práctica se utilizarán tres archivos CSV:
+
+                </p>
+
+                <ul>
+
+                    <li><strong>encounters.csv</strong></li>
+
+                    <li><strong>organizations.csv</strong></li>
+
+                    <li><strong>patients.csv</strong></li>
+
+                </ul>
+
+                <p>
+
+                    Los archivos se sitúan inicialmente en el directorio local
+                    destinado a los datos de Synthea. Posteriormente, se crea en
+                    HDFS el directorio:
+
+                </p>
+
+                <pre class="bg-dark text-light p-3 rounded"><code>/datasets/Synthea</code></pre>
+
+                <p>
+
+                    Finalmente, los archivos CSV se copian desde el sistema
+                    local al directorio de HDFS para que puedan ser utilizados
+                    posteriormente en las diferentes prácticas de procesamiento
+                    y análisis.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEGUNDA IMAGEN -->
+
+        <div class="text-center my-5">
+
+            <!--
+                Sustituir el nombre del archivo por la segunda captura
+                cuando se incorpore a la carpeta img.
+            -->
+
+            <img src="../img/leccion3-hdfs-synthea.png" class="img-fluid rounded shadow" style="max-width: 95%;"
+                alt="Carga de los archivos CSV de Synthea en HDFS mediante Jupyter Notebook">
+
+            <p class="text-muted mt-3">
+
+                <strong>Figura.</strong>
+                Carga de los archivos CSV de Synthea y verificación de su
+                almacenamiento en HDFS mediante Jupyter Notebook.
+
+            </p>
+
+        </div>
+
+
+        <!-- IMPORTANCIA -->
+
+        <div class="alert alert-success mt-5">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            <strong>Resultado final del ejercicio</strong>
+
+            <p class="mb-0 mt-2">
+
+                Mediante este ejercicio, el estudiante ha realizado el ciclo
+                básico de incorporación de información al sistema de archivos
+                distribuido Hadoop: preparación de los datos en el sistema local,
+                creación de directorios en HDFS, transferencia de archivos y
+                comprobación de su almacenamiento.
+
+            </p>
+
+        </div>
+
+
+        <p>
+
+            Este procedimiento constituye una operación fundamental dentro de
+            cualquier infraestructura Big Data, ya que HDFS actúa como sistema
+            de almacenamiento sobre el que posteriormente pueden ejecutarse
+            procesos de análisis y transformación mediante tecnologías como
+            <strong>MapReduce</strong> y <strong>Hadoop Streaming</strong>.
+
+        </p>
+
+
+        <!-- NAVEGACIÓN -->
+
+        <div class="d-flex justify-content-between align-items-center mt-5 mb-5">
+
+            <a href="index.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Volver al índice
+
+            </a>
+
+            <a href="5.5.3.html" class="btn btn-success btn-lg">
+
+                Siguiente punto
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
