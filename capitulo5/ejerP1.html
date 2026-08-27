@@ -741,7 +741,65 @@
             </p>
 
         </div>
+        <!-- =====================================================
+     CONVERSIÓN A AVRO
+====================================================== -->
 
+        <h2>Conversión a Avro</h2>
+
+        <p>
+            Una vez definido el esquema Avro y preparados los datos contenidos en el
+            fichero <strong>TABLA_ACCIDENTES_24.csv</strong>, se procede a realizar
+            la conversión del conjunto de datos al formato binario
+            <strong>Apache Avro</strong>.
+        </p>
+
+        <p>
+            Para llevar a cabo esta transformación se utiliza la biblioteca
+            <strong>fastavro</strong>, que permite serializar los registros del fichero
+            CSV utilizando el esquema previamente definido. De esta forma, cada registro
+            queda almacenado siguiendo la estructura establecida en el esquema Avro.
+        </p>
+
+        <div class="text-center my-4">
+
+            <img src="../img/conversion-avro.png" class="img-fluid rounded shadow imagen-ejercicio"
+                alt="Conversión del fichero CSV al formato Avro">
+
+            <p class="figura">
+
+                <strong>Figura 41.</strong>
+                Conversión del fichero <code>TABLA_ACCIDENTES_24.csv</code> al formato
+                <strong>Avro</strong>.
+                Fuente: elaboración propia.
+
+            </p>
+
+        </div>
+
+        <div class="objetivo">
+
+            <h3>Proceso de conversión</h3>
+
+            <p>
+                El proceso comienza con la lectura del fichero CSV mediante
+                <strong>pandas</strong>. Posteriormente, los registros son preparados
+                para adaptarlos a los tipos de datos definidos en el esquema Avro.
+            </p>
+
+            <p>
+                Finalmente, mediante la biblioteca <strong>fastavro</strong>, se
+                serializan los registros y se genera el fichero de salida con extensión
+                <strong>.avro</strong>.
+            </p>
+
+            <p class="mb-0">
+                El resultado obtenido permite disponer de una representación binaria
+                estructurada de los datos, preparada para su utilización posterior
+                dentro del ecosistema Hadoop.
+            </p>
+
+        </div>
 
         <!-- =====================================================
          NAVEGACION
