@@ -6,13 +6,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>5.5.3 Ejercicio Resuelto - Hadoop Streaming - Contador de palabras</title>
+    <title>Ejercicio resuelto 1 - Conversión CSV a Avro</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- Estilos del proyecto -->
     <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        .bloque-ejercicio {
+            border: 1px solid #dee2e6;
+            border-left: 5px solid #006633;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque-ejercicio h3 {
+            color: #006633;
+            margin-bottom: 18px;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 22px;
+            margin: 30px 0;
+            border-radius: 6px;
+        }
+
+        .objetivo h3 {
+            color: #006633;
+        }
+
+        .proceso {
+            background-color: #f8f9fa;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .proceso strong {
+            color: #006633;
+        }
+
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .codigo .comentario {
+            color: #a6e22e;
+        }
+
+        .imagen-ejercicio {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .resultado {
+            background-color: #eaf4fb;
+            border-left: 5px solid #0d6efd;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+        }
+
+        .resultado h3 {
+            color: #0d6efd;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+    </style>
 
 </head>
 
@@ -20,9 +125,9 @@
 <body>
 
 
-    <!-- ========================================================= -->
-    <!-- CABECERA -->
-    <!-- ========================================================= -->
+    <!-- =====================================================
+     CABECERA
+====================================================== -->
 
     <header class="bg-white border-bottom shadow-sm">
 
@@ -33,31 +138,25 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-
                         Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
-
                     </h1>
 
                     <p class="lead">
-
-                        5.5.3 Ejercicio resuelto con Hadoop Streaming:
-                        Contador de palabras
-
+                        Lección 5. Serialización y deserialización de los datos
                     </p>
 
                     <p class="lead mt-4">
 
-                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
 
                     </p>
 
                 </div>
 
-
                 <div class="col-md-3 text-end">
 
                     <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
-                        alt="Logotipo de la UNED">
+                        alt="Logo de la Universidad Nacional de Educación a Distancia">
 
                 </div>
 
@@ -68,26 +167,22 @@
     </header>
 
 
-    <!-- ========================================================= -->
-    <!-- MENU -->
-    <!-- ========================================================= -->
+    <!-- =====================================================
+     MENU
+====================================================== -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
 
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
-
                 <i class="bi bi-house-fill"></i>
                 Inicio
-
             </a>
-
 
             <a href="index.html" class="navbar-brand">
 
-                <i class="bi bi-list"></i>
-                Índice del capítulo 5
+                Índice del capítulo 5.7
 
             </a>
 
@@ -96,130 +191,565 @@
     </nav>
 
 
-    <!-- ========================================================= -->
-    <!-- CONTENIDO -->
-    <!-- ========================================================= -->
+    <!-- =====================================================
+     TITULO
+====================================================== -->
+
+    <section class="bg-success text-white py-4">
+
+        <div class="container">
+
+            <h2 class="mb-1">
+                Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro
+            </h2>
+
+            <p class="mb-0">
+                Serialización de datos mediante Apache Avro
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+     CONTENIDO
+====================================================== -->
 
     <main class="container mt-5">
 
 
         <!-- BREADCRUMB -->
 
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Capítulo 5.7</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Ejercicio 1 - Avro
+                </li>
+
+            </ol>
+
+        </nav>
 
 
-
-        <!-- ===================================================== -->
         <!-- INTRODUCCIÓN -->
-        <!-- ===================================================== -->
 
-        <div class="card shadow-sm mb-4">
+        <div class="bloque-ejercicio">
 
-            <div class="card-header bg-success text-white">
+            <h3>
+                <i class="bi bi-file-earmark-binary"></i>
+                Introducción al ejercicio
+            </h3>
 
-                <h2 class="h4 mb-0">
+            <p>
 
-                    <i class="bi bi-book"></i>
+                El objetivo de este ejercicio es comprender el funcionamiento del
+                formato <strong>Apache Avro</strong> mediante la conversión del
+                conjunto de datos
+                <strong>TABLA_ACCIDENTES_24.csv</strong> a un formato binario
+                Avro.
 
-                    Ejercicio resuelto con Hadoop Streaming
+            </p>
 
-                </h2>
+            <p>
 
-            </div>
+                Esta transformación permite al estudiante conocer los beneficios
+                que proporciona Avro cuando se utiliza para almacenar e intercambiar
+                grandes cantidades de información dentro del ecosistema
+                <strong>Hadoop</strong>.
 
+            </p>
 
-            <div class="card-body">
+            <p class="mb-0">
 
+                El ejercicio se desarrolla utilizando
+                <strong>Python</strong>, <strong>pandas</strong> y
+                <strong>fastavro</strong>, permitiendo observar de forma práctica
+                el proceso completo de preparación, serialización y posterior
+                comprobación de los datos.
 
-                <h2>Ejercicio: Conversión de CSV a Apache Avro</h2>
-                <p> El objetivo de este ejercicio es entender cómo funciona el formato <strong>Apache Avro</strong>, lo
-                    cual implica
-                    convertir el conjunto de datos <strong>TABLA_ACCIDENTES_24.csv</strong> a un formato binario
-                    <strong>Avro</strong>.
-                    Esto permite al estudiante conocer los beneficios ofrecidos por Avro cuando se emplea para almacenar
-                    e intercambiar
-                    grandes cantidades de información dentro del ecosistema Hadoop. </p>
-                <p> Antes de realizar dicha transformación, el estudiante diseñará el <strong>esquema Avro
-                        (Schema)</strong>, expresado
-                    en formato JSON, que defina la estructura del archivo. Este esquema detalla los nombres de los
-                    atributos del
-                    conjunto de datos, su tipo de dato y los valores necesarios para asegurar la correcta serialización
-                    de la
-                    información. </p>
-                <h3>Definición del esquema Avro</h3>
-                <p> Para generar el esquema se recorre cada una de las columnas del conjunto de datos y se determina
-                    automáticamente su
-                    tipo de dato. Los campos enteros se convierten al tipo <code>long</code>, los valores decimales al
-                    tipo
-                    <code>double</code> y el resto de atributos se almacenan como cadenas de texto
-                    (<code>string</code>).
-                </p>
-                <div class="imagen-ejercicio"> <img src="img/esquema-avro.png"
-                        alt="Código Python utilizado para generar el esquema Apache Avro" class="imagen-pfg">
-                    <p class="pie-imagen"> Figura. Generación dinámica del esquema Avro a partir de las columnas del
-                        conjunto de datos.
-                    </p>
-                </div>
-                <p> El esquema se define mediante un registro de tipo <code>record</code>, denominado
-                    <code>Diccionario_Tabla_Accidentes_2024</code>, dentro del espacio de nombres
-                    <code>es.pfg.bigdata</code>. Cada
-                    campo del esquema contiene su nombre y el tipo de dato correspondiente.
-                </p>
-                <h3>Conversión del conjunto de datos</h3>
-                <p> Una vez definido el esquema, el archivo CSV será cargado utilizando <strong>pandas</strong>. Los
-                    registros serán
-                    preparados y posteriormente convertidos al nuevo formato mediante la biblioteca
-                    <strong>fastavro</strong>, encargada
-                    de realizar la serialización de los datos. </p>
-                <p> Como resultado del proceso se generará el archivo <strong>TABLA_ACCIDENTES_24.avro</strong>, que
-                    contendrá los
-                    registros del conjunto de datos original utilizando el formato binario de Apache Avro. </p>
-                <h3>Análisis de los formatos CSV y Avro</h3>
-                <p> Finalmente, se analizarán y compararán ambos formatos atendiendo a diferentes características, como
-                    el espacio
-                    ocupado en disco, la velocidad de acceso a los datos y la forma en la que la información se almacena
-                    internamente.
-                </p>
-                <p> También se mostrarán los primeros registros almacenados en el archivo Avro con el objetivo de
-                    comprobar que el
-                    proceso de transformación se ha realizado correctamente y verificar que las características
-                    originales del conjunto
-                    de datos se mantienen. </p>
-                <p> El resultado final consistirá en un fichero <strong>TABLA_ACCIDENTES_24.avro</strong> y en el
-                    análisis de su
-                    contenido y de las diferencias existentes entre los formatos CSV y Avro. </p>
-
-            </div>
-
-
-            <!-- BOTÓN -->
-
-            <div class="text-center mt-4">
-
-                <a href="5.5.3.html" class="btn btn-success btn-lg">
-
-                    <i class="bi bi-journal-code"></i>
-
-                    Ver solución completa.
-
-                </a>
-
-            </div>
-
-
-        </div>
+            </p>
 
         </div>
 
 
+        <!-- OBJETIVO -->
 
-        <!-- ===================================================== -->
-        <!-- NAVEGACIÓN -->
-        <!-- ===================================================== -->
+        <div class="objetivo">
 
-        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h3>
+                <i class="bi bi-bullseye"></i>
+                Objetivo del ejercicio
+            </h3>
+
+            <p>
+
+                El propósito principal es transformar un fichero de datos en formato
+                CSV en un fichero binario Avro, manteniendo la estructura y la
+                información contenida en el conjunto de datos original.
+
+            </p>
+
+            <ul class="mb-0">
+
+                <li>
+                    Comprender el concepto de serialización.
+                </li>
+
+                <li>
+                    Diseñar un esquema Avro mediante JSON.
+                </li>
+
+                <li>
+                    Cargar y preparar los datos utilizando pandas.
+                </li>
+
+                <li>
+                    Serializar los registros utilizando fastavro.
+                </li>
+
+                <li>
+                    Generar el fichero
+                    <strong>TABLA_ACCIDENTES_24.avro</strong>.
+                </li>
+
+                <li>
+                    Comprobar que los datos originales se conservan correctamente.
+                </li>
+
+                <li>
+                    Comparar las características del fichero CSV y del fichero Avro.
+                </li>
+
+            </ul>
+
+        </div>
 
 
-            <a href="hdfs.html" class="btn btn-outline-success">
+        <!-- =====================================================
+         PASO 1
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                1. Preparación del fichero CSV
+            </h3>
+
+            <p>
+
+                El punto de partida del ejercicio es el conjunto de datos
+                <strong>TABLA_ACCIDENTES_24.csv</strong>, correspondiente a los
+                datos utilizados en las prácticas del proyecto.
+
+            </p>
+
+            <p>
+
+                El fichero CSV contiene los registros que serán posteriormente
+                transformados al formato binario Avro.
+
+            </p>
+
+            <div class="proceso">
+
+                <strong>
+                    Fichero de entrada:
+                </strong>
+
+                <code>TABLA_ACCIDENTES_24.csv</code>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 2
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                2. Diseño del esquema Avro
+            </h3>
+
+            <p>
+
+                Antes de realizar la transformación es necesario definir el
+                <strong>Schema de Avro</strong>. El esquema se expresa mediante
+                una estructura <strong>JSON</strong> que determina cómo se
+                representarán los datos dentro del fichero Avro.
+
+            </p>
+
+            <p>
+
+                El esquema especifica los nombres de los atributos, los tipos de
+                datos asociados y las restricciones necesarias para realizar una
+                serialización correcta de la información.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <strong>Importante:</strong>
+
+                El esquema actúa como contrato de los datos y permite que las
+                aplicaciones que trabajan con Avro conozcan la estructura de los
+                registros almacenados.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         IMAGEN
+    ====================================================== -->
+
+        <div class="text-center my-5">
+
+            <img src="../img/ejercicio-avro.png" class="img-fluid rounded shadow imagen-ejercicio"
+                alt="Proceso de conversión de un fichero CSV a formato Avro">
+
+            <p class="figura">
+
+                <strong>Figura.</strong>
+                Conversión del fichero
+                <code>TABLA_ACCIDENTES_24.csv</code>
+                a formato Avro.
+                Fuente: elaboración propia.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                3. Carga de los datos mediante pandas
+            </h3>
+
+            <p>
+
+                Una vez definido el esquema, el fichero CSV se carga mediante la
+                biblioteca <strong>pandas</strong>. Esta biblioteca permite
+                trabajar con los registros del conjunto de datos y realizar las
+                operaciones necesarias antes de llevar a cabo la serialización.
+
+            </p>
+
+            <div class="codigo">
+
+                <span class="comentario"># Carga del fichero CSV</span><br>
+
+                import pandas as pd<br><br>
+
+                df = pd.read_csv("TABLA_ACCIDENTES_24.csv")
+
+            </div>
+
+            <p class="mb-0">
+
+                De esta forma, los datos quedan disponibles en memoria para su
+                posterior preparación y conversión al formato Avro.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 4
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                4. Serialización mediante fastavro
+            </h3>
+
+            <p>
+
+                Una vez preparados los registros, se utiliza la biblioteca
+                <strong>fastavro</strong> para realizar la serialización de los
+                datos conforme al esquema definido previamente.
+
+            </p>
+
+            <p>
+
+                El proceso transforma los registros originalmente almacenados en
+                formato CSV en una representación binaria compatible con
+                <strong>Apache Avro</strong>.
+
+            </p>
+
+            <div class="codigo">
+
+                <span class="comentario"># Biblioteca utilizada para la serialización</span><br>
+
+                from fastavro import writer<br>
+                from fastavro import parse_schema
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 5
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                5. Generación del fichero Avro
+            </h3>
+
+            <p>
+
+                Como resultado del proceso de serialización se genera el fichero
+                binario:
+
+            </p>
+
+            <div class="proceso text-center">
+
+                <strong>
+                    TABLA_ACCIDENTES_24.avro
+                </strong>
+
+            </div>
+
+            <p>
+
+                Este fichero contiene los registros del conjunto de datos original
+                utilizando la estructura definida mediante el esquema Avro.
+
+            </p>
+
+            <p class="mb-0">
+
+                El formato binario permite representar los datos de una manera
+                adecuada para su almacenamiento y transmisión dentro de
+                infraestructuras de procesamiento distribuido.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 6
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                6. Comprobación del resultado
+            </h3>
+
+            <p>
+
+                Una vez generado el fichero Avro, se comprueba que la transformación
+                se ha realizado correctamente. Para ello, se analizan los registros
+                contenidos en el nuevo fichero y se comparan con los datos
+                originales.
+
+            </p>
+
+            <p>
+
+                Esta comprobación permite verificar que los atributos y registros
+                del conjunto de datos se han conservado durante el proceso de
+                serialización.
+
+            </p>
+
+            <div class="alert alert-success mb-0">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                <strong>Validación:</strong>
+
+                El resultado esperado es un fichero
+                <strong>TABLA_ACCIDENTES_24.avro</strong>
+                que contiene los datos originales representados mediante el formato
+                binario Avro.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         COMPARACIÓN
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                7. Análisis de los formatos
+            </h3>
+
+            <p>
+
+                Finalmente, se analizan las diferencias entre el fichero CSV
+                original y el fichero Avro generado.
+
+            </p>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="table-success">
+
+                        <tr>
+
+                            <th>Característica</th>
+
+                            <th>CSV</th>
+
+                            <th>Avro</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Representación
+                            </td>
+
+                            <td>
+                                Texto plano
+                            </td>
+
+                            <td>
+                                Binaria
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Esquema
+                            </td>
+
+                            <td>
+                                No definido formalmente
+                            </td>
+
+                            <td>
+                                Definido mediante Schema
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Tamaño
+                            </td>
+
+                            <td>
+                                Generalmente mayor
+                            </td>
+
+                            <td>
+                                Puede ser más compacto
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Uso en Big Data
+                            </td>
+
+                            <td>
+                                Sencillo pero menos optimizado
+                            </td>
+
+                            <td>
+                                Diseñado para serialización y procesamiento
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         RESULTADO FINAL
+    ====================================================== -->
+
+        <div class="resultado">
+
+            <h3>
+                <i class="bi bi-check2-circle"></i>
+                Resultado final del ejercicio
+            </h3>
+
+            <p>
+
+                El ejercicio permite completar el proceso de transformación desde
+                un fichero CSV hasta un fichero binario Avro, pasando por la
+                definición del esquema, la preparación de los datos y la
+                serialización.
+
+            </p>
+
+            <p class="mb-0">
+
+                El resultado final consiste en el fichero
+                <strong>TABLA_ACCIDENTES_24.avro</strong> y en la comprobación de
+                su contenido, verificando que la información original se mantiene
+                correctamente tras el proceso de serialización.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         NAVEGACION
+    ====================================================== -->
+
+        <div class="botones">
+
+            <a href="javascript:history.back()" class="btn btn-uned">
 
                 <i class="bi bi-arrow-left"></i>
 
@@ -228,15 +758,13 @@
             </a>
 
 
-            <a href="index.html" class="btn btn-outline-success">
+            <a href="5.7.2.html" class="btn btn-uned">
 
-                <i class="bi bi-list"></i>
+                Siguiente punto
 
-                Índice del capítulo 5
+                <i class="bi bi-arrow-right"></i>
 
             </a>
-
-
 
         </div>
 
@@ -244,25 +772,35 @@
     </main>
 
 
-
-    <!-- ========================================================= -->
-    <!-- FOOTER -->
-    <!-- ========================================================= -->
+    <!-- =====================================================
+     PIE DE PAGINA
+====================================================== -->
 
     <footer class="bg-success text-white mt-5">
 
-        <div class="container py-3 text-center">
+        <div class="container py-4 text-center">
 
-            Proyecto Fin de Grado · UNED ·
-            Virtualización ligera para el despliegue de infraestructuras Big Data
+            <p class="mb-1">
+
+                Proyecto Fin de Grado - Ingeniería Informática
+
+            </p>
+
+            <p class="mb-0">
+
+                Universidad Nacional de Educación a Distancia (UNED)
+
+            </p>
 
         </div>
 
     </footer>
 
 
+    <!-- Bootstrap JS -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
 
 
 </body>
