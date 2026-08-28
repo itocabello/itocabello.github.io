@@ -1,0 +1,825 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ejercicio resuelto 4 - Visualización de ficheros Avro y Parquet</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        .bloque-ejercicio {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque-ejercicio h3 {
+            color: #006633;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .imagen-ejercicio {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .comparacion {
+            background-color: #f1f1f1;
+            border-left: 4px solid #006633;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     CABECERA
+====================================================== -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 5. Serialización y deserialización de los datos
+                    </p>
+
+                    <p class="lead mt-4">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo de la UNED">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     MENU
+====================================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+                Volver al índice del capítulo 5
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+     CONTENIDO
+====================================================== -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Capítulo 5</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Visualización de ficheros Avro y Parquet
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- TITULO -->
+
+        <div class="mb-4">
+
+            <h2 class="text-success fw-bold">
+                Ejercicio resuelto 4: Visualización de los datos en ficheros Avro y Parquet
+            </h2>
+
+        </div>
+
+
+        <!-- INTRODUCCION -->
+
+        <p class="lead">
+
+            Una vez generados los ficheros en los formatos
+            <strong>Apache Avro</strong> y <strong>Apache Parquet</strong>,
+            se procedió a verificar la integridad de la información mediante
+            procesos de deserialización y visualización.
+
+        </p>
+
+        <p>
+
+            Dado que ambos formatos almacenan los datos mediante una
+            representación binaria, su contenido no puede consultarse
+            directamente mediante herramientas convencionales de visualización
+            de texto. Por este motivo, se emplearon bibliotecas específicas
+            capaces de interpretar los formatos y reconstruir los registros
+            originales a partir de los datos serializados.
+
+        </p>
+
+        <p>
+
+            En el caso del formato <strong>Apache Avro</strong>, la lectura de
+            los datos se realiza mediante la biblioteca
+            <strong>Fastavro</strong>, encargada de interpretar el esquema
+            asociado al fichero y recuperar los registros almacenados.
+
+        </p>
+
+        <p>
+
+            Para los ficheros <strong>Apache Parquet</strong>, se utiliza la
+            biblioteca <strong>PyArrow</strong>, integrada con
+            <strong>Pandas</strong>, permitiendo reconstruir la información en
+            forma de tablas y facilitando su posterior análisis.
+
+        </p>
+
+        <p>
+
+            La visualización de los datos se llevó a cabo mediante
+            <strong>Jupyter Notebook</strong>, mostrando una representación
+            tabular de los primeros registros del conjunto de datos. Esta
+            validación permite comprobar que la conversión desde el formato CSV
+            se ha realizado correctamente.
+
+        </p>
+
+
+        <!-- OBJETIVO -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-bullseye"></i>
+                Objetivo del ejercicio
+            </h3>
+
+            <p>
+
+                El objetivo de este ejercicio es comprobar mediante procesos de
+                deserialización y visualización que los datos almacenados en
+                los formatos Avro y Parquet conservan correctamente la
+                información del conjunto de datos original.
+
+            </p>
+
+            <ul class="mb-0">
+
+                <li>
+                    Leer un fichero almacenado en formato <strong>Avro</strong>.
+                </li>
+
+                <li>
+                    Utilizar la biblioteca <strong>Fastavro</strong> para
+                    recuperar los registros.
+                </li>
+
+                <li>
+                    Leer un fichero almacenado en formato
+                    <strong>Parquet</strong>.
+                </li>
+
+                <li>
+                    Utilizar <strong>PyArrow</strong> y
+                    <strong>Pandas</strong> para reconstruir los datos.
+                </li>
+
+                <li>
+                    Visualizar los registros mediante
+                    <strong>Jupyter Notebook</strong>.
+                </li>
+
+                <li>
+                    Comprobar la correspondencia entre los datos originales y
+                    los datos deserializados.
+                </li>
+
+                <li>
+                    Validar la correcta conversión de los ficheros.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 1
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                1. Visualización de los datos en formato Avro
+            </h3>
+
+            <p>
+
+                El primer proceso de validación consiste en recuperar la
+                información almacenada en el fichero
+                <strong>accidentes.avro</strong>.
+
+            </p>
+
+            <p>
+
+                Para realizar esta operación se utiliza la biblioteca
+                <strong>Fastavro</strong>, que permite leer el esquema del
+                fichero y acceder a los registros almacenados en formato
+                binario.
+
+            </p>
+
+            <p>
+
+                Un ejemplo del procedimiento utilizado desde
+                <strong>Jupyter Notebook</strong> es el siguiente:
+
+            </p>
+
+            <div class="codigo">
+
+                from fastavro import reader<br>
+                <br>
+                with open("accidentes.avro", "rb") as f:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;avro_reader = reader(f)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;records = list(avro_reader)<br>
+                <br>
+                records[:5]
+
+            </div>
+
+            <p>
+
+                Mediante este procedimiento se abre el fichero en modo binario
+                y se utiliza <code>reader()</code> para interpretar el contenido
+                de acuerdo con el esquema Avro. Los registros recuperados pueden
+                posteriormente visualizarse desde el propio entorno de Jupyter
+                Notebook.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Resultado:</strong>
+
+                Los registros almacenados en formato binario son reconstruidos
+                como estructuras de datos que pueden ser inspeccionadas desde
+                Python.
+
+            </div>
+
+
+            <!-- IMAGEN AVRO -->
+
+            <div class="text-center mt-4">
+
+                <img src="../img/visualizar-avro.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Visualización de los datos almacenados en formato Avro mediante Jupyter Notebook">
+
+                <p class="figura">
+
+                    <strong>Figura 46.</strong>
+                    Visualización de los datos almacenados en formato
+                    <strong>Avro</strong> mediante Jupyter Notebook.
+                    Fuente: elaboración propia.
+
+                </p>
+
+            </div>
+
+            <p class="mb-0">
+
+                La visualización de los primeros registros permite comprobar que
+                los datos almacenados en el fichero Avro pueden recuperarse
+                correctamente y mantienen la estructura y los valores
+                correspondientes al conjunto de datos original.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 2
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                2. Visualización de los datos en formato Parquet
+            </h3>
+
+            <p>
+
+                El segundo proceso de validación se realiza sobre el fichero
+                <strong>accidentes.parquet</strong>.
+
+            </p>
+
+            <p>
+
+                Para acceder a la información almacenada se utiliza
+                <strong>PyArrow</strong>, una biblioteca que proporciona
+                funcionalidades para trabajar con el formato Parquet y que
+                permite integrarse directamente con <strong>Pandas</strong>.
+
+            </p>
+
+            <p>
+
+                Desde Jupyter Notebook se puede realizar la lectura mediante
+                el siguiente procedimiento:
+
+            </p>
+
+            <div class="codigo">
+
+                import pandas as pd<br>
+                <br>
+                df = pd.read_parquet(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"accidentes.parquet",<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;engine="pyarrow"<br>
+                )<br>
+                <br>
+                df.head()
+
+            </div>
+
+            <p>
+
+                La función <code>read_parquet()</code> permite recuperar el
+                contenido del fichero y almacenarlo en un
+                <strong>DataFrame de Pandas</strong>. Posteriormente,
+                <code>df.head()</code> permite visualizar los primeros registros
+                de la tabla.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Resultado:</strong>
+
+                El fichero Parquet es deserializado y convertido en un
+                DataFrame que puede ser utilizado directamente para su
+                análisis mediante Pandas.
+
+            </div>
+
+
+            <!-- IMAGEN PARQUET -->
+
+            <div class="text-center mt-4">
+
+                <img src="../img/visualizar-parquet.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Visualización de los datos almacenados en formato Parquet mediante Jupyter Notebook">
+
+                <p class="figura">
+
+                    <strong>Figura 47.</strong>
+                    Visualización de los datos almacenados en formato
+                    <strong>Parquet</strong> mediante Jupyter Notebook.
+                    Fuente: elaboración propia.
+
+                </p>
+
+            </div>
+
+            <p class="mb-0">
+
+                La representación tabular obtenida permite comprobar que los
+                registros almacenados en Parquet pueden recuperarse correctamente
+                y que las diferentes columnas mantienen la información del
+                conjunto de datos original.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                3. Comprobación de la integridad de los datos
+            </h3>
+
+            <p>
+
+                La visualización de los registros constituye una comprobación
+                práctica de la correcta transformación de los datos desde el
+                formato CSV hacia los formatos Avro y Parquet.
+
+            </p>
+
+            <p>
+
+                Para realizar esta validación se comprueba que los nombres de
+                las variables, la estructura de los registros y los valores
+                almacenados coinciden con la información disponible en el
+                conjunto de datos original.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Validación de Avro:</strong>
+
+                Los registros son recuperados mediante Fastavro a partir de la
+                representación binaria y del esquema asociado al fichero.
+
+            </div>
+
+            <div class="paso">
+
+                <strong>Validación de Parquet:</strong>
+
+                Los datos son reconstruidos mediante PyArrow y representados
+                como un DataFrame de Pandas.
+
+            </div>
+
+            <p class="mb-0">
+
+                La correcta visualización de los datos proporciona una evidencia
+                de que los procesos de serialización realizados en los ejercicios
+                anteriores han conservado la información necesaria para su
+                posterior explotación.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         COMPARACION
+    ====================================================== -->
+
+        <div class="comparacion">
+
+            <h3>
+                <i class="bi bi-bar-chart-line"></i>
+                Comparación de la visualización de Avro y Parquet
+            </h3>
+
+            <p>
+
+                Aunque ambos formatos utilizan una representación binaria, el
+                procedimiento empleado para recuperar la información presenta
+                algunas diferencias.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    <strong>Avro:</strong>
+                    utiliza un esquema asociado al fichero y puede ser leído
+                    mediante bibliotecas como <strong>Fastavro</strong>,
+                    recuperando los registros almacenados.
+
+                </li>
+
+                <li>
+
+                    <strong>Parquet:</strong>
+                    utiliza una organización columnar y puede ser leído
+                    mediante <strong>PyArrow</strong>, integrándose directamente
+                    con Pandas.
+
+                </li>
+
+                <li>
+
+                    <strong>Jupyter Notebook:</strong>
+                    proporciona un entorno interactivo que permite visualizar,
+                    comprobar y analizar los datos una vez deserializados.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =====================================================
+         INTEGRACION
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-diagram-3"></i>
+                Integración con la arquitectura Big Data
+            </h3>
+
+            <p>
+
+                El proceso de visualización desarrollado en este ejercicio
+                demuestra la integración entre las diferentes tecnologías
+                utilizadas en la infraestructura del proyecto.
+
+            </p>
+
+            <p>
+
+                <strong>HDFS</strong> proporciona el sistema de almacenamiento
+                distribuido, mientras que los formatos <strong>Avro</strong> y
+                <strong>Parquet</strong> permiten almacenar los datos mediante
+                estructuras optimizadas para diferentes necesidades de
+                procesamiento.
+
+            </p>
+
+            <p>
+
+                Por su parte, <strong>Python</strong> y
+                <strong>Jupyter Notebook</strong> proporcionan un entorno
+                flexible para la inspección y validación de la información
+                almacenada.
+
+            </p>
+
+            <p class="mb-0">
+
+                Esta integración permite establecer una metodología de trabajo
+                en la que los datos pueden ser ingeridos, almacenados,
+                serializados, deserializados y posteriormente analizados dentro
+                de una misma infraestructura Big Data.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         REFERENCIA A ANEXOS
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                4. Anexos del ejercicio
+            </h3>
+
+            <p>
+
+                Para ampliar la comprobación realizada en este ejercicio, se
+                incluyen en los anexos las evidencias correspondientes a la
+                visualización de los datos almacenados en ambos formatos.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Avro:</strong>
+
+                Anexo del ejercicio: visualización de
+                <code>accidentes.avro</code> mediante Jupyter Notebook.
+
+            </div>
+
+            <div class="paso">
+
+                <strong>Parquet:</strong>
+
+                Anexo del ejercicio: visualización de
+                <code>accidentes.parquet</code> mediante Jupyter Notebook.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         RESULTADO
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-check-circle-fill"></i>
+                Resultado del ejercicio
+            </h3>
+
+            <p>
+
+                Al finalizar el ejercicio se ha comprobado mediante procesos de
+                deserialización y visualización que los datos almacenados en los
+                formatos <strong>Avro</strong> y <strong>Parquet</strong> pueden
+                ser recuperados correctamente.
+
+            </p>
+
+            <p>
+
+                En el caso de Avro se ha utilizado la biblioteca
+                <strong>Fastavro</strong> para interpretar el esquema y recuperar
+                los registros. Para Parquet se ha empleado
+                <strong>PyArrow</strong> integrado con
+                <strong>Pandas</strong>, permitiendo representar los datos
+                mediante un DataFrame.
+
+            </p>
+
+            <p>
+
+                La visualización realizada mediante
+                <strong>Jupyter Notebook</strong> permite comprobar la
+                correspondencia entre las variables y los valores del conjunto
+                de datos original y los obtenidos después del proceso de
+                serialización.
+
+            </p>
+
+            <p class="mb-0">
+
+                Este ejercicio completa el proceso iniciado con la conversión
+                de los datos a formatos binarios y demuestra que la información
+                puede ser posteriormente recuperada y utilizada para tareas de
+                análisis. De esta forma, los datos quedan preparados para
+                futuras etapas de procesamiento distribuido mediante
+                <strong>Hadoop MapReduce</strong>, <strong>Hive</strong> u
+                otras herramientas del ecosistema Big Data.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         NAVEGACION
+    ====================================================== -->
+
+        <div class="botones">
+
+            <a href="5.7.3.html" class="btn btn-uned">
+
+                ← Ejercicio anterior
+
+            </a>
+
+            <a href="index.html" class="btn btn-uned">
+
+                Volver al índice
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+     PIE
+====================================================== -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            <p class="mb-1">
+                Proyecto Fin de Grado · Ingeniería Informática
+            </p>
+
+            <p class="mb-0">
+                Universidad Nacional de Educación a Distancia (UNED)
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
