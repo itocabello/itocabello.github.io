@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ejercicio resuelto 2 - Conversión CSV a Parquet</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .bloque {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque h3 {
+            color: #006633;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .resultado {
+            background-color: #eef5f8;
+            border-left: 5px solid #006633;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .imagen-ejercicio {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .comparacion th {
+            background-color: #006633;
+            color: white;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     CABECERA
+====================================================== -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 5. Serialización y deserialización de los datos
+                    </p>
+
+                    <p class="lead mt-4">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logo de la Universidad Nacional de Educación a Distancia">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     MENU
+====================================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+                Volver al índice de la lección
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+     CONTENIDO
+====================================================== -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Capítulo 5</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Conversión a Parquet
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- TITULO -->
+
+        <div class="mb-5">
+
+            <h2 class="text-success fw-bold">
+                Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet
+            </h2>
+
+            <p class="lead">
+                Conversión y almacenamiento de datos mediante Apache Parquet
+            </p>
+
+        </div>
+
+
+        <!-- INTRODUCCION -->
+
+        <div class="bloque">
+
+            <h3>
+                Introducción al ejercicio
+            </h3>
+
+            <p>
+
+                En este ejercicio se propone convertir el conjunto de datos
+                <strong>TABLA_ACCIDENTES_24.csv</strong> al formato
+                <strong>Apache Parquet</strong>, uno de los formatos de almacenamiento
+                columnar más utilizados en entornos Big Data.
+
+            </p>
+
+            <p>
+
+                Para realizar esta transformación se emplea la biblioteca
+                <strong>Pandas</strong> para cargar el fichero CSV y la biblioteca
+                <strong>PyArrow</strong> para generar el fichero Parquet aplicando
+                compresión <strong>Snappy</strong>.
+
+            </p>
+
+            <p>
+
+                A diferencia del formato <strong>Apache Avro</strong>, que organiza
+                los registros principalmente siguiendo una estructura orientada a
+                filas, Parquet utiliza un modelo de almacenamiento
+                <strong>orientado a columnas</strong>. Esta característica resulta
+                especialmente adecuada para las consultas analíticas realizadas
+                sobre grandes volúmenes de información.
+
+            </p>
+
+            <p class="mb-0">
+
+                El ejercicio permitirá al estudiante comprobar de forma práctica
+                cómo un conjunto de datos inicialmente almacenado en formato CSV
+                puede transformarse en un formato optimizado para su utilización
+                dentro del ecosistema Hadoop.
+
+            </p>
+
+        </div>
+
+
+        <!-- OBJETIVO -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-bullseye"></i>
+                Objetivo del ejercicio
+            </h3>
+
+            <p>
+
+                El objetivo principal consiste en transformar el fichero
+                <strong>TABLA_ACCIDENTES_24.csv</strong> en un fichero
+                <strong>TABLA_ACCIDENTES_24.parquet</strong>, utilizando Pandas y
+                PyArrow.
+
+            </p>
+
+            <ul class="mb-0">
+
+                <li>
+                    Cargar el conjunto de datos CSV mediante Pandas.
+                </li>
+
+                <li>
+                    Preparar los datos para su transformación.
+                </li>
+
+                <li>
+                    Generar un fichero en formato Apache Parquet.
+                </li>
+
+                <li>
+                    Aplicar compresión Snappy.
+                </li>
+
+                <li>
+                    Comprobar que los datos se han convertido correctamente.
+                </li>
+
+                <li>
+                    Analizar las características del almacenamiento columnar.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 1
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                1. Lectura del fichero CSV
+            </h3>
+
+            <p>
+
+                El primer paso consiste en cargar el fichero
+                <strong>TABLA_ACCIDENTES_24.csv</strong> utilizando la biblioteca
+                <strong>Pandas</strong>.
+
+            </p>
+
+            <p>
+
+                En este caso se especifica el carácter utilizado como separador de
+                los campos, así como la codificación <strong>Latin-1</strong>,
+                necesaria para interpretar correctamente los caracteres presentes
+                en el conjunto de datos.
+
+            </p>
+
+
+            <!-- IMAGEN -->
+
+            <div class="text-center my-4">
+
+                <img src="../img/parquet_csv_lectura.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Código Python utilizado para cargar el fichero TABLA_ACCIDENTES_24.csv mediante Pandas">
+
+                <p class="figura">
+
+                    <strong>Figura 41.</strong>
+                    Lectura del fichero TABLA_ACCIDENTES_24.csv mediante Pandas.
+                    Fuente: elaboración propia.
+
+                </p>
+
+            </div>
+
+
+            <!-- CODIGO -->
+
+            <div class="codigo">
+
+                <pre class="mb-0"><code># Leer fichero CSV
+
+df = pd.read_csv(
+    "TABLA_ACCIDENTES_24.csv",
+    sep=";",
+    encoding="latin1",
+    low_memory=False
+)
+
+# Sustituir valores nulos
+
+df = df.where(pd.notnull(df), None)</code></pre>
+
+            </div>
+
+
+            <p>
+
+                La función <code>read_csv()</code> permite cargar el contenido del
+                fichero en un <strong>DataFrame</strong> de Pandas, facilitando
+                posteriormente su tratamiento y conversión.
+
+            </p>
+
+            <p>
+
+                Asimismo, se realiza un tratamiento de los valores nulos mediante
+                <code>pd.notnull()</code>, sustituyéndolos por
+                <code>None</code>. Esta preparación permite evitar problemas durante
+                la posterior serialización de los datos.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 2
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                2. Preparación de los datos
+            </h3>
+
+            <p>
+
+                Una vez cargado el fichero CSV, los datos se encuentran disponibles
+                en el DataFrame <strong>df</strong>. Antes de generar el fichero
+                Parquet es necesario comprobar que los registros y tipos de datos
+                se encuentran correctamente preparados.
+
+            </p>
+
+            <p>
+
+                Esta etapa es especialmente importante cuando se trabaja con
+                conjuntos de datos procedentes de ficheros CSV, ya que este formato
+                no almacena información explícita sobre los tipos de datos de cada
+                columna.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <strong>Importante:</strong>
+
+                Parquet incorpora información sobre el esquema y los tipos de datos,
+                permitiendo un almacenamiento más estructurado que el utilizado por
+                un fichero CSV convencional.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                3. Conversión del CSV a formato Parquet
+            </h3>
+
+            <p>
+
+                Una vez preparado el DataFrame, se procede a generar el fichero
+                Parquet mediante la biblioteca <strong>PyArrow</strong>.
+
+            </p>
+
+            <p>
+
+                Para ello se utiliza el método <code>to_parquet()</code>, indicando
+                el nombre del fichero de salida y la utilización del algoritmo de
+                compresión <strong>Snappy</strong>.
+
+            </p>
+
+
+            <div class="codigo">
+
+                <pre class="mb-0"><code># Conversión a formato Parquet
+
+df.to_parquet(
+    "TABLA_ACCIDENTES_24.parquet",
+    engine="pyarrow",
+    compression="snappy",
+    index=False
+)</code></pre>
+
+            </div>
+
+
+            <p>
+
+                El parámetro <code>engine="pyarrow"</code> indica que será PyArrow
+                el encargado de realizar la escritura del fichero Parquet.
+
+            </p>
+
+            <p>
+
+                Por su parte, <code>compression="snappy"</code> permite aplicar
+                compresión a los datos, reduciendo el espacio necesario para su
+                almacenamiento sin modificar la información contenida en el
+                conjunto de datos.
+
+            </p>
+
+            <p>
+
+                Finalmente, <code>index=False</code> evita que el índice interno del
+                DataFrame de Pandas se almacene como una columna adicional dentro
+                del fichero.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 4
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                4. Comprobación del fichero generado
+            </h3>
+
+            <p>
+
+                Una vez finalizada la conversión, se comprueba que el fichero
+                <strong>TABLA_ACCIDENTES_24.parquet</strong> se ha generado
+                correctamente.
+
+            </p>
+
+            <div class="codigo">
+
+                <pre class="mb-0"><code>import os
+
+os.path.getsize("TABLA_ACCIDENTES_24.parquet")</code></pre>
+
+            </div>
+
+            <p>
+
+                Esta comprobación permite conocer el tamaño que ocupa el fichero
+                Parquet generado y posteriormente compararlo con el tamaño del
+                fichero CSV original.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 5
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                5. Lectura del fichero Parquet
+            </h3>
+
+            <p>
+
+                Para verificar que la conversión se ha realizado correctamente,
+                el fichero Parquet puede volver a cargarse utilizando Pandas.
+
+            </p>
+
+            <div class="codigo">
+
+                <pre class="mb-0"><code># Leer el fichero Parquet
+
+df_parquet = pd.read_parquet(
+    "TABLA_ACCIDENTES_24.parquet",
+    engine="pyarrow"
+)
+
+# Mostrar los primeros registros
+
+df_parquet.head()</code></pre>
+
+            </div>
+
+            <p>
+
+                De esta manera se comprueba que los registros originales permanecen
+                disponibles después de realizar la conversión al nuevo formato.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         COMPARACION
+    ====================================================== -->
+
+        <div class="bloque">
+
+            <h3>
+                6. Comparación entre CSV y Parquet
+            </h3>
+
+            <p>
+
+                Una de las finalidades del ejercicio es que el estudiante pueda
+                comprender las diferencias existentes entre un formato de texto
+                como CSV y un formato columnar como Parquet.
+
+            </p>
+
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered comparacion">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Característica</th>
+                            <th>CSV</th>
+                            <th>Parquet</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Organización</td>
+
+                            <td>Orientado a filas</td>
+
+                            <td>Orientado a columnas</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Tipos de datos</td>
+
+                            <td>No definidos explícitamente</td>
+
+                            <td>Almacenados en el esquema</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Compresión</td>
+
+                            <td>No aplicada directamente</td>
+
+                            <td>Permite compresión, como Snappy</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Consultas analíticas</td>
+
+                            <td>Menor eficiencia</td>
+
+                            <td>Optimizado para consultas analíticas</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Uso en Big Data</td>
+
+                            <td>Formato de intercambio</td>
+
+                            <td>Almacenamiento analítico optimizado</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         RESULTADO
+    ====================================================== -->
+
+        <div class="resultado">
+
+            <h3>
+                <i class="bi bi-check-circle-fill"></i>
+                Resultado del ejercicio
+            </h3>
+
+            <p>
+
+                Como resultado del proceso se obtiene el fichero
+                <strong>TABLA_ACCIDENTES_24.parquet</strong>, generado a partir del
+                conjunto de datos original en formato CSV.
+
+            </p>
+
+            <p class="mb-0">
+
+                El fichero utiliza el formato columnar Apache Parquet y compresión
+                Snappy, proporcionando una estructura adecuada para su utilización
+                posterior en procesos de análisis y procesamiento distribuido dentro
+                del ecosistema Hadoop.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         CONCLUSION
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+                Conclusión
+            </h3>
+
+            <p>
+
+                La realización de este ejercicio permite al estudiante comprobar de
+                forma práctica el proceso de transformación de un conjunto de datos
+                CSV a un formato optimizado para entornos Big Data.
+
+            </p>
+
+            <p class="mb-0">
+
+                Apache Parquet proporciona un almacenamiento orientado a columnas
+                que, junto con mecanismos de compresión como Snappy, permite reducir
+                el espacio ocupado y mejorar el rendimiento de determinadas
+                operaciones analíticas. Estas características hacen que Parquet sea
+                especialmente adecuado para su utilización junto con herramientas
+                del ecosistema Hadoop.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         NAVEGACION
+    ====================================================== -->
+
+        <div class="d-flex justify-content-between gap-3 mt-5 pt-4 border-top">
+
+            <a href="5.7.1.html" class="btn btn-success">
+
+                ← Ejercicio anterior
+
+            </a>
+
+            <a href="index.html" class="btn btn-outline-success">
+
+                Volver al índice
+
+            </a>
+
+            <a href="5.7.3.html" class="btn btn-success">
+
+                Siguiente ejercicio →
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+     PIE
+====================================================== -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            <p class="mb-1">
+                Proyecto Fin de Grado · Ingeniería Informática
+            </p>
+
+            <p class="mb-0">
+                Universidad Nacional de Educación a Distancia (UNED)
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
