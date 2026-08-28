@@ -1,0 +1,915 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ejercicio resuelto 5 - Comparativa formatos Avro y Parquet</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        .bloque-ejercicio {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque-ejercicio h3 {
+            color: #006633;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .imagen-ejercicio {
+            max-width: 90%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .comparacion {
+            background-color: #f1f1f1;
+            border-left: 4px solid #006633;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .tabla-comparativa {
+            margin: 25px 0;
+        }
+
+        .tabla-comparativa thead {
+            background-color: #006633;
+            color: white;
+        }
+
+        .tabla-comparativa th,
+        .tabla-comparativa td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        .resultado-destacado {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #006633;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     CABECERA
+====================================================== -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                    </h1>
+
+                    <p class="lead">
+                        Lección 5. Serialización y deserialización de los datos
+                    </p>
+
+                    <p class="lead mt-4">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo de la UNED">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     MENU
+====================================================== -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-house-fill"></i>Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+                <i class="bi bi-list"></i>Índice del capítulo 6
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================================
+     CONTENIDO
+====================================================== -->
+
+    <main class="container mt-5">
+
+
+        <!-- BREADCRUMB -->
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="index.html">Capítulo 5</a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Comparativa Avro y Parquet
+                </li>
+
+            </ol>
+
+        </nav>
+
+
+        <!-- TITULO -->
+
+        <div class="mb-4">
+
+            <h2 class="text-success fw-bold">
+                Ejercicio resuelto 5: Comparativa de los formatos Avro y Parquet
+            </h2>
+
+        </div>
+
+
+        <!-- INTRODUCCION -->
+
+        <p class="lead">
+
+            Una vez descritos los formatos <strong>Apache Avro</strong> y
+            <strong>Apache Parquet</strong>, y tras analizar los ficheros
+            generados durante los ejercicios anteriores, es posible establecer
+            una comparación de sus principales características y de su
+            comportamiento dentro del ecosistema Hadoop utilizado en este
+            proyecto.
+
+        </p>
+
+        <p>
+
+            En el contexto de este proyecto, ambos formatos almacenan la misma
+            información correspondiente a los accidentes de tráfico. Sin
+            embargo, presentan diferencias significativas en cuanto a su
+            organización interna, consumo de almacenamiento y comportamiento
+            durante el procesamiento mediante <strong>Apache Hadoop
+                MapReduce</strong>.
+
+        </p>
+
+
+        <!-- OBJETIVO -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-bullseye"></i>
+                Objetivo del ejercicio
+            </h3>
+
+            <p>
+
+                El objetivo es comparar experimentalmente los formatos
+                <strong>Avro</strong> y <strong>Parquet</strong>, analizando
+                especialmente el espacio de almacenamiento requerido y las
+                implicaciones que presenta cada formato durante el procesamiento
+                distribuido.
+
+            </p>
+
+            <ul class="mb-0">
+
+                <li>
+                    Comparar la organización de los datos en Avro y Parquet.
+                </li>
+
+                <li>
+                    Analizar el tamaño de los ficheros generados.
+                </li>
+
+                <li>
+                    Estudiar el impacto del almacenamiento en HDFS.
+                </li>
+
+                <li>
+                    Analizar las operaciones de entrada/salida realizadas
+                    durante MapReduce.
+                </li>
+
+                <li>
+                    Determinar qué formato resulta más adecuado para el
+                    almacenamiento y análisis de los datos del proyecto.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 1
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                1. Diferencias en el acceso a los datos
+            </h3>
+
+            <p>
+
+                Una de las principales diferencias entre ambos formatos se
+                encuentra en la forma en que los datos son organizados y
+                posteriormente recuperados durante los procesos de análisis.
+
+            </p>
+
+            <p>
+
+                Al trabajar con <strong>Avro</strong>, las tareas de
+                <strong>MapReduce</strong> leen los registros de acuerdo con
+                la estructura definida por el esquema. Cuando una operación
+                necesita determinados campos, el acceso se realiza sobre los
+                registros almacenados.
+
+            </p>
+
+            <p>
+
+                Por el contrario, <strong>Parquet</strong> organiza la
+                información por columnas. Esta característica permite que una
+                consulta pueda acceder únicamente a las columnas requeridas
+                por el algoritmo, evitando la lectura de información que no
+                resulta necesaria para la operación.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Avro:</strong>
+
+                organización orientada a registros. Resulta apropiado cuando
+                se necesita recuperar o intercambiar registros completos.
+
+            </div>
+
+            <div class="paso">
+
+                <strong>Parquet:</strong>
+
+                organización columnar. Permite seleccionar las columnas
+                necesarias para una determinada operación analítica.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 2
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                2. Impacto en las operaciones de entrada/salida
+            </h3>
+
+            <p>
+
+                La organización columnar de Parquet tiene una consecuencia
+                directa sobre las operaciones de <strong>entrada/salida
+                    (E/S)</strong> realizadas durante el procesamiento distribuido.
+
+            </p>
+
+            <p>
+
+                Cuando un algoritmo de MapReduce necesita únicamente un
+                subconjunto de las variables disponibles, Parquet puede leer
+                únicamente las columnas requeridas. Esto reduce la cantidad
+                de información que debe ser transferida desde el sistema de
+                almacenamiento hacia los procesos encargados del cálculo.
+
+            </p>
+
+            <p>
+
+                En consecuencia, al reducirse el volumen de datos leído desde
+                HDFS y transferido entre los diferentes nodos del clúster,
+                también puede disminuir el coste asociado a las operaciones
+                de entrada/salida.
+
+            </p>
+
+            <div class="comparacion">
+
+                <h4 class="text-success">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Comparación del acceso
+                </h4>
+
+                <p>
+
+                    <strong>Avro:</strong>
+                    acceso orientado a registros completos.
+
+                </p>
+
+                <p class="mb-0">
+
+                    <strong>Parquet:</strong>
+                    acceso selectivo a las columnas necesarias.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                3. Comparación del tamaño de los ficheros
+            </h3>
+
+            <p>
+
+                Una vez generados los ficheros equivalentes en los formatos
+                Avro y Parquet, se realizó una comparación de su tamaño en
+                almacenamiento.
+
+            </p>
+
+            <p>
+
+                Los resultados obtenidos muestran una diferencia considerable
+                entre ambos formatos. El fichero Avro presenta un tamaño de
+                <strong>20,8 MB</strong>, mientras que el fichero equivalente
+                en formato Parquet ocupa únicamente <strong>2,0 MB</strong>.
+
+            </p>
+
+            <div class="tabla-responsive">
+
+                <table class="table table-bordered table-striped tabla-comparativa">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Formato
+                            </th>
+
+                            <th>
+                                Tamaño del fichero
+                            </th>
+
+                            <th>
+                                Diferencia
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <strong>Avro</strong>
+                            </td>
+
+                            <td>
+                                20,8 MB
+                            </td>
+
+                            <td>
+                                -
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <strong>Parquet</strong>
+                            </td>
+
+                            <td>
+                                2,0 MB
+                            </td>
+
+                            <td>
+                                Reducción aproximada del 90 %
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="paso">
+
+                <strong>Resultado obtenido:</strong>
+
+                El fichero Parquet requiere aproximadamente un
+                <span class="resultado-destacado">90 % menos de espacio</span>
+                que el fichero equivalente en formato Avro.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 4
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                4. Impacto del factor de replicación de HDFS
+            </h3>
+
+            <p>
+
+                La diferencia de tamaño también tiene un impacto directo sobre
+                el espacio físico utilizado en el clúster Hadoop cuando los
+                ficheros son almacenados en <strong>HDFS</strong>.
+
+            </p>
+
+            <p>
+
+                En el escenario analizado se utiliza el factor de replicación
+                configurado por defecto, correspondiente a
+                <strong>tres copias</strong> de cada bloque almacenado.
+
+            </p>
+
+            <table class="table table-bordered table-striped tabla-comparativa">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Formato
+                        </th>
+
+                        <th>
+                            Tamaño original
+                        </th>
+
+                        <th>
+                            Factor de replicación
+                        </th>
+
+                        <th>
+                            Espacio aproximado en HDFS
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            <strong>Avro</strong>
+                        </td>
+
+                        <td>
+                            20,8 MB
+                        </td>
+
+                        <td>
+                            3
+                        </td>
+
+                        <td>
+                            62,4 MB
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <strong>Parquet</strong>
+                        </td>
+
+                        <td>
+                            2,0 MB
+                        </td>
+
+                        <td>
+                            3
+                        </td>
+
+                        <td>
+                            6,1 MB
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <p class="mb-0">
+
+                Estos resultados muestran que la reducción conseguida mediante
+                Parquet no solo afecta al tamaño lógico del fichero, sino que
+                también se traslada al espacio físico requerido en el sistema
+                distribuido. Por tanto, la utilización de un formato más
+                compacto permite optimizar el uso de los recursos de
+                almacenamiento disponibles en el clúster.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         PASO 5
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                5. Impacto sobre el procesamiento MapReduce
+            </h3>
+
+            <p>
+
+                Desde el punto de vista del procesamiento mediante
+                <strong>Apache Hadoop MapReduce</strong>, el menor tamaño de
+                los archivos Parquet implica una reducción del volumen de
+                información que debe ser leído desde HDFS.
+
+            </p>
+
+            <p>
+
+                Además, su organización columnar permite seleccionar las
+                variables necesarias para una determinada operación. De este
+                modo, cuando un algoritmo no necesita todas las columnas del
+                conjunto de datos, puede evitarse la lectura de información
+                innecesaria.
+
+            </p>
+
+            <p>
+
+                Esta reducción del volumen de datos procesados puede contribuir
+                a disminuir las operaciones de <strong>entrada/salida</strong>
+                y la cantidad de información que debe ser transferida entre
+                los nodos del clúster.
+
+            </p>
+
+            <div class="paso">
+
+                <strong>Consecuencia:</strong>
+
+                Menor cantidad de datos almacenados y leídos → menor volumen
+                de E/S → menor cantidad de información transferida → mayor
+                eficiencia potencial durante los procesos analíticos.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         CONCLUSIONES -->
+        ====================================================== -->
+
+        <div class="comparacion">
+
+            <h3>
+                <i class="bi bi-check2-circle"></i>
+                Conclusiones de la comparativa
+            </h3>
+
+            <p>
+
+                La comparación realizada permite identificar diferencias
+                significativas entre ambos formatos en relación con el
+                almacenamiento y el procesamiento de los datos.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    <strong>Avro</strong> presenta un tamaño de
+                    <strong>20,8 MB</strong> para el conjunto de datos
+                    analizado.
+
+                </li>
+
+                <li>
+
+                    <strong>Parquet</strong> ocupa únicamente
+                    <strong>2,0 MB</strong>, lo que supone una reducción
+                    aproximada del <strong>90 %</strong>.
+
+                </li>
+
+                <li>
+
+                    Considerando tres réplicas en HDFS, Avro requiere
+                    aproximadamente <strong>62,4 MB</strong>, mientras que
+                    Parquet requiere aproximadamente <strong>6,1 MB</strong>.
+
+                </li>
+
+                <li>
+
+                    La organización columnar de Parquet permite reducir la
+                    cantidad de información que debe ser leída cuando solo se
+                    necesitan determinadas columnas.
+
+                </li>
+
+                <li>
+
+                    La reducción del volumen de datos puede disminuir las
+                    operaciones de entrada/salida y la transferencia de
+                    información entre los nodos del clúster.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- =====================================================
+         IMAGEN CONCLUSIONES
+====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+                6. Evidencia de los resultados obtenidos
+            </h3>
+
+            <p>
+
+                La siguiente figura recoge la evidencia correspondiente a la
+                comparación realizada y resume los principales resultados
+                obtenidos durante el ejercicio.
+
+            </p>
+
+            <div class="text-center mt-4">
+
+                <img src="../img/conclusiones-avro-parquet.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Conclusiones de la comparación entre los formatos Avro y Parquet">
+
+                <p class="figura">
+
+                    <strong>Figura 48.</strong>
+                    Conclusiones de la comparación entre los formatos
+                    <strong>Avro</strong> y <strong>Parquet</strong>.
+                    Fuente: elaboración propia.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         CONCLUSION FINAL
+====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+                <i class="bi bi-award"></i>
+                Resultado y conclusión final
+            </h3>
+
+            <p>
+
+                Los resultados obtenidos en este proyecto demuestran que
+                <strong>Parquet</strong> es el formato más eficiente para el
+                almacenamiento y análisis de los datos de accidentes cuando
+                se prioriza la reducción del espacio ocupado y la optimización
+                del acceso a las columnas necesarias.
+
+            </p>
+
+            <p>
+
+                La reducción aproximada del <strong>90 %</strong> observada en
+                el tamaño del fichero tiene una repercusión directa sobre el
+                almacenamiento utilizado en HDFS y, potencialmente, sobre el
+                volumen de datos que debe ser leído y transferido durante los
+                trabajos distribuidos.
+
+            </p>
+
+            <p>
+
+                Por su parte, <strong>Avro</strong> continúa siendo una
+                alternativa adecuada para escenarios en los que resulta
+                especialmente importante el intercambio de datos, la
+                serialización de registros completos o la utilización de un
+                esquema flexible.
+
+            </p>
+
+            <p class="mb-0">
+
+                Por tanto, la elección del formato depende de las características
+                del proceso que se pretenda realizar. Para el escenario de
+                análisis de grandes volúmenes de datos planteado en este
+                proyecto, los resultados experimentales obtenidos justifican
+                la utilización de <strong>Parquet</strong> como formato
+                especialmente adecuado para las tareas analíticas.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         NAVEGACION
+====================================================== -->
+
+        <div class="text-center mb-5">
+
+            <a href="ejerP3.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Siguiente Ejercicio.
+
+            </a>
+
+        </div>
+        <div class="text-center mt-4">
+
+            <a href="5.5.3Jupyter.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-journal-code"></i>
+
+                Ver solución completa en Jupyter.
+
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+     PIE
+====================================================== -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            <p class="mb-1">
+                Proyecto Fin de Grado · Ingeniería Informática
+            </p>
+
+            <p class="mb-0">
+                Universidad Nacional de Educación a Distancia (UNED)
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
