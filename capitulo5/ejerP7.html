@@ -340,14 +340,12 @@
      CONTENIDO PRINCIPAL
 ====================================================== -->
 
-    <main class="container mt-5">
+    <main class="container">
 
-        <div class="row g-4">
+        <div class="content">
 
 
-            <!-- =================================================
-             MENU LATERAL
-        ================================================== -->
+            <!-- MIGAS DE PAN -->
 
             <nav aria-label="breadcrumb">
 
@@ -371,747 +369,694 @@
 
 
             <!-- =================================================
-             CONTENIDO
-        ================================================== -->
+                 INTRODUCCION
+            ================================================== -->
 
-            <section class="col-lg-9">
+            <h2>
+                Ejercicio Final 1: Python3 y MySQL
+            </h2>
 
-                <div class="text-center mb-5">
+            <p>
+                Una vez desplegada la infraestructura Big Data basada en
+                <strong>Hadoop sobre contenedores Docker</strong>, tal como se
+                define en el <strong>punto 4.2</strong>, se procede a la realización
+                de una serie de ejercicios prácticos orientados al procesamiento y
+                análisis de información clínica procedente del corpus
+                <strong>MEDDOCAN</strong>.
+            </p>
 
-                    <h2 class="text-success fw-bold">
+            <p>
+                El objetivo de esta fase es demostrar las capacidades de la
+                arquitectura implementada para gestionar, procesar y almacenar
+                información de forma distribuida.
+            </p>
 
-                        5.8.7 Ejercicio Final 2: Levantar contenedor db_cluster – MySQL
 
-                    </h2>
+            <div class="objetivo">
 
-                    <p class="lead">
+                <h3>
+                    <i class="bi bi-bullseye"></i>
+                    Objetivo del ejercicio
+                </h3>
 
-                        Despliegue de MySQL para la explotación de los datos generados
-                        durante el procesamiento Hadoop.
+                <p class="mb-0">
+                    El ejercicio tiene como finalidad aplicar un proceso de
+                    anonimización sobre los documentos clínicos de MEDDOCAN,
+                    procesarlos mediante <strong>Python 3</strong> y
+                    <strong>Hadoop Streaming</strong>, generar un fichero
+                    estructurado en formato <strong>CSV</strong> y prepararlo
+                    posteriormente para su incorporación a una base de datos
+                    <strong>MySQL</strong>.
+                </p>
 
-                    </p>
+            </div>
+
+
+            <!-- =================================================
+                 ANONIMIZACION
+            ================================================== -->
+
+            <h2>
+                Anonimización de los datos clínicos
+            </h2>
+
+            <p>
+                La anonimización constituye un proceso fundamental en el ámbito de
+                la protección de datos y en la investigación médica, ya que permite
+                preservar la privacidad de los pacientes durante el tratamiento de
+                información clínica.
+            </p>
+
+            <p>
+                En el contexto de <strong>MEDDOCAN</strong>, la anonimización hace
+                referencia a la eliminación o modificación de información personal
+                identificable, conocida como <strong>PII (Personally Identifiable
+                    Information)</strong>, presente en los registros médicos.
+            </p>
+
+            <p>
+                El objetivo principal consiste en garantizar que los datos utilizados
+                para la investigación sean anónimos y no puedan vincularse con
+                individuos reales. Para ello se pueden eliminar o modificar datos
+                como nombres, direcciones, números de teléfono, identificadores
+                únicos y otros elementos potencialmente identificativos.
+            </p>
+
+
+            <!-- =================================================
+                 SCRIPT PYTHON
+            ================================================== -->
+
+            <div class="bloque">
+
+                <h3>
+                    Script de anonimización
+                </h3>
+
+                <p>
+                    Para este ejercicio se ha desarrollado el script
+                    <strong>meddocan_anonymization.py</strong>, incluido en el
+                    <strong>Anexo Código Ejercicios: meddocan_anonymization</strong>.
+                </p>
+
+                <p>
+                    El script procesa inicialmente los documentos clínicos
+                    proporcionados por MEDDOCAN y almacenados en formato
+                    <strong>.txt</strong>. Como resultado del procesamiento se
+                    genera un nuevo fichero que posteriormente será transformado
+                    a formato <strong>.csv</strong>.
+                </p>
+
+                <p>
+                    La utilización de <strong>Hadoop Streaming</strong> permite
+                    desarrollar las fases Mapper y Reducer mediante scripts escritos
+                    en Python, evitando la necesidad de utilizar Java y facilitando
+                    la comprensión del procesamiento distribuido.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 FIGURA MAPREDUCE
+            ================================================== -->
+
+            <div class="text-center my-4">
+
+                <img src="../img/almacenamiento_mapreduce.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Almacenamiento, transformación y análisis mediante MapReduce">
+
+                <p class="figura">
+
+                    <strong>Figura 44.</strong>
+                    Almacenamiento, transformación y análisis MapReduce.
+                    Fuente: elaboración propia con apoyo de inteligencia artificial
+                    generativa (ChatGPT/OpenAI), adaptada por el autor.
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 PROCESAMIENTO DISTRIBUIDO
+            ================================================== -->
+
+            <h2>
+                Procesamiento distribuido mediante Hadoop Streaming
+            </h2>
+
+            <p>
+                Durante la ejecución de los trabajos MapReduce, los documentos
+                clínicos son analizados de forma paralela por los diferentes nodos
+                del clúster. El sistema permite distribuir la carga de trabajo y
+                procesar diferentes fragmentos de los documentos de forma
+                simultánea.
+            </p>
+
+            <p>
+                Cada tarea <strong>Map</strong> se encarga de analizar una porción
+                de los documentos de entrada y aplicar las reglas de anonimización
+                definidas en el script, identificando y sustituyendo aquellos
+                elementos que puedan contener información potencialmente
+                identificativa.
+            </p>
+
+            <p>
+                Posteriormente, las fases de <strong>Shuffle</strong> y
+                <strong>Reduce</strong> permiten completar el procesamiento
+                distribuido y generar los resultados correspondientes.
+            </p>
+
+
+            <!-- =================================================
+                 SECUENCIA
+            ================================================== -->
+
+            <h2>
+                Secuencia de ejecución
+            </h2>
+
+            <p>
+                El proceso completo de anonimización se desarrolla mediante las
+                siguientes etapas.
+            </p>
+
+
+            <!-- PASO 1 -->
+
+            <div class="paso">
+
+                <strong>1. Preparación de los documentos.</strong>
+
+                <p class="mt-2 mb-0">
+
+                    Una vez cargados los ficheros <strong>.txt</strong> que se
+                    desean anonimizar, se prepara el fichero que permitirá
+                    agrupar los campos procesados. En este ejercicio se utilizará
+                    el nombre:
+
+                </p>
+
+                <div class="codigo">
+
+                    meddocan_anonimizado.txt
 
                 </div>
 
+            </div>
 
-                <!-- =====================================================
-                         INTRODUCCION
-                    ====================================================== -->
 
-                <div class="bloque-ejercicio">
+            <!-- PASO 2 -->
 
-                    <h3>
+            <div class="paso">
 
-                        <i class="bi bi-database-fill"></i>
+                <strong>2. Selección de los campos a anonimizar.</strong>
 
-                        Introducción
+                <p class="mt-2 mb-0">
 
-                    </h3>
+                    En el anexo del ejercicio se han establecido inicialmente
+                    los siguientes campos para el proceso de anonimización:
 
-                    <p>
+                </p>
 
-                        Una vez finalizados los procesos de procesamiento y transformación
-                        de los datos mediante el clúster Hadoop, se puede utilizar un
-                        contenedor independiente para almacenar y explotar los resultados
-                        mediante una base de datos relacional.
+                <ul class="mt-3">
 
-                    </p>
+                    <li><strong>nombre</strong></li>
 
-                    <p>
+                    <li><strong>apellidos</strong></li>
 
-                        En este ejercicio se propone levantar el contenedor
-                        <strong>db_cluster</strong>, basado en <strong>MySQL</strong>,
-                        utilizando los ficheros <strong>.csv</strong> generados durante
-                        las etapas anteriores del proyecto.
+                    <li><strong>CIPA</strong></li>
 
-                    </p>
+                    <li><strong>domicilio</strong></li>
 
-                    <p class="mb-0">
+                </ul>
 
-                        El objetivo es completar el flujo de procesamiento de los datos,
-                        desde su generación en el clúster Hadoop hasta su almacenamiento
-                        estructurado en una base de datos MySQL.
+                <p class="mb-0">
 
-                    </p>
+                    El estudiante puede ampliar posteriormente esta lista
+                    incorporando otros campos que considere necesario anonimizar.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 3 -->
+
+            <div class="paso">
+
+                <strong>3. Ejecución del script de anonimización.</strong>
+
+                <p class="mt-2">
+
+                    Una vez preparados los documentos, se ejecuta el script
+                    mediante <strong>Python 3</strong> y Hadoop Streaming.
+
+                </p>
+
+                <div class="codigo">
+
+                    !python3 meddocan_anonymization.py
+                    -r hadoop
+                    hdfs:///dataset/meddocan-hdfs/*txt
+                    &gt; meddocan_anonimizados.txt
 
                 </div>
 
+            </div>
+            <!-- =====================================================
+                     EJECUCIÓN MAPREDUCE SOBRE EL CLÚSTER HADOOP
+                ====================================================== -->
 
-                <!-- =====================================================
-                         ARQUITECTURA
-                    ====================================================== -->
+            <div class="text-center my-5">
+                <img src="../img/mapreduce_meddocan.png" class="img-fluid rounded shadow"
+                    alt="Ejecución del trabajo MapReduce para la anonimización de documentos MEDDOCAN sobre el clúster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
 
-                <div class="bloque-ejercicio">
+                <p class="figura mt-3">
 
-                    <h3>
+                    <strong>Figura 44.</strong>
+                    Ejecución del trabajo MapReduce para la anonimización de los
+                    documentos MEDDOCAN sobre el clúster Hadoop.
+                    Fuente: elaboración propia.
 
-                        <i class="bi bi-diagram-3-fill"></i>
+                </p>
 
-                        Arquitectura del despliegue
+            </div>
+            <div class="alert alert-info">
 
-                    </h3>
+                <i class="bi bi-diagram-3-fill"></i>
 
-                    <p>
+                <strong>Ejecución del trabajo MapReduce</strong>
 
-                        La siguiente figura muestra la arquitectura que será desplegada
-                        cuando sea necesario utilizar un contenedor con
-                        <strong>MySQL</strong> y realizar la carga de los datos
-                        compartidos en formato <strong>.csv</strong>.
+                <p class="mt-2 mb-0">
 
-                    </p>
+                    La figura muestra la ejecución del trabajo de anonimización mediante
+                    <strong>Hadoop Streaming</strong> sobre el clúster Hadoop. Durante el
+                    procesamiento se observa la evolución de las tareas <strong>Map</strong>
+                    y <strong>Reduce</strong>, así como el porcentaje de progreso alcanzado
+                    en cada una de las fases.
+
+                    <br><br>
+
+                    El trabajo procesa los documentos clínicos almacenados en HDFS y
+                    distribuye las diferentes tareas entre los recursos disponibles del
+                    clúster. El <strong>Mapper</strong> analiza los documentos y aplica las
+                    reglas de anonimización definidas en el programa Python, mientras que
+                    la fase <strong>Reduce</strong> consolida los resultados generados por
+                    las distintas tareas.
+
+                    <br><br>
+
+                    Una vez finalizado el procesamiento, Hadoop muestra el estado de
+                    finalización del trabajo y la información asociada a las tareas
+                    ejecutadas. De esta forma, el estudiante puede comprobar de manera
+                    práctica cómo un conjunto de documentos puede ser procesado de forma
+                    distribuida mediante el modelo <strong>MapReduce</strong>.
+
+                </p>
+
+            </div>
+
+            <!-- AVISO -->
+
+            <div class="alert alert-warning">
+
+                <i class="bi bi-hourglass-split"></i>
+
+                <strong>Importante:</strong>
+
+                El proceso de anonimización puede tardar varios minutos,
+                dependiendo del número de documentos y de los recursos disponibles
+                en el clúster Hadoop.
+
+            </div>
 
 
-                    <div class="text-center my-4">
+            <!-- PASO 4 -->
 
-                        <img src="../img/cluster_hadoop_ii.png" class="img-fluid rounded shadow imagen-ejercicio"
-                            alt="Arquitectura del clúster Hadoop con MySQL">
+            <div class="paso">
 
-                        <p class="figura">
+                <strong>4. Ejecución del trabajo MapReduce.</strong>
 
-                            <strong>Figura 44.</strong>
-                            Cluster Hadoop II.
-                            Fuente: elaboración propia con apoyo de inteligencia artificial
-                            generativa (ChatGPT/OpenAI), adaptada por el autor.
+                <p class="mt-2 mb-0">
 
-                        </p>
+                    Una vez lanzada la instrucción, Hadoop Streaming inicia el
+                    trabajo MapReduce sobre el clúster desplegado en la
+                    infraestructura contenerizada. Los documentos son divididos
+                    en diferentes fragmentos o <strong>splits</strong>, que son
+                    distribuidos entre los nodos disponibles para su procesamiento
+                    paralelo.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 5 -->
+
+            <div class="paso">
+
+                <strong>5. Aplicación de las reglas de anonimización.</strong>
+
+                <p class="mt-2 mb-0">
+
+                    Las tareas Map analizan las diferentes partes de los documentos
+                    y aplican las reglas definidas en el script, identificando y
+                    sustituyendo los elementos que pueden contener información
+                    sanitaria protegida o datos potencialmente identificativos.
+
+                </p>
+
+            </div>
+
+
+            <!-- PASO 6 -->
+
+            <div class="paso">
+
+                <strong>6. Generación del fichero anonimizado.</strong>
+
+                <p class="mt-2 mb-0">
+
+                    Una vez finalizado el procesamiento, todos los resultados se
+                    agrupan en el fichero:
+
+                </p>
+
+                <div class="codigo">
+
+                    meddocan_anonimizados.txt
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONVERSION TXT CSV
+            ================================================== -->
+
+            <h2>
+                Conversión del resultado a formato CSV
+            </h2>
+
+            <p>
+                Una vez finalizado el proceso de anonimización y procesados todos
+                los documentos <strong>.txt</strong>, se dispone de un único
+                fichero que contiene los resultados obtenidos.
+            </p>
+
+            <p>
+                Para facilitar la carga de estos datos en una base de datos
+                relacional, es necesario transformar el fichero
+                <strong>meddocan_anonimizados.txt</strong> al formato
+                <strong>CSV</strong>.
+            </p>
+
+            <div class="bloque">
+
+                <h3>
+                    Script convertir_txt_csv.py
+                </h3>
+
+                <p>
+                    Para realizar esta transformación se ha desarrollado el script
+                    <strong>convertir_txt_csv.py</strong>, incluido igualmente
+                    en el anexo de código de ejercicios.
+                </p>
+
+                <div class="codigo">
+
+                    !python3 convertir_txt_csv.py
+                    meddocan_anonimizados.txt
+                    meddocan_anonimizados.csv
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESULTADO CSV
+            ================================================== -->
+
+            <div class="resultado">
+
+                <h3>
+                    <i class="bi bi-filetype-csv"></i>
+                    Resultado de la conversión
+                </h3>
+
+                <p>
+                    Al finalizar el proceso se obtiene el fichero:
+
+                </p>
+
+                <div class="codigo">
+
+                    meddocan_anonimizados.csv
+
+                </div>
+
+                <p class="mb-0">
+
+                    Este archivo contiene la información anonimizada y estructurada
+                    en formato CSV, preparada para su posterior incorporación a
+                    la base de datos MySQL.
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 MYSQL
+            ================================================== -->
+
+            <h2>
+                Incorporación de los datos a MySQL
+            </h2>
+
+            <p>
+                Una vez generado el fichero CSV, este debe estar disponible en el
+                volumen compartido del clúster, concretamente en
+                <strong>/media/notebooks</strong>, para que pueda ser utilizado
+                posteriormente en el proceso de carga de la base de datos.
+            </p>
+
+            <p>
+                El fichero será migrado al directorio utilizado por el contenedor
+                <strong>db_cluster</strong>, que será el responsable de cargar los
+                datos y proporcionar la infraestructura necesaria para su
+                almacenamiento estructurado.
+            </p>
+
+            <div class="bloque">
+
+                <h3>
+                    Directorio utilizado por el contenedor
+                </h3>
+
+                <div class="codigo">
+
+                    /home/uned/ClusterUned/db_cluster/dataset
+
+                </div>
+
+                <p class="mb-0">
+
+                    Desde este directorio se podrá acceder al fichero CSV generado
+                    durante el proceso de anonimización y utilizarlo para poblar
+                    la base de datos MySQL.
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 FLUJO COMPLETO
+            ================================================== -->
+
+            <h2>
+                Flujo completo del ejercicio
+            </h2>
+
+            <div class="objetivo">
+
+                <ol class="mb-0">
+
+                    <li class="mb-2">
+                        Carga de los documentos clínicos
+                        <strong>.txt</strong> de MEDDOCAN.
+                    </li>
+
+                    <li class="mb-2">
+                        Preparación de los campos que serán anonimizados.
+                    </li>
+
+                    <li class="mb-2">
+                        Ejecución del script
+                        <strong>meddocan_anonymization.py</strong>.
+                    </li>
+
+                    <li class="mb-2">
+                        Procesamiento distribuido mediante
+                        <strong>Hadoop Streaming y MapReduce</strong>.
+                    </li>
+
+                    <li class="mb-2">
+                        Generación del fichero
+                        <strong>meddocan_anonimizados.txt</strong>.
+                    </li>
+
+                    <li class="mb-2">
+                        Conversión del fichero TXT a
+                        <strong>CSV</strong>.
+                    </li>
+
+                    <li class="mb-2">
+                        Generación del fichero
+                        <strong>meddocan_anonimizados.csv</strong>.
+                    </li>
+
+                    <li>
+                        Preparación del fichero para su incorporación a
+                        <strong>MySQL</strong>.
+                    </li>
+
+                </ol>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONCLUSIONES
+            ================================================== -->
+
+            <div class="conclusion">
+
+                <h3>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Conclusiones
+                </h3>
+
+                <p>
+                    El ejercicio permite comprobar de forma práctica cómo una
+                    arquitectura Big Data basada en Docker y Hadoop puede utilizarse
+                    para procesar documentos clínicos de forma distribuida.
+                </p>
+
+                <p>
+                    El empleo de <strong>Python 3</strong> mediante Hadoop Streaming
+                    facilita la implementación de las tareas de procesamiento,
+                    mientras que el modelo <strong>MapReduce</strong> permite
+                    distribuir la carga de trabajo entre los diferentes nodos del
+                    clúster.
+                </p>
+
+                <p class="mb-0">
+                    Finalmente, la conversión de los resultados a
+                    <strong>CSV</strong> permite preparar la información anonimizada
+                    para su incorporación a <strong>MySQL</strong>, proporcionando
+                    una capa de persistencia estructurada que facilita las consultas,
+                    el análisis y la explotación posterior de los datos.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 ANEXO
+            ================================================== -->
+
+            <div class="referencia">
+
+                <strong>
+                    <i class="bi bi-code-slash"></i>
+                    Anexo de código
+                </strong>
+
+                <p class="mt-2 mb-0">
+
+                    Los scripts utilizados en este ejercicio se encuentran
+                    disponibles en el apartado
+                    <strong>Anexo Código Ejercicios</strong>:
+
+                </p>
+
+                <ul class="mt-2 mb-0">
+
+                    <li>
+                        <strong>meddocan_anonymization.py</strong>
+                        – proceso de anonimización.
+                    </li>
+
+                    <li>
+                        <strong>convertir_txt_csv.py</strong>
+                        – conversión del resultado a formato CSV.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =================================================
+                 NAVEGACION
+            ================================================== -->
+
+            <div class="text-center mb-5">
+
+                <a href="ejerP7.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente Ejercicio.
+
+                </a>
+
+            </div>
+            <div class="text-center mt-4">
+
+                <a href="EjerP4Jupyter.html" target="_blank" class="btn btn-success">
+
+                    <i class="bi bi-journal-code"></i>
+
+                    Ver solución completa en Jupyter.
+
+                </a>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                mapreduce_meddocan
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/mapreduce_meddocan.png" class="img-fluid">
+
+                        </div>
 
                     </div>
 
                 </div>
 
-
-                <!-- =====================================================
-                         PASO 1
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        1. Traslado del fichero CSV
-
-                    </h3>
-
-                    <p>
-
-                        Lo primero que debemos realizar antes de levantar el contenedor
-                        <strong>db_cluster</strong> es trasladar los datos del fichero
-                        <strong>.csv</strong> generado por el clúster Hadoop.
-
-                    </p>
-
-                    <p>
-
-                        El fichero se encuentra inicialmente en el directorio compartido:
-
-                    </p>
-
-                    <div class="codigo">
-
-                        /media/notebook
-
-                    </div>
-
-                    <p>
-
-                        Este fichero deberá copiarse al directorio utilizado por
-                        <strong>db_cluster</strong> para realizar la carga de los datos:
-
-                    </p>
-
-                    <div class="codigo">
-
-                        /home/uned/ClusterUned/db_cluster/dataset
-
-                    </div>
-
-
-                    <div class="objetivo">
-
-                        <h5>
-
-                            <i class="bi bi-info-circle-fill"></i>
-
-                            Objetivo
-
-                        </h5>
-
-                        <p class="mb-0">
-
-                            El fichero CSV debe estar disponible en el directorio
-                            <code>dataset</code> antes de realizar la construcción de la
-                            imagen Docker.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 2
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        2. Compilación de la imagen Docker
-
-                    </h3>
-
-                    <p>
-
-                        Antes de levantar el contenedor <strong>db_cluster</strong>,
-                        es necesario compilar la imagen que utilizará el contenedor para
-                        cargar los datos CSV.
-
-                    </p>
-
-                    <p>
-
-                        Para ello, debemos situarnos en el directorio donde se encuentra
-                        el <strong>Dockerfile</strong> correspondiente a
-                        <strong>db_cluster</strong> y ejecutar el siguiente comando:
-
-                    </p>
-
-
-                    <div class="codigo">
-
-                        sudo docker build -t db_cluster .
-
-                    </div>
-
-
-                    <p>
-
-                        El comando anterior construye la imagen Docker denominada
-                        <strong>db_cluster</strong> utilizando como referencia el
-                        <strong>Dockerfile</strong> disponible en el directorio actual.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         AVISO
-                    ====================================================== -->
-
-                <div class="importante">
-
-                    <h4>
-
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-
-                        Importante
-
-                    </h4>
-
-                    <p class="mb-0">
-
-                        Cualquier cambio que el estudiante realice en el fichero
-                        <strong>init.sql</strong> o en la carga de los ficheros
-                        <strong>.csv</strong> requerirá volver a realizar el proceso de
-                        compilación de la imagen Docker.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 3
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        3. Levantar el contenedor db_cluster
-
-                    </h3>
-
-                    <p>
-
-                        Una vez compilada la imagen, ya podremos levantar el contenedor
-                        para realizar la carga automática de los datos.
-
-                    </p>
-
-                    <p>
-
-                        Para ello debemos ubicarnos en el directorio raíz del proyecto:
-
-                    </p>
-
-                    <div class="codigo">
-
-                        /home/uned/ClusterUned
-
-                    </div>
-
-                    <p>
-
-                        A continuación, se ejecutará el fichero
-                        <strong>docker-compose-dbcluster.yaml</strong> mediante el
-                        siguiente comando:
-
-                    </p>
-
-
-                    <div class="codigo">
-
-                        sudo docker-compose -f docker-compose-dbcluster.yaml up -d
-
-                    </div>
-
-
-                    <p>
-
-                        La opción <code>-d</code> permite ejecutar el contenedor en
-                        segundo plano.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         FIGURA DOCKER COMPOSE
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        <i class="bi bi-box-seam-fill"></i>
-
-                        Despliegue mediante Docker Compose
-
-                    </h3>
-
-                    <p>
-
-                        La siguiente figura muestra el despliegue del contenedor
-                        <strong>db_cluster</strong> mediante Docker Compose.
-
-                    </p>
-
-
-                    <div class="text-center my-4">
-
-                        <img src="../img/docker-compose-dbcluster.png" class="img-fluid rounded shadow imagen-ejercicio"
-                            alt="Despliegue del contenedor db_cluster mediante Docker Compose">
-
-                        <p class="figura">
-
-                            <strong>Figura 43.</strong>
-                            Docker Compose db_cluster.
-                            Fuente: elaboración propia, adaptada por el autor.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="resultado">
-
-                        <h5>
-
-                            <i class="bi bi-check-circle-fill"></i>
-
-                            Resultado esperado
-
-                        </h5>
-
-                        <p class="mb-0">
-
-                            Como resultado del comando anterior se iniciará el contenedor
-                            <strong>db_cluster</strong> y comenzará el proceso de
-                            inicialización de la base de datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 4
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        4. Comprobar los registros del contenedor
-
-                    </h3>
-
-                    <p>
-
-                        Una vez levantado el contenedor, podemos comprobar si se ha
-                        producido algún error durante su inicialización o durante la carga
-                        de los datos.
-
-                    </p>
-
-                    <p>
-
-                        Para consultar los registros del contenedor se ejecutará:
-
-                    </p>
-
-
-                    <div class="codigo">
-
-                        sudo docker logs db_cluster
-
-                    </div>
-
-
-                    <p class="mb-0">
-
-                        La información mostrada permitirá comprobar el estado del proceso
-                        de inicialización y detectar posibles errores durante la carga de
-                        los datos.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 5
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        5. Acceso al servidor MySQL
-
-                    </h3>
-
-                    <p>
-
-                        Para acceder al servidor MySQL que se encuentra ejecutándose
-                        dentro del contenedor, se utilizará la siguiente sentencia:
-
-                    </p>
-
-
-                    <div class="codigo">
-
-                        sudo docker-compose -f docker-compose-dbcluster.yaml exec db mysql -uroot -p
-
-                    </div>
-
-
-                    <p>
-
-                        Al ejecutar el comando, MySQL solicitará la contraseña del usuario
-                        <strong>root</strong>.
-
-                    </p>
-
-
-                    <div class="alert alert-success">
-
-                        <i class="bi bi-key-fill"></i>
-
-                        <strong>Contraseña:</strong>
-
-                        <code>uned</code>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 6
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        6. Seleccionar la base de datos
-
-                    </h3>
-
-                    <p>
-
-                        Una vez dentro del cliente de MySQL, será necesario indicar la
-                        base de datos que se desea utilizar.
-
-                    </p>
-
-
-                    <div class="codigo">
-
-                        use mydatabase;
-
-                    </div>
-
-
-                    <p class="mb-0">
-
-                        A partir de este momento será posible acceder a las tablas
-                        almacenadas en la base de datos y consultar la información
-                        cargada.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         PASO 7
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        7. Comprobación de los datos cargados
-
-                    </h3>
-
-                    <p>
-
-                        Una vez seleccionada la base de datos
-                        <strong>mydatabase</strong>, ya es posible acceder a los datos y
-                        a las tablas cargadas durante el proceso de inicialización.
-
-                    </p>
-
-                    <p>
-
-                        En este ejercicio, se ha cargado la tabla
-                        <strong>Corpus_Meddocan</strong> utilizando los datos procedentes
-                        del fichero <strong>.csv</strong> generado en etapas anteriores.
-
-                    </p>
-
-
-                    <div class="resultado">
-
-                        <h5>
-
-                            <i class="bi bi-database-check"></i>
-
-                            Datos cargados
-
-                        </h5>
-
-                        <p class="mb-1">
-
-                            <strong>Base de datos:</strong>
-
-                            <code>mydatabase</code>
-
-                        </p>
-
-                        <p class="mb-0">
-
-                            <strong>Tabla:</strong>
-
-                            <code>Corpus_Meddocan</code>
-
-                        </p>
-
-                    </div>
-
-
-                    <p>
-
-                        A partir de este momento, los datos quedan disponibles para su
-                        consulta y posterior explotación mediante las herramientas
-                        proporcionadas por MySQL.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         EXPERIMENTACION
-                    ====================================================== -->
-
-                <div class="objetivo">
-
-                    <h3>
-
-                        <i class="bi bi-lightbulb-fill"></i>
-
-                        Propuesta de experimentación
-
-                    </h3>
-
-                    <p>
-
-                        Las características de la base de datos creada como prueba pueden
-                        modificarse para que el estudiante pueda experimentar con el
-                        funcionamiento de MySQL y comprobar los efectos de las diferentes
-                        modificaciones.
-
-                    </p>
-
-                    <p>
-
-                        Se propone realizar, entre otras, las siguientes modificaciones:
-
-                    </p>
-
-                    <ul class="mb-0">
-
-                        <li>
-
-                            Cambiar el nombre de la tabla.
-
-                        </li>
-
-                        <li>
-
-                            Modificar los tipos de datos.
-
-                        </li>
-
-                        <li>
-
-                            Añadir nuevos campos.
-
-                        </li>
-
-                        <li>
-
-                            Crear nuevas tablas.
-
-                        </li>
-
-                        <li>
-
-                            Realizar consultas sobre los datos almacenados.
-
-                        </li>
-
-                        <li>
-
-                            Analizar los datos procedentes del corpus MEDDOCAN.
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- =====================================================
-                         CONCLUSION
-                    ====================================================== -->
-
-                <div class="bloque-ejercicio">
-
-                    <h3>
-
-                        <i class="bi bi-check2-circle"></i>
-
-                        Conclusión
-
-                    </h3>
-
-                    <p>
-
-                        En este ejercicio se ha completado el proceso de despliegue del
-                        contenedor <strong>db_cluster</strong> utilizando
-                        <strong>MySQL</strong> como sistema de gestión de bases de datos.
-
-                    </p>
-
-                    <p>
-
-                        Los datos generados previamente mediante el procesamiento del
-                        clúster Hadoop son trasladados al directorio utilizado por el
-                        contenedor, incorporados a la imagen Docker y posteriormente
-                        cargados en la base de datos.
-
-                    </p>
-
-                    <p>
-
-                        En el caso desarrollado en este proyecto, la información
-                        anonimizada del corpus <strong>MEDDOCAN</strong> se almacena en
-                        la tabla <strong>Corpus_Meddocan</strong> de la base de datos
-                        <strong>mydatabase</strong>.
-
-                    </p>
-
-                    <p class="mb-0">
-
-                        De esta forma, el estudiante puede observar el flujo completo de
-                        los datos, desde su procesamiento mediante Hadoop hasta su
-                        almacenamiento estructurado en una base de datos MySQL.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =====================================================
-                         REFERENCIA
-                    ====================================================== -->
-
-                <div class="referencia">
-
-                    <strong>
-
-                        Referencia del ejercicio
-
-                    </strong>
-
-                    <p class="mb-0 mt-2">
-
-                        Este ejercicio corresponde al despliegue del contenedor
-                        <strong>db_cluster</strong> y a la carga de los datos procesados
-                        previamente por el clúster Hadoop en una base de datos MySQL.
-
-                    </p>
-
-                </div>
-
-
-                <!-- =================================================
-                     NAVEGACION
-                ================================================== -->
-
-                <div class="botones">
-
-                    <a href="javascript:history.back()" class="btn btn-uned">
-
-                        ← Punto anterior
-
-                    </a>
-
-                    <a href="index.html" class="btn btn-uned">
-
-                        Volver al índice →
-
-                    </a>
-
-                </div>
-
-
-        </div>
-
-        </section>
-
-        </div>
+            </div>
 
     </main>
 
