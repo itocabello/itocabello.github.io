@@ -754,7 +754,51 @@
 
                 </div>
 
+                <section class="exercise-section">
 
+                    <h2>Consulta de las tablas creadas en Hive</h2>
+
+                    <p>
+                        Finalmente, para consultar los objetos creados en Hive y sobre los
+                        cuales se podrán realizar las consultas posteriores, se puede ejecutar
+                        la instrucción <code>SHOW TABLES;</code>. Esta sentencia permite
+                        visualizar las tablas disponibles en la base de datos actualmente
+                        seleccionada.
+                    </p>
+
+                    <p>
+                        Desde la consola de Hive se ejecuta:
+                    </p>
+
+                    <div class="command">
+                        Jdbc:hive2://localhost:10000&gt; SHOW TABLES;
+                    </div>
+
+                    <p>
+                        Como se puede observar en la siguiente figura, Hive muestra el listado
+                        de las tablas creadas durante los ejercicios anteriores, incluyendo
+                        las correspondientes a los formatos CSV, Avro y Parquet.
+                    </p>
+
+                    <div class="figure">
+
+                        <img src="../img/show-tables-hive.png"
+                            alt="Listado de tablas creadas en Hive mediante SHOW TABLES">
+
+                        <div class="figure-caption">
+                            Figura XX. Resultado de la consulta SHOW TABLES en Hive.
+                            Fuente: elaboración propia.
+                        </div>
+
+                    </div>
+
+                    <p>
+                        El resultado confirma que los objetos han sido creados correctamente
+                        y que se encuentran disponibles para realizar las consultas y
+                        operaciones de análisis posteriores.
+                    </p>
+
+                </section>
                 <div class="bloque" id="join">
 
                     <h3>
