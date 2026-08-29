@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Ejercicio Final 2 - Contenedor db_cluster MySQL</title>
+    <title>Ejercicio resuelto 5 - Comparativa formatos Avro y Parquet</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +33,14 @@
             margin-bottom: 20px;
         }
 
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
         .codigo {
             background-color: #272822;
             color: #f8f8f2;
@@ -43,44 +52,8 @@
             line-height: 1.7;
         }
 
-        .objetivo {
-            background-color: #eef7e8;
-            border-left: 5px solid #78be20;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 5px;
-        }
-
-        .importante {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 5px;
-        }
-
-        .paso {
-            background-color: #f8f8f8;
-            border-left: 4px solid #78be20;
-            padding: 18px 20px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .paso strong {
-            color: #006633;
-        }
-
-        .resultado {
-            background-color: #e8f4f8;
-            border-left: 5px solid #0d6efd;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 5px;
-        }
-
         .imagen-ejercicio {
-            max-width: 85%;
+            max-width: 90%;
             height: auto;
             display: block;
             margin: 25px auto 10px auto;
@@ -93,9 +66,45 @@
             margin-bottom: 30px;
         }
 
-        .tabla-configuracion th {
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .comparacion {
+            background-color: #f1f1f1;
+            border-left: 4px solid #006633;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .tabla-comparativa {
+            margin: 25px 0;
+        }
+
+        .tabla-comparativa thead {
             background-color: #006633;
             color: white;
+        }
+
+        .tabla-comparativa th,
+        .tabla-comparativa td {
+            padding: 12px;
+            vertical-align: middle;
+        }
+
+        .resultado-destacado {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #006633;
         }
 
         .botones {
@@ -139,28 +148,22 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-
                         Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
-
                     </h1>
 
                     <p class="lead">
-
-                        Ejercicio Final 2 · Despliegue del contenedor db_cluster - MySQL
-
+                        Lección 5. Serialización y deserialización de los datos
                     </p>
 
                     <p class="lead mt-4">
-
-                        Trabajo Fin de Grado - Arturo Cabello Rodriguez
-
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
                     </p>
 
                 </div>
 
                 <div class="col-md-3 text-end">
 
-                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo UNED">
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo de la UNED">
 
                 </div>
 
@@ -180,15 +183,11 @@
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
-
-                Inicio
-
+                <i class="bi bi-house-fill"></i>Inicio
             </a>
 
-            <a href="index.html" class="navbar-brand">
-
-                Volver al índice
-
+            <a href="validacion.html" class="navbar-brand">
+                <i class="bi bi-list"></i>Índice del capítulo 6
             </a>
 
         </div>
@@ -211,7 +210,7 @@
 
                 <li class="breadcrumb-item">
 
-                    <a href="../index.html">
+                    <a href="index.html">
 
                         Inicio
 
@@ -220,13 +219,7 @@
                 </li>
 
                 <li class="breadcrumb-item">
-
-                    <a href="index.html">
-
-                        Capítulo 5
-
-                    </a>
-
+                    <a href="validacion.html">Capitulo 5</a>
                 </li>
 
                 <li class="breadcrumb-item active">
