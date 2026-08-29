@@ -360,7 +360,7 @@
                     </li>
 
                     <li class="breadcrumb-item active">
-                        Ejercicio Final 1
+                        Ejercicio Final 2
                     </li>
 
                 </ol>
@@ -447,87 +447,69 @@
                  SCRIPT PYTHON
             ================================================== -->
 
-            <div class="text-center my-4">
+            <div class="bloque-ejercicio">
 
-                <img src="../img/cluster_hadoop_ii.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Arquitectura del clúster Hadoop con MySQL">
+                <h3>
 
-                <p class="figura">
+                    1. Traslado del fichero CSV
 
-                    <strong>Figura 44.</strong>
-                    Cluster Hadoop II.
-                    Fuente: elaboración propia con apoyo de inteligencia artificial
-                    generativa (ChatGPT/OpenAI), adaptada por el autor.
+                </h3>
 
-                </p>
+                <p>
 
-            </div>
-
-
-            <!-- =================================================
-                 FIGURA MAPREDUCE
-            ================================================== -->
-
-            <div class="text-center my-4">
-
-                <img src="../img/almacenamiento_mapreduce.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Almacenamiento, transformación y análisis mediante MapReduce">
-
-                <p class="figura">
-
-                    <strong>Figura 44.</strong>
-                    Almacenamiento, transformación y análisis MapReduce.
-                    Fuente: elaboración propia con apoyo de inteligencia artificial
-                    generativa (ChatGPT/OpenAI), adaptada por el autor.
+                    Lo primero que debemos realizar antes de levantar el contenedor
+                    <strong>db_cluster</strong> es trasladar los datos del fichero
+                    <strong>.csv</strong> generado por el clúster Hadoop.
 
                 </p>
 
+                <p>
+
+                    El fichero se encuentra inicialmente en el directorio compartido:
+
+                </p>
+
+                <div class="codigo">
+
+                    /media/notebook
+
+                </div>
+
+                <p>
+
+                    Este fichero deberá copiarse al directorio utilizado por
+                    <strong>db_cluster</strong> para realizar la carga de los datos:
+
+                </p>
+
+                <div class="codigo">
+
+                    /home/uned/ClusterUned/db_cluster/dataset
+
+                </div>
+
+
+                <div class="objetivo">
+
+                    <h5>
+
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        Objetivo
+
+                    </h5>
+
+                    <p class="mb-0">
+
+                        El fichero CSV debe estar disponible en el directorio
+                        <code>dataset</code> antes de realizar la construcción de la
+                        imagen Docker.
+
+                    </p>
+
+                </div>
+
             </div>
-
-
-            <!-- =================================================
-                 PROCESAMIENTO DISTRIBUIDO
-            ================================================== -->
-
-            <h2>
-                Procesamiento distribuido mediante Hadoop Streaming
-            </h2>
-
-            <p>
-                Durante la ejecución de los trabajos MapReduce, los documentos
-                clínicos son analizados de forma paralela por los diferentes nodos
-                del clúster. El sistema permite distribuir la carga de trabajo y
-                procesar diferentes fragmentos de los documentos de forma
-                simultánea.
-            </p>
-
-            <p>
-                Cada tarea <strong>Map</strong> se encarga de analizar una porción
-                de los documentos de entrada y aplicar las reglas de anonimización
-                definidas en el script, identificando y sustituyendo aquellos
-                elementos que puedan contener información potencialmente
-                identificativa.
-            </p>
-
-            <p>
-                Posteriormente, las fases de <strong>Shuffle</strong> y
-                <strong>Reduce</strong> permiten completar el procesamiento
-                distribuido y generar los resultados correspondientes.
-            </p>
-
-
-            <!-- =================================================
-                 SECUENCIA
-            ================================================== -->
-
-            <h2>
-                Secuencia de ejecución
-            </h2>
-
-            <p>
-                El proceso completo de anonimización se desarrolla mediante las
-                siguientes etapas.
-            </p>
 
 
             <!-- PASO 1 -->
