@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ejercicio Final 1 - Python3 y MySQL · Anonimización MEDDOCAN</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link href="../css/estilos.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 5px solid #78be20;
+            padding: 20px 0;
+        }
+
+        .header img {
+            max-height: 75px;
+            width: auto;
+        }
+
+        .title-section {
+            background-color: #006633;
+            color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .content {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #006633;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #006633;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .bloque {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            background-color: #fafafa;
+        }
+
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 18px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .imagen-ejercicio {
+            max-width: 95%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .resultado {
+            background-color: #eaf4fb;
+            border-left: 5px solid #0d6efd;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        .conclusion {
+            background-color: #eef7e8;
+            border-left: 5px solid #006633;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .referencia {
+            background-color: #f1f1f1;
+            border-left: 4px solid #006633;
+            padding: 18px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+
+        footer {
+            background-color: #006633;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+     CABECERA
+========================================================= -->
+
+    <header class="header">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="h4 mb-1">
+                        Curso práctico Big Data · Docker · Hadoop
+                    </h1>
+
+                    <p class="mb-0 text-muted">
+                        Virtualización ligera para el despliegue de infraestructuras Big Data
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" alt="Logo de la Universidad Nacional de Educación a Distancia">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+     TITULO
+========================================================= -->
+
+    <section class="title-section">
+
+        <div class="container">
+
+            <h1 class="exercise-title"> Ejercicio Final 2</h1>
+
+            <p class="mb-0">
+                Levantar contenedor <code>db_cluster</code> – MySQL
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+     CONTENIDO
+========================================================= -->
+
+    <main class="container">
+
+        <div class="content">
+
+
+            <!-- MIGAS DE PAN -->
+
+            <nav aria-label="breadcrumb">
+
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Inicio</a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <a href="validacion.html">Capitulo 5</a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Ejercicio Final 2
+                    </li>
+
+                </ol>
+
+            </nav>
+
+
+            <!-- =================================================
+             INTRODUCCION
+        ================================================== -->
+
+            <div class="objetivo">
+
+                <h2>1. Objetivo del ejercicio</h2>
+                <p> El objetivo de este ejercicio es desplegar un contenedor Docker denominado
+                    <strong>db_cluster</strong>, basado en
+                    MySQL, y realizar la carga automática de los datos generados previamente mediante el clúster Hadoop.
+                </p>
+                <p> En este ejercicio se utilizará un archivo de datos en formato <strong>CSV</strong>, generado en
+                    etapas anteriores
+                    del proyecto, que será trasladado al directorio destinado a la carga de datos de la base de datos.
+                </p>
+                <p> Una vez desplegado el contenedor, el estudiante podrá acceder al servidor MySQL, seleccionar la base
+                    de datos
+                    correspondiente y comprobar que las tablas y los datos se han cargado correctamente. </p>
+
+            </div>
+
+
+            <!-- =================================================
+             ANONIMIZACION
+        ================================================== -->
+
+            <h2>2. Arquitectura del despliegue</h2>
+            <p> La siguiente figura muestra la arquitectura que será desplegada cuando sea necesario utilizar un
+                contenedor MySQL
+                para almacenar y explotar los datos compartidos en formato <strong>.csv</strong>. </p>
+            <div class="figure"> <img src="../img/cluster-hadoop-ii.png"
+                    alt="Arquitectura del clúster Hadoop II con contenedor db_cluster">
+                <div class="figure-caption"> Figura 44. Cluster Hadoop II. Fuente: elaboración propia con apoyo de
+                    inteligencia
+                    artificial generativa (ChatGPT/OpenAI), adaptada por el autor. </div>
+            </div>
+            <div class="info-box"> <strong>Arquitectura del ejercicio:</strong>
+                <p> El contenedor <code>db_cluster</code> proporciona el servicio MySQL necesario para almacenar los
+                    datos generados
+                    por el procesamiento realizado en el clúster Hadoop. Los archivos CSV se incorporan al directorio de
+                    datos del
+                    proyecto y son utilizados durante el proceso de inicialización de la imagen. </p>
+            </div>
+            </section>
+            <section class="exercise-section">
+                <h2>3. Preparación de los datos</h2>
+                <p> Antes de levantar el contenedor <code>db_cluster</code>, es necesario trasladar los datos CSV
+                    generados por el
+                    clúster Hadoop al directorio utilizado por el contenedor para realizar la carga de información. </p>
+                <p> Los archivos CSV generados se encuentran inicialmente en el directorio compartido: </p>
+                <div class="command"> /media/notebook </div>
+                <p> Estos archivos deben copiarse al siguiente directorio del proyecto: </p>
+                <div class="command"> /home/uned/ClusterUned/db_cluster/dataset </div>
+                <p> Por ejemplo, desde el sistema anfitrión se puede realizar la copia de los archivos mediante el
+                    siguiente
+                    comando: </p>
+                <div class="command"> sudo cp /media/notebook/*.csv /home/uned/ClusterUned/db_cluster/dataset/ </div>
+                <p> Una vez realizada la copia, es recomendable comprobar que los archivos se encuentran correctamente
+                    ubicados:
+                </p>
+                <div class="command"> ls -lh /home/uned/ClusterUned/db_cluster/dataset </div>
+            </section>
+            <section class="exercise-section">
+                <h2>4. Compilación de la imagen Docker</h2>
+                <p> Antes de levantar el contenedor <code>db_cluster</code>, es necesario compilar la imagen Docker
+                    utilizada para
+                    crear el contenedor y cargar los datos CSV. </p>
+                <p> Para ello, el estudiante debe situarse en el directorio que contiene el <strong>Dockerfile</strong>
+                    correspondiente al contenedor <code>db_cluster</code>. </p>
+                <div class="command-title"> Compilación de la imagen: </div>
+                <div class="command"> sudo docker build -t db_cluster . </div>
+                <p> Durante este proceso Docker utilizará el <code>Dockerfile</code> existente en el directorio para
+                    construir la
+                    imagen <code>db_cluster</code>. Una vez finalizada la compilación, la imagen estará disponible
+                    localmente para
+                    utilizarla durante el despliegue del contenedor. </p>
+            </section>
+            <section class="exercise-section">
+                <div class="important"> <strong>Importante</strong>
+                    <p> Cualquier cambio que el estudiante realice en el archivo <code>init.sql</code> o en los archivos
+                        <code>.csv</code> utilizados durante la carga de datos requiere volver a realizar el proceso de
+                        compilación
+                        de la imagen Docker.
+                    </p>
+                    <p> De esta forma, la imagen quedará actualizada y preparada para el posterior despliegue del
+                        contenedor. </p>
+                </div>
+            </section>
+            <section class="exercise-section">
+                <h2>5. Despliegue del contenedor db_cluster</h2>
+                <p> Una vez compilada la imagen, ya es posible levantar el contenedor MySQL mediante el archivo
+                    <code>docker-compose-dbcluster.yaml</code>.
+                </p>
+                <p> Para ello, debemos situarnos en el directorio raíz del proyecto: </p>
+                <div class="command"> cd /home/uned/ClusterUned </div>
+                <p> A continuación, se ejecuta Docker Compose en segundo plano mediante la opción <code>-d</code>: </p>
+                <div class="command"> sudo docker-compose -f docker-compose-dbcluster.yaml up -d </div>
+                <p> El parámetro <code>-d</code> permite que el contenedor se ejecute en segundo plano, devolviendo el
+                    control de la
+                    terminal al estudiante. </p>
+                <div class="figure"> <img src="../img/docker-compose-dbcluster.png"
+                        alt="Despliegue del contenedor db_cluster mediante Docker Compose">
+                    <div class="figure-caption"> Figura 43. Docker Compose db_cluster. Fuente: elaboración propia,
+                        adaptada por el
+                        autor. </div>
+                </div>
+                <p> Durante el proceso de despliegue puede observarse que Docker obtiene la imagen correspondiente desde
+                    el
+                    repositorio configurado para los estudiantes y posteriormente crea e inicia el contenedor
+                    <code>db_cluster</code>.
+                </p>
+            </section>
+            <section class="exercise-section">
+                <h2>6. Comprobación de los registros del contenedor</h2>
+                <p> Una vez iniciado el contenedor, es recomendable comprobar los registros de ejecución para verificar
+                    que el
+                    proceso de inicialización de MySQL y la carga de los datos se han realizado correctamente. </p>
+                <p> Para consultar los registros del contenedor se ejecuta: </p>
+                <div class="command"> sudo docker logs db_cluster </div>
+                <p> Esta instrucción permite visualizar los mensajes generados durante el proceso de inicialización. En
+                    caso de
+                    producirse algún error durante la creación de la base de datos, ejecución de <code>init.sql</code> o
+                    carga de
+                    los archivos CSV, estos mensajes pueden ayudar a identificar el problema. </p>
+            </section>
+            <section class="exercise-section">
+                <h2>7. Acceso al servidor MySQL</h2>
+                <p> Una vez comprobado que el contenedor se encuentra correctamente desplegado, podemos acceder al
+                    servidor MySQL
+                    utilizando Docker Compose. </p>
+                <p> Para acceder al cliente MySQL dentro del contenedor se ejecuta: </p>
+                <div class="command"> sudo docker-compose -f docker-compose-dbcluster.yaml exec db mysql -uroot -p
+                </div>
+                <p> El sistema solicitará la contraseña del usuario <strong>root</strong>. </p>
+                <div class="info-box"> <strong>Contraseña:</strong>
+                    <div class="command"> uned </div>
+                </div>
+            </section>
+            <section class="exercise-section">
+                <h2>8. Selección de la base de datos</h2>
+                <p> Una vez dentro del cliente MySQL, es necesario seleccionar la base de datos que se desea utilizar.
+                </p>
+                <p> En este ejercicio se utilizará la base de datos <strong>mydatabase</strong>. </p>
+                <div class="command"> USE mydatabase; </div>
+                <p> Si la operación se realiza correctamente, MySQL mostrará un mensaje indicando que la base de datos
+                    ha sido
+                    seleccionada. </p>
+            </section>
+            <section class="exercise-section">
+                <h2>9. Comprobación de las tablas cargadas</h2>
+                <p> Una vez seleccionada la base de datos, podemos comprobar las tablas existentes mediante la
+                    sentencia: </p>
+                <div class="command"> SHOW TABLES; </div>
+                <p> En el caso desarrollado en este proyecto, se ha cargado como prueba la tabla
+                    <strong>Corpus_Meddocan</strong>,
+                    cuyos datos proceden del archivo CSV generado y preparado durante las etapas anteriores. </p>
+                <p> Para comprobar la información almacenada en la tabla se puede ejecutar: </p>
+                <div class="command"> SELECT * FROM Corpus_Meddocan LIMIT 10; </div>
+                <p> La utilización de <code>LIMIT 10</code> permite consultar una pequeña muestra de los registros sin
+                    necesidad de
+                    mostrar todo el contenido de la tabla. </p>
+            </section>
+            <section class="exercise-section">
+                <h2>10. Experimentación propuesta</h2>
+                <p> Una vez comprobado el correcto funcionamiento del contenedor, se propone al estudiante realizar
+                    diferentes
+                    modificaciones sobre la base de datos y observar el resultado obtenido. </p>
+                <p> Algunas de las modificaciones que pueden realizarse son: </p>
+                <ul>
+                    <li>Cambiar el nombre de la tabla.</li>
+                    <li>Modificar los tipos de datos de las columnas.</li>
+                    <li>Añadir nuevas columnas.</li>
+                    <li>Eliminar columnas existentes.</li>
+                    <li>Crear nuevas tablas.</li>
+                    <li>Modificar el archivo <code>init.sql</code>.</li>
+                    <li>Incorporar nuevos archivos CSV.</li>
+                    <li>Realizar consultas SQL sobre los datos cargados.</li>
+                    <li>Comprobar el efecto de los cambios sobre el despliegue del contenedor.</li>
+                </ul>
+                <p> Esta experimentación permite comprender la relación existente entre los archivos de configuración,
+                    la imagen
+                    Docker, el proceso de inicialización de MySQL y los datos utilizados por la aplicación. </p>
+            </section>
+            <section class="exercise-section">
+                <h2>11. Resumen del procedimiento</h2>
+                <div class="step"> <strong>Paso 1.</strong> Copiar los archivos CSV desde <code>/media/notebook</code>
+                    al directorio
+                    <code>db_cluster/dataset</code>.
+                </div>
+                <div class="step"> <strong>Paso 2.</strong> Situarse en el directorio que contiene el
+                    <code>Dockerfile</code> de
+                    <code>db_cluster</code>.
+                </div>
+                <div class="step"> <strong>Paso 3.</strong> Compilar la imagen mediante
+                    <code>sudo docker build -t db_cluster .</code>.
+                </div>
+                <div class="step"> <strong>Paso 4.</strong> Situarse en <code>/home/uned/ClusterUned</code>. </div>
+                <div class="step"> <strong>Paso 5.</strong> Levantar el contenedor mediante
+                    <code>docker-compose-dbcluster.yaml</code>.
+                </div>
+                <div class="step"> <strong>Paso 6.</strong> Comprobar los registros mediante
+                    <code>sudo docker logs db_cluster</code>.
+                </div>
+                <div class="step"> <strong>Paso 7.</strong> Acceder al cliente MySQL. </div>
+                <div class="step"> <strong>Paso 8.</strong> Seleccionar la base de datos <code>mydatabase</code>. </div>
+                <div class="step"> <strong>Paso 9.</strong> Comprobar las tablas y consultar los datos de
+                    <code>Corpus_Meddocan</code>.
+                </div>
+            </section>
+            <section class="exercise-section">
+                <h2>12. Resultado esperado</h2>
+                <p> Al finalizar el ejercicio, el estudiante habrá desplegado correctamente un contenedor Docker con
+                    MySQL y habrá
+                    comprobado el proceso de carga de información procedente de archivos CSV. </p>
+                <p> De esta forma, se completa el flujo de trabajo entre el procesamiento distribuido realizado mediante
+                    Hadoop y el
+                    almacenamiento estructurado de los resultados en una base de datos MySQL. </p>
+                <p> El ejercicio permite además comprender cómo Docker facilita la creación de entornos reproducibles,
+                    en los que
+                    tanto la configuración de la base de datos como los datos iniciales pueden integrarse en una imagen
+                    preparada
+                    para su posterior despliegue. </p>
+            </section>
+
+
+            <!-- =================================================
+             NAVEGACION
+        ================================================== -->
+
+            <div class="text-center mb-5">
+
+                <a href="ejerP7.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente Ejercicio.
+
+                </a>
+
+            </div>
+            <div class="text-center mt-4">
+
+                <a href="EjerP4Jupyter.html" target="_blank" class="btn btn-success">
+
+                    <i class="bi bi-journal-code"></i>
+
+                    Ver solución completa en Jupyter.
+
+                </a>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                mapreduce_meddocan
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/mapreduce_meddocan.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+    </main>
+
+
+    <!-- =========================================================
+     PIE
+========================================================= -->
+
+    <footer>
+
+        <p class="mb-1">
+            Proyecto Fin de Grado - Ingeniería Informática
+        </p>
+
+        <p class="mb-0">
+            Universidad Nacional de Educación a Distancia (UNED)
+        </p>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
