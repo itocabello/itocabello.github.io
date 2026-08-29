@@ -526,56 +526,56 @@
             <!-- =====================================================
                  EJECUCIÓN MAPREDUCE SOBRE EL CLÚSTER HADOOP
             ====================================================== -->
-            
+
             <div class="text-center my-5">
-            
+
                 <img src="../img/mapreduce_meddocan.png" class="img-fluid rounded shadow imagen-ejercicio"
                     alt="Ejecución del trabajo MapReduce para la anonimización de documentos MEDDOCAN sobre el clúster Hadoop">
-            
+
                 <p class="figura mt-3">
-            
+
                     <strong>Figura 44.</strong>
                     Ejecución del trabajo MapReduce para la anonimización de los
                     documentos MEDDOCAN sobre el clúster Hadoop.
                     Fuente: elaboración propia.
-            
+
                 </p>
-            
+
             </div>
-<div class="alert alert-info">
+            <div class="alert alert-info">
 
-    <i class="bi bi-diagram-3-fill"></i>
+                <i class="bi bi-diagram-3-fill"></i>
 
-    <strong>Ejecución del trabajo MapReduce</strong>
+                <strong>Ejecución del trabajo MapReduce</strong>
 
-    <p class="mt-2 mb-0">
+                <p class="mt-2 mb-0">
 
-        La figura muestra la ejecución del trabajo de anonimización mediante
-        <strong>Hadoop Streaming</strong> sobre el clúster Hadoop. Durante el
-        procesamiento se observa la evolución de las tareas <strong>Map</strong>
-        y <strong>Reduce</strong>, así como el porcentaje de progreso alcanzado
-        en cada una de las fases.
+                    La figura muestra la ejecución del trabajo de anonimización mediante
+                    <strong>Hadoop Streaming</strong> sobre el clúster Hadoop. Durante el
+                    procesamiento se observa la evolución de las tareas <strong>Map</strong>
+                    y <strong>Reduce</strong>, así como el porcentaje de progreso alcanzado
+                    en cada una de las fases.
 
-        <br><br>
+                    <br><br>
 
-        El trabajo procesa los documentos clínicos almacenados en HDFS y
-        distribuye las diferentes tareas entre los recursos disponibles del
-        clúster. El <strong>Mapper</strong> analiza los documentos y aplica las
-        reglas de anonimización definidas en el programa Python, mientras que
-        la fase <strong>Reduce</strong> consolida los resultados generados por
-        las distintas tareas.
+                    El trabajo procesa los documentos clínicos almacenados en HDFS y
+                    distribuye las diferentes tareas entre los recursos disponibles del
+                    clúster. El <strong>Mapper</strong> analiza los documentos y aplica las
+                    reglas de anonimización definidas en el programa Python, mientras que
+                    la fase <strong>Reduce</strong> consolida los resultados generados por
+                    las distintas tareas.
 
-        <br><br>
+                    <br><br>
 
-        Una vez finalizado el procesamiento, Hadoop muestra el estado de
-        finalización del trabajo y la información asociada a las tareas
-        ejecutadas. De esta forma, el estudiante puede comprobar de manera
-        práctica cómo un conjunto de documentos puede ser procesado de forma
-        distribuida mediante el modelo <strong>MapReduce</strong>.
+                    Una vez finalizado el procesamiento, Hadoop muestra el estado de
+                    finalización del trabajo y la información asociada a las tareas
+                    ejecutadas. De esta forma, el estudiante puede comprobar de manera
+                    práctica cómo un conjunto de documentos puede ser procesado de forma
+                    distribuida mediante el modelo <strong>MapReduce</strong>.
 
-    </p>
+                </p>
 
-</div>
+            </div>
 
             <!-- AVISO -->
 
