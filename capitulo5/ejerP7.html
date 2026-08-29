@@ -557,6 +557,494 @@
                 </p>
 
             </div>
+            <!-- =====================================================
+         AVISO
+    ====================================================== -->
+
+            <div class="importante">
+
+                <h4>
+
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    Importante
+
+                </h4>
+
+                <p class="mb-0">
+
+                    Cualquier cambio que el estudiante realice en el fichero
+                    <strong>init.sql</strong> o en la carga de los ficheros
+                    <strong>.csv</strong> requerirá volver a realizar el proceso de
+                    compilación de la imagen Docker.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    3. Levantar el contenedor db_cluster
+
+                </h3>
+
+                <p>
+
+                    Una vez compilada la imagen, ya podremos levantar el contenedor
+                    para realizar la carga automática de los datos.
+
+                </p>
+
+                <p>
+
+                    Para ello debemos ubicarnos en el directorio raíz del proyecto:
+
+                </p>
+
+                <div class="codigo">
+
+                    /home/uned/ClusterUned
+
+                </div>
+
+                <p>
+
+                    A continuación, se ejecutará el fichero
+                    <strong>docker-compose-dbcluster.yaml</strong> mediante el
+                    siguiente comando:
+
+                </p>
+
+
+                <div class="codigo">
+
+                    sudo docker-compose -f docker-compose-dbcluster.yaml up -d
+
+                </div>
+
+
+                <p>
+
+                    La opción <code>-d</code> permite ejecutar el contenedor en
+                    segundo plano.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         FIGURA DOCKER COMPOSE
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    <i class="bi bi-box-seam-fill"></i>
+
+                    Despliegue mediante Docker Compose
+
+                </h3>
+
+                <p>
+
+                    La siguiente figura muestra el despliegue del contenedor
+                    <strong>db_cluster</strong> mediante Docker Compose.
+
+                </p>
+
+
+                <div class="text-center my-4">
+
+                    <img src="../img/docker-compose-dbcluster.png" class="img-fluid rounded shadow imagen-ejercicio"
+                        alt="Despliegue del contenedor db_cluster mediante Docker Compose">
+
+                    <p class="figura">
+
+                        <strong>Figura 43.</strong>
+                        Docker Compose db_cluster.
+                        Fuente: elaboración propia, adaptada por el autor.
+
+                    </p>
+
+                </div>
+
+
+                <div class="resultado">
+
+                    <h5>
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        Resultado esperado
+
+                    </h5>
+
+                    <p class="mb-0">
+
+                        Como resultado del comando anterior se iniciará el contenedor
+                        <strong>db_cluster</strong> y comenzará el proceso de
+                        inicialización de la base de datos.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 4
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    4. Comprobar los registros del contenedor
+
+                </h3>
+
+                <p>
+
+                    Una vez levantado el contenedor, podemos comprobar si se ha
+                    producido algún error durante su inicialización o durante la carga
+                    de los datos.
+
+                </p>
+
+                <p>
+
+                    Para consultar los registros del contenedor se ejecutará:
+
+                </p>
+
+
+                <div class="codigo">
+
+                    sudo docker logs db_cluster
+
+                </div>
+
+
+                <p class="mb-0">
+
+                    La información mostrada permitirá comprobar el estado del proceso
+                    de inicialización y detectar posibles errores durante la carga de
+                    los datos.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 5
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    5. Acceso al servidor MySQL
+
+                </h3>
+
+                <p>
+
+                    Para acceder al servidor MySQL que se encuentra ejecutándose
+                    dentro del contenedor, se utilizará la siguiente sentencia:
+
+                </p>
+
+
+                <div class="codigo">
+
+                    sudo docker-compose -f docker-compose-dbcluster.yaml exec db mysql -uroot -p
+
+                </div>
+
+
+                <p>
+
+                    Al ejecutar el comando, MySQL solicitará la contraseña del usuario
+                    <strong>root</strong>.
+
+                </p>
+
+
+                <div class="alert alert-success">
+
+                    <i class="bi bi-key-fill"></i>
+
+                    <strong>Contraseña:</strong>
+
+                    <code>uned</code>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 6
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    6. Seleccionar la base de datos
+
+                </h3>
+
+                <p>
+
+                    Una vez dentro del cliente de MySQL, será necesario indicar la
+                    base de datos que se desea utilizar.
+
+                </p>
+
+
+                <div class="codigo">
+
+                    use mydatabase;
+
+                </div>
+
+
+                <p class="mb-0">
+
+                    A partir de este momento será posible acceder a las tablas
+                    almacenadas en la base de datos y consultar la información
+                    cargada.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 7
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    7. Comprobación de los datos cargados
+
+                </h3>
+
+                <p>
+
+                    Una vez seleccionada la base de datos
+                    <strong>mydatabase</strong>, ya es posible acceder a los datos y
+                    a las tablas cargadas durante el proceso de inicialización.
+
+                </p>
+
+                <p>
+
+                    En este ejercicio, se ha cargado la tabla
+                    <strong>Corpus_Meddocan</strong> utilizando los datos procedentes
+                    del fichero <strong>.csv</strong> generado en etapas anteriores.
+
+                </p>
+
+
+                <div class="resultado">
+
+                    <h5>
+
+                        <i class="bi bi-database-check"></i>
+
+                        Datos cargados
+
+                    </h5>
+
+                    <p class="mb-1">
+
+                        <strong>Base de datos:</strong>
+
+                        <code>mydatabase</code>
+
+                    </p>
+
+                    <p class="mb-0">
+
+                        <strong>Tabla:</strong>
+
+                        <code>Corpus_Meddocan</code>
+
+                    </p>
+
+                </div>
+
+
+                <p>
+
+                    A partir de este momento, los datos quedan disponibles para su
+                    consulta y posterior explotación mediante las herramientas
+                    proporcionadas por MySQL.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         EXPERIMENTACION
+    ====================================================== -->
+
+            <div class="objetivo">
+
+                <h3>
+
+                    <i class="bi bi-lightbulb-fill"></i>
+
+                    Propuesta de experimentación
+
+                </h3>
+
+                <p>
+
+                    Las características de la base de datos creada como prueba pueden
+                    modificarse para que el estudiante pueda experimentar con el
+                    funcionamiento de MySQL y comprobar los efectos de las diferentes
+                    modificaciones.
+
+                </p>
+
+                <p>
+
+                    Se propone realizar, entre otras, las siguientes modificaciones:
+
+                </p>
+
+                <ul class="mb-0">
+
+                    <li>
+
+                        Cambiar el nombre de la tabla.
+
+                    </li>
+
+                    <li>
+
+                        Modificar los tipos de datos.
+
+                    </li>
+
+                    <li>
+
+                        Añadir nuevos campos.
+
+                    </li>
+
+                    <li>
+
+                        Crear nuevas tablas.
+
+                    </li>
+
+                    <li>
+
+                        Realizar consultas sobre los datos almacenados.
+
+                    </li>
+
+                    <li>
+
+                        Analizar los datos procedentes del corpus MEDDOCAN.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =====================================================
+         CONCLUSION
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+
+                    <i class="bi bi-check2-circle"></i>
+
+                    Conclusión
+
+                </h3>
+
+                <p>
+
+                    En este ejercicio se ha completado el proceso de despliegue del
+                    contenedor <strong>db_cluster</strong> utilizando
+                    <strong>MySQL</strong> como sistema de gestión de bases de datos.
+
+                </p>
+
+                <p>
+
+                    Los datos generados previamente mediante el procesamiento del
+                    clúster Hadoop son trasladados al directorio utilizado por el
+                    contenedor, incorporados a la imagen Docker y posteriormente
+                    cargados en la base de datos.
+
+                </p>
+
+                <p>
+
+                    En el caso desarrollado en este proyecto, la información
+                    anonimizada del corpus <strong>MEDDOCAN</strong> se almacena en
+                    la tabla <strong>Corpus_Meddocan</strong> de la base de datos
+                    <strong>mydatabase</strong>.
+
+                </p>
+
+                <p class="mb-0">
+
+                    De esta forma, el estudiante puede observar el flujo completo de
+                    los datos, desde su procesamiento mediante Hadoop hasta su
+                    almacenamiento estructurado en una base de datos MySQL.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+         REFERENCIA
+    ====================================================== -->
+
+            <div class="referencia">
+
+                <strong>
+
+                    Referencia del ejercicio
+
+                </strong>
+
+                <p class="mb-0 mt-2">
+
+                    Este ejercicio corresponde al despliegue del contenedor
+                    <strong>db_cluster</strong> y a la carga de los datos procesados
+                    previamente por el clúster Hadoop en una base de datos MySQL.
+
+                </p>
+
+            </div>
 
 
     </main>
