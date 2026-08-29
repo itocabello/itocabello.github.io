@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Ejercicio resuelto 2 - Conversión CSV a Parquet</title>
+    <title>Ejercicio resuelto 3 - Ingesta de datos mediante Apache Flume utilizando Avro</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -51,6 +51,39 @@
             line-height: 1.7;
         }
 
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        .arquitectura {
+            background-color: #f1f1f1;
+            border-left: 5px solid #006633;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        .componente {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 18px;
+            margin: 15px 0;
+            background-color: white;
+        }
+
+        .componente h4 {
+            color: #006633;
+            margin-top: 0;
+        }
+
         .imagen-ejercicio {
             max-width: 90%;
             height: auto;
@@ -65,23 +98,11 @@
             margin-bottom: 30px;
         }
 
-        .paso {
-            background-color: #f8f8f8;
-            border-left: 4px solid #78be20;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 4px;
-        }
-
-        .paso strong {
-            color: #006633;
-        }
-
-        .comparacion {
-            background-color: #f1f1f1;
-            border-left: 4px solid #006633;
-            padding: 20px;
-            margin: 25px 0;
+        .resultado {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 25px;
+            margin: 30px 0;
             border-radius: 5px;
         }
 
@@ -126,22 +147,30 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
+
                         Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+
                     </h1>
 
                     <p class="lead">
+
                         Lección 5. Serialización y deserialización de los datos
+
                     </p>
 
                     <p class="lead mt-4">
+
                         Trabajo Fin de Grado - Arturo Cabello Rodríguez
+
                     </p>
 
                 </div>
 
+
                 <div class="col-md-3 text-end">
 
-                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;" alt="Logo de la UNED">
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logo de la Universidad Nacional de Educación a Distancia">
 
                 </div>
 
@@ -161,11 +190,15 @@
         <div class="container">
 
             <a class="navbar-brand" href="../index.html">
-                <i class="bi bi-house-fill"></i>Inicio
+
+                Inicio
+
             </a>
 
-            <a href="validacion.html" class="navbar-brand">
-                <i class="bi bi-list"></i>Índice del capítulo 6
+            <a href="index.html" class="navbar-brand">
+
+                Volver al índice del capítulo 5
+
             </a>
 
         </div>
@@ -187,15 +220,21 @@
             <ol class="breadcrumb">
 
                 <li class="breadcrumb-item">
+
                     <a href="../index.html">Inicio</a>
+
                 </li>
 
                 <li class="breadcrumb-item">
+
                     <a href="index.html">Capítulo 5</a>
+
                 </li>
 
                 <li class="breadcrumb-item active">
-                    Conversión a Parquet
+
+                    Ingesta mediante Flume y Avro
+
                 </li>
 
             </ol>
@@ -208,77 +247,101 @@
         <div class="mb-4">
 
             <h2 class="text-success fw-bold">
-                Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet
+
+                Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro
+
             </h2>
 
         </div>
 
 
-        <!-- INTRODUCCION -->
+        <!-- =====================================================
+         INTRODUCCION
+    ====================================================== -->
 
         <p class="lead">
 
-            En este ejercicio se propone convertir el conjunto de datos
-            <strong>TABLA_ACCIDENTES_24.csv</strong> al formato
-            <strong>Apache Parquet</strong>, uno de los formatos de almacenamiento
-            columnar más utilizados en entornos Big Data.
+            En este ejercicio se propone implementar un flujo de ingesta de datos
+            donde <strong>Apache Flume</strong> maneja el formato
+            <strong>Avro</strong> para serializar los eventos mientras estos son
+            transferidos desde el ecosistema hacia <strong>Hadoop</strong>.
 
         </p>
 
         <p>
 
-            Para realizar esta transformación se emplea la biblioteca
-            <strong>Pandas</strong> para cargar el fichero CSV y la biblioteca
-            <strong>PyArrow</strong> para generar el fichero Parquet aplicando
-            compresión <strong>Snappy</strong>.
+            La finalidad es que el estudiante comprenda cómo Avro permite representar
+            los datos de manera eficiente y compacta, minimizando el tamaño de la
+            información que fluye entre los diferentes elementos de los sistemas.
 
         </p>
 
         <p>
 
-            A diferencia del formato <strong>Apache Avro</strong>, que utiliza una
-            representación orientada a registros, <strong>Parquet</strong> organiza
-            la información por columnas. Esta característica resulta especialmente
-            adecuada para cargas de trabajo analíticas, ya que permite acceder
-            únicamente a las columnas necesarias durante una consulta y reducir
-            el volumen de información transferida.
+            Para ello, se establece una arquitectura formada por dos agentes
+            <strong>Apache Flume</strong> conectados mediante el protocolo
+            <strong>Avro</strong>. El primer agente se encarga de recoger los datos
+            desde el sistema de archivos local, mientras que el segundo agente
+            recibe los eventos y los almacena finalmente en <strong>HDFS</strong>.
 
         </p>
 
 
-        <!-- OBJETIVO -->
+        <!-- =====================================================
+         OBJETIVO
+    ====================================================== -->
 
         <div class="objetivo">
 
             <h3>
+
                 <i class="bi bi-bullseye"></i>
+
                 Objetivo del ejercicio
+
             </h3>
 
             <p>
 
-                El objetivo es que el estudiante comprenda el proceso de transformación
-                de un fichero CSV a un formato columnar optimizado para entornos
-                Big Data y pueda comprobar las ventajas que ofrece Parquet para el
-                almacenamiento y posterior análisis de grandes volúmenes de datos.
+                El objetivo consiste en que el estudiante pueda observar de forma
+                práctica cómo Apache Flume utiliza Avro para transmitir eventos
+                entre diferentes agentes antes de que estos sean almacenados en
+                HDFS.
 
             </p>
 
             <ul class="mb-0">
 
-                <li>Cargar el fichero <strong>TABLA_ACCIDENTES_24.csv</strong>.</li>
+                <li>
+                    Configurar un agente Flume para detectar nuevos ficheros.
+                </li>
 
-                <li>Preparar los datos mediante Pandas.</li>
+                <li>
+                    Utilizar una Source de tipo <strong>spooldir</strong>.
+                </li>
 
-                <li>Gestionar los valores nulos del conjunto de datos.</li>
+                <li>
+                    Almacenar temporalmente los eventos en un Channel de tipo
+                    <strong>memory</strong>.
+                </li>
 
-                <li>Convertir la información al formato Parquet.</li>
+                <li>
+                    Utilizar un Sink de tipo <strong>Avro</strong>.
+                </li>
 
-                <li>Aplicar compresión <strong>Snappy</strong>.</li>
+                <li>
+                    Transmitir los eventos entre dos agentes Flume mediante el
+                    puerto <strong>41414</strong>.
+                </li>
 
-                <li>Comprobar el fichero Parquet generado.</li>
+                <li>
+                    Recibir los eventos mediante una Source de tipo
+                    <strong>Avro</strong>.
+                </li>
 
-                <li>Comparar las características del CSV y Parquet.</li>
+                <li>
+                    Almacenar finalmente la información en HDFS.
+                </li>
 
             </ul>
 
@@ -286,60 +349,55 @@
 
 
         <!-- =====================================================
-         PASO 1
+         ARQUITECTURA
     ====================================================== -->
 
-        <div class="bloque-ejercicio">
+        <div class="arquitectura">
 
-            <h3>
-                1. Carga del fichero CSV
+            <h3 class="text-success">
+
+                <i class="bi bi-diagram-3-fill"></i>
+
+                Arquitectura de la solución
+
             </h3>
 
             <p>
 
-                El primer paso consiste en cargar el conjunto de datos
-                <strong>TABLA_ACCIDENTES_24.csv</strong> utilizando la biblioteca
-                <strong>Pandas</strong>. Para ello, se emplea la función
-                <code>read_csv()</code>, especificando el separador utilizado por
-                el fichero y la codificación correspondiente.
+                La solución propuesta está formada por dos agentes Apache Flume
+                conectados mediante el protocolo Avro. El flujo de información
+                puede resumirse de la siguiente forma:
 
             </p>
 
-            <div class="codigo">
+            <div class="codigo text-center">
 
-                df = pd.read_csv(<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.csv",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;sep=";",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;encoding="latin1",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;low_memory=False<br>
-                )<br>
-                <br>
-                # Sustituir valores nulos<br>
-                df = df.where(pd.notnull(df), None)
+                Fichero CSV
+                →
+                Source
+                →
+                Channel
+                →
+                Sink Avro
+                →
+                Puerto 41414
+                →
+                Source Avro
+                →
+                Channel
+                →
+                Sink HDFS
+                →
+                HDFS
 
             </div>
 
-
-
-
-
-            <p>
-
-                En el código mostrado se utiliza <code>pd.read_csv()</code> para
-                cargar el fichero CSV en un <strong>DataFrame</strong>. El parámetro
-                <code>sep=";"</code> indica que los campos están separados mediante
-                punto y coma, mientras que <code>encoding="latin1"</code> permite
-                interpretar correctamente los caracteres presentes en el conjunto
-                de datos.
-
-            </p>
-
             <p class="mb-0">
 
-                Posteriormente, mediante <code>pd.notnull()</code>, se identifican
-                los valores que no son nulos y se sustituyen los valores ausentes
-                por <code>None</code>, preparando los datos para su posterior
-                conversión al formato Parquet.
+                De esta manera, los eventos generados por el primer agente son
+                transmitidos mediante Avro al segundo agente, que se encarga de
+                almacenarlos posteriormente en el sistema de archivos distribuido
+                Hadoop.
 
             </p>
 
@@ -347,42 +405,171 @@
 
 
         <!-- =====================================================
-         PASO 2
+         AGENTE 1
     ====================================================== -->
 
         <div class="bloque-ejercicio">
 
             <h3>
-                2. Preparación de los datos
+
+                1. Primer agente Flume: captura de los datos
+
             </h3>
 
             <p>
 
-                Una vez cargado el fichero CSV, los datos se encuentran almacenados
-                en un DataFrame de Pandas. Esta estructura permite realizar las
-                operaciones necesarias para preparar la información antes de
-                realizar la conversión.
+                El primer agente tiene como finalidad detectar la aparición del
+                fichero <strong>TABLA_ACCIDENTES_24.csv</strong> en el directorio
+                local utilizado para la ingesta.
 
             </p>
 
             <p>
 
-                La preparación de los datos resulta especialmente importante cuando
-                se trabaja con formatos estructurados como Parquet, ya que cada
-                columna debe mantener un tipo de dato coherente durante el proceso
-                de serialización.
+                Para ello se emplea una <strong>Source</strong> de tipo
+                <strong>spooldir</strong>, que monitoriza el directorio:
+
+            </p>
+
+            <div class="codigo">
+
+                /home/hadoop/flume_input
+
+            </div>
+
+            <p>
+
+                Cuando el fichero se incorpora al directorio, la Source procesa su
+                contenido y lo transforma en eventos Flume.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         SOURCE
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                2. Source de tipo Spooldir
+
+            </h3>
+
+            <p>
+
+                La Source constituye el punto de entrada de los datos al primer
+                agente Flume. Su configuración permite detectar automáticamente
+                nuevos ficheros incorporados al directorio de entrada.
+
+            </p>
+
+            <div class="codigo">
+
+                agent.sources.src1.type = spooldir<br>
+
+                agent.sources.src1.spoolDir = /home/hadoop/flume_input
+
+            </div>
+
+            <p>
+
+                El fichero <strong>TABLA_ACCIDENTES_24.csv</strong> es procesado
+                por la Source y convertido en eventos que posteriormente serán
+                enviados al Channel.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         CHANNEL 1
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                3. Channel del primer agente
+
+            </h3>
+
+            <p>
+
+                Los eventos generados por la Source son almacenados temporalmente
+                en un Channel de tipo <strong>memory</strong>.
+
+            </p>
+
+            <div class="codigo">
+
+                agent.channels.ch1.type = memory
+
+            </div>
+
+            <p>
+
+                El Channel actúa como elemento intermedio entre la Source y el Sink,
+                permitiendo almacenar temporalmente los eventos antes de ser
+                transmitidos al segundo agente.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         SINK AVRO
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                4. Sink Avro del primer agente
+
+            </h3>
+
+            <p>
+
+                Una vez almacenados los eventos en el Channel, el Sink de tipo
+                <strong>Avro</strong> se encarga de transmitirlos al segundo
+                agente Flume.
+
+            </p>
+
+            <div class="codigo">
+
+                agent.sinks.sink1.type = avro<br>
+
+                agent.sinks.sink1.hostname = &lt;host-del-segundo-agente&gt;<br>
+
+                agent.sinks.sink1.port = 41414
+
+            </div>
+
+            <p>
+
+                El uso del protocolo Avro permite establecer la comunicación entre
+                ambos agentes y transportar los eventos generados durante el
+                proceso de ingesta.
 
             </p>
 
             <div class="paso">
 
-                <strong>
-                    Comprobación de los datos:
-                </strong>
+                <strong>Puerto utilizado:</strong>
 
-                Se puede consultar la estructura del DataFrame, el número de registros
-                y los tipos de datos de sus diferentes columnas antes de realizar
-                la conversión.
+                <code>41414</code>
+
+                <br>
+
+                El primer agente utiliza este puerto para enviar los eventos
+                al segundo agente Flume.
 
             </div>
 
@@ -390,56 +577,43 @@
 
 
         <!-- =====================================================
-         PASO 3
+         AGENTE 2
     ====================================================== -->
 
         <div class="bloque-ejercicio">
 
             <h3>
-                3. Conversión al formato Apache Parquet
+
+                5. Segundo agente Flume: recepción de los eventos
+
             </h3>
-            <!-- IMAGEN ADJUNTA -->
 
-            <div class="text-center mt-4">
-
-                <img src="../img/csv_parquet_pandas.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Código Python utilizado para cargar el fichero CSV mediante Pandas">
-
-                <p class="figura">
-
-                    <strong>Figura 41.</strong>
-                    Carga y preparación del fichero
-                    <code>TABLA_ACCIDENTES_24.csv</code> mediante Pandas.
-                    Fuente: elaboración propia.
-
-                </p>
-
-            </div>
             <p>
 
-                Una vez preparados los datos, se procede a generar el fichero
-                <strong>Apache Parquet</strong>. Para ello se utiliza la biblioteca
-                <strong>PyArrow</strong>, que permite convertir el DataFrame de
-                Pandas a una estructura compatible con Parquet.
+                El segundo agente se encarga de recibir los eventos enviados por
+                el primer agente mediante el protocolo Avro.
 
             </p>
 
             <p>
 
-                Durante este proceso se aplica compresión <strong>Snappy</strong>,
-                con el objetivo de reducir el espacio ocupado por el fichero
-                manteniendo un buen rendimiento durante las operaciones de lectura
-                y escritura.
+                Para ello dispone de una <strong>Source de tipo Avro</strong>,
+                configurada para permanecer a la espera de los mensajes entrantes
+                procedentes del primer agente.
 
             </p>
 
             <div class="codigo">
 
-                df.to_parquet(<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.parquet",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;engine="pyarrow",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;compression="snappy"<br>
-                )
+                Source Avro<br>
+
+                ↓<br>
+
+                Channel memory<br>
+
+                ↓<br>
+
+                Sink HDFS
 
             </div>
 
@@ -447,32 +621,39 @@
 
 
         <!-- =====================================================
-         PASO 4
+         SOURCE AVRO
     ====================================================== -->
 
         <div class="bloque-ejercicio">
 
             <h3>
-                4. Generación del fichero Parquet
+
+                6. Source Avro del segundo agente
+
             </h3>
 
             <p>
 
-                Como resultado de la ejecución se obtiene el fichero:
+                La Source Avro del segundo agente permanece a la escucha de los
+                eventos enviados por el primer agente a través del puerto
+                <strong>41414</strong>.
 
             </p>
 
             <div class="codigo">
 
-                TABLA_ACCIDENTES_24.parquet
+                agent.sources.src2.type = avro<br>
+
+                agent.sources.src2.bind = 0.0.0.0<br>
+
+                agent.sources.src2.port = 41414
 
             </div>
 
             <p>
 
-                Este fichero contiene la información del conjunto de datos original
-                en un formato binario y columnar, preparado para su utilización
-                en procesos de análisis dentro de una arquitectura Big Data.
+                Una vez recibidos, los eventos son enviados al Channel configurado
+                en este segundo agente para continuar el proceso de ingesta.
 
             </p>
 
@@ -480,41 +661,246 @@
 
 
         <!-- =====================================================
-         COMPARACION
+         CHANNEL 2
     ====================================================== -->
 
-        <div class="comparacion">
+        <div class="bloque-ejercicio">
 
             <h3>
-                <i class="bi bi-bar-chart-line"></i>
-                CSV frente a Parquet
+
+                7. Channel del segundo agente
+
             </h3>
 
             <p>
 
-                La conversión permite observar las diferencias existentes entre
-                ambos formatos de almacenamiento.
+                Los eventos recibidos mediante la Source Avro son almacenados
+                temporalmente en un segundo Channel de tipo
+                <strong>memory</strong>.
 
             </p>
 
-            <ul>
+            <div class="codigo">
+
+                agent.channels.ch2.type = memory
+
+            </div>
+
+            <p>
+
+                Este segundo canal permite desacoplar la recepción de los eventos
+                de la operación final de escritura en HDFS.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         SINK HDFS
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                8. Sink HDFS
+
+            </h3>
+
+            <p>
+
+                Finalmente, el segundo agente dispone de un Sink de tipo
+                <strong>HDFS</strong>, cuya función es almacenar los eventos
+                recibidos en el sistema de archivos distribuido de Hadoop.
+
+            </p>
+
+            <div class="codigo">
+
+                agent.sinks.sink2.type = hdfs<br>
+
+                agent.sinks.sink2.hdfs.path = hdfs://namenode:9000/datasets/accidentes24/
+
+            </div>
+
+            <p>
+
+                De esta manera, los datos recorren todo el flujo definido entre los
+                dos agentes hasta alcanzar su destino final en HDFS.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         FLUJO COMPLETO
+    ====================================================== -->
+
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                9. Funcionamiento completo del flujo de ingesta
+
+            </h3>
+
+            <p>
+
+                El funcionamiento de la solución puede resumirse mediante las
+                siguientes etapas:
+
+            </p>
+
+
+            <div class="paso">
+
+                <strong>1. Incorporación del fichero.</strong>
+
+                El usuario copia el fichero
+                <code>TABLA_ACCIDENTES_24.csv</code> en:
+
+                <div class="codigo">
+
+                    /home/hadoop/flume_input
+
+                </div>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>2. Detección del fichero.</strong>
+
+                La Source de tipo <strong>spooldir</strong> detecta
+                automáticamente el nuevo fichero.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>3. Generación de eventos.</strong>
+
+                El contenido del fichero es transformado en eventos Flume.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>4. Almacenamiento temporal.</strong>
+
+                Los eventos son almacenados en el Channel de tipo
+                <strong>memory</strong>.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>5. Serialización y transmisión.</strong>
+
+                El Sink de tipo <strong>Avro</strong> transmite los eventos al
+                segundo agente mediante el puerto <strong>41414</strong>.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>6. Recepción.</strong>
+
+                La Source de tipo <strong>Avro</strong> del segundo agente recibe
+                los eventos.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>7. Almacenamiento temporal.</strong>
+
+                Los eventos recibidos son almacenados en un segundo Channel de
+                tipo <strong>memory</strong>.
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>8. Almacenamiento definitivo.</strong>
+
+                El Sink HDFS recupera los eventos y los almacena finalmente en
+                el sistema de archivos distribuido Hadoop.
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         IMAGEN ARQUITECTURA
+    ====================================================== -->
+
+        <div class="text-center mt-5">
+
+            <img src="../img/flume_avro.png" class="img-fluid rounded shadow imagen-ejercicio"
+                alt="Arquitectura de ingesta mediante dos agentes Apache Flume conectados mediante Avro">
+
+            <p class="figura">
+
+                <strong>Figura 42.</strong>
+                Flujo de ingesta de datos mediante dos agentes Apache Flume
+                conectados mediante el protocolo Avro.
+                Fuente: elaboración propia.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         VENTAJAS
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+
+                <i class="bi bi-lightbulb-fill"></i>
+
+                Ventajas del uso de Avro en la ingesta
+
+            </h3>
+
+            <p>
+
+                La utilización de Avro en este flujo permite representar los eventos
+                mediante un formato binario y compacto durante su transmisión entre
+                los agentes Flume.
+
+            </p>
+
+            <ul class="mb-0">
 
                 <li>
-                    <strong>CSV:</strong> formato de texto plano, sencillo de
-                    intercambiar y visualizar, pero menos eficiente para grandes
-                    volúmenes de datos.
+                    Reduce el tamaño de la información transmitida.
                 </li>
 
                 <li>
-                    <strong>Parquet:</strong> formato binario y columnar,
-                    optimizado para consultas analíticas y almacenamiento
-                    distribuido.
+                    Permite transportar los eventos entre diferentes agentes Flume.
                 </li>
 
                 <li>
-                    <strong>Compresión Snappy:</strong> permite reducir el espacio
-                    ocupado y mejorar la eficiencia de las operaciones de
-                    almacenamiento y lectura.
+                    Facilita la comunicación entre procesos distribuidos.
+                </li>
+
+                <li>
+                    Mantiene la información preparada para su posterior
+                    almacenamiento y procesamiento.
                 </li>
 
             </ul>
@@ -526,62 +912,98 @@
          RESULTADO
     ====================================================== -->
 
-        <div class="objetivo">
+        <div class="resultado">
 
-            <h3>
+            <h3 class="text-success">
+
                 <i class="bi bi-check-circle-fill"></i>
+
                 Resultado del ejercicio
+
             </h3>
 
             <p>
 
-                Al finalizar el ejercicio, el estudiante habrá transformado el
-                conjunto de datos <strong>TABLA_ACCIDENTES_24.csv</strong> en un
-                fichero <strong>TABLA_ACCIDENTES_24.parquet</strong>, utilizando
-                PyArrow y compresión Snappy.
+                Como resultado se establece una cadena de ingesta formada por dos
+                agentes Apache Flume. El primer agente recoge el fichero
+                <strong>TABLA_ACCIDENTES_24.csv</strong>, genera los eventos y los
+                transmite mediante Avro al segundo agente.
 
             </p>
 
             <p class="mb-0">
 
-                Este proceso permite comprobar de forma práctica cómo los formatos
-                de almacenamiento optimizados pueden mejorar la eficiencia en
-                arquitecturas Big Data y facilita la posterior utilización de los
-                datos mediante herramientas del ecosistema Hadoop.
+                El segundo agente recibe los eventos, los almacena temporalmente y
+                finalmente los transfiere mediante un Sink HDFS al sistema de
+                archivos distribuido de Hadoop. De esta forma, el estudiante puede
+                observar de manera práctica la utilización de Avro como mecanismo
+                de comunicación entre agentes dentro de una arquitectura Big Data.
 
             </p>
 
         </div>
 
-        <div class="text-center mb-5">
 
-            <a href="ejerP3.html" class="btn btn-success btn-lg">
+        <!-- =====================================================
+         CONCLUSION
+    ====================================================== -->
 
-                <i class="bi bi-arrow-right-circle-fill"></i>
-                Siguiente Ejercicio.
+        <div class="bloque-ejercicio">
+
+            <h3>
+
+                Conclusión
+
+            </h3>
+
+            <p>
+
+                El ejercicio permite introducir un escenario de ingesta compuesto
+                por varios agentes Apache Flume conectados mediante Avro. Esta
+                configuración muestra cómo los datos pueden recorrer diferentes
+                etapas antes de alcanzar el almacenamiento distribuido en HDFS.
+
+            </p>
+
+            <p class="mb-0">
+
+                De este modo, el estudiante puede comprender de forma práctica la
+                relación existente entre <strong>Source</strong>,
+                <strong>Channel</strong> y <strong>Sink</strong>, así como el papel
+                desempeñado por Avro en la transmisión de eventos entre los
+                diferentes elementos de la arquitectura.
+
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+         NAVEGACION
+    ====================================================== -->
+
+        <div class="botones">
+
+            <a href="5.7.2.html" class="btn btn-uned">
+
+                ← Ejercicio anterior
+
+            </a>
+
+            <a href="5.7.4.html" class="btn btn-uned">
+
+                Siguiente ejercicio →
 
             </a>
 
         </div>
-        <div class="text-center mt-4">
-
-            <a href="EjerP2Jupyter.html" class="btn btn-success btn-lg">
-
-                <i class="bi bi-journal-code"></i>
-
-                Ver solución completa en Jupyter.
-
-            </a>
-
-        </div>
-
 
 
     </main>
 
 
     <!-- =====================================================
-     PIE
+     PIE DE PAGINA
 ====================================================== -->
 
     <footer class="bg-success text-white mt-5">
@@ -589,11 +1011,15 @@
         <div class="container py-3 text-center">
 
             <p class="mb-1">
+
                 Proyecto Fin de Grado · Ingeniería Informática
+
             </p>
 
             <p class="mb-0">
+
                 Universidad Nacional de Educación a Distancia (UNED)
+
             </p>
 
         </div>
