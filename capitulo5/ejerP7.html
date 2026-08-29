@@ -373,25 +373,14 @@
             ================================================== -->
 
             <h2>
-                Ejercicio Final 1: Python3 y MySQL
+                Ejercicio Final 2: Levantar contenedor db_cluster – MySQL¡
             </h2>
+            <p class="lead">
 
-            <p>
-                Una vez desplegada la infraestructura Big Data basada en
-                <strong>Hadoop sobre contenedores Docker</strong>, tal como se
-                define en el <strong>punto 4.2</strong>, se procede a la realización
-                de una serie de ejercicios prácticos orientados al procesamiento y
-                análisis de información clínica procedente del corpus
-                <strong>MEDDOCAN</strong>.
+                Despliegue de MySQL para la explotación de los datos generados
+                durante el procesamiento Hadoop.
+
             </p>
-
-            <p>
-                El objetivo de esta fase es demostrar las capacidades de la
-                arquitectura implementada para gestionar, procesar y almacenar
-                información de forma distribuida.
-            </p>
-
-
             <div class="objetivo">
 
                 <h3>
@@ -408,7 +397,31 @@
                     posteriormente para su incorporación a una base de datos
                     <strong>MySQL</strong>.
                 </p>
+                <p>
 
+                    Una vez finalizados los procesos de procesamiento y transformación
+                    de los datos mediante el clúster Hadoop, se puede utilizar un
+                    contenedor independiente para almacenar y explotar los resultados
+                    mediante una base de datos relacional.
+
+                </p>
+
+                <p>
+
+                    En este ejercicio se propone levantar el contenedor
+                    <strong>db_cluster</strong>, basado en <strong>MySQL</strong>,
+                    utilizando los ficheros <strong>.csv</strong> generados durante
+                    las etapas anteriores del proyecto.
+
+                </p>
+
+                <p class="mb-0">
+
+                    El objetivo es completar el flujo de procesamiento de los datos,
+                    desde su generación en el clúster Hadoop hasta su almacenamiento
+                    estructurado en una base de datos MySQL.
+
+                </p>
             </div>
 
 
@@ -417,29 +430,16 @@
             ================================================== -->
 
             <h2>
-                Anonimización de los datos clínicos
+                Arquitectura del despliegue
             </h2>
 
             <p>
-                La anonimización constituye un proceso fundamental en el ámbito de
-                la protección de datos y en la investigación médica, ya que permite
-                preservar la privacidad de los pacientes durante el tratamiento de
-                información clínica.
-            </p>
 
-            <p>
-                En el contexto de <strong>MEDDOCAN</strong>, la anonimización hace
-                referencia a la eliminación o modificación de información personal
-                identificable, conocida como <strong>PII (Personally Identifiable
-                    Information)</strong>, presente en los registros médicos.
-            </p>
+                La siguiente figura muestra la arquitectura que será desplegada
+                cuando sea necesario utilizar un contenedor con
+                <strong>MySQL</strong> y realizar la carga de los datos
+                compartidos en formato <strong>.csv</strong>.
 
-            <p>
-                El objetivo principal consiste en garantizar que los datos utilizados
-                para la investigación sean anónimos y no puedan vincularse con
-                individuos reales. Para ello se pueden eliminar o modificar datos
-                como nombres, direcciones, números de teléfono, identificadores
-                únicos y otros elementos potencialmente identificativos.
             </p>
 
 
@@ -447,31 +447,18 @@
                  SCRIPT PYTHON
             ================================================== -->
 
-            <div class="bloque">
+            <div class="text-center my-4">
 
-                <h3>
-                    Script de anonimización
-                </h3>
+                <img src="../img/cluster_hadoop_ii.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Arquitectura del clúster Hadoop con MySQL">
 
-                <p>
-                    Para este ejercicio se ha desarrollado el script
-                    <strong>meddocan_anonymization.py</strong>, incluido en el
-                    <strong>Anexo Código Ejercicios: meddocan_anonymization</strong>.
-                </p>
+                <p class="figura">
 
-                <p>
-                    El script procesa inicialmente los documentos clínicos
-                    proporcionados por MEDDOCAN y almacenados en formato
-                    <strong>.txt</strong>. Como resultado del procesamiento se
-                    genera un nuevo fichero que posteriormente será transformado
-                    a formato <strong>.csv</strong>.
-                </p>
+                    <strong>Figura 44.</strong>
+                    Cluster Hadoop II.
+                    Fuente: elaboración propia con apoyo de inteligencia artificial
+                    generativa (ChatGPT/OpenAI), adaptada por el autor.
 
-                <p>
-                    La utilización de <strong>Hadoop Streaming</strong> permite
-                    desarrollar las fases Mapper y Reducer mediante scripts escritos
-                    en Python, evitando la necesidad de utilizar Java y facilitando
-                    la comprensión del procesamiento distribuido.
                 </p>
 
             </div>
