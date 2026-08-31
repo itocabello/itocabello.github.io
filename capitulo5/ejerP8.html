@@ -751,9 +751,30 @@
                     </h3>
 
                     <p>
-                        Una vez establecida la conexión con Hive se crea la
-                        base de datos utilizada para el ejercicio.
+                        Una vez comprobado el correcto funcionamiento de HiveServer2,
+                        el siguiente paso consiste en crear la base de datos que se utilizará
+                        para almacenar y analizar los diferentes conjuntos de datos empleados
+                        en el proyecto.
                     </p>
+
+                    <div class="alert alert-info">
+
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        <strong>Importante:</strong>
+
+                        <p class="mb-0 mt-2">
+                            En la configuración utilizada en este proyecto, la creación de la
+                            base de datos y de las tablas de Hive se realiza directamente desde
+                            el cliente de línea de comandos <strong>Beeline</strong>.
+                            Jupyter Notebook se utilizará posteriormente para realizar tareas
+                            de análisis y explotación de los datos, pero no será el entorno
+                            empleado para ejecutar las sentencias de creación de las tablas
+                            de Hive.
+                        </p>
+
+                    </div>
+
 
                     <div class="codigo">
 
@@ -762,9 +783,11 @@
 
                     </div>
 
+
                     <p>
-                        Posteriormente se crean las tablas correspondientes
-                        a los diferentes conjuntos de datos y formatos.
+                        A partir de este momento, todas las operaciones de creación y gestión
+                        de tablas realizadas mediante Beeline se ejecutarán dentro de la base
+                        de datos seleccionada.
                     </p>
 
                 </div>
