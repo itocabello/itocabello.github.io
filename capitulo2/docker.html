@@ -71,360 +71,183 @@
 
     </nav>
 
-    <div class="container mt-5">
+    </div>
 
-        <nav aria-label="breadcrumb">
+    <div class="row">
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
                     Capítulo 2
-                </li>
-
-            </ol>
-
-        </nav>
-
-        <!-- Contenido principal -->
-
-        <!-- Contenido principal -->
-
-        <h2 class="text-success mb-4">
-            Virtualización ligera mediante contenedores
-        </h2>
-
-        <p class="lead">
-
-            La <strong>virtualización ligera</strong> es una tecnología que permite ejecutar múltiples
-            entornos aislados sobre un mismo sistema operativo, compartiendo el mismo núcleo
-            (kernel) del sistema anfitrión. A diferencia de las máquinas virtuales tradicionales,
-            los contenedores no requieren un sistema operativo completo para cada instancia,
-            lo que reduce considerablemente el consumo de recursos y mejora el rendimiento.
-
-        </p>
-
-        <p>
-
-            Esta tecnología permite aprovechar mejor el hardware disponible, incrementando la
-            eficiencia en el uso de la CPU, la memoria y el almacenamiento, facilitando además
-            el despliegue rápido y reproducible de aplicaciones.
-
-        </p>
-        <div class="col-lg-6 text-center">
-
-            <img src="../img/contenedores.png" class="img-fluid rounded shadow" alt="Máquina Virtual"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
-            <p class="text-muted mt-3">
-                <strong>Figura 3.</strong> Virtualización ligera mediante contenedores.
-            </p>
-
-
-
-        </div>
-
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            ¿Qué es un contenedor?
-
-        </h3>
-
-        <p>
-
-            Los <strong>contenedores</strong> constituyen una forma de virtualización ligera que permite
-            ejecutar aplicaciones de forma aislada compartiendo el mismo kernel del sistema
-            operativo anfitrión.
-
-            Cada contenedor incluye:
-
-        </p>
-
-        <div class="row g-4">
-
-            <div class="col-md-3">
-
-                <div class="card text-center shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <i class="bi bi-box-seam display-5 text-success"></i>
-
-                        <h5 class="mt-3">Aplicación</h5>
-
-                    </div>
 
                 </div>
 
-            </div>
+                <a href="virtual.html" class="list-group-item list-group-item-action">
 
-            <div class="col-md-3">
+                    1. Máquina virtual.
 
-                <div class="card text-center shadow-sm h-100">
+                </a>
 
-                    <div class="card-body">
+                <a href="virtuall.html" class="list-group-item list-group-item-action">
 
-                        <i class="bi bi-collection display-5 text-success"></i>
+                    2 Virtualización ligera
 
-                        <h5 class="mt-3">Bibliotecas</h5>
+                </a>
 
-                    </div>
+                <a href="docker.html" class="list-group-item list-group-item-action">
 
-                </div>
+                    3 Imágenes Docker
 
-            </div>
+                </a>
 
-            <div class="col-md-3">
+                <a href="dockerc.html" class="list-group-item list-group-item-action">
 
-                <div class="card text-center shadow-sm h-100">
+                    4 Docker compose
 
-                    <div class="card-body">
-
-                        <i class="bi bi-gear display-5 text-success"></i>
-
-                        <h5 class="mt-3">Configuración</h5>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-3">
-
-                <div class="card text-center shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <i class="bi bi-file-earmark-code display-5 text-success"></i>
-
-                        <h5 class="mt-3">Dependencias</h5>
-
-                    </div>
-
-                </div>
+                </a>
 
             </div>
 
         </div>
+        <div class="col-lg-9">
+            <nav aria-label="breadcrumb">
 
-        <hr class="my-5">
+                <ol class="breadcrumb">
 
-        <h3 class="text-success">
-
-            ¿Por qué utilizar contenedores?
-
-        </h3>
-
-        <div class="alert alert-success">
-
-            Los contenedores han revolucionado la forma de desplegar aplicaciones debido a su
-            rapidez, eficiencia y facilidad de mantenimiento.
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Consumo reducido de recursos.
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Inicio</a>
                     </li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Inicio prácticamente instantáneo.
+                    <li class="breadcrumb-item active">
+                        Capítulo 2
                     </li>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Mayor densidad de aplicaciones por servidor.
-                    </li>
+                </ol>
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Portabilidad entre diferentes plataformas.
-                    </li>
+            </nav>
 
-                </ul>
+            <!-- Contenido principal -->
 
-            </div>
+            <!-- Contenido principal -->
 
-            <div class="col-md-6">
+            <h2 class="text-success mb-4">
+                Virtualización ligera mediante contenedores
+            </h2>
 
-                <ul class="list-group">
+            <p class="lead">
 
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Entornos completamente reproducibles.
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Aislamiento entre aplicaciones.
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Fácil actualización y despliegue.
-                    </li>
-
-                    <li class="list-group-item">
-                        <i class="bi bi-check-circle-fill text-success"></i>
-                        Ideal para arquitecturas de microservicios.
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Contenedores frente a máquinas virtuales
-
-        </h3>
-
-        <table class="table table-bordered table-hover">
-
-            <thead class="table-success">
-
-                <tr>
-
-                    <th>Máquinas virtuales</th>
-
-                    <th>Contenedores</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Cada máquina dispone de su propio sistema operativo.</td>
-
-                    <td>Comparten el kernel del sistema anfitrión.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Mayor consumo de CPU y memoria.</td>
-
-                    <td>Consumo muy reducido de recursos.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Tiempo de arranque elevado.</td>
-
-                    <td>Inicio prácticamente instantáneo.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Menor número de instancias por servidor.</td>
-
-                    <td>Mayor densidad de aplicaciones.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Mayor tamaño en disco.</td>
-
-                    <td>Imágenes ligeras y portables.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Docker como plataforma de virtualización ligera
-
-        </h3>
-
-        <p>
-
-            En este Proyecto Fin de Grado los contenedores constituyen la unidad básica de
-            despliegue del ecosistema Big Data.
-
-            Para ello se emplea <strong>Docker</strong>, una plataforma que facilita la creación,
-            distribución y ejecución de contenedores de forma sencilla y reproducible.
-
-        </p>
-
-        <p>
-
-            Docker permite empaquetar una aplicación junto con todas sus bibliotecas,
-            dependencias y archivos de configuración, garantizando que pueda ejecutarse de
-            forma idéntica en cualquier equipo.
-
-        </p>
-
-        <div class="alert alert-primary">
-
-            <h4>
-
-                <i class="bi bi-lightbulb"></i>
-
-                Conclusión
-
-            </h4>
-
-            <p class="mb-0">
-
-                La virtualización mediante contenedores representa actualmente una de las tecnologías
-                fundamentales para el despliegue de infraestructuras Big Data y aplicaciones basadas
-                en microservicios. Su reducido consumo de recursos, rapidez de ejecución y elevada
-                portabilidad la convierten en la solución idónea para entornos docentes, de
-                investigación y computación en la nube. En este proyecto se utilizará <strong>Docker</strong>
-                como herramienta principal para desplegar el clúster Hadoop sobre una única máquina
-                física.
+                La <strong>virtualización ligera</strong> es una tecnología que permite ejecutar múltiples
+                entornos aislados sobre un mismo sistema operativo, compartiendo el mismo núcleo
+                (kernel) del sistema anfitrión. A diferencia de las máquinas virtuales tradicionales,
+                los contenedores no requieren un sistema operativo completo para cada instancia,
+                lo que reduce considerablemente el consumo de recursos y mejora el rendimiento.
 
             </p>
 
-        </div>
-        <div class="modal fade" id="imgClusterModal" tabindex="-1">
+            <p>
 
-            <div class="modal-dialog modal-xl modal-dialog-centered">
+                Esta tecnología permite aprovechar mejor el hardware disponible, incrementando la
+                eficiencia en el uso de la CPU, la memoria y el almacenamiento, facilitando además
+                el despliegue rápido y reproducible de aplicaciones.
 
-                <div class="modal-content">
+            </p>
+            <div class="col-lg-6 text-center">
 
-                    <div class="modal-header">
+                <img src="../img/contenedores.png" class="img-fluid rounded shadow" alt="Máquina Virtual"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+                <p class="text-muted mt-3">
+                    <strong>Figura 3.</strong> Virtualización ligera mediante contenedores.
+                </p>
 
-                        <h5 class="modal-title">
-                            contenedores
-                        </h5>
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
+
+            </div>
+
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                ¿Qué es un contenedor?
+
+            </h3>
+
+            <p>
+
+                Los <strong>contenedores</strong> constituyen una forma de virtualización ligera que permite
+                ejecutar aplicaciones de forma aislada compartiendo el mismo kernel del sistema
+                operativo anfitrión.
+
+                Cada contenedor incluye:
+
+            </p>
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-box-seam display-5 text-success"></i>
+
+                            <h5 class="mt-3">Aplicación</h5>
+
+                        </div>
 
                     </div>
 
-                    <div class="modal-body text-center">
+                </div>
 
-                        <img src="../img/contenedores.png" class="img-fluid">
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-collection display-5 text-success"></i>
+
+                            <h5 class="mt-3">Bibliotecas</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-gear display-5 text-success"></i>
+
+                            <h5 class="mt-3">Configuración</h5>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-file-earmark-code display-5 text-success"></i>
+
+                            <h5 class="mt-3">Dependencias</h5>
+
+                        </div>
 
                     </div>
 
@@ -432,6 +255,226 @@
 
             </div>
 
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                ¿Por qué utilizar contenedores?
+
+            </h3>
+
+            <div class="alert alert-success">
+
+                Los contenedores han revolucionado la forma de desplegar aplicaciones debido a su
+                rapidez, eficiencia y facilidad de mantenimiento.
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Consumo reducido de recursos.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Inicio prácticamente instantáneo.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Mayor densidad de aplicaciones por servidor.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Portabilidad entre diferentes plataformas.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Entornos completamente reproducibles.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Aislamiento entre aplicaciones.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Fácil actualización y despliegue.
+                        </li>
+
+                        <li class="list-group-item">
+                            <i class="bi bi-check-circle-fill text-success"></i>
+                            Ideal para arquitecturas de microservicios.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Contenedores frente a máquinas virtuales
+
+            </h3>
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Máquinas virtuales</th>
+
+                        <th>Contenedores</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Cada máquina dispone de su propio sistema operativo.</td>
+
+                        <td>Comparten el kernel del sistema anfitrión.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mayor consumo de CPU y memoria.</td>
+
+                        <td>Consumo muy reducido de recursos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Tiempo de arranque elevado.</td>
+
+                        <td>Inicio prácticamente instantáneo.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Menor número de instancias por servidor.</td>
+
+                        <td>Mayor densidad de aplicaciones.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Mayor tamaño en disco.</td>
+
+                        <td>Imágenes ligeras y portables.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Docker como plataforma de virtualización ligera
+
+            </h3>
+
+            <p>
+
+                En este Proyecto Fin de Grado los contenedores constituyen la unidad básica de
+                despliegue del ecosistema Big Data.
+
+                Para ello se emplea <strong>Docker</strong>, una plataforma que facilita la creación,
+                distribución y ejecución de contenedores de forma sencilla y reproducible.
+
+            </p>
+
+            <p>
+
+                Docker permite empaquetar una aplicación junto con todas sus bibliotecas,
+                dependencias y archivos de configuración, garantizando que pueda ejecutarse de
+                forma idéntica en cualquier equipo.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Conclusión
+
+                </h4>
+
+                <p class="mb-0">
+
+                    La virtualización mediante contenedores representa actualmente una de las tecnologías
+                    fundamentales para el despliegue de infraestructuras Big Data y aplicaciones basadas
+                    en microservicios. Su reducido consumo de recursos, rapidez de ejecución y elevada
+                    portabilidad la convierten en la solución idónea para entornos docentes, de
+                    investigación y computación en la nube. En este proyecto se utilizará <strong>Docker</strong>
+                    como herramienta principal para desplegar el clúster Hadoop sobre una única máquina
+                    física.
+
+                </p>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                contenedores
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/contenedores.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
         <div class="text-center mb-5">
 
