@@ -1,0 +1,68 @@
+creear en hdfs :
+
+
+/datasets/synthea/csv/
+
+
+/datasets/synthea/resultados/pacientes_genero_decada
+/datasets/synthea/resultados/encounters_analisis
+/datasets/synthea/resultados/organizations_ubicacion
+
+
+
+
+1. Ejercicio — Pacientes por género y década
+
+
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
+-D mapreduce.job.reduces=1 \
+-input /datasets/synthea/csv/patients.csv \
+-output /datasets/synthea/resultados/pacientes_genero_decada \
+-mapper mapper_pacientes.py \
+-reducer reducer_pacientes.py \
+-files mapper_pacientes.py,reducer_pacientes.py
+
+dfs dfs -ls /datasets/synthea/resultados/pacientes_genero_decada
+
+Y:
+
+hdfs dfs -cat /datasets/synthea/resultados/pacientes_genero_decada/part-00000
+
+2. Ejercicio — Encuentros médicos por año y tipo
+
+hdfs dfs -rm -r -f /datasets/synthea/resultados/encounters_analisis
+
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
+-D mapreduce.job.reduces=1 \
+-input /datasets/synthea/csv/encounters.csv \
+-output /datasets/synthea/resultados/encounters_analisis \
+-mapper mapper_encounters.py \
+-reducer reducer_encounters.py \
+-files mapper_encounters.py,reducer_encounters.py
+
+hdfs dfs -ls /datasets/synthea/resultados/encounters_analisis
+
+Y:
+
+hdfs dfs -cat /datasets/synthea/resultados/encounters_analisis/part-00000
+
+3. Ejercicio — Organizaciones sanitarias
+
+/datasets/synthea/csv/organizations.csv
+
+hdfs dfs -rm -r -f /datasets/synthea/resultados/organizations_ubicacion
+
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
+-D mapreduce.job.reduces=1 \
+-input /datasets/synthea/csv/organizations.csv \
+-output /datasets/synthea/resultados/organizations_ubicacion \
+-mapper mapper_organizations.py \
+-reducer reducer_organizations.py \
+-files mapper_organizations.py,reducer_organizations.py
+
+
+hdfs dfs -ls /datasets/synthea/resultados/organizations_ubicacion
+
+Y:
+
+hdfs dfs -cat /datasets/synthea/resultados/organizations_ubicacion/part-00000
