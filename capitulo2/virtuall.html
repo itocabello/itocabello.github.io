@@ -71,167 +71,208 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <div class="col-lg-3">
 
-            <ol class="breadcrumb">
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+                <div class="list-group-item active bg-success border-success">
 
-                <li class="breadcrumb-item active">
+                    <i class="bi bi-book"></i>
+
                     Capítulo 2
-                </li>
-
-            </ol>
-
-        </nav>
-
-        <!-- Contenido principal -->
-
-        <!-- ======================= CONTENIDO ======================= -->
-
-        <h2 class="text-success mb-4">
-            Docker: Plataforma de virtualización basada en contenedores
-        </h2>
-
-        <p class="lead">
-
-            Docker es una plataforma de <strong>código abierto</strong> que permite crear, distribuir y
-            ejecutar aplicaciones dentro de contenedores de forma rápida, portable y eficiente.
-
-            Desde su aparición, Docker ha revolucionado el despliegue de aplicaciones al facilitar
-            la creación de entornos reproducibles y ligeros, reduciendo considerablemente el tiempo
-            de instalación y configuración.
-
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-info-circle-fill"></i>
-
-            Docker proporciona un modelo basado en <strong>imágenes</strong>, a partir de las cuales se crean
-            los contenedores que ejecutan las aplicaciones.
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            ¿Qué es una imagen Docker?
-        </h3>
-
-        <p>
-
-            Una <strong>imagen Docker</strong> es un paquete ejecutable de solo lectura formado por varias
-            capas que contiene todo lo necesario para ejecutar una aplicación.
-
-        </p>
-
-        <div class="row g-4">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-box"></i>
-
-                            Contenido de una imagen
-
-                        </h5>
-
-                        <ul>
-
-                            <li>Código fuente.</li>
-
-                            <li>Bibliotecas.</li>
-
-                            <li>Dependencias.</li>
-
-                            <li>Variables de entorno.</li>
-
-                            <li>Archivos de configuración.</li>
-
-                            <li>Sistema base.</li>
-
-                        </ul>
-
-                    </div>
 
                 </div>
 
-            </div>
+                <a href="virtual.html" class="list-group-item list-group-item-action">
 
-            <div class="col-md-6">
+                    1. Máquina virtual.
 
-                <div class="card shadow-sm h-100">
+                </a>
 
-                    <div class="card-body">
+                <a href="virtuall.html" class="list-group-item list-group-item-action">
 
-                        <h5 class="text-success">
+                    2 Virtualización ligera
 
-                            <i class="bi bi-layers"></i>
+                </a>
 
-                            Características
+                <a href="docker.html" class="list-group-item list-group-item-action">
 
-                        </h5>
+                    3 Imágenes Docker
 
-                        <ul>
+                </a>
 
-                            <li>Es inmutable.</li>
+                <a href="dockerc.html" class="list-group-item list-group-item-action">
 
-                            <li>Está formada por múltiples capas.</li>
+                    4 Docker compose
 
-                            <li>Puede reutilizarse.</li>
-
-                            <li>Permite crear múltiples contenedores.</li>
-
-                            <li>Facilita la distribución de aplicaciones.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
+                </a>
 
             </div>
 
         </div>
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-9">
 
-            <img src="../img/docker-image-container.png" class="img-fluid rounded shadow" alt="Máquina Virtual"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
-            <p class="text-muted mt-3">
-                <strong>Figura 7.</strong> Relación entre una imagen Docker y los contenedores generados.
+            <nav aria-label="breadcrumb">
+
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Inicio</a>
+                    </li>
+
+                    <li class="breadcrumb-item active">
+                        Capítulo 2
+                    </li>
+
+                </ol>
+
+            </nav>
+
+            <!-- Contenido principal -->
+
+            <!-- ======================= CONTENIDO ======================= -->
+
+            <h2 class="text-success mb-4">
+                Docker: Plataforma de virtualización basada en contenedores
+            </h2>
+
+            <p class="lead">
+
+                Docker es una plataforma de <strong>código abierto</strong> que permite crear, distribuir y
+                ejecutar aplicaciones dentro de contenedores de forma rápida, portable y eficiente.
+
+                Desde su aparición, Docker ha revolucionado el despliegue de aplicaciones al facilitar
+                la creación de entornos reproducibles y ligeros, reduciendo considerablemente el tiempo
+                de instalación y configuración.
+
             </p>
 
+            <div class="alert alert-success">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                Docker proporciona un modelo basado en <strong>imágenes</strong>, a partir de las cuales se crean
+                los contenedores que ejecutan las aplicaciones.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                ¿Qué es una imagen Docker?
+            </h3>
+
+            <p>
+
+                Una <strong>imagen Docker</strong> es un paquete ejecutable de solo lectura formado por varias
+                capas que contiene todo lo necesario para ejecutar una aplicación.
+
+            </p>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-box"></i>
+
+                                Contenido de una imagen
+
+                            </h5>
+
+                            <ul>
+
+                                <li>Código fuente.</li>
+
+                                <li>Bibliotecas.</li>
+
+                                <li>Dependencias.</li>
+
+                                <li>Variables de entorno.</li>
+
+                                <li>Archivos de configuración.</li>
+
+                                <li>Sistema base.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-layers"></i>
+
+                                Características
+
+                            </h5>
+
+                            <ul>
+
+                                <li>Es inmutable.</li>
+
+                                <li>Está formada por múltiples capas.</li>
+
+                                <li>Puede reutilizarse.</li>
+
+                                <li>Permite crear múltiples contenedores.</li>
+
+                                <li>Facilita la distribución de aplicaciones.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-lg-6 text-center">
+
+                <img src="../img/docker-image-container.png" class="img-fluid rounded shadow" alt="Máquina Virtual"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+                <p class="text-muted mt-3">
+                    <strong>Figura 7.</strong> Relación entre una imagen Docker y los contenedores generados.
+                </p>
 
 
-        </div>
+
+            </div>
 
 
-        <hr class="my-5">
+            <hr class="my-5">
 
-        <h3 class="text-success">
+            <h3 class="text-success">
 
-            Dockerfile
+                Dockerfile
 
-        </h3>
+            </h3>
 
-        <p>
+            <p>
 
-            Las imágenes Docker se construyen normalmente mediante un archivo denominado
-            <strong>Dockerfile</strong>, donde se describen todos los pasos necesarios para construir la imagen.
+                Las imágenes Docker se construyen normalmente mediante un archivo denominado
+                <strong>Dockerfile</strong>, donde se describen todos los pasos necesarios para construir la imagen.
 
-        </p>
+            </p>
 
-        <pre class="bg-light border rounded p-3"><code>FROM ubuntu:24.04
+            <pre class="bg-light border rounded p-3"><code>FROM ubuntu:24.04
     
     RUN apt-get update
     
@@ -242,303 +283,182 @@
     CMD ["python3","/app/app.py"]
     </code></pre>
 
-        <p>
+            <p>
 
-            Una vez construida la imagen, ésta puede reutilizarse tantas veces como sea necesario
-            para crear nuevos contenedores.
-
-        </p>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Docker Hub
-
-        </h3>
-
-        <p>
-
-            Docker Hub es el repositorio oficial donde la comunidad publica imágenes listas para
-            utilizar.
-
-            Desde Docker Hub pueden descargarse imágenes oficiales de:
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-md-4">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">Ubuntu</li>
-
-                    <li class="list-group-item">Debian</li>
-
-                    <li class="list-group-item">Alpine</li>
-
-                </ul>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">Apache Hadoop</li>
-
-                    <li class="list-group-item">Apache Spark</li>
-
-                    <li class="list-group-item">Kafka</li>
-
-                </ul>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">PostgreSQL</li>
-
-                    <li class="list-group-item">MySQL</li>
-
-                    <li class="list-group-item">MongoDB</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h2 class="text-success">
-
-            Arquitectura Docker
-
-        </h2>
-
-        <p>
-
-            Docker implementa una arquitectura <strong>cliente-servidor</strong> donde el cliente se comunica
-            con el servidor Docker mediante una API REST para gestionar todo el ciclo de vida de
-            los contenedores.
-
-        </p>
-
-        <div class="text-center my-5">
-
-            <img src="../img/docker-arquitectura.png" class="img-fluid rounded shadow" alt="Arquitectura Docker">
-
-            <p class="text-muted">
-
-                <strong>Figura 8.</strong> Arquitectura cliente-servidor de Docker.
+                Una vez construida la imagen, ésta puede reutilizarse tantas veces como sea necesario
+                para crear nuevos contenedores.
 
             </p>
 
-        </div>
+            <hr class="my-5">
 
-        <div class="row g-4">
+            <h3 class="text-success">
 
-            <div class="col-md-4">
+                Docker Hub
 
-                <div class="card shadow-sm h-100">
+            </h3>
 
-                    <div class="card-body">
+            <p>
 
-                        <h4 class="text-success">
+                Docker Hub es el repositorio oficial donde la comunidad publica imágenes listas para
+                utilizar.
 
-                            <i class="bi bi-hdd-network"></i>
-
-                            Servidor
-
-                        </h4>
-
-                        <p>
-
-                            Representado por el proceso <strong>dockerd</strong>, administra imágenes,
-                            contenedores, redes y volúmenes.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-arrow-left-right"></i>
-
-                            API REST
-
-                        </h4>
-
-                        <p>
-
-                            Permite la comunicación entre el cliente y el servidor Docker,
-                            gestionando todas las operaciones disponibles.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-terminal"></i>
-
-                            Cliente
-
-                        </h4>
-
-                        <p>
-
-                            Representado por el comando <strong>docker</strong>, utilizado para crear,
-                            ejecutar y administrar imágenes y contenedores.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Docker Registry
-
-        </h3>
-
-        <p>
-
-            Los <strong>Docker Registry</strong> son repositorios públicos o privados donde se almacenan
-            las imágenes Docker.
-
-            Los registros permiten compartir imágenes entre desarrolladores y automatizar el
-            despliegue de aplicaciones.
-
-        </p>
-
-        <table class="table table-striped">
-
-            <thead class="table-success">
-
-                <tr>
-
-                    <th>Registro</th>
-
-                    <th>Descripción</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Docker Hub</td>
-
-                    <td>Registro oficial de Docker.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>GitHub Container Registry</td>
-
-                    <td>Registro integrado con GitHub.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Harbor</td>
-
-                    <td>Registro privado empresarial.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Azure Container Registry</td>
-
-                    <td>Registro de Microsoft Azure.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>
-
-                <i class="bi bi-lightbulb"></i>
-
-                Conclusión
-
-            </h4>
-
-            <p class="mb-0">
-
-                Docker constituye actualmente una de las tecnologías más utilizadas para el despliegue
-                de aplicaciones distribuidas. Su modelo basado en imágenes, junto con su arquitectura
-                cliente-servidor y la utilización de registros de imágenes, facilita la creación de
-                infraestructuras reproducibles, escalables y fácilmente mantenibles. Estas
-                características convierten a Docker en la plataforma idónea para desplegar el clúster
-                Hadoop utilizado durante el desarrollo de este Proyecto Fin de Grado.
+                Desde Docker Hub pueden descargarse imágenes oficiales de:
 
             </p>
 
-        </div>
-        <div class="modal fade" id="imgClusterModal" tabindex="-1">
+            <div class="row">
 
-            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="col-md-4">
 
-                <div class="modal-content">
+                    <ul class="list-group">
 
-                    <div class="modal-header">
+                        <li class="list-group-item">Ubuntu</li>
 
-                        <h5 class="modal-title">
-                            maquina-virtual
-                        </h5>
+                        <li class="list-group-item">Debian</li>
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
+                        <li class="list-group-item">Alpine</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">Apache Hadoop</li>
+
+                        <li class="list-group-item">Apache Spark</li>
+
+                        <li class="list-group-item">Kafka</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">PostgreSQL</li>
+
+                        <li class="list-group-item">MySQL</li>
+
+                        <li class="list-group-item">MongoDB</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h2 class="text-success">
+
+                Arquitectura Docker
+
+            </h2>
+
+            <p>
+
+                Docker implementa una arquitectura <strong>cliente-servidor</strong> donde el cliente se comunica
+                con el servidor Docker mediante una API REST para gestionar todo el ciclo de vida de
+                los contenedores.
+
+            </p>
+
+            <div class="text-center my-5">
+
+                <img src="../img/docker-arquitectura.png" class="img-fluid rounded shadow" alt="Arquitectura Docker">
+
+                <p class="text-muted">
+
+                    <strong>Figura 8.</strong> Arquitectura cliente-servidor de Docker.
+
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-hdd-network"></i>
+
+                                Servidor
+
+                            </h4>
+
+                            <p>
+
+                                Representado por el proceso <strong>dockerd</strong>, administra imágenes,
+                                contenedores, redes y volúmenes.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
-                    <div class="modal-body text-center">
+                </div>
 
-                        <img src="../img/docker-image-container.png" class="img-fluid">
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-arrow-left-right"></i>
+
+                                API REST
+
+                            </h4>
+
+                            <p>
+
+                                Permite la comunicación entre el cliente y el servidor Docker,
+                                gestionando todas las operaciones disponibles.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-terminal"></i>
+
+                                Cliente
+
+                            </h4>
+
+                            <p>
+
+                                Representado por el comando <strong>docker</strong>, utilizado para crear,
+                                ejecutar y administrar imágenes y contenedores.
+
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -546,6 +466,128 @@
 
             </div>
 
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Docker Registry
+
+            </h3>
+
+            <p>
+
+                Los <strong>Docker Registry</strong> son repositorios públicos o privados donde se almacenan
+                las imágenes Docker.
+
+                Los registros permiten compartir imágenes entre desarrolladores y automatizar el
+                despliegue de aplicaciones.
+
+            </p>
+
+            <table class="table table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Registro</th>
+
+                        <th>Descripción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Docker Hub</td>
+
+                        <td>Registro oficial de Docker.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>GitHub Container Registry</td>
+
+                        <td>Registro integrado con GitHub.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Harbor</td>
+
+                        <td>Registro privado empresarial.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Azure Container Registry</td>
+
+                        <td>Registro de Microsoft Azure.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Conclusión
+
+                </h4>
+
+                <p class="mb-0">
+
+                    Docker constituye actualmente una de las tecnologías más utilizadas para el despliegue
+                    de aplicaciones distribuidas. Su modelo basado en imágenes, junto con su arquitectura
+                    cliente-servidor y la utilización de registros de imágenes, facilita la creación de
+                    infraestructuras reproducibles, escalables y fácilmente mantenibles. Estas
+                    características convierten a Docker en la plataforma idónea para desplegar el clúster
+                    Hadoop utilizado durante el desarrollo de este Proyecto Fin de Grado.
+
+                </p>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                maquina-virtual
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-image-container.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
         <div class="text-center mb-5">
 
