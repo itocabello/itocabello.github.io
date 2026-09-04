@@ -71,551 +71,597 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <!-- Menú lateral -->
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
                     Capítulo 3
-                </li>
 
-            </ol>
+                </div>
 
-        </nav>
+                <a href="estructurayarn.html" class="list-group-item list-group-item-action">
+
+                    1. YARN (sistema operativo de Hadoop).
 
 
+                </a>
 
-        <!-- ======================= CONTENIDO ======================= -->
+                <a href="estructurahdfs.html" class="list-group-item list-group-item-action">
 
-        <h2 class="text-success mb-4">
-            HDFS: El sistema de archivos distribuido de Hadoop
-        </h2>
+                    2 HDFS: El sistema de archivos distribuido de Hadoop.
 
-        <p class="lead">
+                </a>
+                <a href="modelo.html" class="list-group-item list-group-item-action">
 
-            El <strong>Hadoop Distributed File System (HDFS)</strong> es el sistema de archivos
-            distribuido de Apache Hadoop. Está diseñado para almacenar grandes volúmenes de datos
-            de forma fiable y proporcionar un acceso de alto rendimiento mediante una arquitectura
-            distribuida basada en múltiples nodos.
+                    3 Modelo de programación MapReduce.
 
-        </p>
+                </a>
+                <a href="ciclo.html" class="list-group-item list-group-item-action">
 
-        <div class="alert alert-success">
+                    4 Ciclo de vida Big Data Hadoop.
 
-            <i class="bi bi-info-circle-fill"></i>
+                </a>
 
-            HDFS constituye la base del almacenamiento distribuido de Hadoop y proporciona
-            escalabilidad, tolerancia a fallos y alta disponibilidad.
+            </div>
 
         </div>
 
-        <hr class="my-5">
+        <!-- Contenido -->
 
-        <h3 class="text-success">
-            ¿Qué es HDFS?
-        </h3>
+        <div class="col-lg-9">
 
-        <p>
+            <nav aria-label="breadcrumb">
 
-            HDFS es un sistema de archivos distribuido desarrollado en Java que permite almacenar
-            datos de forma redundante sobre un conjunto de servidores que forman un clúster
-            Hadoop.
+                <ol class="breadcrumb">
 
-        </p>
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Inicio</a>
+                    </li>
 
-        <p>
+                    <li class="breadcrumb-item active">
+                        Capítulo 3
+                    </li>
 
-            Su diseño está orientado a hardware convencional (<em>commodity hardware</em>), donde
-            los fallos de los equipos son habituales. Gracias a la replicación automática de los
-            bloques de datos, el sistema puede seguir funcionando incluso cuando uno o varios
-            servidores dejan de estar disponibles.
+                </ol>
 
-        </p>
+            </nav>
 
-        <div class="text-center my-5">
 
-            <img src="../img/hdfs-bloques.png" class="img-fluid rounded shadow" alt="Bloques HDFS">
 
-            <p class="text-muted">
+            <!-- ======================= CONTENIDO ======================= -->
 
-                División de un archivo en bloques distribuidos dentro de
-                HDFS.
+            <h2 class="text-success mb-4">
+                HDFS: El sistema de archivos distribuido de Hadoop
+            </h2>
+
+            <p class="lead">
+
+                El <strong>Hadoop Distributed File System (HDFS)</strong> es el sistema de archivos
+                distribuido de Apache Hadoop. Está diseñado para almacenar grandes volúmenes de datos
+                de forma fiable y proporcionar un acceso de alto rendimiento mediante una arquitectura
+                distribuida basada en múltiples nodos.
 
             </p>
 
-        </div>
+            <div class="alert alert-success">
 
-        <hr class="my-5">
+                <i class="bi bi-info-circle-fill"></i>
 
-        <h3 class="text-success">
-            Funcionamiento del almacenamiento en bloques
-        </h3>
+                HDFS constituye la base del almacenamiento distribuido de Hadoop y proporciona
+                escalabilidad, tolerancia a fallos y alta disponibilidad.
 
-        <p>
+            </div>
 
-            Cuando un archivo se almacena en HDFS, éste se divide automáticamente en bloques de
-            tamaño fijo. El tamaño predeterminado de cada bloque es de <strong>128 MB</strong>,
-            aunque puede modificarse según las necesidades de la infraestructura.
+            <hr class="my-5">
 
-        </p>
+            <h3 class="text-success">
+                ¿Qué es HDFS?
+            </h3>
 
-        <div class="card shadow-sm">
+            <p>
 
-            <div class="card-body">
+                HDFS es un sistema de archivos distribuido desarrollado en Java que permite almacenar
+                datos de forma redundante sobre un conjunto de servidores que forman un clúster
+                Hadoop.
 
-                <h5 class="text-success">
+            </p>
 
-                    Ejemplo
+            <p>
 
-                </h5>
+                Su diseño está orientado a hardware convencional (<em>commodity hardware</em>), donde
+                los fallos de los equipos son habituales. Gracias a la replicación automática de los
+                bloques de datos, el sistema puede seguir funcionando incluso cuando uno o varios
+                servidores dejan de estar disponibles.
 
-                <p>
+            </p>
 
-                    Un archivo de <strong>500 MB</strong> se dividiría en:
+            <div class="text-center my-5">
+
+                <img src="../img/hdfs-bloques.png" class="img-fluid rounded shadow" alt="Bloques HDFS">
+
+                <p class="text-muted">
+
+                    División de un archivo en bloques distribuidos dentro de
+                    HDFS.
 
                 </p>
 
-                <ul>
+            </div>
 
-                    <li>Bloque 1 → 128 MB</li>
+            <hr class="my-5">
 
-                    <li>Bloque 2 → 128 MB</li>
+            <h3 class="text-success">
+                Funcionamiento del almacenamiento en bloques
+            </h3>
 
-                    <li>Bloque 3 → 128 MB</li>
+            <p>
 
-                    <li>Bloque 4 → 116 MB</li>
+                Cuando un archivo se almacena en HDFS, éste se divide automáticamente en bloques de
+                tamaño fijo. El tamaño predeterminado de cada bloque es de <strong>128 MB</strong>,
+                aunque puede modificarse según las necesidades de la infraestructura.
 
-                </ul>
+            </p>
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="text-success">
+
+                        Ejemplo
+
+                    </h5>
+
+                    <p>
+
+                        Un archivo de <strong>500 MB</strong> se dividiría en:
+
+                    </p>
+
+                    <ul>
+
+                        <li>Bloque 1 → 128 MB</li>
+
+                        <li>Bloque 2 → 128 MB</li>
+
+                        <li>Bloque 3 → 128 MB</li>
+
+                        <li>Bloque 4 → 116 MB</li>
+
+                    </ul>
+
+                    <p class="mb-0">
+
+                        El espacio restante no utilizado se reutiliza posteriormente por el sistema de archivos.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Replicación de bloques
+            </h3>
+
+            <p>
+
+                Cada bloque almacenado en HDFS se replica automáticamente, normalmente
+                <strong>tres veces</strong>, distribuyendo las copias entre diferentes DataNodes del
+                clúster.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <i class="bi bi-shield-check"></i>
+
+                Si un nodo falla, HDFS recupera automáticamente la información utilizando alguna de
+                las copias disponibles, garantizando la continuidad del servicio.
+
+            </div>
+
+            <div class="text-center my-4">
+
+                <img src="../img/hdfs-replicacion.png" class="img-fluid rounded shadow" alt="Replicación HDFS">
+
+                <p class="text-muted">
+
+                    Replicación automática de bloques en HDFS.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Características principales de HDFS
+            </h3>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-hdd-network"></i>
+
+                                Almacenamiento distribuido
+
+                            </h5>
+
+                            <p>
+
+                                Los archivos se dividen en bloques que son distribuidos entre distintos nodos del
+                                clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-arrows-fullscreen"></i>
+
+                                Escalabilidad horizontal
+
+                            </h5>
+
+                            <p>
+
+                                La capacidad aumenta simplemente añadiendo nuevos servidores al clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-shield-check"></i>
+
+                                Tolerancia a fallos
+
+                            </h5>
+
+                            <p>
+
+                                Cada bloque dispone de varias copias distribuidas entre diferentes nodos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-cloud-check"></i>
+
+                                Alta disponibilidad
+
+                            </h5>
+
+                            <p>
+
+                                El sistema continúa funcionando incluso cuando fallan algunos servidores.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-file-earmark"></i>
+
+                                Optimizado para archivos grandes
+
+                            </h5>
+
+                            <p>
+
+                                Especialmente diseñado para almacenar grandes conjuntos de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-arrow-left-right"></i>
+
+                                Acceso secuencial
+
+                            </h5>
+
+                            <p>
+
+                                Optimizado para lecturas y escrituras secuenciales de grandes volúmenes de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-cpu"></i>
+
+                                Localidad de datos
+
+                            </h5>
+
+                            <p>
+
+                                Las aplicaciones se ejecutan cerca de donde se encuentran almacenados los datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-diagram-3"></i>
+
+                                Arquitectura maestro-esclavo
+
+                            </h5>
+
+                            <p>
+
+                                El NameNode administra el sistema de archivos mientras que los DataNodes almacenan
+                                los bloques de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Arquitectura HDFS
+            </h3>
+
+            <p>
+
+                HDFS sigue una arquitectura maestro-esclavo compuesta por dos tipos de nodos.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            NameNode
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Gestiona el sistema de archivos.</li>
+
+                                <li>Almacena los metadatos.</li>
+
+                                <li>Controla la ubicación de cada bloque.</li>
+
+                                <li>Coordina los DataNodes.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            DataNodes
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Almacenan los bloques de datos.</li>
+
+                                <li>Replican la información.</li>
+
+                                <li>Atienden peticiones de lectura y escritura.</li>
+
+                                <li>Informan periódicamente al NameNode.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Resumen de HDFS
+            </h3>
+
+            <table class="table table-striped table-hover">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Característica</th>
+                        <th>Descripción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Bloques</td>
+                        <td>128 MB por defecto.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Replicación</td>
+                        <td>3 copias por defecto.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Escalabilidad</td>
+                        <td>Añadiendo nuevos nodos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Arquitectura</td>
+                        <td>NameNode + DataNodes.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Disponibilidad</td>
+                        <td>Alta tolerancia a fallos.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Conclusión
+
+                </h4>
 
                 <p class="mb-0">
 
-                    El espacio restante no utilizado se reutiliza posteriormente por el sistema de archivos.
+                    HDFS constituye el núcleo del almacenamiento distribuido de Apache Hadoop. Su
+                    capacidad para dividir los archivos en bloques, replicar automáticamente la
+                    información y distribuir los datos entre múltiples nodos permite construir sistemas Big
+                    Data altamente escalables, fiables y preparados para trabajar con volúmenes masivos de
+                    información.
 
                 </p>
 
             </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Replicación de bloques
-        </h3>
-
-        <p>
-
-            Cada bloque almacenado en HDFS se replica automáticamente, normalmente
-            <strong>tres veces</strong>, distribuyendo las copias entre diferentes DataNodes del
-            clúster.
-
-        </p>
-
-        <div class="alert alert-primary">
-
-            <i class="bi bi-shield-check"></i>
-
-            Si un nodo falla, HDFS recupera automáticamente la información utilizando alguna de
-            las copias disponibles, garantizando la continuidad del servicio.
-
-        </div>
-
-        <div class="text-center my-4">
-
-            <img src="../img/hdfs-replicacion.png" class="img-fluid rounded shadow" alt="Replicación HDFS">
-
-            <p class="text-muted">
-
-                Replicación automática de bloques en HDFS.
-
-            </p>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Características principales de HDFS
-        </h3>
-
-        <div class="row g-4">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-hdd-network"></i>
-
-                            Almacenamiento distribuido
-
-                        </h5>
-
-                        <p>
-
-                            Los archivos se dividen en bloques que son distribuidos entre distintos nodos del
-                            clúster.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-arrows-fullscreen"></i>
-
-                            Escalabilidad horizontal
-
-                        </h5>
-
-                        <p>
-
-                            La capacidad aumenta simplemente añadiendo nuevos servidores al clúster.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-shield-check"></i>
-
-                            Tolerancia a fallos
-
-                        </h5>
-
-                        <p>
-
-                            Cada bloque dispone de varias copias distribuidas entre diferentes nodos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-cloud-check"></i>
-
-                            Alta disponibilidad
-
-                        </h5>
-
-                        <p>
-
-                            El sistema continúa funcionando incluso cuando fallan algunos servidores.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-file-earmark"></i>
-
-                            Optimizado para archivos grandes
-
-                        </h5>
-
-                        <p>
-
-                            Especialmente diseñado para almacenar grandes conjuntos de datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-arrow-left-right"></i>
-
-                            Acceso secuencial
-
-                        </h5>
-
-                        <p>
-
-                            Optimizado para lecturas y escrituras secuenciales de grandes volúmenes de datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-cpu"></i>
-
-                            Localidad de datos
-
-                        </h5>
-
-                        <p>
-
-                            Las aplicaciones se ejecutan cerca de donde se encuentran almacenados los datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h5 class="text-success">
-
-                            <i class="bi bi-diagram-3"></i>
-
-                            Arquitectura maestro-esclavo
-
-                        </h5>
-
-                        <p>
-
-                            El NameNode administra el sistema de archivos mientras que los DataNodes almacenan
-                            los bloques de datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Arquitectura HDFS
-        </h3>
-
-        <p>
-
-            HDFS sigue una arquitectura maestro-esclavo compuesta por dos tipos de nodos.
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-lg-6">
-
-                <div class="card shadow-sm">
-
-                    <div class="card-header bg-success text-white">
-
-                        NameNode
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Gestiona el sistema de archivos.</li>
-
-                            <li>Almacena los metadatos.</li>
-
-                            <li>Controla la ubicación de cada bloque.</li>
-
-                            <li>Coordina los DataNodes.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="card shadow-sm">
-
-                    <div class="card-header bg-success text-white">
-
-                        DataNodes
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Almacenan los bloques de datos.</li>
-
-                            <li>Replican la información.</li>
-
-                            <li>Atienden peticiones de lectura y escritura.</li>
-
-                            <li>Informan periódicamente al NameNode.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Resumen de HDFS
-        </h3>
-
-        <table class="table table-striped table-hover">
-
-            <thead class="table-success">
-
-                <tr>
-
-                    <th>Característica</th>
-                    <th>Descripción</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Bloques</td>
-                    <td>128 MB por defecto.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Replicación</td>
-                    <td>3 copias por defecto.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Escalabilidad</td>
-                    <td>Añadiendo nuevos nodos.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Arquitectura</td>
-                    <td>NameNode + DataNodes.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Disponibilidad</td>
-                    <td>Alta tolerancia a fallos.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>
-
-                <i class="bi bi-lightbulb"></i>
-
-                Conclusión
-
-            </h4>
-
-            <p class="mb-0">
-
-                HDFS constituye el núcleo del almacenamiento distribuido de Apache Hadoop. Su
-                capacidad para dividir los archivos en bloques, replicar automáticamente la
-                información y distribuir los datos entre múltiples nodos permite construir sistemas Big
-                Data altamente escalables, fiables y preparados para trabajar con volúmenes masivos de
-                información.
-
-            </p>
-
         </div>
         <div class="text-center mb-5">
 
