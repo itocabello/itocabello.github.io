@@ -71,439 +71,489 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <!-- Menú lateral -->
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
                     Capítulo 3
-                </li>
-
-            </ol>
-
-        </nav>
-
-        <!-- Contenido principal -->
-
-        <h2 class="text-success mb-4">
-            Características de Apache Hadoop
-        </h2>
-
-        <p class="lead">
-
-            Apache Hadoop ha sido diseñado para almacenar y procesar grandes volúmenes de datos
-            de forma distribuida. Sus características permiten construir plataformas Big Data
-            escalables, tolerantes a fallos y capaces de trabajar con distintos tipos de información.
-
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-info-circle-fill"></i>
-
-            Las siguientes características convierten a Hadoop en uno de los frameworks más
-            utilizados para el procesamiento distribuido de datos masivos.
-
-        </div>
-
-        <hr class="my-5">
-
-        <div class="row g-4">
-
-            <!-- Escalabilidad -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-arrows-fullscreen"></i>
-
-                            Escalabilidad
-
-                        </h4>
-
-                        <p>
-
-                            Hadoop permite ampliar la capacidad de almacenamiento y procesamiento simplemente
-                            añadiendo nuevos nodos al clúster. La infraestructura puede crecer progresivamente
-                            sin modificar la arquitectura existente.
-
-                        </p>
-
-                    </div>
 
                 </div>
 
-            </div>
+                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-            <!-- Procesamiento distribuido -->
+                    1. Características de Hadoop.
 
-            <div class="col-md-6">
+                </a>
 
-                <div class="card shadow-sm h-100">
+                <a href="indexestructura.html" class="list-group-item list-group-item-action">
 
-                    <div class="card-body">
+                    2 Estructura de Hadoop.
 
-                        <h4 class="text-success">
+                </a>
+                <a href="streaming.html" class="list-group-item list-group-item-action">
 
-                            <i class="bi bi-diagram-3"></i>
+                    3 Modelo de programación MapReduce mediante Hadoop Streaming.
 
-                            Procesamiento distribuido
+                </a>
+                <a href="serializacion.html" class="list-group-item list-group-item-action">
 
-                        </h4>
+                    5 Serialización de datos.
 
-                        <p>
+                </a>
+                <a href="inyeccion.html" class="list-group-item list-group-item-action">
 
-                            Las tareas se dividen entre múltiples nodos del clúster para ejecutarse en paralelo,
-                            reduciendo considerablemente el tiempo de procesamiento de grandes conjuntos de datos.
+                    6 Inyección de datos.
 
-                        </p>
+                </a>
 
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Almacenamiento -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-hdd-network"></i>
-
-                            Almacenamiento distribuido
-
-                        </h4>
-
-                        <p>
-
-                            Mediante HDFS (Hadoop Distributed File System), los datos se almacenan de forma
-                            distribuida entre diferentes nodos del clúster, mejorando el rendimiento y la
-                            disponibilidad.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Tolerancia -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-shield-check"></i>
-
-                            Tolerancia a fallos
-
-                        </h4>
-
-                        <p>
-
-                            HDFS replica automáticamente la información en varios nodos, garantizando la
-                            recuperación de los datos ante posibles fallos del hardware.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Alta disponibilidad -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-cloud-check"></i>
-
-                            Alta disponibilidad
-
-                        </h4>
-
-                        <p>
-
-                            La distribución de datos y la replicación permiten que el sistema continúe
-                            funcionando incluso cuando algunos nodos dejan de estar disponibles.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Coste -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-cash-coin"></i>
-
-                            Coste reducido
-
-                        </h4>
-
-                        <p>
-
-                            Hadoop puede ejecutarse sobre hardware convencional y es un proyecto de código
-                            abierto, eliminando la necesidad de adquirir costosas licencias propietarias.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Flexibilidad -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-folder2-open"></i>
-
-                            Flexibilidad
-
-                        </h4>
-
-                        <p>
-
-                            Es capaz de procesar datos estructurados, semiestructurados y no estructurados,
-                            como registros, documentos, imágenes, sensores o redes sociales.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Ecosistema -->
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-boxes"></i>
-
-                            Ecosistema integrado
-
-                        </h4>
-
-                        <p>
-
-                            Hadoop dispone de un amplio conjunto de herramientas como HDFS, YARN,
-                            MapReduce, Hive, Pig, HBase y Apache Spark, formando un completo ecosistema
-                            Big Data.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Batch -->
-
-            <div class="col-md-12">
-
-                <div class="card shadow-sm">
-
-                    <div class="card-body">
-
-                        <h4 class="text-success">
-
-                            <i class="bi bi-clock-history"></i>
-
-                            Procesamiento por lotes
-
-                        </h4>
-
-                        <p>
-
-                            Hadoop está especialmente diseñado para el procesamiento masivo mediante tareas
-                            por lotes (<strong>Batch Processing</strong>), siendo una solución idónea para análisis
-                            históricos, generación de informes y tratamiento de grandes volúmenes de datos.
-
-                        </p>
-
-                    </div>
-
-                </div>
 
             </div>
 
         </div>
 
-        <hr class="my-5">
+        <!-- Contenido -->
 
-        <h3 class="text-success">
-            Resumen de las características
-        </h3>
+        <div class="col-lg-9">
+            <nav aria-label="breadcrumb">
 
-        <table class="table table-hover table-striped">
+                <ol class="breadcrumb">
 
-            <thead class="table-success">
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Inicio</a>
+                    </li>
 
-                <tr>
+                    <li class="breadcrumb-item active">
+                        Capítulo 3
+                    </li>
 
-                    <th>Característica</th>
+                </ol>
 
-                    <th>Descripción</th>
+            </nav>
 
-                </tr>
+            <!-- Contenido principal -->
 
-            </thead>
+            <h2 class="text-success mb-4">
+                Características de Apache Hadoop
+            </h2>
 
-            <tbody>
+            <p class="lead">
 
-                <tr>
-
-                    <td>Escalabilidad</td>
-
-                    <td>Permite ampliar el clúster añadiendo nuevos nodos.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Procesamiento distribuido</td>
-
-                    <td>Ejecución paralela de tareas sobre múltiples servidores.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>HDFS</td>
-
-                    <td>Almacenamiento distribuido y replicado.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Tolerancia a fallos</td>
-
-                    <td>Recuperación automática mediante replicación.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Alta disponibilidad</td>
-
-                    <td>Continuidad del servicio incluso ante fallos.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Coste reducido</td>
-
-                    <td>Hardware convencional y software libre.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Flexibilidad</td>
-
-                    <td>Procesa cualquier tipo de datos.</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Ecosistema Hadoop</td>
-
-                    <td>Integración con HDFS, YARN, MapReduce, Hive, Spark...</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Procesamiento por lotes</td>
-
-                    <td>Optimizado para grandes volúmenes de información.</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>
-
-                <i class="bi bi-lightbulb"></i>
-
-                Conclusión
-
-            </h4>
-
-            <p class="mb-0">
-
-                La combinación de escalabilidad, procesamiento distribuido, almacenamiento
-                replicado y un amplio ecosistema de herramientas convierte a Apache Hadoop en una
-                de las plataformas más utilizadas para el procesamiento de datos masivos. Estas
-                características permiten desarrollar infraestructuras Big Data robustas, económicas
-                y altamente disponibles, adecuadas tanto para entornos empresariales como
-                académicos.
+                Apache Hadoop ha sido diseñado para almacenar y procesar grandes volúmenes de datos
+                de forma distribuida. Sus características permiten construir plataformas Big Data
+                escalables, tolerantes a fallos y capaces de trabajar con distintos tipos de información.
 
             </p>
 
+            <div class="alert alert-success">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                Las siguientes características convierten a Hadoop en uno de los frameworks más
+                utilizados para el procesamiento distribuido de datos masivos.
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="row g-4">
+
+                <!-- Escalabilidad -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-arrows-fullscreen"></i>
+
+                                Escalabilidad
+
+                            </h4>
+
+                            <p>
+
+                                Hadoop permite ampliar la capacidad de almacenamiento y procesamiento simplemente
+                                añadiendo nuevos nodos al clúster. La infraestructura puede crecer progresivamente
+                                sin modificar la arquitectura existente.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Procesamiento distribuido -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-diagram-3"></i>
+
+                                Procesamiento distribuido
+
+                            </h4>
+
+                            <p>
+
+                                Las tareas se dividen entre múltiples nodos del clúster para ejecutarse en paralelo,
+                                reduciendo considerablemente el tiempo de procesamiento de grandes conjuntos de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Almacenamiento -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-hdd-network"></i>
+
+                                Almacenamiento distribuido
+
+                            </h4>
+
+                            <p>
+
+                                Mediante HDFS (Hadoop Distributed File System), los datos se almacenan de forma
+                                distribuida entre diferentes nodos del clúster, mejorando el rendimiento y la
+                                disponibilidad.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Tolerancia -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-shield-check"></i>
+
+                                Tolerancia a fallos
+
+                            </h4>
+
+                            <p>
+
+                                HDFS replica automáticamente la información en varios nodos, garantizando la
+                                recuperación de los datos ante posibles fallos del hardware.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Alta disponibilidad -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-cloud-check"></i>
+
+                                Alta disponibilidad
+
+                            </h4>
+
+                            <p>
+
+                                La distribución de datos y la replicación permiten que el sistema continúe
+                                funcionando incluso cuando algunos nodos dejan de estar disponibles.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Coste -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-cash-coin"></i>
+
+                                Coste reducido
+
+                            </h4>
+
+                            <p>
+
+                                Hadoop puede ejecutarse sobre hardware convencional y es un proyecto de código
+                                abierto, eliminando la necesidad de adquirir costosas licencias propietarias.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Flexibilidad -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-folder2-open"></i>
+
+                                Flexibilidad
+
+                            </h4>
+
+                            <p>
+
+                                Es capaz de procesar datos estructurados, semiestructurados y no estructurados,
+                                como registros, documentos, imágenes, sensores o redes sociales.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Ecosistema -->
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-boxes"></i>
+
+                                Ecosistema integrado
+
+                            </h4>
+
+                            <p>
+
+                                Hadoop dispone de un amplio conjunto de herramientas como HDFS, YARN,
+                                MapReduce, Hive, Pig, HBase y Apache Spark, formando un completo ecosistema
+                                Big Data.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Batch -->
+
+                <div class="col-md-12">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-body">
+
+                            <h4 class="text-success">
+
+                                <i class="bi bi-clock-history"></i>
+
+                                Procesamiento por lotes
+
+                            </h4>
+
+                            <p>
+
+                                Hadoop está especialmente diseñado para el procesamiento masivo mediante tareas
+                                por lotes (<strong>Batch Processing</strong>), siendo una solución idónea para análisis
+                                históricos, generación de informes y tratamiento de grandes volúmenes de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Resumen de las características
+            </h3>
+
+            <table class="table table-hover table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Característica</th>
+
+                        <th>Descripción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Escalabilidad</td>
+
+                        <td>Permite ampliar el clúster añadiendo nuevos nodos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Procesamiento distribuido</td>
+
+                        <td>Ejecución paralela de tareas sobre múltiples servidores.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>HDFS</td>
+
+                        <td>Almacenamiento distribuido y replicado.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Tolerancia a fallos</td>
+
+                        <td>Recuperación automática mediante replicación.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Alta disponibilidad</td>
+
+                        <td>Continuidad del servicio incluso ante fallos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Coste reducido</td>
+
+                        <td>Hardware convencional y software libre.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Flexibilidad</td>
+
+                        <td>Procesa cualquier tipo de datos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Ecosistema Hadoop</td>
+
+                        <td>Integración con HDFS, YARN, MapReduce, Hive, Spark...</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Procesamiento por lotes</td>
+
+                        <td>Optimizado para grandes volúmenes de información.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Conclusión
+
+                </h4>
+
+                <p class="mb-0">
+
+                    La combinación de escalabilidad, procesamiento distribuido, almacenamiento
+                    replicado y un amplio ecosistema de herramientas convierte a Apache Hadoop en una
+                    de las plataformas más utilizadas para el procesamiento de datos masivos. Estas
+                    características permiten desarrollar infraestructuras Big Data robustas, económicas
+                    y altamente disponibles, adecuadas tanto para entornos empresariales como
+                    académicos.
+
+                </p>
+
+            </div>
         </div>
         <div class="text-center mb-5">
 
