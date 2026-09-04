@@ -189,643 +189,617 @@
      CONTENIDO
 ====================================================== -->
 
-    <main class="container mt-5">
+    <div class="row">
+
+        <!-- Menú lateral -->
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Capítulo 3
+
+                </div>
+
+                <a href="estructurayarn.html" class="list-group-item list-group-item-action">
+
+                    1. YARN (sistema operativo de Hadoop).
 
 
-        <!-- BREADCRUMB -->
+                </a>
 
-        <nav aria-label="breadcrumb">
+                <a href="estructurahdfs.html" class="list-group-item list-group-item-action">
 
-            <ol class="breadcrumb">
+                    2 HDFS: El sistema de archivos distribuido de Hadoop.
 
-                <li class="breadcrumb-item">
+                </a>
+                <a href="modelo.html" class="list-group-item list-group-item-action">
 
-                    <a href="../index.html">
-                        Inicio
-                    </a>
+                    3 Modelo de programación MapReduce.
 
-                </li>
+                </a>
+                <a href="ciclo.html" class="list-group-item list-group-item-action">
 
-                <li class="breadcrumb-item">
+                    4 Ciclo de vida Big Data Hadoop.
 
-                    <a href="indexestructura.html">
-                        Capítulo 3.2
-                    </a>
+                </a>
 
-                </li>
+            </div>
 
-                <li class="breadcrumb-item active">
+        </div>
 
-                    Ciclo de vida Big Data Hadoop
+        <!-- Contenido -->
 
-                </li>
+        <div class="col-lg-9">
 
-            </ol>
+            <nav aria-label="breadcrumb">
 
-        </nav>
+                <ol class="breadcrumb">
 
+                    <li class="breadcrumb-item">
+                        <a href="../index.html">Inicio</a>
+                    </li>
 
-
-        <!-- =====================================================
-         TITULO
-    ====================================================== -->
-
-        <div class="row">
-
-            <!-- Menú lateral -->
-
-            <div class="col-lg-3">
-
-                <div class="list-group shadow">
-
-                    <div class="list-group-item active bg-success border-success">
-
-                        <i class="bi bi-book"></i>
-
+                    <li class="breadcrumb-item active">
                         Capítulo 3
-
-                    </div>
-
-                    <a href="estructurayarn.html" class="list-group-item list-group-item-action">
-
-                        1. YARN (sistema operativo de Hadoop).
-
-
-                    </a>
-
-                    <a href="estructurahdfs.html" class="list-group-item list-group-item-action">
-
-                        2 HDFS: El sistema de archivos distribuido de Hadoop.
-
-                    </a>
-                    <a href="modelo.html" class="list-group-item list-group-item-action">
-
-                        3 Modelo de programación MapReduce.
-
-                    </a>
-                    <a href="ciclo.html" class="list-group-item list-group-item-action">
-
-                        4 Ciclo de vida Big Data Hadoop.
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- Contenido -->
-
-            <div class="col-lg-9">
-
-                <h2 class="text-success fw-bold">
-
-                    3.2.3 Ciclo de vida Big Data Hadoop
-
-                </h2>
-
-                <p class="lead">
-
-                    Fases principales del tratamiento de los datos dentro
-                    de una arquitectura Big Data basada en Hadoop.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- =====================================================
-         INTRODUCCION
-    ====================================================== -->
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-body p-4">
-
-                    <p>
-
-                        El ciclo de vida de un proyecto Big Data comprende un conjunto
-                        de etapas que permiten gestionar la información desde su
-                        adquisición hasta su almacenamiento, procesamiento y análisis.
-
-                    </p>
-
-                    <p>
-
-                        En una arquitectura basada en Hadoop, estas fases se apoyan
-                        en diferentes componentes del ecosistema, permitiendo
-                        gestionar grandes volúmenes de información de forma
-                        distribuida.
-
-                    </p>
-
-                    <p class="mb-0">
-
-                        Tal y como se puede observar en la siguiente figura
-
-                        ,
-
-                        todo proyecto Big Data se puede dividir en diferentes fases
-                        relacionadas con la ingestión, el almacenamiento y el
-                        procesamiento y análisis de los datos.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =====================================================
-         FIGURA 14
-    ====================================================== -->
-
-            <div class="text-center my-5">
-
-                <img src="../img/flujo-big-data.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Ciclo de vida Big Data Hadoop">
-
-                <p class="figura">
-
-
-                    Flujo Big Data.
-                    Fuente: elaboración propia con apoyo de inteligencia artificial
-                    generativa (ChatGPT/OpenAI), adaptada por el autor.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- =====================================================
-         RESUMEN DE LAS FASES
-    ====================================================== -->
-
-            <div class="objetivo">
-
-                <h3 class="text-success">
-
-                    <i class="bi bi-diagram-3-fill"></i>
-                    Principales fases del ciclo de vida Big Data
-
-                </h3>
-
-                <p>
-
-                    En el contexto de este proyecto, el ciclo de vida de los datos
-                    puede organizarse en las siguientes etapas principales:
-
-                </p>
-
-                <ol class="mb-0">
-
-                    <li>
-                        <strong>Ingestión de datos:</strong>
-                        incorporación de información procedente de diferentes fuentes.
-                    </li>
-
-                    <li>
-                        <strong>Almacenamiento de datos:</strong>
-                        conservación de la información mediante sistemas adecuados
-                        al tipo y volumen de los datos.
-                    </li>
-
-                    <li>
-                        <strong>Procesamiento, análisis y consulta:</strong>
-                        tratamiento de la información almacenada para obtener
-                        resultados que puedan ser utilizados posteriormente.
                     </li>
 
                 </ol>
 
+            </nav>
+
+            <h2 class="text-success fw-bold">
+
+                3.2.3 Ciclo de vida Big Data Hadoop
+
+            </h2>
+
+            <p class="lead">
+
+                Fases principales del tratamiento de los datos dentro
+                de una arquitectura Big Data basada en Hadoop.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+         INTRODUCCION
+    ====================================================== -->
+
+        <div class="card shadow-sm mb-4">
+
+            <div class="card-body p-4">
+
+                <p>
+
+                    El ciclo de vida de un proyecto Big Data comprende un conjunto
+                    de etapas que permiten gestionar la información desde su
+                    adquisición hasta su almacenamiento, procesamiento y análisis.
+
+                </p>
+
+                <p>
+
+                    En una arquitectura basada en Hadoop, estas fases se apoyan
+                    en diferentes componentes del ecosistema, permitiendo
+                    gestionar grandes volúmenes de información de forma
+                    distribuida.
+
+                </p>
+
+                <p class="mb-0">
+
+                    Tal y como se puede observar en la siguiente figura
+
+                    ,
+
+                    todo proyecto Big Data se puede dividir en diferentes fases
+                    relacionadas con la ingestión, el almacenamiento y el
+                    procesamiento y análisis de los datos.
+
+                </p>
+
             </div>
 
+        </div>
 
 
-            <!-- =====================================================
+
+        <!-- =====================================================
+         FIGURA 14
+    ====================================================== -->
+
+        <div class="text-center my-5">
+
+            <img src="../img/flujo-big-data.png" class="img-fluid rounded shadow imagen-ejercicio"
+                alt="Ciclo de vida Big Data Hadoop">
+
+            <p class="figura">
+
+
+                Flujo Big Data.
+                Fuente: elaboración propia con apoyo de inteligencia artificial
+                generativa (ChatGPT/OpenAI), adaptada por el autor.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+         RESUMEN DE LAS FASES
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3 class="text-success">
+
+                <i class="bi bi-diagram-3-fill"></i>
+                Principales fases del ciclo de vida Big Data
+
+            </h3>
+
+            <p>
+
+                En el contexto de este proyecto, el ciclo de vida de los datos
+                puede organizarse en las siguientes etapas principales:
+
+            </p>
+
+            <ol class="mb-0">
+
+                <li>
+                    <strong>Ingestión de datos:</strong>
+                    incorporación de información procedente de diferentes fuentes.
+                </li>
+
+                <li>
+                    <strong>Almacenamiento de datos:</strong>
+                    conservación de la información mediante sistemas adecuados
+                    al tipo y volumen de los datos.
+                </li>
+
+                <li>
+                    <strong>Procesamiento, análisis y consulta:</strong>
+                    tratamiento de la información almacenada para obtener
+                    resultados que puedan ser utilizados posteriormente.
+                </li>
+
+            </ol>
+
+        </div>
+
+
+
+        <!-- =====================================================
          3.2.3.1 INGESTION
     ====================================================== -->
 
-            <div class="bloque-leccion">
+        <div class="bloque-leccion">
 
-                <h3>
+            <h3>
 
-                    <span class="numero-fase">1</span>
+                <span class="numero-fase">1</span>
 
-                    Ingestión de datos
+                Ingestión de datos
 
-                </h3>
-
-
-                <p>
-
-                    La ingestión de datos representa la etapa inicial del ciclo de
-                    vida del Big Data. En esta etapa los datos son ingeridos desde
-                    diferentes fuentes y almacenados en la base de datos o sistema
-                    que posteriormente permitirá consultarlos, transformarlos y
-                    analizarlos.
-
-                </p>
+            </h3>
 
 
-                <p>
+            <p>
 
-                    Las fuentes de datos pueden variar considerablemente e incluyen
-                    bases de datos, archivos, aplicaciones de negocio, dispositivos
-                    IoT, redes sociales, entre otras.
+                La ingestión de datos representa la etapa inicial del ciclo de
+                vida del Big Data. En esta etapa los datos son ingeridos desde
+                diferentes fuentes y almacenados en la base de datos o sistema
+                que posteriormente permitirá consultarlos, transformarlos y
+                analizarlos.
 
-                </p>
+            </p>
 
 
-                <div class="concepto">
+            <p>
 
-                    <h5 class="text-success">
+                Las fuentes de datos pueden variar considerablemente e incluyen
+                bases de datos, archivos, aplicaciones de negocio, dispositivos
+                IoT, redes sociales, entre otras.
 
-                        <i class="bi bi-database-add"></i>
-                        Objetivo de la ingestión
+            </p>
 
-                    </h5>
 
-                    <p class="mb-0">
+            <div class="concepto">
 
-                        El objetivo de esta fase es incorporar los datos procedentes
-                        de las diferentes fuentes al entorno de procesamiento para
-                        que puedan ser almacenados y tratados posteriormente.
+                <h5 class="text-success">
 
-                    </p>
+                    <i class="bi bi-database-add"></i>
+                    Objetivo de la ingestión
 
-                </div>
-
+                </h5>
 
                 <p class="mb-0">
 
-                    Para revisar las tecnologías más utilizadas en la ingestión o
-                    inyección de datos, consultar el apartado
-
-                    <strong>3.6.1 - Inyección de datos</strong>.
+                    El objetivo de esta fase es incorporar los datos procedentes
+                    de las diferentes fuentes al entorno de procesamiento para
+                    que puedan ser almacenados y tratados posteriormente.
 
                 </p>
 
             </div>
 
 
+            <p class="mb-0">
 
-            <!-- =====================================================
+                Para revisar las tecnologías más utilizadas en la ingestión o
+                inyección de datos, consultar el apartado
+
+                <strong>3.6.1 - Inyección de datos</strong>.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
          3.2.3.2 ALMACENAMIENTO
     ====================================================== -->
 
-            <div class="bloque-leccion">
+        <div class="bloque-leccion">
 
-                <h3>
+            <h3>
 
-                    <span class="numero-fase">2</span>
+                <span class="numero-fase">2</span>
 
-                    Almacenamiento de datos
-                    <small>(Data Storage)</small>
+                Almacenamiento de datos
+                <small>(Data Storage)</small>
 
-                </h3>
+            </h3>
 
+
+            <p>
+
+                El almacenamiento de Big Data depende principalmente del formato
+                de los datos y de las características del sistema utilizado para
+                su gestión.
+
+            </p>
+
+
+            <p>
+
+                Los datos estructurados son almacenados habitualmente en sistemas
+                de administración de bases de datos relacionales.
+
+            </p>
+
+
+            <p>
+
+                Por otro lado, los datos semiestructurados y no estructurados
+                pueden ser almacenados en sistemas de bases de datos conocidos
+                como
+
+                <strong>NoSQL</strong>.
+
+            </p>
+
+
+            <div class="concepto">
+
+                <h5 class="text-success">
+
+                    <i class="bi bi-collection-fill"></i>
+                    Tipos de bases de datos NoSQL
+
+                </h5>
 
                 <p>
 
-                    El almacenamiento de Big Data depende principalmente del formato
-                    de los datos y de las características del sistema utilizado para
-                    su gestión.
+                    Estos sistemas pueden clasificarse en diferentes categorías
+                    atendiendo a la forma en la que organizan y almacenan la
+                    información.
 
                 </p>
 
+                <ul class="mb-0">
 
-                <p>
+                    <li>
+                        Bases de datos orientadas a documentos.
+                    </li>
 
-                    Los datos estructurados son almacenados habitualmente en sistemas
-                    de administración de bases de datos relacionales.
+                    <li>
+                        Bases de datos orientadas a columnas.
+                    </li>
 
-                </p>
+                    <li>
+                        Bases de datos basadas en grafos.
+                    </li>
 
+                    <li>
+                        Bases de datos clave-valor.
+                    </li>
 
-                <p>
-
-                    Por otro lado, los datos semiestructurados y no estructurados
-                    pueden ser almacenados en sistemas de bases de datos conocidos
-                    como
-
-                    <strong>NoSQL</strong>.
-
-                </p>
-
-
-                <div class="concepto">
-
-                    <h5 class="text-success">
-
-                        <i class="bi bi-collection-fill"></i>
-                        Tipos de bases de datos NoSQL
-
-                    </h5>
-
-                    <p>
-
-                        Estos sistemas pueden clasificarse en diferentes categorías
-                        atendiendo a la forma en la que organizan y almacenan la
-                        información.
-
-                    </p>
-
-                    <ul class="mb-0">
-
-                        <li>
-                            Bases de datos orientadas a documentos.
-                        </li>
-
-                        <li>
-                            Bases de datos orientadas a columnas.
-                        </li>
-
-                        <li>
-                            Bases de datos basadas en grafos.
-                        </li>
-
-                        <li>
-                            Bases de datos clave-valor.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <p class="mb-0">
-
-                    En el ecosistema Hadoop, el almacenamiento distribuido constituye
-                    una parte fundamental de la arquitectura, permitiendo conservar
-                    grandes cantidades de información para su posterior procesamiento.
-
-                </p>
+                </ul>
 
             </div>
 
 
+            <p class="mb-0">
 
-            <!-- =====================================================
+                En el ecosistema Hadoop, el almacenamiento distribuido constituye
+                una parte fundamental de la arquitectura, permitiendo conservar
+                grandes cantidades de información para su posterior procesamiento.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
          3.2.3.3 PROCESAMIENTO
     ====================================================== -->
 
-            <div class="bloque-leccion">
+        <div class="bloque-leccion">
 
-                <h3>
+            <h3>
 
-                    <span class="numero-fase">3</span>
+                <span class="numero-fase">3</span>
 
-                    Procesamiento, análisis y consulta de datos
+                Procesamiento, análisis y consulta de datos
 
-                </h3>
+            </h3>
 
 
-                <p>
+            <p>
 
-                    Los datos recolectados en las fases anteriores serán procesados
-                    en este paso.
+                Los datos recolectados en las fases anteriores serán procesados
+                en este paso.
+
+            </p>
+
+
+            <p>
+
+                En esta etapa, el sistema de procesamiento de la canalización
+                de datos puede enrutar los datos hacia diferentes destinos,
+                clasificar el flujo de información y realizar las primeras
+                operaciones de análisis.
+
+            </p>
+
+
+            <p>
+
+                Esta es también la capa donde se ejecutan las consultas
+                (<strong>queries</strong>) y los procesos de análisis sobre los
+                datos almacenados.
+
+            </p>
+
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <strong>Procesamiento fuera de línea</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Para análisis fuera de línea se puede utilizar un sistema
+                    de procesamiento por lotes, permitiendo trabajar con
+                    grandes volúmenes de información almacenada.
 
                 </p>
 
-
-                <p>
-
-                    En esta etapa, el sistema de procesamiento de la canalización
-                    de datos puede enrutar los datos hacia diferentes destinos,
-                    clasificar el flujo de información y realizar las primeras
-                    operaciones de análisis.
-
-                </p>
-
-
-                <p>
-
-                    Esta es también la capa donde se ejecutan las consultas
-                    (<strong>queries</strong>) y los procesos de análisis sobre los
-                    datos almacenados.
-
-                </p>
-
-
-                <div class="alert alert-info">
-
-                    <i class="bi bi-info-circle-fill"></i>
-
-                    <strong>Procesamiento fuera de línea</strong>
-
-                    <p class="mb-0 mt-2">
-
-                        Para análisis fuera de línea se puede utilizar un sistema
-                        de procesamiento por lotes, permitiendo trabajar con
-                        grandes volúmenes de información almacenada.
-
-                    </p>
-
-                </div>
+            </div>
 
 
 
-                <!-- =================================================
+            <!-- =================================================
              APACHE HIVE
         ================================================== -->
 
-                <div class="card border-success mt-4">
+            <div class="card border-success mt-4">
 
-                    <div class="card-header bg-success text-white">
+                <div class="card-header bg-success text-white">
 
-                        <h4 class="mb-0">
+                    <h4 class="mb-0">
 
-                            <i class="bi bi-database-fill"></i>
+                        <i class="bi bi-database-fill"></i>
 
-                            Apache Hive
+                        Apache Hive
 
-                        </h4>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-                        <p>
-
-                            <strong>Apache Hive</strong> es una infraestructura de
-                            almacenamiento de datos construida sobre Hadoop para
-                            proporcionar funcionalidades de agrupación, consulta
-                            y análisis de datos.
-
-                        </p>
-
-
-                        <p>
-
-                            Apache Hive soporta el análisis de grandes conjuntos de
-                            datos almacenados bajo HDFS de Hadoop y en sistemas
-                            compatibles como el sistema de archivos Amazon S3.
-
-                        </p>
-
-
-                        <p>
-
-                            Hive se ejecuta en el entorno Hadoop y permite transformar
-                            consultas expresadas mediante un lenguaje similar a SQL
-                            en procesos de procesamiento sobre los datos almacenados
-                            en el clúster.
-
-                        </p>
-
-
-                        <div class="concepto">
-
-                            <h5 class="text-success">
-
-                                <i class="bi bi-code-square"></i>
-
-                                Hive Query Language
-
-                            </h5>
-
-                            <p>
-
-                                Para realizar las consultas, Hive proporciona un
-                                lenguaje propio denominado
-
-                                <strong>Hive Query Language (HQL)</strong>,
-
-                                también denominado
-
-                                <strong>HiveQL</strong>.
-
-                            </p>
-
-                            <p class="mb-0">
-
-                                Su sintaxis está basada en SQL y facilita la lectura,
-                                escritura y administración de grandes conjuntos de
-                                datos almacenados en sistemas distribuidos.
-
-                            </p>
-
-                        </div>
-
-
-                        <p>
-
-                            El software de almacenamiento de datos Apache Hive
-                            facilita la lectura, escritura y administración de
-                            grandes conjuntos de datos que residen en almacenamiento
-                            distribuido mediante SQL.
-
-                        </p>
-
-
-                        <p>
-
-                            Hive proporciona una herramienta de línea de comandos
-                            y un controlador JDBC que permite conectar a los usuarios
-                            con el sistema.
-
-                        </p>
-
-
-                        <p class="mb-0">
-
-                            De esta forma, Hive proporciona un mecanismo para
-                            estructurar los datos almacenados en Hadoop y realizar
-                            consultas mediante un lenguaje basado en SQL.
-
-                        </p>
-
-                    </div>
+                    </h4>
 
                 </div>
 
-            </div>
 
+                <div class="card-body">
 
+                    <p>
 
-            <!-- =====================================================
-         RELACION CON EL PROYECTO
-    ====================================================== -->
+                        <strong>Apache Hive</strong> es una infraestructura de
+                        almacenamiento de datos construida sobre Hadoop para
+                        proporcionar funcionalidades de agrupación, consulta
+                        y análisis de datos.
 
-            <div class="objetivo">
-
-                <h3>
-
-                    <i class="bi bi-link-45deg"></i>
-
-                    Aplicación en el proyecto
-
-                </h3>
-
-
-                <p>
-
-                    Las fases descritas forman parte de la arquitectura Big Data
-                    desarrollada en este proyecto. Los datos procedentes de las
-                    diferentes fuentes son incorporados al entorno Hadoop,
-                    almacenados de forma distribuida y posteriormente procesados
-                    mediante las herramientas disponibles en el ecosistema.
-
-                </p>
-
-
-                <p class="mb-0">
-
-                    Esta organización permite al estudiante comprender el recorrido
-                    de los datos desde su incorporación al sistema hasta su
-                    procesamiento y consulta, relacionando los conceptos teóricos
-                    del ciclo de vida Big Data con los ejercicios prácticos
-                    desarrollados posteriormente.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- =====================================================
-         CONCLUSION
-    ====================================================== -->
-
-            <div class="card shadow-sm border-0 mt-5">
-
-                <div class="card-body p-4">
-
-                    <h3 class="text-success">
-
-                        <i class="bi bi-check-circle-fill"></i>
-
-                        Conclusión
-
-                    </h3>
+                    </p>
 
 
                     <p>
 
-                        El ciclo de vida Big Data permite organizar las diferentes
-                        etapas por las que atraviesa la información dentro de una
-                        arquitectura de datos.
+                        Apache Hive soporta el análisis de grandes conjuntos de
+                        datos almacenados bajo HDFS de Hadoop y en sistemas
+                        compatibles como el sistema de archivos Amazon S3.
+
+                    </p>
+
+
+                    <p>
+
+                        Hive se ejecuta en el entorno Hadoop y permite transformar
+                        consultas expresadas mediante un lenguaje similar a SQL
+                        en procesos de procesamiento sobre los datos almacenados
+                        en el clúster.
+
+                    </p>
+
+
+                    <div class="concepto">
+
+                        <h5 class="text-success">
+
+                            <i class="bi bi-code-square"></i>
+
+                            Hive Query Language
+
+                        </h5>
+
+                        <p>
+
+                            Para realizar las consultas, Hive proporciona un
+                            lenguaje propio denominado
+
+                            <strong>Hive Query Language (HQL)</strong>,
+
+                            también denominado
+
+                            <strong>HiveQL</strong>.
+
+                        </p>
+
+                        <p class="mb-0">
+
+                            Su sintaxis está basada en SQL y facilita la lectura,
+                            escritura y administración de grandes conjuntos de
+                            datos almacenados en sistemas distribuidos.
+
+                        </p>
+
+                    </div>
+
+
+                    <p>
+
+                        El software de almacenamiento de datos Apache Hive
+                        facilita la lectura, escritura y administración de
+                        grandes conjuntos de datos que residen en almacenamiento
+                        distribuido mediante SQL.
+
+                    </p>
+
+
+                    <p>
+
+                        Hive proporciona una herramienta de línea de comandos
+                        y un controlador JDBC que permite conectar a los usuarios
+                        con el sistema.
 
                     </p>
 
 
                     <p class="mb-0">
 
-                        En el entorno Hadoop utilizado en este proyecto, estas
-                        etapas permiten relacionar la ingestión de los datos con
-                        su almacenamiento distribuido y con las herramientas
-                        utilizadas posteriormente para su procesamiento, análisis
-                        y consulta.
+                        De esta forma, Hive proporciona un mecanismo para
+                        estructurar los datos almacenados en Hadoop y realizar
+                        consultas mediante un lenguaje basado en SQL.
 
                     </p>
 
                 </div>
 
             </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+         RELACION CON EL PROYECTO
+    ====================================================== -->
+
+        <div class="objetivo">
+
+            <h3>
+
+                <i class="bi bi-link-45deg"></i>
+
+                Aplicación en el proyecto
+
+            </h3>
+
+
+            <p>
+
+                Las fases descritas forman parte de la arquitectura Big Data
+                desarrollada en este proyecto. Los datos procedentes de las
+                diferentes fuentes son incorporados al entorno Hadoop,
+                almacenados de forma distribuida y posteriormente procesados
+                mediante las herramientas disponibles en el ecosistema.
+
+            </p>
+
+
+            <p class="mb-0">
+
+                Esta organización permite al estudiante comprender el recorrido
+                de los datos desde su incorporación al sistema hasta su
+                procesamiento y consulta, relacionando los conceptos teóricos
+                del ciclo de vida Big Data con los ejercicios prácticos
+                desarrollados posteriormente.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+         CONCLUSION
+    ====================================================== -->
+
+        <div class="card shadow-sm border-0 mt-5">
+
+            <div class="card-body p-4">
+
+                <h3 class="text-success">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Conclusión
+
+                </h3>
+
+
+                <p>
+
+                    El ciclo de vida Big Data permite organizar las diferentes
+                    etapas por las que atraviesa la información dentro de una
+                    arquitectura de datos.
+
+                </p>
+
+
+                <p class="mb-0">
+
+                    En el entorno Hadoop utilizado en este proyecto, estas
+                    etapas permiten relacionar la ingestión de los datos con
+                    su almacenamiento distribuido y con las herramientas
+                    utilizadas posteriormente para su procesamiento, análisis
+                    y consulta.
+
+                </p>
+
+            </div>
+
         </div>
 
 
@@ -850,7 +824,7 @@
         </div>
 
 
-    </main>
+    </div>
 
 
 
