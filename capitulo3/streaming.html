@@ -67,110 +67,189 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <!-- Menú lateral -->
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
                     Capítulo 3
-                </li>
 
-            </ol>
+                </div>
 
-        </nav>
+                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
+
+                    1. Características de Hadoop.
+
+                </a>
+
+                <a href="indexestructura.html" class="list-group-item list-group-item-action">
+
+                    2 Estructura de Hadoop.
+
+                </a>
+                <a href="streaming.html" class="list-group-item list-group-item-action">
+
+                    3 Modelo de programación MapReduce mediante Hadoop Streaming.
+
+                </a>
+                <a href="serializacion.html" class="list-group-item list-group-item-action">
+
+                    5 Serialización de datos.
+
+                </a>
+                <a href="inyeccion.html" class="list-group-item list-group-item-action">
+
+                    6 Inyección de datos.
+
+                </a>
 
 
-
-        <!-- ======================= CONTENIDO ======================= -->
-
-        <h2 class="text-success mb-4">
-            Hadoop Streaming
-        </h2>
-
-        <p class="lead">
-
-            Hadoop Streaming es una utilidad del ecosistema Apache Hadoop que permite desarrollar
-            aplicaciones MapReduce utilizando cualquier lenguaje de programación capaz de leer
-            datos desde la entrada estándar (<strong>stdin</strong>) y escribir resultados en la
-            salida estándar (<strong>stdout</strong>).
-
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-info-circle-fill"></i>
-
-            Gracias a Hadoop Streaming es posible desarrollar aplicaciones MapReduce en lenguajes
-            como <strong>Python</strong>, <strong>Perl</strong>, <strong>Ruby</strong> o
-            <strong>Bash</strong>, sin necesidad de programar en Java.
+            </div>
 
         </div>
 
-        <hr class="my-5">
+        <!-- Contenido -->
 
-        <h3 class="text-success">
-            ¿Qué es Hadoop Streaming?
-        </h3>
+        <div class="col-lg-9">
 
-        <p>
 
-            Tradicionalmente, las aplicaciones MapReduce debían desarrollarse en Java, el lenguaje
-            nativo de Hadoop. Hadoop Streaming elimina esta limitación permitiendo ejecutar
-            programas externos como procesos <strong>Mapper</strong> y
-            <strong>Reducer</strong>.
 
-        </p>
+            <!-- ======================= CONTENIDO ======================= -->
 
-        <p>
+            <h2 class="text-success mb-4">
+                Hadoop Streaming
+            </h2>
 
-            Durante la ejecución, Hadoop proporciona automáticamente los datos de entrada a los
-            programas mediante la entrada estándar (<em>stdin</em>) y recoge los resultados
-            generados a través de la salida estándar (<em>stdout</em>), integrándolos dentro del
-            flujo normal del procesamiento distribuido.
+            <p class="lead">
 
-        </p>
-
-        <div class="text-center my-5">
-
-            <img src="../img/hadoop-streaming-arquitectura.png" class="img-fluid rounded shadow"
-                alt="Arquitectura Hadoop Streaming">
-
-            <p class="text-muted">
-
-                Funcionamiento de Hadoop Streaming con programas externos.
+                Hadoop Streaming es una utilidad del ecosistema Apache Hadoop que permite desarrollar
+                aplicaciones MapReduce utilizando cualquier lenguaje de programación capaz de leer
+                datos desde la entrada estándar (<strong>stdin</strong>) y escribir resultados en la
+                salida estándar (<strong>stdout</strong>).
 
             </p>
 
-        </div>
+            <div class="alert alert-success">
 
-        <hr class="my-5">
+                <i class="bi bi-info-circle-fill"></i>
 
-        <h3 class="text-success">
-            Funcionamiento
-        </h3>
+                Gracias a Hadoop Streaming es posible desarrollar aplicaciones MapReduce en lenguajes
+                como <strong>Python</strong>, <strong>Perl</strong>, <strong>Ruby</strong> o
+                <strong>Bash</strong>, sin necesidad de programar en Java.
 
-        <div class="row g-4">
+            </div>
 
-            <div class="col-md-4">
+            <hr class="my-5">
 
-                <div class="card shadow-sm h-100">
+            <h3 class="text-success">
+                ¿Qué es Hadoop Streaming?
+            </h3>
 
-                    <div class="card-header bg-success text-white">
+            <p>
 
-                        1. Entrada
+                Tradicionalmente, las aplicaciones MapReduce debían desarrollarse en Java, el lenguaje
+                nativo de Hadoop. Hadoop Streaming elimina esta limitación permitiendo ejecutar
+                programas externos como procesos <strong>Mapper</strong> y
+                <strong>Reducer</strong>.
+
+            </p>
+
+            <p>
+
+                Durante la ejecución, Hadoop proporciona automáticamente los datos de entrada a los
+                programas mediante la entrada estándar (<em>stdin</em>) y recoge los resultados
+                generados a través de la salida estándar (<em>stdout</em>), integrándolos dentro del
+                flujo normal del procesamiento distribuido.
+
+            </p>
+
+            <div class="text-center my-5">
+
+                <img src="../img/hadoop-streaming-arquitectura.png" class="img-fluid rounded shadow"
+                    alt="Arquitectura Hadoop Streaming">
+
+                <p class="text-muted">
+
+                    Funcionamiento de Hadoop Streaming con programas externos.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Funcionamiento
+            </h3>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            1. Entrada
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Los datos almacenados en HDFS son divididos en bloques y enviados a los distintos
+                            procesos <strong>Mapper</strong>.
+
+                        </div>
 
                     </div>
 
-                    <div class="card-body">
+                </div>
 
-                        Los datos almacenados en HDFS son divididos en bloques y enviados a los distintos
-                        procesos <strong>Mapper</strong>.
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            2. Procesamiento
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Los programas desarrollados en Python reciben los datos desde
+                            <strong>stdin</strong>, realizan el procesamiento y escriben los resultados en
+                            <strong>stdout</strong>.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            3. Resultado
+
+                        </div>
+
+                        <div class="card-body">
+
+                            Hadoop recoge automáticamente la salida generada por los programas y continúa el
+                            flujo MapReduce hasta obtener el resultado final.
+
+                        </div>
 
                     </div>
 
@@ -178,140 +257,95 @@
 
             </div>
 
-            <div class="col-md-4">
+            <hr class="my-5">
 
-                <div class="card shadow-sm h-100">
+            <h3 class="text-success">
+                Ventajas de Hadoop Streaming
+            </h3>
 
-                    <div class="card-header bg-success text-white">
+            <div class="row">
 
-                        2. Procesamiento
+                <div class="col-md-6">
 
-                    </div>
+                    <ul class="list-group">
 
-                    <div class="card-body">
+                        <li class="list-group-item">No requiere programar en Java.</li>
 
-                        Los programas desarrollados en Python reciben los datos desde
-                        <strong>stdin</strong>, realizan el procesamiento y escriben los resultados en
-                        <strong>stdout</strong>.
+                        <li class="list-group-item">Compatible con cualquier lenguaje que utilice stdin y stdout.</li>
 
-                    </div>
+                        <li class="list-group-item">Facilita el aprendizaje de MapReduce.</li>
+
+                        <li class="list-group-item">Reduce el tiempo de desarrollo.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">Ideal para proyectos docentes.</li>
+
+                        <li class="list-group-item">Permite reutilizar scripts existentes.</li>
+
+                        <li class="list-group-item">Facilita la experimentación.</li>
+
+                        <li class="list-group-item">Compatible con Python, Perl, Ruby y Bash.</li>
+
+                    </ul>
 
                 </div>
 
             </div>
 
-            <div class="col-md-4">
+            <hr class="my-5">
 
-                <div class="card shadow-sm h-100">
+            <h3 class="text-success">
+                Hadoop Streaming en este proyecto
+            </h3>
 
-                    <div class="card-header bg-success text-white">
+            <p>
 
-                        3. Resultado
+                En este proyecto se utiliza Hadoop Streaming como mecanismo para implementar
+                aplicaciones MapReduce mediante programas desarrollados en
+                <strong>Python</strong>.
 
-                    </div>
+            </p>
 
-                    <div class="card-body">
+            <p>
 
-                        Hadoop recoge automáticamente la salida generada por los programas y continúa el
-                        flujo MapReduce hasta obtener el resultado final.
+                Esta aproximación permite comprender el funcionamiento interno de las fases
+                <strong>Map</strong> y <strong>Reduce</strong>, analizar el flujo de datos dentro del
+                clúster Hadoop y desarrollar soluciones Big Data utilizando uno de los lenguajes más
+                empleados actualmente en Ciencia de Datos.
 
-                    </div>
+            </p>
 
-                </div>
+            <div class="alert alert-primary">
 
-            </div>
+                <i class="bi bi-lightbulb"></i>
 
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Ventajas de Hadoop Streaming
-        </h3>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">No requiere programar en Java.</li>
-
-                    <li class="list-group-item">Compatible con cualquier lenguaje que utilice stdin y stdout.</li>
-
-                    <li class="list-group-item">Facilita el aprendizaje de MapReduce.</li>
-
-                    <li class="list-group-item">Reduce el tiempo de desarrollo.</li>
-
-                </ul>
+                El uso de Python reduce considerablemente la complejidad del desarrollo, permitiendo
+                centrar el aprendizaje en el procesamiento distribuido y no en la sintaxis del lenguaje
+                Java.
 
             </div>
 
-            <div class="col-md-6">
+            <hr class="my-5">
 
-                <ul class="list-group">
+            <h3 class="text-success">
+                Ejemplo de ejecución
+            </h3>
 
-                    <li class="list-group-item">Ideal para proyectos docentes.</li>
+            <p>
 
-                    <li class="list-group-item">Permite reutilizar scripts existentes.</li>
+                Una aplicación MapReduce basada en Hadoop Streaming puede ejecutarse mediante el
+                siguiente comando:
 
-                    <li class="list-group-item">Facilita la experimentación.</li>
+            </p>
 
-                    <li class="list-group-item">Compatible con Python, Perl, Ruby y Bash.</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Hadoop Streaming en este proyecto
-        </h3>
-
-        <p>
-
-            En este proyecto se utiliza Hadoop Streaming como mecanismo para implementar
-            aplicaciones MapReduce mediante programas desarrollados en
-            <strong>Python</strong>.
-
-        </p>
-
-        <p>
-
-            Esta aproximación permite comprender el funcionamiento interno de las fases
-            <strong>Map</strong> y <strong>Reduce</strong>, analizar el flujo de datos dentro del
-            clúster Hadoop y desarrollar soluciones Big Data utilizando uno de los lenguajes más
-            empleados actualmente en Ciencia de Datos.
-
-        </p>
-
-        <div class="alert alert-primary">
-
-            <i class="bi bi-lightbulb"></i>
-
-            El uso de Python reduce considerablemente la complejidad del desarrollo, permitiendo
-            centrar el aprendizaje en el procesamiento distribuido y no en la sintaxis del lenguaje
-            Java.
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Ejemplo de ejecución
-        </h3>
-
-        <p>
-
-            Una aplicación MapReduce basada en Hadoop Streaming puede ejecutarse mediante el
-            siguiente comando:
-
-        </p>
-
-        <pre class="bg-dark text-light p-3 rounded"><code>
+            <pre class="bg-dark text-light p-3 rounded"><code>
     hadoop jar hadoop-streaming.jar \
     -input /entrada.txt \
     -output /salida \
@@ -319,95 +353,96 @@
     -reducer reduce.py
     </code></pre>
 
-        <hr class="my-5">
+            <hr class="my-5">
 
-        <h3 class="text-success">
-            Flujo de ejecución
-        </h3>
+            <h3 class="text-success">
+                Flujo de ejecución
+            </h3>
 
 
 
-        <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover">
 
-            <thead class="table-success">
+                <thead class="table-success">
 
-                <tr>
+                    <tr>
 
-                    <th>Paso</th>
-                    <th>Descripción</th>
+                        <th>Paso</th>
+                        <th>Descripción</th>
 
-                </tr>
+                    </tr>
 
-            </thead>
+                </thead>
 
-            <tbody>
+                <tbody>
 
-                <tr>
+                    <tr>
 
-                    <td>1</td>
+                        <td>1</td>
 
-                    <td>HDFS divide el archivo de entrada en bloques.</td>
+                        <td>HDFS divide el archivo de entrada en bloques.</td>
 
-                </tr>
+                    </tr>
 
-                <tr>
+                    <tr>
 
-                    <td>2</td>
+                        <td>2</td>
 
-                    <td>Los Mappers escritos en Python procesan cada bloque.</td>
+                        <td>Los Mappers escritos en Python procesan cada bloque.</td>
 
-                </tr>
+                    </tr>
 
-                <tr>
+                    <tr>
 
-                    <td>3</td>
+                        <td>3</td>
 
-                    <td>Hadoop realiza automáticamente la fase Shuffle &amp; Sort.</td>
+                        <td>Hadoop realiza automáticamente la fase Shuffle &amp; Sort.</td>
 
-                </tr>
+                    </tr>
 
-                <tr>
+                    <tr>
 
-                    <td>4</td>
+                        <td>4</td>
 
-                    <td>Los Reducers agregan los resultados finales.</td>
+                        <td>Los Reducers agregan los resultados finales.</td>
 
-                </tr>
+                    </tr>
 
-                <tr>
+                    <tr>
 
-                    <td>5</td>
+                        <td>5</td>
 
-                    <td>La salida se almacena nuevamente en HDFS.</td>
+                        <td>La salida se almacena nuevamente en HDFS.</td>
 
-                </tr>
+                    </tr>
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
 
-        <hr class="my-5">
+            <hr class="my-5">
 
-        <div class="alert alert-primary">
+            <div class="alert alert-primary">
 
-            <h4>
+                <h4>
 
-                <i class="bi bi-lightbulb"></i>
+                    <i class="bi bi-lightbulb"></i>
 
-                Conclusión
+                    Conclusión
 
-            </h4>
+                </h4>
 
-            <p class="mb-0">
+                <p class="mb-0">
 
-                Hadoop Streaming constituye una alternativa sencilla y flexible para desarrollar
-                aplicaciones MapReduce. Al permitir la utilización de lenguajes como Python, facilita
-                el aprendizaje del procesamiento distribuido, reduce la complejidad del desarrollo y
-                convierte a Hadoop en una plataforma mucho más accesible para entornos docentes,
-                investigación y prototipado de soluciones Big Data.
+                    Hadoop Streaming constituye una alternativa sencilla y flexible para desarrollar
+                    aplicaciones MapReduce. Al permitir la utilización de lenguajes como Python, facilita
+                    el aprendizaje del procesamiento distribuido, reduce la complejidad del desarrollo y
+                    convierte a Hadoop en una plataforma mucho más accesible para entornos docentes,
+                    investigación y prototipado de soluciones Big Data.
 
-            </p>
+                </p>
 
+            </div>
         </div>
         <div class="text-center mb-5">
 
