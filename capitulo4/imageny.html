@@ -71,354 +71,392 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
+        <!-- Menú lateral -->
 
-        <nav aria-label="breadcrumb">
+        <div class="col-lg-3">
 
-            <ol class="breadcrumb">
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+                <div class="list-group-item active bg-success border-success">
 
-                <li class="breadcrumb-item active">
-                    Capítulo 4
-                </li>
+                    <i class="bi bi-book"></i>
 
-            </ol>
+                    Capítulo 4.1
 
-        </nav>
+                </div>
+
+                <a href="imagenes.html" class="list-group-item list-group-item-action">
+
+                    4.1.1 Imágenes para el entorno.
+
+                </a>
+
+                <a href="imagenb.html" class="list-group-item list-group-item-action">
+
+                    4.1.2 Imagen de base.
+
+                </a>
+                <a href="imagenn.html" class="list-group-item list-group-item-action">
+
+                    4.1.3 Imagen del namenode.
+
+                </a>
+
+                <a href="imageny.html" class="list-group-item list-group-item-action">
+
+                    4.1.4 Imagen Yarnmanager.
+
+                </a>
+                <a href="imagend.html" class="list-group-item list-group-item-action">
+
+                    4.1.5 Imagen Datanode.
+
+                </a>
+                <a href="configuracion.html" class="list-group-item list-group-item-action">
+
+                    4.1.6 Configuración multicontenedor con Docker compose.
+
+                </a>
 
 
-        <!-- ===================================================== -->
-        <!-- 4.X IMAGEN YARNMANAGER -->
-        <!-- ===================================================== -->
 
-        <h2 class="text-success mb-4">
-            4.5 Construcción de la imagen Docker del ResourceManager (YARN)
-        </h2>
-
-        <p class="lead">
-
-            El <strong>ResourceManager</strong> es el componente principal de
-            <strong>YARN (Yet Another Resource Negotiator)</strong>, el sistema encargado de
-            administrar los recursos computacionales del clúster Hadoop.
-
-        </p>
-
-        <p>
-
-            Su responsabilidad consiste en coordinar la ejecución de las aplicaciones
-            distribuidas, asignando memoria y capacidad de procesamiento a las tareas que
-            se ejecutan en los distintos nodos del clúster.
-
-            Cuando un usuario lanza un trabajo <strong>MapReduce</strong>, el
-            <strong>ResourceManager</strong> decide dónde deben ejecutarse las tareas,
-            planifica su ejecución y supervisa el uso eficiente de los recursos disponibles.
-
-        </p>
-
-        <p>
-
-            Gracias a este mecanismo, múltiples aplicaciones pueden compartir la
-            infraestructura Hadoop de forma equilibrada, optimizando el rendimiento global
-            del sistema y garantizando un uso eficiente de la CPU y la memoria disponibles.
-
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-info-circle-fill"></i>
-
-            La imagen Docker del <strong>ResourceManager</strong> se construye a partir de la
-            imagen <strong>hadoop-base</strong>, reutilizando toda la infraestructura
-            desarrollada anteriormente.
-
+            </div>
         </div>
+        <div class="col-lg-9">
 
-        <hr class="my-5">
 
-        <h3 class="text-success">
+            <!-- ===================================================== -->
+            <!-- 4.X IMAGEN YARNMANAGER -->
+            <!-- ===================================================== -->
 
-            1. Importación de la imagen base
+            <h2 class="text-success mb-4">
+                4.5 Construcción de la imagen Docker del ResourceManager (YARN)
+            </h2>
 
-        </h3>
+            <p class="lead">
 
-        <p>
-
-            La construcción comienza utilizando como punto de partida la imagen
-            <strong>hadoop-base</strong>, que ya incorpora Ubuntu, Java, Hadoop,
-            Python, Jupyter Notebook y el resto de componentes comunes del clúster.
-
-        </p>
-
-        <div class="text-center my-4">
-
-            <img src="../img/docker-hadoop-base.png" class="img-fluid rounded shadow" alt="Imagen base Hadoop">
-
-            <p class="text-muted">
-
-                <strong>Figura.</strong> Imagen Docker base utilizada para construir el
-                ResourceManager.
+                El <strong>ResourceManager</strong> es el componente principal de
+                <strong>YARN (Yet Another Resource Negotiator)</strong>, el sistema encargado de
+                administrar los recursos computacionales del clúster Hadoop.
 
             </p>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            2. Copia del fichero de configuración
-
-        </h3>
-
-        <p>
-
-            A continuación se copia al contenedor el fichero de configuración específico
-            del servicio, encargado de iniciar automáticamente el
-            <strong>ResourceManager</strong> mediante <strong>Supervisor</strong>.
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <table class="table table-bordered">
-
-                    <thead class="table-success">
-
-                        <tr>
-
-                            <th>Archivo</th>
-
-                            <th>Descripción</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>yarnmanager.conf</td>
-
-                            <td>Configuración del servicio ResourceManager.</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Supervisor</td>
-
-                            <td>Gestión automática del proceso.</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="col-md-6 text-center">
-
-                <img src="../img/yarnmanager-config.png" class="img-fluid rounded shadow"
-                    alt="Configuración ResourceManager">
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            3. Ejecución mediante Supervisor
-
-        </h3>
-
-        <p>
-
-            Una vez finalizada la configuración, el contenedor utiliza
-            <strong>Supervisor</strong> como gestor de procesos para iniciar
-            automáticamente el servicio <strong>ResourceManager</strong> cuando el
-            contenedor arranca.
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-md-5">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">
-                        ✔ Inicio automático del servicio
-                    </li>
-
-                    <li class="list-group-item">
-                        ✔ Monitorización del proceso
-                    </li>
-
-                    <li class="list-group-item">
-                        ✔ Reinicio automático ante fallos
-                    </li>
-
-                    <li class="list-group-item">
-                        ✔ Gestión centralizada de servicios
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <div class="col-md-7 text-center">
-
-                <img src="../img/supervisor-yarnmanager.png" class="img-fluid rounded shadow"
-                    alt="Supervisor ResourceManager">
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-
-            Funciones principales del ResourceManager
-
-        </h3>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm mb-3">
-
-                    <div class="card-header bg-success text-white">
-
-                        Planificación de recursos
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Asignación de memoria.</li>
-
-                            <li>Asignación de CPU.</li>
-
-                            <li>Planificación de aplicaciones.</li>
-
-                            <li>Gestión de prioridades.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm">
-
-                    <div class="card-header bg-success text-white">
-
-                        Coordinación del clúster
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Comunicación con NodeManagers.</li>
-
-                            <li>Monitorización del estado del clúster.</li>
-
-                            <li>Control de recursos disponibles.</li>
-
-                            <li>Alta disponibilidad.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>
-
-                Conclusión
-
-            </h4>
 
             <p>
 
-                La imagen Docker del <strong>ResourceManager</strong> constituye el núcleo del
-                sistema YARN. Gracias a este componente es posible distribuir de forma eficiente
-                los recursos del clúster entre las distintas aplicaciones Big Data,
-                garantizando un uso óptimo de la infraestructura y permitiendo la ejecución
-                paralela de múltiples trabajos sobre Hadoop.
+                Su responsabilidad consiste en coordinar la ejecución de las aplicaciones
+                distribuidas, asignando memoria y capacidad de procesamiento a las tareas que
+                se ejecutan en los distintos nodos del clúster.
+
+                Cuando un usuario lanza un trabajo <strong>MapReduce</strong>, el
+                <strong>ResourceManager</strong> decide dónde deben ejecutarse las tareas,
+                planifica su ejecución y supervisa el uso eficiente de los recursos disponibles.
 
             </p>
 
-            <p class="mb-0">
+            <p>
 
-                El código completo utilizado para construir esta imagen puede consultarse en el
-                <strong>Anexo 7.1</strong>, apartado
-                <strong>7.1.3 Dockerfile ResourceManager (YARN)</strong>.
+                Gracias a este mecanismo, múltiples aplicaciones pueden compartir la
+                infraestructura Hadoop de forma equilibrada, optimizando el rendimiento global
+                del sistema y garantizando un uso eficiente de la CPU y la memoria disponibles.
 
             </p>
 
-        </div>
+            <div class="alert alert-success">
 
+                <i class="bi bi-info-circle-fill"></i>
 
-        <div class="text-center mb-5">
-
-            <a href="imagend.html" class="btn btn-success btn-lg px-5">
-
-                <i class="bi bi-arrow-right-circle-fill"></i>
-                Siguiente punto
-
-            </a>
-
-        </div>
-        <div class="text-center mt-5">
-
-            <a href="imagenn.html" class="btn btn-outline-success btn-lg">
-
-                <i class="bi bi-arrow-left-circle"></i>
-
-                Punto Anterior.
-
-            </a>
-
-        </div>
-        <footer class="bg-success text-white mt-5">
-
-            <div class="container py-3 text-center">
-
-                Proyecto Fin de Grado · UNED
+                La imagen Docker del <strong>ResourceManager</strong> se construye a partir de la
+                imagen <strong>hadoop-base</strong>, reutilizando toda la infraestructura
+                desarrollada anteriormente.
 
             </div>
 
-        </footer>
+            <hr class="my-5">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+            <h3 class="text-success">
+
+                1. Importación de la imagen base
+
+            </h3>
+
+            <p>
+
+                La construcción comienza utilizando como punto de partida la imagen
+                <strong>hadoop-base</strong>, que ya incorpora Ubuntu, Java, Hadoop,
+                Python, Jupyter Notebook y el resto de componentes comunes del clúster.
+
+            </p>
+
+            <div class="text-center my-4">
+
+                <img src="../img/docker-hadoop-base.png" class="img-fluid rounded shadow" alt="Imagen base Hadoop">
+
+                <p class="text-muted">
+
+                    <strong>Figura.</strong> Imagen Docker base utilizada para construir el
+                    ResourceManager.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                2. Copia del fichero de configuración
+
+            </h3>
+
+            <p>
+
+                A continuación se copia al contenedor el fichero de configuración específico
+                del servicio, encargado de iniciar automáticamente el
+                <strong>ResourceManager</strong> mediante <strong>Supervisor</strong>.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-success">
+
+                            <tr>
+
+                                <th>Archivo</th>
+
+                                <th>Descripción</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>yarnmanager.conf</td>
+
+                                <td>Configuración del servicio ResourceManager.</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Supervisor</td>
+
+                                <td>Gestión automática del proceso.</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="col-md-6 text-center">
+
+                    <img src="../img/yarnmanager-config.png" class="img-fluid rounded shadow"
+                        alt="Configuración ResourceManager">
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                3. Ejecución mediante Supervisor
+
+            </h3>
+
+            <p>
+
+                Una vez finalizada la configuración, el contenedor utiliza
+                <strong>Supervisor</strong> como gestor de procesos para iniciar
+                automáticamente el servicio <strong>ResourceManager</strong> cuando el
+                contenedor arranca.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-5">
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            ✔ Inicio automático del servicio
+                        </li>
+
+                        <li class="list-group-item">
+                            ✔ Monitorización del proceso
+                        </li>
+
+                        <li class="list-group-item">
+                            ✔ Reinicio automático ante fallos
+                        </li>
+
+                        <li class="list-group-item">
+                            ✔ Gestión centralizada de servicios
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-md-7 text-center">
+
+                    <img src="../img/supervisor-yarnmanager.png" class="img-fluid rounded shadow"
+                        alt="Supervisor ResourceManager">
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+
+                Funciones principales del ResourceManager
+
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm mb-3">
+
+                        <div class="card-header bg-success text-white">
+
+                            Planificación de recursos
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Asignación de memoria.</li>
+
+                                <li>Asignación de CPU.</li>
+
+                                <li>Planificación de aplicaciones.</li>
+
+                                <li>Gestión de prioridades.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            Coordinación del clúster
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comunicación con NodeManagers.</li>
+
+                                <li>Monitorización del estado del clúster.</li>
+
+                                <li>Control de recursos disponibles.</li>
+
+                                <li>Alta disponibilidad.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    Conclusión
+
+                </h4>
+
+                <p>
+
+                    La imagen Docker del <strong>ResourceManager</strong> constituye el núcleo del
+                    sistema YARN. Gracias a este componente es posible distribuir de forma eficiente
+                    los recursos del clúster entre las distintas aplicaciones Big Data,
+                    garantizando un uso óptimo de la infraestructura y permitiendo la ejecución
+                    paralela de múltiples trabajos sobre Hadoop.
+
+                </p>
+
+                <p class="mb-0">
+
+                    El código completo utilizado para construir esta imagen puede consultarse en el
+                    <strong>Anexo 7.1</strong>, apartado
+                    <strong>7.1.3 Dockerfile ResourceManager (YARN)</strong>.
+
+                </p>
+
+            </div>
+
+
+            <div class="text-center mb-5">
+
+                <a href="imagend.html" class="btn btn-success btn-lg px-5">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente punto
+
+                </a>
+
+            </div>
+            <div class="text-center mt-5">
+
+                <a href="imagenn.html" class="btn btn-outline-success btn-lg">
+
+                    <i class="bi bi-arrow-left-circle"></i>
+
+                    Punto Anterior.
+
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
