@@ -71,521 +71,539 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <!-- Menú lateral -->
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
-                    Capítulo 4
-                </li>
+                <div class="list-group-item active bg-success border-success">
 
-            </ol>
+                    <i class="bi bi-book"></i>
 
-        </nav>
-        <!-- ===================================================== -->
-        <!-- 4.2.3 GESTIÓN DE CONTENEDORES -->
-        <!-- ===================================================== -->
+                    Capítulo 4.2
 
-        <h2 class="text-success mb-4">
-            4.2.3 Gestión de contenedores
-        </h2>
+                </div>
 
-        <p class="lead">
-            Una vez desplegada la infraestructura Big Data, resulta necesario disponer de
-            mecanismos que permitan administrar y supervisar el estado de los distintos
-            contenedores que forman el clúster Hadoop.
-        </p>
+                <a href="instdocker.html" class="list-group-item list-group-item-action">
 
-        <p>
-            Docker proporciona un conjunto de herramientas que facilitan las tareas de
-            gestión, monitorización y mantenimiento de los servicios desplegados,
-            permitiendo comprobar el estado de los nodos, acceder a los contenedores,
-            consultar registros, reiniciar servicios o detener completamente la
-            infraestructura cuando sea necesario.
-        </p>
+                    4.2.1 Instalación de Docker y docker compose.
 
-        <div class="alert alert-success">
+                </a>
 
-            <i class="bi bi-info-circle-fill"></i>
+                <a href="creacioncont.html" class="list-group-item list-group-item-action">
 
-            La administración de los contenedores constituye una tarea esencial tanto
-            durante el desarrollo como en entornos reales de explotación, permitiendo
-            diagnosticar incidencias y mantener el correcto funcionamiento del clúster.
+                    4.2.2 Creación de contenedores.
+
+                </a>
+                <a href="gestioncont.html" class="list-group-item list-group-item-action">
+
+                    4.2.3 Gestión de contenedores.
+
+                </a>
+
+                <a href="supervision.html" class="list-group-item list-group-item-action">
+
+                    4.2.4 Supervisión y monitorización del clúster vía web.
+
+                </a>
+                <a href="jupyter.html" class="list-group-item list-group-item-action">
+
+                    4.2.5 Acceso mediante Júpiter Notebook.
+
+                </a>
+
+
+
+
+            </div>
 
         </div>
 
-        <hr class="my-5">
+        <!-- Contenido -->
 
-        <h3 class="text-success">
-            1. Verificación del estado del clúster
-        </h3>
+        <div class="col-lg-9">
+            <!-- ===================================================== -->
+            <!-- 4.2.3 GESTIÓN DE CONTENEDORES -->
+            <!-- ===================================================== -->
 
-        <p>
+            <h2 class="text-success mb-4">
+                4.2.3 Gestión de contenedores
+            </h2>
 
-            Docker permite comprobar rápidamente el estado de ejecución de todos los
-            contenedores mediante los siguientes comandos.
+            <p class="lead">
+                Una vez desplegada la infraestructura Big Data, resulta necesario disponer de
+                mecanismos que permitan administrar y supervisar el estado de los distintos
+                contenedores que forman el clúster Hadoop.
+            </p>
 
-        </p>
+            <p>
+                Docker proporciona un conjunto de herramientas que facilitan las tareas de
+                gestión, monitorización y mantenimiento de los servicios desplegados,
+                permitiendo comprobar el estado de los nodos, acceder a los contenedores,
+                consultar registros, reiniciar servicios o detener completamente la
+                infraestructura cuando sea necesario.
+            </p>
 
-        <div class="row">
+            <div class="alert alert-success">
 
-            <div class="col-md-6">
+                <i class="bi bi-info-circle-fill"></i>
 
-                <div class="card shadow-sm">
+                La administración de los contenedores constituye una tarea esencial tanto
+                durante el desarrollo como en entornos reales de explotación, permitiendo
+                diagnosticar incidencias y mantener el correcto funcionamiento del clúster.
 
-                    <div class="card-header bg-success text-white">
+            </div>
 
-                        Docker
+            <hr class="my-5">
 
-                    </div>
+            <h3 class="text-success">
+                1. Verificación del estado del clúster
+            </h3>
 
-                    <div class="card-body">
+            <p>
 
-                        <pre class="mb-0">
+                Docker permite comprobar rápidamente el estado de ejecución de todos los
+                contenedores mediante los siguientes comandos.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            Docker
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <pre class="mb-0">
     sudo docker ps
     </pre>
 
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div class="col-md-6">
 
-            <div class="col-md-6">
+                    <div class="card shadow-sm">
 
-                <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
 
-                    <div class="card-header bg-success text-white">
+                            Docker Compose
 
-                        Docker Compose
+                        </div>
 
-                    </div>
+                        <div class="card-body">
 
-                    <div class="card-body">
-
-                        <pre class="mb-0">
+                            <pre class="mb-0">
     sudo docker-compose ps
     </pre>
 
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="text-center my-4">
+            <div class="text-center my-4">
 
 
-            <img src="../img/docker-ps.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
+                <img src="../img/docker-ps.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
 
 
 
-            <p class="text-muted mt-2">
+                <p class="text-muted mt-2">
 
-                Figura 25. Estado de los contenedores del clúster.
+                    Figura 25. Estado de los contenedores del clúster.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                2. Acceso a un contenedor
+            </h3>
+
+            <p>
+
+                Cuando resulta necesario modificar configuraciones, ejecutar comandos Hadoop
+                o realizar tareas de administración, puede accederse directamente al interior
+                de cualquier contenedor utilizando el siguiente comando.
 
             </p>
 
-        </div>
+            <div class="alert alert-light border">
 
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            2. Acceso a un contenedor
-        </h3>
-
-        <p>
-
-            Cuando resulta necesario modificar configuraciones, ejecutar comandos Hadoop
-            o realizar tareas de administración, puede accederse directamente al interior
-            de cualquier contenedor utilizando el siguiente comando.
-
-        </p>
-
-        <div class="alert alert-light border">
-
-            <pre class="mb-0">
+                <pre class="mb-0">
     sudo docker exec -it nombre_contenedor /bin/bash
     </pre>
 
-        </div>
+            </div>
 
-        <div class="text-center my-4">
-
-
-            <img src="../img/docker-exec.png" class="img-fluid rounded shadow" alt="Docker Exec">
+            <div class="text-center my-4">
 
 
-            <p class="text-muted">
+                <img src="../img/docker-exec.png" class="img-fluid rounded shadow" alt="Docker Exec">
 
-                Figura. Acceso interactivo al contenedor NameNode.
+
+                <p class="text-muted">
+
+                    Figura. Acceso interactivo al contenedor NameNode.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                3. Consulta de registros
+            </h3>
+
+            <p>
+
+                Docker registra toda la actividad generada por cada servicio del clúster.
+                La consulta de estos registros resulta especialmente útil para localizar
+                errores o verificar el correcto funcionamiento de Hadoop.
 
             </p>
 
-        </div>
+            <div class="row">
 
-        <hr class="my-5">
+                <div class="col-md-6">
 
-        <h3 class="text-success">
-            3. Consulta de registros
-        </h3>
+                    <div class="card shadow-sm h-100">
 
-        <p>
+                        <div class="card-header bg-success text-white">
 
-            Docker registra toda la actividad generada por cada servicio del clúster.
-            La consulta de estos registros resulta especialmente útil para localizar
-            errores o verificar el correcto funcionamiento de Hadoop.
+                            Últimos registros
 
-        </p>
+                        </div>
 
-        <div class="row">
+                        <div class="card-body">
 
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Últimos registros
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <pre class="mb-0">
+                            <pre class="mb-0">
     docker logs namenode
     </pre>
 
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
+                <div class="col-md-6">
 
-            <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
 
-                <div class="card shadow-sm h-100">
+                        <div class="card-header bg-success text-white">
 
-                    <div class="card-header bg-success text-white">
+                            Tiempo real
 
-                        Tiempo real
+                        </div>
 
-                    </div>
+                        <div class="card-body">
 
-                    <div class="card-body">
-
-                        <pre class="mb-0">
+                            <pre class="mb-0">
     docker logs -f namenode
     </pre>
 
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+            <hr class="my-5">
 
-        <hr class="my-5">
+            <h3 class="text-success">
+                4. Escalado del clúster
+            </h3>
 
-        <h3 class="text-success">
-            4. Escalado del clúster
-        </h3>
+            <p>
 
-        <p>
+                La arquitectura desarrollada permite ampliar fácilmente el número de
+                DataNodes simplemente añadiendo nuevas definiciones del servicio
+                correspondiente en el archivo <strong>docker-compose.yml</strong>.
 
-            La arquitectura desarrollada permite ampliar fácilmente el número de
-            DataNodes simplemente añadiendo nuevas definiciones del servicio
-            correspondiente en el archivo <strong>docker-compose.yml</strong>.
+            </p>
 
-        </p>
+            <div class="row">
 
-        <div class="row">
+                <div class="col-md-6">
 
-            <div class="col-md-6">
+                    <div class="card shadow-sm">
 
-                <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
 
-                    <div class="card-header bg-success text-white">
+                            Verificar contenedores
 
-                        Verificar contenedores
+                        </div>
 
-                    </div>
+                        <div class="card-body">
 
-                    <div class="card-body">
-
-                        <pre class="mb-0">
+                            <pre class="mb-0">
     docker ps
     </pre>
 
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            Comprobar HDFS
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <pre class="mb-0">
+    hdfs dfsadmin -report
+    </pre>
+
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
 
-            <div class="col-md-6">
+            <div class="mt-4">
 
                 <div class="card shadow-sm">
 
                     <div class="card-header bg-success text-white">
 
-                        Comprobar HDFS
+                        Comprobar nodos YARN
 
                     </div>
 
                     <div class="card-body">
 
                         <pre class="mb-0">
-    hdfs dfsadmin -report
-    </pre>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="mt-4">
-
-            <div class="card shadow-sm">
-
-                <div class="card-header bg-success text-white">
-
-                    Comprobar nodos YARN
-
-                </div>
-
-                <div class="card-body">
-
-                    <pre class="mb-0">
     yarn node -list
     </pre>
 
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
+            <div class="alert alert-primary mt-4">
 
-        <div class="alert alert-primary mt-4">
+                Los nuevos DataNodes quedan registrados automáticamente tanto en HDFS como
+                en YARN, incrementando la capacidad de almacenamiento y procesamiento del
+                clúster.
 
-            Los nuevos DataNodes quedan registrados automáticamente tanto en HDFS como
-            en YARN, incrementando la capacidad de almacenamiento y procesamiento del
-            clúster.
+            </div>
 
-        </div>
+            <hr class="my-5">
 
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            5. Detener y reiniciar la infraestructura
-        </h3>
-
-        <p>
-
-            Docker Compose permite controlar fácilmente el ciclo de vida completo del
-            clúster.
-
-        </p>
-
-        <table class="table table-bordered table-striped">
-
-            <thead class="table-success">
-
-                <tr>
-
-                    <th>Operación</th>
-
-                    <th>Comando</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Detener servicios</td>
-
-                    <td><code>docker-compose stop</code></td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Reiniciar servicios</td>
-
-                    <td><code>docker-compose restart</code></td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Eliminar contenedores</td>
-
-                    <td><code>docker-compose down</code></td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Eliminar contenedores y volúmenes</td>
-
-                    <td><code>docker-compose down -v</code></td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <div class="text-center my-4">
-
-
-            <img src="../img/docker-compose-down.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal2">
-
-
-
-            <p class="text-muted">
-
-                Figura 26. Eliminación de la infraestructura Docker.
-
-            </p>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            6. Contenedor adicional para MySQL
-        </h3>
-
-        <p>
-
-            La infraestructura incorpora un archivo adicional denominado
-            <strong>docker-compose-dbcluster.yml</strong>, encargado de desplegar un
-            contenedor MySQL que proporciona persistencia de datos al laboratorio Big Data.
-
-        </p>
-
-        <div class="alert alert-warning">
-
-            <h5>
-
-                <i class="bi bi-exclamation-triangle-fill"></i>
-
-                Importante
-
-            </h5>
+            <h3 class="text-success">
+                5. Detener y reiniciar la infraestructura
+            </h3>
 
             <p>
 
-                Antes de iniciar este servicio es recomendable completar el apartado
-                <strong>"Acceso mediante Jupyter Notebook"</strong>, donde se generan los
-                archivos CSV mediante Python que posteriormente serán importados a la base
-                de datos MySQL para su explotación mediante Hadoop y Hive.
+                Docker Compose permite controlar fácilmente el ciclo de vida completo del
+                clúster.
 
             </p>
 
-            <pre class="mb-0">
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Operación</th>
+
+                        <th>Comando</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Detener servicios</td>
+
+                        <td><code>docker-compose stop</code></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Reiniciar servicios</td>
+
+                        <td><code>docker-compose restart</code></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Eliminar contenedores</td>
+
+                        <td><code>docker-compose down</code></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Eliminar contenedores y volúmenes</td>
+
+                        <td><code>docker-compose down -v</code></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="text-center my-4">
+
+
+                <img src="../img/docker-compose-down.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal2">
+
+
+
+                <p class="text-muted">
+
+                    Figura 26. Eliminación de la infraestructura Docker.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                6. Contenedor adicional para MySQL
+            </h3>
+
+            <p>
+
+                La infraestructura incorpora un archivo adicional denominado
+                <strong>docker-compose-dbcluster.yml</strong>, encargado de desplegar un
+                contenedor MySQL que proporciona persistencia de datos al laboratorio Big Data.
+
+            </p>
+
+            <div class="alert alert-warning">
+
+                <h5>
+
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+
+                    Importante
+
+                </h5>
+
+                <p>
+
+                    Antes de iniciar este servicio es recomendable completar el apartado
+                    <strong>"Acceso mediante Jupyter Notebook"</strong>, donde se generan los
+                    archivos CSV mediante Python que posteriormente serán importados a la base
+                    de datos MySQL para su explotación mediante Hadoop y Hive.
+
+                </p>
+
+                <pre class="mb-0">
     sudo docker-compose-dbcluster up -d
     </pre>
 
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p>
+
+                    Docker proporciona un conjunto muy completo de herramientas para administrar
+                    la infraestructura Big Data desarrollada en este proyecto. Gracias a ellas es
+                    posible supervisar el estado de los servicios, acceder a los contenedores,
+                    consultar registros, ampliar el número de nodos y gestionar el ciclo de vida
+                    del clúster de forma sencilla y eficiente.
+
+                </p>
+
+            </div>
         </div>
+    </div>
+    <div class="text-center mb-5">
 
-        <hr class="my-5">
+        <a href="supervision.html" class="btn btn-success btn-lg px-5">
 
-        <div class="alert alert-primary">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+            Siguiente punto.
 
-            <h4>Conclusión</h4>
+        </a>
 
-            <p>
+    </div>
+    <div class="text-center mt-5">
 
-                Docker proporciona un conjunto muy completo de herramientas para administrar
-                la infraestructura Big Data desarrollada en este proyecto. Gracias a ellas es
-                posible supervisar el estado de los servicios, acceder a los contenedores,
-                consultar registros, ampliar el número de nodos y gestionar el ciclo de vida
-                del clúster de forma sencilla y eficiente.
+        <a href="creacioncont.html" class="btn btn-outline-success btn-lg">
 
-            </p>
+            <i class="bi bi-arrow-left-circle"></i>
 
-        </div>
+            Punto Anterior.
 
-        <div class="text-center mt-5">
+        </a>
 
-            <a href="index.html" class="btn btn-success btn-lg">
+    </div>
+    <div class="modal fade" id="imgClusterModal1" tabindex="-1">
 
-                <i class="bi bi-arrow-left-circle"></i>
+        <div class="modal-dialog modal-xl modal-dialog-centered">
 
-                Volver al índice
+            <div class="modal-content">
 
-            </a>
+                <div class="modal-header">
 
-        </div>
-        <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+                    <h5 class="modal-title">
+                        docker-ps
+                    </h5>
 
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            docker-ps
-                        </h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body text-center">
-
-                        <img src="../img/docker-compose-up.png" class="img-fluid">
-
-                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
 
                 </div>
 
-            </div>
+                <div class="modal-body text-center">
 
-        </div>
-        <div class="modal fade" id="imgClusterModal2" tabindex="-1">
-
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            docker-compose-down
-                        </h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body text-center">
-
-                        <img src="../img/docker-compose-down.png" class="img-fluid">
-
-                    </div>
+                    <img src="../img/docker-compose-up.png" class="img-fluid">
 
                 </div>
 
@@ -593,18 +611,48 @@
 
         </div>
 
+    </div>
+    <div class="modal fade" id="imgClusterModal2" tabindex="-1">
 
-        <footer class="bg-success text-white mt-5">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
 
-            <div class="container py-3 text-center">
+            <div class="modal-content">
 
-                Proyecto Fin de Grado · UNED
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        docker-compose-down
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <img src="../img/docker-compose-down.png" class="img-fluid">
+
+                </div>
 
             </div>
 
-        </footer>
+        </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

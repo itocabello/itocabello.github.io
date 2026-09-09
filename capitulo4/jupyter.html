@@ -66,275 +66,149 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
+        <!-- Menú lateral -->
 
-            <ol class="breadcrumb">
+        <div class="col-lg-3">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+            <div class="list-group shadow">
 
-                <li class="breadcrumb-item active">
-                    Capítulo 4
-                </li>
+                <div class="list-group-item active bg-success border-success">
 
-            </ol>
+                    <i class="bi bi-book"></i>
 
-        </nav>
-        <!-- ===================================================== -->
-        <!-- 4.2.5 ACCESO MEDIANTE JUPYTER NOTEBOOK -->
-        <!-- ===================================================== -->
-
-        <h2 class="text-success mb-4">
-            4.2.5 Acceso mediante Jupyter Notebook
-        </h2>
-
-        <p class="lead">
-            Jupyter Notebook constituye el entorno de desarrollo utilizado durante las
-            prácticas del proyecto para la creación, ejecución y documentación de código
-            Python integrado con el ecosistema Hadoop.
-        </p>
-
-        <p>
-            Un Notebook combina código ejecutable, texto enriquecido, imágenes,
-            ecuaciones y gráficos dentro de un único documento interactivo, facilitando la
-            experimentación y la comprensión de los procesos desarrollados. Esta
-            herramienta resulta especialmente adecuada para la enseñanza de tecnologías
-            Big Data al permitir documentar paso a paso cada uno de los ejercicios
-            realizados.
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-info-circle-fill"></i>
-
-            En este proyecto Jupyter Notebook se utilizará para descargar datasets,
-            procesarlos mediante Python e incorporarlos posteriormente al sistema de
-            archivos distribuido HDFS, desde donde podrán ser explotados mediante
-            MapReduce, Hive y el resto de herramientas del ecosistema Hadoop.
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Servidor Jupyter Notebook
-        </h3>
-
-        <p>
-
-            El servicio Jupyter se encuentra instalado en el contenedor
-            <strong>NameNode</strong>, que actúa como nodo principal del clúster y como
-            entorno de trabajo para el desarrollo de los ejercicios prácticos.
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Acceso desde el equipo anfitrión
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <pre class="mb-0">
-    http://localhost:8888/tree
-    </pre>
-
-                    </div>
+                    Capítulo 4.2
 
                 </div>
 
-            </div>
+                <a href="instdocker.html" class="list-group-item list-group-item-action">
 
-            <div class="col-md-6">
+                    4.2.1 Instalación de Docker y docker compose.
 
-                <div class="card shadow-sm h-100">
+                </a>
 
-                    <div class="card-header bg-success text-white">
+                <a href="creacioncont.html" class="list-group-item list-group-item-action">
 
-                        Acceso desde el clúster
+                    4.2.2 Creación de contenedores.
 
-                    </div>
+                </a>
+                <a href="gestioncont.html" class="list-group-item list-group-item-action">
 
-                    <div class="card-body">
+                    4.2.3 Gestión de contenedores.
 
-                        <pre class="mb-0">
-    http://namenode:8888/tree
-    </pre>
+                </a>
 
-                    </div>
+                <a href="supervision.html" class="list-group-item list-group-item-action">
 
-                </div>
+                    4.2.4 Supervisión y monitorización del clúster vía web.
+
+                </a>
+                <a href="jupyter.html" class="list-group-item list-group-item-action">
+
+                    4.2.5 Acceso mediante Júpiter Notebook.
+
+                </a>
+
+
+
 
             </div>
 
         </div>
 
-        <hr class="my-5">
+        <!-- Contenido -->
 
-        <h3 class="text-success">
-            Funciones principales
-        </h3>
+        <div class="col-lg-9">
+            <!-- ===================================================== -->
+            <!-- 4.2.5 ACCESO MEDIANTE JUPYTER NOTEBOOK -->
+            <!-- ===================================================== -->
 
-        <div class="row">
+            <h2 class="text-success mb-4">
+                4.2.5 Acceso mediante Jupyter Notebook
+            </h2>
 
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Desarrollo
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Programación en Python.</li>
-
-                            <li>Ejecución interactiva de código.</li>
-
-                            <li>Visualización de resultados.</li>
-
-                            <li>Documentación de prácticas.</li>
-
-                            <li>Creación de notebooks.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Integración con Hadoop
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Descarga de datasets.</li>
-
-                            <li>Preparación de datos.</li>
-
-                            <li>Generación de archivos CSV.</li>
-
-                            <li>Carga de información en HDFS.</li>
-
-                            <li>Preparación de datos para Hive y MapReduce.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Acceso a la interfaz web
-        </h3>
-
-        <p>
-
-            Una vez iniciado el contenedor NameNode, el servidor Jupyter queda disponible
-            a través del navegador, ofreciendo acceso al árbol de directorios donde se
-            almacenarán los notebooks desarrollados durante las prácticas.
-
-        </p>
-
-        <div class="text-center my-4">
-
-            <img src="../img/jupyter-access.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
-
-
-
-            <p class="text-muted mt-2">
-
-                Figura 30. Acceso web al servidor Jupyter Notebook.
-
+            <p class="lead">
+                Jupyter Notebook constituye el entorno de desarrollo utilizado durante las
+                prácticas del proyecto para la creación, ejecución y documentación de código
+                Python integrado con el ecosistema Hadoop.
             </p>
 
-        </div>
+            <p>
+                Un Notebook combina código ejecutable, texto enriquecido, imágenes,
+                ecuaciones y gráficos dentro de un único documento interactivo, facilitando la
+                experimentación y la comprensión de los procesos desarrollados. Esta
+                herramienta resulta especialmente adecuada para la enseñanza de tecnologías
+                Big Data al permitir documentar paso a paso cada uno de los ejercicios
+                realizados.
+            </p>
 
-        <hr class="my-5">
+            <div class="alert alert-success">
 
-        <div class="alert alert-primary">
+                <i class="bi bi-info-circle-fill"></i>
 
-            <h4>Conclusión</h4>
+                En este proyecto Jupyter Notebook se utilizará para descargar datasets,
+                procesarlos mediante Python e incorporarlos posteriormente al sistema de
+                archivos distribuido HDFS, desde donde podrán ser explotados mediante
+                MapReduce, Hive y el resto de herramientas del ecosistema Hadoop.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Servidor Jupyter Notebook
+            </h3>
 
             <p>
 
-                Jupyter Notebook constituye el entorno principal de desarrollo utilizado en
-                este proyecto. Desde esta herramienta se crearán los programas Python
-                empleados para descargar datasets, generar archivos de datos, preparar la
-                información y cargarla posteriormente en HDFS para su procesamiento mediante
-                las diferentes tecnologías del ecosistema Hadoop.
+                El servicio Jupyter se encuentra instalado en el contenedor
+                <strong>NameNode</strong>, que actúa como nodo principal del clúster y como
+                entorno de trabajo para el desarrollo de los ejercicios prácticos.
 
             </p>
 
-        </div>
+            <div class="row">
 
-        <div class="text-center mt-5">
+                <div class="col-md-6">
 
-            <a href="index.html" class="btn btn-success btn-lg">
+                    <div class="card shadow-sm h-100">
 
-                <i class="bi bi-arrow-left-circle"></i>
+                        <div class="card-header bg-success text-white">
 
-                Volver al índice
+                            Acceso desde el equipo anfitrión
 
-            </a>
+                        </div>
 
-        </div>
+                        <div class="card-body">
 
+                            <pre class="mb-0">
+    http://localhost:8888/tree
+    </pre>
 
-        <div class="modal fade" id="imgClusterModal" tabindex="-1">
-
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            jupyter-access
-                        </h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
+                        </div>
 
                     </div>
 
-                    <div class="modal-body text-center">
+                </div>
 
-                        <img src="../img/namenode-web.png" class="img-fluid">
+                <div class="col-md-6">
 
+                    <div class="card shadow-sm h-100">
 
+                        <div class="card-header bg-success text-white">
+
+                            Acceso desde el clúster
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <pre class="mb-0">
+    http://namenode:8888/tree
+    </pre>
+
+                        </div>
 
                     </div>
 
@@ -342,19 +216,185 @@
 
             </div>
 
-        </div>
+            <hr class="my-5">
 
-        <footer class="bg-success text-white mt-5">
+            <h3 class="text-success">
+                Funciones principales
+            </h3>
 
-            <div class="container py-3 text-center">
+            <div class="row">
 
-                Proyecto Fin de Grado · UNED
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Desarrollo
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Programación en Python.</li>
+
+                                <li>Ejecución interactiva de código.</li>
+
+                                <li>Visualización de resultados.</li>
+
+                                <li>Documentación de prácticas.</li>
+
+                                <li>Creación de notebooks.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Integración con Hadoop
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Descarga de datasets.</li>
+
+                                <li>Preparación de datos.</li>
+
+                                <li>Generación de archivos CSV.</li>
+
+                                <li>Carga de información en HDFS.</li>
+
+                                <li>Preparación de datos para Hive y MapReduce.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </footer>
+            <hr class="my-5">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+            <h3 class="text-success">
+                Acceso a la interfaz web
+            </h3>
+
+            <p>
+
+                Una vez iniciado el contenedor NameNode, el servidor Jupyter queda disponible
+                a través del navegador, ofreciendo acceso al árbol de directorios donde se
+                almacenarán los notebooks desarrollados durante las prácticas.
+
+            </p>
+
+            <div class="text-center my-4">
+
+                <img src="../img/jupyter-access.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal">
+
+
+
+                <p class="text-muted mt-2">
+
+                    Figura 30. Acceso web al servidor Jupyter Notebook.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p>
+
+                    Jupyter Notebook constituye el entorno principal de desarrollo utilizado en
+                    este proyecto. Desde esta herramienta se crearán los programas Python
+                    empleados para descargar datasets, generar archivos de datos, preparar la
+                    información y cargarla posteriormente en HDFS para su procesamiento mediante
+                    las diferentes tecnologías del ecosistema Hadoop.
+
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+
+        <a href="supervision.html" class="btn btn-outline-success btn-lg">
+
+            <i class="bi bi-arrow-left-circle"></i>
+
+            Punto Anterior.
+
+        </a>
+
+    </div>
+
+
+    <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        jupyter-access
+                    </h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <img src="../img/namenode-web.png" class="img-fluid">
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
