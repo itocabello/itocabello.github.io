@@ -70,269 +70,316 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li class="breadcrumb-item active">
-                    Capítulo 5.4
-                </li>
-
-            </ol>
-
-        </nav>
+        <!-- Menú lateral -->
+        <!-- Menú lateral -->
 
 
+        <div class="col-lg-3">
 
+            <div class="list-group shadow">
 
-        <h2 class="text-success mb-4">
-            Ejercicio resuelto. Preparación del entorno para la ingesta de datos con Apache Flume
-        </h2>
+                <div class="list-group-item active bg-success border-success">
 
-        <p class="lead">
+                    <i class="bi bi-book"></i>
 
-            En este ejercicio se configura el entorno necesario para automatizar la ingesta de datos
-            en el clúster Hadoop mediante <strong>Apache Flume</strong>. El objetivo es que el
-            estudiante comprenda cómo transferir información desde el sistema de archivos local
-            hasta HDFS de forma completamente automática.
+                    Capítulo 5
 
-        </p>
+                </div>
 
-        <div class="alert alert-warning">
+                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-            <i class="bi bi-book-fill"></i>
-
-            <strong>Antes de comenzar este ejercicio</strong>, se recomienda revisar la
-            lección teórica dedicada a <strong>Apache Flume</strong>, donde se describen
-            su arquitectura, funcionamiento y los componentes principales
-            (<strong>Source</strong>, <strong>Channel</strong> y <strong>Sink</strong>).
-
-            <div class="mt-3">
-
-                <a href="flume.html" class="btn btn-success">
-
-                    <i class="bi bi-box-arrow-up-right"></i>
-
-                    Consultar características de Apache Flume
+                    1. Lección 1.Características prácticas Big Data.
 
                 </a>
 
+                <a href="fundamentos.html" class="list-group-item list-group-item-action">
+
+                    2. Lección 2.Fundamentos de Hadoop.
+
+                </a>
+                <a href="hdfs.html" class="list-group-item list-group-item-action">
+
+                    3. Lección 3.HDFS y Almacenamiento Distribuido.
+
+                </a>
+
+                <a href="procesamiento.html" class="list-group-item list-group-item-action">
+
+                    4. Lección 4.Inyección/Extracción de datos
+
+
+                </a>
+                <a href="serializacion.html" class="list-group-item list-group-item-action">
+
+                    5. Lección 5. Serialización/Deserialización de los Datos
+
+
+                </a>
+
+                <a href="validacion.html" class="list-group-item list-group-item-action">
+
+                    6. Validación operativa del clúster mediante trabajos.
+
+                </a>
+
+
+
+
+
+            </div>
+        </div>
+        <!-- Contenido -->
+
+        <div class="col-lg-9">
+
+
+
+            <h2 class="text-success mb-4">
+                Ejercicio resuelto. Preparación del entorno para la ingesta de datos con Apache Flume
+            </h2>
+
+            <p class="lead">
+
+                En este ejercicio se configura el entorno necesario para automatizar la ingesta de datos
+                en el clúster Hadoop mediante <strong>Apache Flume</strong>. El objetivo es que el
+                estudiante comprenda cómo transferir información desde el sistema de archivos local
+                hasta HDFS de forma completamente automática.
+
+            </p>
+
+            <div class="alert alert-warning">
+
+                <i class="bi bi-book-fill"></i>
+
+                <strong>Antes de comenzar este ejercicio</strong>, se recomienda revisar la
+                lección teórica dedicada a <strong>Apache Flume</strong>, donde se describen
+                su arquitectura, funcionamiento y los componentes principales
+                (<strong>Source</strong>, <strong>Channel</strong> y <strong>Sink</strong>).
+
+                <div class="mt-3">
+
+                    <a href="flume.html" class="btn btn-success">
+
+                        <i class="bi bi-box-arrow-up-right"></i>
+
+                        Consultar características de Apache Flume
+
+                    </a>
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="alert alert-success">
 
-        <div class="alert alert-success">
+                <i class="bi bi-info-circle-fill"></i>
 
-            <i class="bi bi-info-circle-fill"></i>
+                Durante esta práctica se configurará un agente Flume encargado de monitorizar
+                automáticamente un directorio local y transferir los nuevos archivos al sistema
+                de almacenamiento distribuido HDFS.
 
-            Durante esta práctica se configurará un agente Flume encargado de monitorizar
-            automáticamente un directorio local y transferir los nuevos archivos al sistema
-            de almacenamiento distribuido HDFS.
+            </div>
 
-        </div>
+            <hr class="my-5">
 
-        <hr class="my-5">
+            <h3 class="text-success">
+                Objetivo del ejercicio
+            </h3>
 
-        <h3 class="text-success">
-            Objetivo del ejercicio
-        </h3>
+            <p>
 
-        <p>
+                La finalidad de esta práctica consiste en automatizar el proceso de carga de datos
+                utilizando Apache Flume. Para ello se configura un agente capaz de detectar la llegada
+                de nuevos ficheros al sistema local y transferirlos automáticamente al clúster Hadoop,
+                sin necesidad de intervención manual.
 
-            La finalidad de esta práctica consiste en automatizar el proceso de carga de datos
-            utilizando Apache Flume. Para ello se configura un agente capaz de detectar la llegada
-            de nuevos ficheros al sistema local y transferirlos automáticamente al clúster Hadoop,
-            sin necesidad de intervención manual.
+            </p>
 
-        </p>
+            <p>
 
-        <p>
+                El estudiante comprenderá el funcionamiento interno de un flujo de datos basado
+                en eventos y la función que desempeña cada componente de Apache Flume dentro
+                de una arquitectura Big Data.
 
-            El estudiante comprenderá el funcionamiento interno de un flujo de datos basado
-            en eventos y la función que desempeña cada componente de Apache Flume dentro
-            de una arquitectura Big Data.
+            </p>
 
-        </p>
+            <hr class="my-5">
 
-        <hr class="my-5">
+            <h3 class="text-success">
+                Conjunto de datos utilizado
+            </h3>
 
-        <h3 class="text-success">
-            Conjunto de datos utilizado
-        </h3>
+            <div class="row">
 
-        <div class="row">
+                <div class="col-md-8">
 
-            <div class="col-md-8">
+                    <p>
 
-                <p>
+                        Como caso práctico se utilizará el fichero
+                        <strong>TABLA_ACCIDENTES_24.csv</strong>,
+                        correspondiente a los microdatos oficiales de accidentes con víctimas publicados
+                        por la Dirección General de Tráfico.
 
-                    Como caso práctico se utilizará el fichero
-                    <strong>TABLA_ACCIDENTES_24.csv</strong>,
-                    correspondiente a los microdatos oficiales de accidentes con víctimas publicados
-                    por la Dirección General de Tráfico.
+                    </p>
 
-                </p>
+                    <p>
 
-                <p>
+                        Tal y como se explicó en el apartado <strong>5.2.3</strong>, el fichero ha sido
+                        descargado previamente desde la fuente oficial y almacenado en el directorio:
 
-                    Tal y como se explicó en el apartado <strong>5.2.3</strong>, el fichero ha sido
-                    descargado previamente desde la fuente oficial y almacenado en el directorio:
+                    </p>
 
-                </p>
+                    <div class="alert alert-light border">
 
-                <div class="alert alert-light border">
-
-                    <pre class="mb-0">
+                        <pre class="mb-0">
     /media/notebooks/dataset
     </pre>
 
-                </div>
-
-                <p>
-
-                    Este directorio está compartido con el contenedor <strong>NameNode</strong>,
-                    permitiendo que Apache Flume pueda acceder directamente al fichero para iniciar
-                    su proceso de ingesta.
-
-                </p>
-
-            </div>
-
-
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Arquitectura del flujo de ingesta
-        </h3>
-
-        <p>
-
-            Apache Flume basa su funcionamiento en un flujo de datos orientado a eventos.
-            Durante esta práctica el agente monitoriza continuamente un directorio del sistema
-            de archivos local y, cuando detecta un nuevo fichero, inicia automáticamente su
-            transferencia hacia HDFS.
-
-        </p>
-
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Componentes del agente Flume
-        </h3>
-
-        <div class="row">
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        1. Source
-
                     </div>
 
-                    <div class="card-body">
+                    <p>
 
-                        <p>
+                        Este directorio está compartido con el contenedor <strong>NameNode</strong>,
+                        permitiendo que Apache Flume pueda acceder directamente al fichero para iniciar
+                        su proceso de ingesta.
 
-                            Representa el punto de entrada de los datos.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Tipo <strong>spooldir</strong>.</li>
-
-                            <li>Monitoriza un directorio local.</li>
-
-                            <li>Detecta automáticamente nuevos ficheros.</li>
-
-                            <li>Transforma el contenido en eventos.</li>
-
-                        </ul>
-
-                    </div>
+                    </p>
 
                 </div>
 
+
+
             </div>
 
-            <div class="col-md-4">
+            <hr class="my-5">
 
-                <div class="card shadow-sm h-100">
+            <h3 class="text-success">
+                Arquitectura del flujo de ingesta
+            </h3>
 
-                    <div class="card-header bg-success text-white">
+            <p>
 
-                        2. Channel
+                Apache Flume basa su funcionamiento en un flujo de datos orientado a eventos.
+                Durante esta práctica el agente monitoriza continuamente un directorio del sistema
+                de archivos local y, cuando detecta un nuevo fichero, inicia automáticamente su
+                transferencia hacia HDFS.
 
-                    </div>
+            </p>
 
-                    <div class="card-body">
 
-                        <p>
+            <hr class="my-5">
 
-                            Actúa como almacenamiento temporal entre Source y Sink.
+            <h3 class="text-success">
+                Componentes del agente Flume
+            </h3>
 
-                        </p>
+            <div class="row">
 
-                        <ul>
+                <div class="col-md-4">
 
-                            <li>Canal tipo <strong>memory</strong>.</li>
+                    <div class="card shadow-sm h-100">
 
-                            <li>Alta velocidad de transferencia.</li>
+                        <div class="card-header bg-success text-white">
 
-                            <li>Desacopla la recepción y escritura.</li>
+                            1. Source
 
-                            <li>Garantiza el flujo continuo de eventos.</li>
+                        </div>
 
-                        </ul>
+                        <div class="card-body">
+
+                            <p>
+
+                                Representa el punto de entrada de los datos.
+
+                            </p>
+
+                            <ul>
+
+                                <li>Tipo <strong>spooldir</strong>.</li>
+
+                                <li>Monitoriza un directorio local.</li>
+
+                                <li>Detecta automáticamente nuevos ficheros.</li>
+
+                                <li>Transforma el contenido en eventos.</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+                <div class="col-md-4">
 
-            <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
 
-                <div class="card shadow-sm h-100">
+                        <div class="card-header bg-success text-white">
 
-                    <div class="card-header bg-success text-white">
+                            2. Channel
 
-                        3. Sink
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Actúa como almacenamiento temporal entre Source y Sink.
+
+                            </p>
+
+                            <ul>
+
+                                <li>Canal tipo <strong>memory</strong>.</li>
+
+                                <li>Alta velocidad de transferencia.</li>
+
+                                <li>Desacopla la recepción y escritura.</li>
+
+                                <li>Garantiza el flujo continuo de eventos.</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
-                    <div class="card-body">
+                </div>
 
-                        <p>
+                <div class="col-md-4">
 
-                            Destino final de los datos procesados.
+                    <div class="card shadow-sm h-100">
 
-                        </p>
+                        <div class="card-header bg-success text-white">
 
-                        <ul>
+                            3. Sink
 
-                            <li>Tipo <strong>HDFS</strong>.</li>
+                        </div>
 
-                            <li>Escribe directamente en Hadoop.</li>
+                        <div class="card-body">
 
-                            <li>Formato Text / DataStream.</li>
+                            <p>
 
-                            <li>Preparado para Hadoop Streaming.</li>
+                                Destino final de los datos procesados.
 
-                        </ul>
+                            </p>
+
+                            <ul>
+
+                                <li>Tipo <strong>HDFS</strong>.</li>
+
+                                <li>Escribe directamente en Hadoop.</li>
+
+                                <li>Formato Text / DataStream.</li>
+
+                                <li>Preparado para Hadoop Streaming.</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
@@ -340,90 +387,88 @@
 
             </div>
 
-        </div>
+            <hr class="my-5">
 
-        <hr class="my-5">
+            <h3 class="text-success">
+                Configuración del agente
+            </h3>
 
-        <h3 class="text-success">
-            Configuración del agente
-        </h3>
+            <p>
 
-        <p>
+                La configuración del agente se realiza mediante el fichero
+                <strong>flume_accidentes.conf</strong>, donde se definen todos los parámetros
+                necesarios para el funcionamiento del flujo de ingesta.
 
-            La configuración del agente se realiza mediante el fichero
-            <strong>flume_accidentes.conf</strong>, donde se definen todos los parámetros
-            necesarios para el funcionamiento del flujo de ingesta.
+            </p>
 
-        </p>
+            <table class="table table-bordered table-striped">
 
-        <table class="table table-bordered table-striped">
+                <thead class="table-success">
 
-            <thead class="table-success">
+                    <tr>
 
-                <tr>
+                        <th>Elemento</th>
 
-                    <th>Elemento</th>
+                        <th>Función</th>
 
-                    <th>Función</th>
+                    </tr>
 
-                </tr>
+                </thead>
 
-            </thead>
+                <tbody>
 
-            <tbody>
+                    <tr>
 
-                <tr>
+                        <td>Agent</td>
 
-                    <td>Agent</td>
+                        <td>Define el agente y los componentes que lo forman.</td>
 
-                    <td>Define el agente y los componentes que lo forman.</td>
+                    </tr>
 
-                </tr>
+                    <tr>
 
-                <tr>
+                        <td>Source</td>
 
-                    <td>Source</td>
+                        <td>Detecta nuevos archivos en el directorio monitorizado.</td>
 
-                    <td>Detecta nuevos archivos en el directorio monitorizado.</td>
+                    </tr>
 
-                </tr>
+                    <tr>
 
-                <tr>
+                        <td>Channel</td>
 
-                    <td>Channel</td>
+                        <td>Almacena temporalmente los eventos generados.</td>
 
-                    <td>Almacena temporalmente los eventos generados.</td>
+                    </tr>
 
-                </tr>
+                    <tr>
 
-                <tr>
+                        <td>Sink</td>
 
-                    <td>Sink</td>
+                        <td>Escribe los datos dentro del sistema HDFS.</td>
 
-                    <td>Escribe los datos dentro del sistema HDFS.</td>
+                    </tr>
 
-                </tr>
+                </tbody>
 
-            </tbody>
+            </table>
 
-        </table>
+            <hr class="my-5">
 
-        <hr class="my-5">
+            <h3 class="text-success">
+                Relación entre los componentes
+            </h3>
 
-        <h3 class="text-success">
-            Relación entre los componentes
-        </h3>
+            <p>
 
-        <p>
+                Una vez definidos todos los elementos del agente, es necesario establecer la
+                comunicación entre ellos para completar el flujo de datos.
 
-            Una vez definidos todos los elementos del agente, es necesario establecer la
-            comunicación entre ellos para completar el flujo de datos.
+            </p>
 
-        </p>
+            <div class="alert alert-light border">
 
-        <div class="alert alert-light border">
-
-            <pre class="mb-0">
+                <pre class="mb-0">
     Sistema de archivos local
             │
             ▼
@@ -439,74 +484,76 @@
             HDFS
     </pre>
 
-        </div>
+            </div>
 
-        <p>
+            <p>
 
-            La <strong>Source</strong> puede publicar eventos sobre uno o varios canales,
-            mientras que cada <strong>Sink</strong> consume los eventos de un único
-            <strong>Channel</strong>. Esta arquitectura proporciona una gran flexibilidad para
-            diseñar distintos flujos de ingesta adaptados a las necesidades del ecosistema Hadoop.
-
-        </p>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>Conclusión</h4>
-
-            <p class="mb-0">
-
-                Una vez finalizada esta práctica, el estudiante dispondrá de un agente Apache
-                Flume completamente operativo capaz de automatizar la incorporación de datos al
-                sistema HDFS. Esta infraestructura servirá como punto de partida para los
-                siguientes ejercicios, en los que los datos almacenados serán procesados mediante
-                Hadoop Streaming, MapReduce y el resto de tecnologías que integran el
-                ecosistema Hadoop.
+                La <strong>Source</strong> puede publicar eventos sobre uno o varios canales,
+                mientras que cada <strong>Sink</strong> consume los eventos de un único
+                <strong>Channel</strong>. Esta arquitectura proporciona una gran flexibilidad para
+                diseñar distintos flujos de ingesta adaptados a las necesidades del ecosistema Hadoop.
 
             </p>
 
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p class="mb-0">
+
+                    Una vez finalizada esta práctica, el estudiante dispondrá de un agente Apache
+                    Flume completamente operativo capaz de automatizar la incorporación de datos al
+                    sistema HDFS. Esta infraestructura servirá como punto de partida para los
+                    siguientes ejercicios, en los que los datos almacenados serán procesados mediante
+                    Hadoop Streaming, MapReduce y el resto de tecnologías que integran el
+                    ecosistema Hadoop.
+
+                </p>
+
+            </div>
         </div>
+    </div>
 
-        <!-- Navegación entre apartados -->
-        <hr class="my-5">
+    <!-- Navegación entre apartados -->
+    <hr class="my-5">
 
 
+    <div class="text-center mt-5">
+
+        <a href="ejerflume.html" class="btn btn-success btn-lg">
+
+            <i class="bi bi-pencil-square"></i>
+
+            Verificación de la carga de datos en HDFS.
+
+        </a>
         <div class="text-center mt-5">
 
-            <a href="ejerflume.html" class="btn btn-success btn-lg">
+            <a href="procesamiento.html" class="btn btn-outline-success btn-lg">
 
-                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-arrow-left-circle"></i>
 
-                Verificación de la carga de datos en HDFS.
+                Volver al índice del capítulo 5.4
 
             </a>
-            <div class="text-center mt-5">
-
-                <a href="procesamiento.html" class="btn btn-outline-success btn-lg">
-
-                    <i class="bi bi-arrow-left-circle"></i>
-
-                    Volver al índice del capítulo 5.4
-
-                </a>
-
-            </div>
-
 
         </div>
-        <footer class="bg-success text-white mt-5">
 
-            <div class="container py-3 text-center">
 
-                Proyecto Fin de Grado · UNED
+    </div>
+    <footer class="bg-success text-white mt-5">
 
-            </div>
+        <div class="container py-3 text-center">
 
-        </footer>
+            Proyecto Fin de Grado · UNED
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
