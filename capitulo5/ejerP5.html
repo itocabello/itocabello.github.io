@@ -188,7 +188,7 @@
             <a href="validacion.html" class="navbar-brand">
                 <i class="bi bi-list"></i>Índice del capítulo 5.6
             </a>
-            
+
 
         </div>
 
@@ -199,266 +199,419 @@
      CONTENIDO
 ====================================================== -->
 
-    <main class="container mt-5">
 
 
-        <!-- BREADCRUMB -->
 
-        <nav aria-label="breadcrumb">
+    <!-- BREADCRUMB -->
 
-            <ol class="breadcrumb">
+    <nav aria-label="breadcrumb">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li class="breadcrumb-item">
-                    <a href="index.html">Capítulo 5</a>
-                </li>
-
-                <li class="breadcrumb-item active">
-                    Comparativa Avro y Parquet
-                </li>
-
-            </ol>
-
-        </nav>
+        <ol class="breadcrumb">
 
 
-        <!-- TITULO -->
+        </ol>
 
-        <div class="mb-4">
-
-            <h2 class="text-success fw-bold">
-                Ejercicio resuelto 5: Comparativa de los formatos Avro y Parquet
-            </h2>
-
-        </div>
+    </nav>
 
 
-        <!-- INTRODUCCION -->
-
-        <p class="lead">
-
-            Una vez descritos los formatos <strong>Apache Avro</strong> y
-            <strong>Apache Parquet</strong>, y tras analizar los ficheros
-            generados durante los ejercicios anteriores, es posible establecer
-            una comparación de sus principales características y de su
-            comportamiento dentro del ecosistema Hadoop utilizado en este
-            proyecto.
-
-        </p>
-
-        <p>
-
-            En el contexto de este proyecto, ambos formatos almacenan la misma
-            información correspondiente a los accidentes de tráfico. Sin
-            embargo, presentan diferencias significativas en cuanto a su
-            organización interna, consumo de almacenamiento y comportamiento
-            durante el procesamiento mediante <strong>Apache Hadoop
-                MapReduce</strong>.
-
-        </p>
+    <div class="row">
 
 
-        <!-- OBJETIVO -->
 
-        <div class="objetivo">
+        <div class="col-lg-3">
 
-            <h3>
-                <i class="bi bi-bullseye"></i>
-                Objetivo del ejercicio
-            </h3>
+            <div class="list-group shadow">
 
-            <p>
+                <div class="list-group-item active bg-success border-success">
 
-                El objetivo es comparar experimentalmente los formatos
-                <strong>Avro</strong> y <strong>Parquet</strong>, analizando
-                especialmente el espacio de almacenamiento requerido y las
-                implicaciones que presenta cada formato durante el procesamiento
-                distribuido.
+                    <i class="bi bi-book"></i>
 
-            </p>
+                    Ejercicios Practicos
 
-            <ul class="mb-0">
+                </div>
+                <a href="ejerP1.html" class="list-group-item list-group-item-action">
 
-                <li>
-                    Comparar la organización de los datos en Avro y Parquet.
-                </li>
+                    Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
 
-                <li>
-                    Analizar el tamaño de los ficheros generados.
-                </li>
+                </a>
+                <a href="ejerP2.html" class="list-group-item list-group-item-action">
 
-                <li>
-                    Estudiar el impacto del almacenamiento en HDFS.
-                </li>
+                    Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
 
-                <li>
-                    Analizar las operaciones de entrada/salida realizadas
-                    durante MapReduce.
-                </li>
+                </a>
+                <a href="ejerP3.html" class="list-group-item list-group-item-action">
 
-                <li>
-                    Determinar qué formato resulta más adecuado para el
-                    almacenamiento y análisis de los datos del proyecto.
-                </li>
+                    Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
 
-            </ul>
+                </a>
+                <a href="ejerP4.html" class="list-group-item list-group-item-action">
 
-        </div>
+                    Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
 
+                </a>
+                <a href="ejerP5.html" class="list-group-item list-group-item-action">
 
-        <!-- =====================================================
-         PASO 1
-    ====================================================== -->
+                    Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
 
-        <div class="bloque-ejercicio">
+                </a>
+                <a href="ejerP6.html" class="list-group-item list-group-item-action">
 
-            <h3>
-                1. Diferencias en el acceso a los datos
-            </h3>
+                    Ejercicio Final 1 con python3 y MySql.
 
-            <p>
+                </a>
+                <a href="ejerP7.html" class="list-group-item list-group-item-action">
 
-                Una de las principales diferencias entre ambos formatos se
-                encuentra en la forma en que los datos son organizados y
-                posteriormente recuperados durante los procesos de análisis.
+                    Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
 
-            </p>
+                </a>
+                <a href="ejerP8.html" class="list-group-item list-group-item-action">
 
-            <p>
+                    Ejercicio Final 3 Hive sobre cluster Hadoop.
 
-                Al trabajar con <strong>Avro</strong>, las tareas de
-                <strong>MapReduce</strong> leen los registros de acuerdo con
-                la estructura definida por el esquema. Cuando una operación
-                necesita determinados campos, el acceso se realiza sobre los
-                registros almacenados.
+                </a>
 
-            </p>
-
-            <p>
-
-                Por el contrario, <strong>Parquet</strong> organiza la
-                información por columnas. Esta característica permite que una
-                consulta pueda acceder únicamente a las columnas requeridas
-                por el algoritmo, evitando la lectura de información que no
-                resulta necesaria para la operación.
-
-            </p>
-
-            <div class="paso">
-
-                <strong>Avro:</strong>
-
-                organización orientada a registros. Resulta apropiado cuando
-                se necesita recuperar o intercambiar registros completos.
-
-            </div>
-
-            <div class="paso">
-
-                <strong>Parquet:</strong>
-
-                organización columnar. Permite seleccionar las columnas
-                necesarias para una determinada operación analítica.
 
             </div>
 
         </div>
+        <div class="col-lg-9">
+            <section class="bg-success text-white py-4">
+
+                <div class="container">
+
+                    <h2 class="mb-1">
+                        Ejercicio resuelto 5: Comparativa de los formatos Avro y Parquet
+                    </h2>
 
 
-        <!-- =====================================================
-         PASO 2
-    ====================================================== -->
+                </div>
 
-        <div class="bloque-ejercicio">
+            </section>
 
-            <h3>
-                2. Impacto en las operaciones de entrada/salida
-            </h3>
+            <!-- INTRODUCCION -->
 
-            <p>
+            <p class="lead">
 
-                La organización columnar de Parquet tiene una consecuencia
-                directa sobre las operaciones de <strong>entrada/salida
-                    (E/S)</strong> realizadas durante el procesamiento distribuido.
-
-            </p>
-
-            <p>
-
-                Cuando un algoritmo de MapReduce necesita únicamente un
-                subconjunto de las variables disponibles, Parquet puede leer
-                únicamente las columnas requeridas. Esto reduce la cantidad
-                de información que debe ser transferida desde el sistema de
-                almacenamiento hacia los procesos encargados del cálculo.
+                Una vez descritos los formatos <strong>Apache Avro</strong> y
+                <strong>Apache Parquet</strong>, y tras analizar los ficheros
+                generados durante los ejercicios anteriores, es posible establecer
+                una comparación de sus principales características y de su
+                comportamiento dentro del ecosistema Hadoop utilizado en este
+                proyecto.
 
             </p>
 
             <p>
 
-                En consecuencia, al reducirse el volumen de datos leído desde
-                HDFS y transferido entre los diferentes nodos del clúster,
-                también puede disminuir el coste asociado a las operaciones
-                de entrada/salida.
+                En el contexto de este proyecto, ambos formatos almacenan la misma
+                información correspondiente a los accidentes de tráfico. Sin
+                embargo, presentan diferencias significativas en cuanto a su
+                organización interna, consumo de almacenamiento y comportamiento
+                durante el procesamiento mediante <strong>Apache Hadoop
+                    MapReduce</strong>.
 
             </p>
 
-            <div class="comparacion">
 
-                <h4 class="text-success">
-                    <i class="bi bi-arrow-left-right"></i>
-                    Comparación del acceso
-                </h4>
+            <!-- OBJETIVO -->
+
+            <div class="objetivo">
+
+                <h3>
+                    <i class="bi bi-bullseye"></i>
+                    Objetivo del ejercicio
+                </h3>
 
                 <p>
 
-                    <strong>Avro:</strong>
-                    acceso orientado a registros completos.
+                    El objetivo es comparar experimentalmente los formatos
+                    <strong>Avro</strong> y <strong>Parquet</strong>, analizando
+                    especialmente el espacio de almacenamiento requerido y las
+                    implicaciones que presenta cada formato durante el procesamiento
+                    distribuido.
 
                 </p>
 
-                <p class="mb-0">
+                <ul class="mb-0">
 
-                    <strong>Parquet:</strong>
-                    acceso selectivo a las columnas necesarias.
+                    <li>
+                        Comparar la organización de los datos en Avro y Parquet.
+                    </li>
 
-                </p>
+                    <li>
+                        Analizar el tamaño de los ficheros generados.
+                    </li>
+
+                    <li>
+                        Estudiar el impacto del almacenamiento en HDFS.
+                    </li>
+
+                    <li>
+                        Analizar las operaciones de entrada/salida realizadas
+                        durante MapReduce.
+                    </li>
+
+                    <li>
+                        Determinar qué formato resulta más adecuado para el
+                        almacenamiento y análisis de los datos del proyecto.
+                    </li>
+
+                </ul>
 
             </div>
 
-        </div>
+
+            <!-- =====================================================
+         PASO 1
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    1. Diferencias en el acceso a los datos
+                </h3>
+
+                <p>
+
+                    Una de las principales diferencias entre ambos formatos se
+                    encuentra en la forma en que los datos son organizados y
+                    posteriormente recuperados durante los procesos de análisis.
+
+                </p>
+
+                <p>
+
+                    Al trabajar con <strong>Avro</strong>, las tareas de
+                    <strong>MapReduce</strong> leen los registros de acuerdo con
+                    la estructura definida por el esquema. Cuando una operación
+                    necesita determinados campos, el acceso se realiza sobre los
+                    registros almacenados.
+
+                </p>
+
+                <p>
+
+                    Por el contrario, <strong>Parquet</strong> organiza la
+                    información por columnas. Esta característica permite que una
+                    consulta pueda acceder únicamente a las columnas requeridas
+                    por el algoritmo, evitando la lectura de información que no
+                    resulta necesaria para la operación.
+
+                </p>
+
+                <div class="paso">
+
+                    <strong>Avro:</strong>
+
+                    organización orientada a registros. Resulta apropiado cuando
+                    se necesita recuperar o intercambiar registros completos.
+
+                </div>
+
+                <div class="paso">
+
+                    <strong>Parquet:</strong>
+
+                    organización columnar. Permite seleccionar las columnas
+                    necesarias para una determinada operación analítica.
+
+                </div>
+
+            </div>
 
 
-        <!-- =====================================================
+            <!-- =====================================================
+         PASO 2
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    2. Impacto en las operaciones de entrada/salida
+                </h3>
+
+                <p>
+
+                    La organización columnar de Parquet tiene una consecuencia
+                    directa sobre las operaciones de <strong>entrada/salida
+                        (E/S)</strong> realizadas durante el procesamiento distribuido.
+
+                </p>
+
+                <p>
+
+                    Cuando un algoritmo de MapReduce necesita únicamente un
+                    subconjunto de las variables disponibles, Parquet puede leer
+                    únicamente las columnas requeridas. Esto reduce la cantidad
+                    de información que debe ser transferida desde el sistema de
+                    almacenamiento hacia los procesos encargados del cálculo.
+
+                </p>
+
+                <p>
+
+                    En consecuencia, al reducirse el volumen de datos leído desde
+                    HDFS y transferido entre los diferentes nodos del clúster,
+                    también puede disminuir el coste asociado a las operaciones
+                    de entrada/salida.
+
+                </p>
+
+                <div class="comparacion">
+
+                    <h4 class="text-success">
+                        <i class="bi bi-arrow-left-right"></i>
+                        Comparación del acceso
+                    </h4>
+
+                    <p>
+
+                        <strong>Avro:</strong>
+                        acceso orientado a registros completos.
+
+                    </p>
+
+                    <p class="mb-0">
+
+                        <strong>Parquet:</strong>
+                        acceso selectivo a las columnas necesarias.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
          PASO 3
     ====================================================== -->
 
-        <div class="bloque-ejercicio">
+            <div class="bloque-ejercicio">
 
-            <h3>
-                3. Comparación del tamaño de los ficheros
-            </h3>
+                <h3>
+                    3. Comparación del tamaño de los ficheros
+                </h3>
 
-            <p>
+                <p>
 
-                Una vez generados los ficheros equivalentes en los formatos
-                Avro y Parquet, se realizó una comparación de su tamaño en
-                almacenamiento.
+                    Una vez generados los ficheros equivalentes en los formatos
+                    Avro y Parquet, se realizó una comparación de su tamaño en
+                    almacenamiento.
 
-            </p>
+                </p>
 
-            <p>
+                <p>
 
-                Los resultados obtenidos muestran una diferencia considerable
-                entre ambos formatos. El fichero Avro presenta un tamaño de
-                <strong>20,8 MB</strong>, mientras que el fichero equivalente
-                en formato Parquet ocupa únicamente <strong>2,0 MB</strong>.
+                    Los resultados obtenidos muestran una diferencia considerable
+                    entre ambos formatos. El fichero Avro presenta un tamaño de
+                    <strong>20,8 MB</strong>, mientras que el fichero equivalente
+                    en formato Parquet ocupa únicamente <strong>2,0 MB</strong>.
 
-            </p>
+                </p>
 
-            <div class="tabla-responsive">
+                <div class="tabla-responsive">
+
+                    <table class="table table-bordered table-striped tabla-comparativa">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Formato
+                                </th>
+
+                                <th>
+                                    Tamaño del fichero
+                                </th>
+
+                                <th>
+                                    Diferencia
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <strong>Avro</strong>
+                                </td>
+
+                                <td>
+                                    20,8 MB
+                                </td>
+
+                                <td>
+                                    -
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>
+                                    <strong>Parquet</strong>
+                                </td>
+
+                                <td>
+                                    2,0 MB
+                                </td>
+
+                                <td>
+                                    Reducción aproximada del 90 %
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="paso">
+
+                    <strong>Resultado obtenido:</strong>
+
+                    El fichero Parquet requiere aproximadamente un
+                    <span class="resultado-destacado">90 % menos de espacio</span>
+                    que el fichero equivalente en formato Avro.
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+         PASO 4
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    4. Impacto del factor de replicación de HDFS
+                </h3>
+
+                <p>
+
+                    La diferencia de tamaño también tiene un impacto directo sobre
+                    el espacio físico utilizado en el clúster Hadoop cuando los
+                    ficheros son almacenados en <strong>HDFS</strong>.
+
+                </p>
+
+                <p>
+
+                    En el escenario analizado se utiliza el factor de replicación
+                    configurado por defecto, correspondiente a
+                    <strong>tres copias</strong> de cada bloque almacenado.
+
+                </p>
 
                 <table class="table table-bordered table-striped tabla-comparativa">
 
@@ -471,11 +624,15 @@
                             </th>
 
                             <th>
-                                Tamaño del fichero
+                                Tamaño original
                             </th>
 
                             <th>
-                                Diferencia
+                                Factor de replicación
+                            </th>
+
+                            <th>
+                                Espacio aproximado en HDFS
                             </th>
 
                         </tr>
@@ -495,7 +652,11 @@
                             </td>
 
                             <td>
-                                -
+                                3
+                            </td>
+
+                            <td>
+                                62,4 MB
                             </td>
 
                         </tr>
@@ -511,7 +672,11 @@
                             </td>
 
                             <td>
-                                Reducción aproximada del 90 %
+                                3
+                            </td>
+
+                            <td>
+                                6,1 MB
                             </td>
 
                         </tr>
@@ -520,360 +685,247 @@
 
                 </table>
 
-            </div>
-
-            <div class="paso">
-
-                <strong>Resultado obtenido:</strong>
-
-                El fichero Parquet requiere aproximadamente un
-                <span class="resultado-destacado">90 % menos de espacio</span>
-                que el fichero equivalente en formato Avro.
-
-            </div>
-
-        </div>
-
-
-        <!-- =====================================================
-         PASO 4
-    ====================================================== -->
-
-        <div class="bloque-ejercicio">
-
-            <h3>
-                4. Impacto del factor de replicación de HDFS
-            </h3>
-
-            <p>
-
-                La diferencia de tamaño también tiene un impacto directo sobre
-                el espacio físico utilizado en el clúster Hadoop cuando los
-                ficheros son almacenados en <strong>HDFS</strong>.
-
-            </p>
-
-            <p>
-
-                En el escenario analizado se utiliza el factor de replicación
-                configurado por defecto, correspondiente a
-                <strong>tres copias</strong> de cada bloque almacenado.
-
-            </p>
-
-            <table class="table table-bordered table-striped tabla-comparativa">
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Formato
-                        </th>
-
-                        <th>
-                            Tamaño original
-                        </th>
-
-                        <th>
-                            Factor de replicación
-                        </th>
-
-                        <th>
-                            Espacio aproximado en HDFS
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            <strong>Avro</strong>
-                        </td>
-
-                        <td>
-                            20,8 MB
-                        </td>
-
-                        <td>
-                            3
-                        </td>
-
-                        <td>
-                            62,4 MB
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            <strong>Parquet</strong>
-                        </td>
-
-                        <td>
-                            2,0 MB
-                        </td>
-
-                        <td>
-                            3
-                        </td>
-
-                        <td>
-                            6,1 MB
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <p class="mb-0">
-
-                Estos resultados muestran que la reducción conseguida mediante
-                Parquet no solo afecta al tamaño lógico del fichero, sino que
-                también se traslada al espacio físico requerido en el sistema
-                distribuido. Por tanto, la utilización de un formato más
-                compacto permite optimizar el uso de los recursos de
-                almacenamiento disponibles en el clúster.
-
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
-         PASO 5
-    ====================================================== -->
-
-        <div class="bloque-ejercicio">
-
-            <h3>
-                5. Impacto sobre el procesamiento MapReduce
-            </h3>
-
-            <p>
-
-                Desde el punto de vista del procesamiento mediante
-                <strong>Apache Hadoop MapReduce</strong>, el menor tamaño de
-                los archivos Parquet implica una reducción del volumen de
-                información que debe ser leído desde HDFS.
-
-            </p>
-
-            <p>
-
-                Además, su organización columnar permite seleccionar las
-                variables necesarias para una determinada operación. De este
-                modo, cuando un algoritmo no necesita todas las columnas del
-                conjunto de datos, puede evitarse la lectura de información
-                innecesaria.
-
-            </p>
-
-            <p>
-
-                Esta reducción del volumen de datos procesados puede contribuir
-                a disminuir las operaciones de <strong>entrada/salida</strong>
-                y la cantidad de información que debe ser transferida entre
-                los nodos del clúster.
-
-            </p>
-
-            <div class="paso">
-
-                <strong>Consecuencia:</strong>
-
-                Menor cantidad de datos almacenados y leídos → menor volumen
-                de E/S → menor cantidad de información transferida → mayor
-                eficiencia potencial durante los procesos analíticos.
-
-            </div>
-
-        </div>
-
-
-        <!-- =====================================================
-         CONCLUSIONES -->
-        ====================================================== -->
-
-        <div class="comparacion">
-
-            <h3>
-                <i class="bi bi-check2-circle"></i>
-                Conclusiones de la comparativa
-            </h3>
-
-            <p>
-
-                La comparación realizada permite identificar diferencias
-                significativas entre ambos formatos en relación con el
-                almacenamiento y el procesamiento de los datos.
-
-            </p>
-
-            <ul>
-
-                <li>
-
-                    <strong>Avro</strong> presenta un tamaño de
-                    <strong>20,8 MB</strong> para el conjunto de datos
-                    analizado.
-
-                </li>
-
-                <li>
-
-                    <strong>Parquet</strong> ocupa únicamente
-                    <strong>2,0 MB</strong>, lo que supone una reducción
-                    aproximada del <strong>90 %</strong>.
-
-                </li>
-
-                <li>
-
-                    Considerando tres réplicas en HDFS, Avro requiere
-                    aproximadamente <strong>62,4 MB</strong>, mientras que
-                    Parquet requiere aproximadamente <strong>6,1 MB</strong>.
-
-                </li>
-
-                <li>
-
-                    La organización columnar de Parquet permite reducir la
-                    cantidad de información que debe ser leída cuando solo se
-                    necesitan determinadas columnas.
-
-                </li>
-
-                <li>
-
-                    La reducción del volumen de datos puede disminuir las
-                    operaciones de entrada/salida y la transferencia de
-                    información entre los nodos del clúster.
-
-                </li>
-
-            </ul>
-
-        </div>
-
-
-        <!-- =====================================================
-         IMAGEN CONCLUSIONES
-====================================================== -->
-
-        <div class="bloque-ejercicio">
-
-            <h3>
-                6. Evidencia de los resultados obtenidos
-            </h3>
-
-            <p>
-
-                La siguiente figura recoge la evidencia correspondiente a la
-                comparación realizada y resume los principales resultados
-                obtenidos durante el ejercicio.
-
-            </p>
-
-            <div class="text-center mt-4">
-
-                <img src="../img/conclusiones-avro-parquet.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Conclusiones de la comparación entre los formatos Avro y Parquet">
-
-                <p class="figura">
-
-                    <strong>Figura 48.</strong>
-                    Conclusiones de la comparación entre los formatos
-                    <strong>Avro</strong> y <strong>Parquet</strong>.
-                    Fuente: elaboración propia.
+                <p class="mb-0">
+
+                    Estos resultados muestran que la reducción conseguida mediante
+                    Parquet no solo afecta al tamaño lógico del fichero, sino que
+                    también se traslada al espacio físico requerido en el sistema
+                    distribuido. Por tanto, la utilización de un formato más
+                    compacto permite optimizar el uso de los recursos de
+                    almacenamiento disponibles en el clúster.
 
                 </p>
 
             </div>
 
-        </div>
+
+            <!-- =====================================================
+         PASO 5
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    5. Impacto sobre el procesamiento MapReduce
+                </h3>
+
+                <p>
+
+                    Desde el punto de vista del procesamiento mediante
+                    <strong>Apache Hadoop MapReduce</strong>, el menor tamaño de
+                    los archivos Parquet implica una reducción del volumen de
+                    información que debe ser leído desde HDFS.
+
+                </p>
+
+                <p>
+
+                    Además, su organización columnar permite seleccionar las
+                    variables necesarias para una determinada operación. De este
+                    modo, cuando un algoritmo no necesita todas las columnas del
+                    conjunto de datos, puede evitarse la lectura de información
+                    innecesaria.
+
+                </p>
+
+                <p>
+
+                    Esta reducción del volumen de datos procesados puede contribuir
+                    a disminuir las operaciones de <strong>entrada/salida</strong>
+                    y la cantidad de información que debe ser transferida entre
+                    los nodos del clúster.
+
+                </p>
+
+                <div class="paso">
+
+                    <strong>Consecuencia:</strong>
+
+                    Menor cantidad de datos almacenados y leídos → menor volumen
+                    de E/S → menor cantidad de información transferida → mayor
+                    eficiencia potencial durante los procesos analíticos.
+
+                </div>
+
+            </div>
 
 
-        <!-- =====================================================
+            <!-- =====================================================
+         CONCLUSIONES -->
+            ====================================================== -->
+
+            <div class="comparacion">
+
+                <h3>
+                    <i class="bi bi-check2-circle"></i>
+                    Conclusiones de la comparativa
+                </h3>
+
+                <p>
+
+                    La comparación realizada permite identificar diferencias
+                    significativas entre ambos formatos en relación con el
+                    almacenamiento y el procesamiento de los datos.
+
+                </p>
+
+                <ul>
+
+                    <li>
+
+                        <strong>Avro</strong> presenta un tamaño de
+                        <strong>20,8 MB</strong> para el conjunto de datos
+                        analizado.
+
+                    </li>
+
+                    <li>
+
+                        <strong>Parquet</strong> ocupa únicamente
+                        <strong>2,0 MB</strong>, lo que supone una reducción
+                        aproximada del <strong>90 %</strong>.
+
+                    </li>
+
+                    <li>
+
+                        Considerando tres réplicas en HDFS, Avro requiere
+                        aproximadamente <strong>62,4 MB</strong>, mientras que
+                        Parquet requiere aproximadamente <strong>6,1 MB</strong>.
+
+                    </li>
+
+                    <li>
+
+                        La organización columnar de Parquet permite reducir la
+                        cantidad de información que debe ser leída cuando solo se
+                        necesitan determinadas columnas.
+
+                    </li>
+
+                    <li>
+
+                        La reducción del volumen de datos puede disminuir las
+                        operaciones de entrada/salida y la transferencia de
+                        información entre los nodos del clúster.
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =====================================================
+         IMAGEN CONCLUSIONES
+====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    6. Evidencia de los resultados obtenidos
+                </h3>
+
+                <p>
+
+                    La siguiente figura recoge la evidencia correspondiente a la
+                    comparación realizada y resume los principales resultados
+                    obtenidos durante el ejercicio.
+
+                </p>
+
+                <div class="text-center mt-4">
+
+                    <img src="../img/conclusiones-avro-parquet.png" class="img-fluid rounded shadow imagen-ejercicio"
+                        alt="Conclusiones de la comparación entre los formatos Avro y Parquet">
+
+                    <p class="figura">
+
+                        <strong>Figura 48.</strong>
+                        Conclusiones de la comparación entre los formatos
+                        <strong>Avro</strong> y <strong>Parquet</strong>.
+                        Fuente: elaboración propia.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
          CONCLUSION FINAL
 ====================================================== -->
 
-        <div class="objetivo">
+            <div class="objetivo">
 
-            <h3>
-                <i class="bi bi-award"></i>
-                Resultado y conclusión final
-            </h3>
+                <h3>
+                    <i class="bi bi-award"></i>
+                    Resultado y conclusión final
+                </h3>
 
-            <p>
+                <p>
 
-                Los resultados obtenidos en este proyecto demuestran que
-                <strong>Parquet</strong> es el formato más eficiente para el
-                almacenamiento y análisis de los datos de accidentes cuando
-                se prioriza la reducción del espacio ocupado y la optimización
-                del acceso a las columnas necesarias.
+                    Los resultados obtenidos en este proyecto demuestran que
+                    <strong>Parquet</strong> es el formato más eficiente para el
+                    almacenamiento y análisis de los datos de accidentes cuando
+                    se prioriza la reducción del espacio ocupado y la optimización
+                    del acceso a las columnas necesarias.
 
-            </p>
+                </p>
 
-            <p>
+                <p>
 
-                La reducción aproximada del <strong>90 %</strong> observada en
-                el tamaño del fichero tiene una repercusión directa sobre el
-                almacenamiento utilizado en HDFS y, potencialmente, sobre el
-                volumen de datos que debe ser leído y transferido durante los
-                trabajos distribuidos.
+                    La reducción aproximada del <strong>90 %</strong> observada en
+                    el tamaño del fichero tiene una repercusión directa sobre el
+                    almacenamiento utilizado en HDFS y, potencialmente, sobre el
+                    volumen de datos que debe ser leído y transferido durante los
+                    trabajos distribuidos.
 
-            </p>
+                </p>
 
-            <p>
+                <p>
 
-                Por su parte, <strong>Avro</strong> continúa siendo una
-                alternativa adecuada para escenarios en los que resulta
-                especialmente importante el intercambio de datos, la
-                serialización de registros completos o la utilización de un
-                esquema flexible.
+                    Por su parte, <strong>Avro</strong> continúa siendo una
+                    alternativa adecuada para escenarios en los que resulta
+                    especialmente importante el intercambio de datos, la
+                    serialización de registros completos o la utilización de un
+                    esquema flexible.
 
-            </p>
+                </p>
 
-            <p class="mb-0">
+                <p class="mb-0">
 
-                Por tanto, la elección del formato depende de las características
-                del proceso que se pretenda realizar. Para el escenario de
-                análisis de grandes volúmenes de datos planteado en este
-                proyecto, los resultados experimentales obtenidos justifican
-                la utilización de <strong>Parquet</strong> como formato
-                especialmente adecuado para las tareas analíticas.
+                    Por tanto, la elección del formato depende de las características
+                    del proceso que se pretenda realizar. Para el escenario de
+                    análisis de grandes volúmenes de datos planteado en este
+                    proyecto, los resultados experimentales obtenidos justifican
+                    la utilización de <strong>Parquet</strong> como formato
+                    especialmente adecuado para las tareas analíticas.
 
-            </p>
+                </p>
 
-        </div>
+            </div>
 
 
-        <!-- =====================================================
+            <!-- =====================================================
          NAVEGACION
 ====================================================== -->
 
-        <div class="text-center mb-5">
+            <div class="text-center mb-5">
 
-            <a href="ejerP6.html" class="btn btn-success btn-lg">
+                <a href="ejerP6.html" class="btn btn-success btn-lg">
 
-                <i class="bi bi-arrow-right-circle-fill"></i>
-                Siguiente Ejercicio.
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente Ejercicio.
 
-            </a>
+                </a>
+
+            </div>
 
         </div>
 
-
-
-    </main>
+    </div>
 
 
     <!-- =====================================================
