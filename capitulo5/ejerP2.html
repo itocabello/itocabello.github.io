@@ -177,411 +177,472 @@
      CONTENIDO
 ====================================================== -->
 
-    <main class="container mt-5">
 
 
-        <!-- BREADCRUMB -->
 
-        <nav aria-label="breadcrumb">
+    <!-- BREADCRUMB -->
 
-            <ol class="breadcrumb">
+    <nav aria-label="breadcrumb">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
+        <ol class="breadcrumb">
 
-                <li class="breadcrumb-item">
-                    <a href="index.html">Capítulo 5</a>
-                </li>
+            <li class="breadcrumb-item">
+                <a href="../index.html">Inicio</a>
+            </li>
 
-                <li class="breadcrumb-item active">
-                    Conversión a Parquet
-                </li>
+            <li class="breadcrumb-item">
+                <a href="index.html">Capítulo 5</a>
+            </li>
 
-            </ol>
+            <li class="breadcrumb-item active">
+                Conversión a Parquet
+            </li>
 
-        </nav>
+        </ol>
+
+    </nav>
 
 
-        <!-- TITULO -->
+    <div class="row">
 
-        <div class="mb-4">
 
-            <h2 class="text-success fw-bold">
-                Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet
-            </h2>
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Ejercicios Practicos
+
+                </div>
+                <a href="ejerP1.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
+
+                </a>
+                <a href="ejerP2.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
+
+                </a>
+                <a href="ejerP3.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
+
+                </a>
+                <a href="ejerP4.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
+
+                </a>
+                <a href="ejerP5.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
+
+                </a>
+                <a href="ejerP6.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio Final 1 con python3 y MySql.
+
+                </a>
+                <a href="ejerP7.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
+
+                </a>
+                <a href="ejerP8.html" class="list-group-item list-group-item-action">
+
+                    Ejercicio Final 3 Hive sobre cluster Hadoop.
+
+                </a>
+
+
+            </div>
 
         </div>
+        <div class="col-lg-9">
 
 
-        <!-- INTRODUCCION -->
+            <div class="mb-4">
 
-        <p class="lead">
+                <h2 class="text-success fw-bold">
+                    Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet
+                </h2>
 
-            En este ejercicio se propone convertir el conjunto de datos
-            <strong>TABLA_ACCIDENTES_24.csv</strong> al formato
-            <strong>Apache Parquet</strong>, uno de los formatos de almacenamiento
-            columnar más utilizados en entornos Big Data.
-
-        </p>
-
-        <p>
-
-            Para realizar esta transformación se emplea la biblioteca
-            <strong>Pandas</strong> para cargar el fichero CSV y la biblioteca
-            <strong>PyArrow</strong> para generar el fichero Parquet aplicando
-            compresión <strong>Snappy</strong>.
-
-        </p>
-
-        <p>
-
-            A diferencia del formato <strong>Apache Avro</strong>, que utiliza una
-            representación orientada a registros, <strong>Parquet</strong> organiza
-            la información por columnas. Esta característica resulta especialmente
-            adecuada para cargas de trabajo analíticas, ya que permite acceder
-            únicamente a las columnas necesarias durante una consulta y reducir
-            el volumen de información transferida.
-
-        </p>
+            </div>
 
 
-        <!-- OBJETIVO -->
+            <!-- INTRODUCCION -->
 
-        <div class="objetivo">
+            <p class="lead">
 
-            <h3>
-                <i class="bi bi-bullseye"></i>
-                Objetivo del ejercicio
-            </h3>
-
-            <p>
-
-                El objetivo es que el estudiante comprenda el proceso de transformación
-                de un fichero CSV a un formato columnar optimizado para entornos
-                Big Data y pueda comprobar las ventajas que ofrece Parquet para el
-                almacenamiento y posterior análisis de grandes volúmenes de datos.
+                En este ejercicio se propone convertir el conjunto de datos
+                <strong>TABLA_ACCIDENTES_24.csv</strong> al formato
+                <strong>Apache Parquet</strong>, uno de los formatos de almacenamiento
+                columnar más utilizados en entornos Big Data.
 
             </p>
 
-            <ul class="mb-0">
+            <p>
 
-                <li>Cargar el fichero <strong>TABLA_ACCIDENTES_24.csv</strong>.</li>
+                Para realizar esta transformación se emplea la biblioteca
+                <strong>Pandas</strong> para cargar el fichero CSV y la biblioteca
+                <strong>PyArrow</strong> para generar el fichero Parquet aplicando
+                compresión <strong>Snappy</strong>.
 
-                <li>Preparar los datos mediante Pandas.</li>
+            </p>
 
-                <li>Gestionar los valores nulos del conjunto de datos.</li>
+            <p>
 
-                <li>Convertir la información al formato Parquet.</li>
+                A diferencia del formato <strong>Apache Avro</strong>, que utiliza una
+                representación orientada a registros, <strong>Parquet</strong> organiza
+                la información por columnas. Esta característica resulta especialmente
+                adecuada para cargas de trabajo analíticas, ya que permite acceder
+                únicamente a las columnas necesarias durante una consulta y reducir
+                el volumen de información transferida.
 
-                <li>Aplicar compresión <strong>Snappy</strong>.</li>
-
-                <li>Comprobar el fichero Parquet generado.</li>
-
-                <li>Comparar las características del CSV y Parquet.</li>
-
-            </ul>
-
-        </div>
+            </p>
 
 
-        <!-- =====================================================
+            <!-- OBJETIVO -->
+
+            <div class="objetivo">
+
+                <h3>
+                    <i class="bi bi-bullseye"></i>
+                    Objetivo del ejercicio
+                </h3>
+
+                <p>
+
+                    El objetivo es que el estudiante comprenda el proceso de transformación
+                    de un fichero CSV a un formato columnar optimizado para entornos
+                    Big Data y pueda comprobar las ventajas que ofrece Parquet para el
+                    almacenamiento y posterior análisis de grandes volúmenes de datos.
+
+                </p>
+
+                <ul class="mb-0">
+
+                    <li>Cargar el fichero <strong>TABLA_ACCIDENTES_24.csv</strong>.</li>
+
+                    <li>Preparar los datos mediante Pandas.</li>
+
+                    <li>Gestionar los valores nulos del conjunto de datos.</li>
+
+                    <li>Convertir la información al formato Parquet.</li>
+
+                    <li>Aplicar compresión <strong>Snappy</strong>.</li>
+
+                    <li>Comprobar el fichero Parquet generado.</li>
+
+                    <li>Comparar las características del CSV y Parquet.</li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =====================================================
          PASO 1
     ====================================================== -->
 
-        <div class="bloque-ejercicio">
+            <div class="bloque-ejercicio">
 
-            <h3>
-                1. Carga del fichero CSV
-            </h3>
+                <h3>
+                    1. Carga del fichero CSV
+                </h3>
 
-            <p>
+                <p>
 
-                El primer paso consiste en cargar el conjunto de datos
-                <strong>TABLA_ACCIDENTES_24.csv</strong> utilizando la biblioteca
-                <strong>Pandas</strong>. Para ello, se emplea la función
-                <code>read_csv()</code>, especificando el separador utilizado por
-                el fichero y la codificación correspondiente.
+                    El primer paso consiste en cargar el conjunto de datos
+                    <strong>TABLA_ACCIDENTES_24.csv</strong> utilizando la biblioteca
+                    <strong>Pandas</strong>. Para ello, se emplea la función
+                    <code>read_csv()</code>, especificando el separador utilizado por
+                    el fichero y la codificación correspondiente.
 
-            </p>
+                </p>
 
-            <div class="codigo">
+                <div class="codigo">
 
-                df = pd.read_csv(<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.csv",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;sep=";",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;encoding="latin1",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;low_memory=False<br>
-                )<br>
-                <br>
-                # Sustituir valores nulos<br>
-                df = df.where(pd.notnull(df), None)
+                    df = pd.read_csv(<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.csv",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;sep=";",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;encoding="latin1",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;low_memory=False<br>
+                    )<br>
+                    <br>
+                    # Sustituir valores nulos<br>
+                    df = df.where(pd.notnull(df), None)
 
-            </div>
-
-
+                </div>
 
 
 
-            <p>
-
-                En el código mostrado se utiliza <code>pd.read_csv()</code> para
-                cargar el fichero CSV en un <strong>DataFrame</strong>. El parámetro
-                <code>sep=";"</code> indica que los campos están separados mediante
-                punto y coma, mientras que <code>encoding="latin1"</code> permite
-                interpretar correctamente los caracteres presentes en el conjunto
-                de datos.
-
-            </p>
-
-            <p class="mb-0">
-
-                Posteriormente, mediante <code>pd.notnull()</code>, se identifican
-                los valores que no son nulos y se sustituyen los valores ausentes
-                por <code>None</code>, preparando los datos para su posterior
-                conversión al formato Parquet.
-
-            </p>
-
-        </div>
 
 
-        <!-- =====================================================
-         PASO 2
-    ====================================================== -->
+                <p>
 
-        <div class="bloque-ejercicio">
+                    En el código mostrado se utiliza <code>pd.read_csv()</code> para
+                    cargar el fichero CSV en un <strong>DataFrame</strong>. El parámetro
+                    <code>sep=";"</code> indica que los campos están separados mediante
+                    punto y coma, mientras que <code>encoding="latin1"</code> permite
+                    interpretar correctamente los caracteres presentes en el conjunto
+                    de datos.
 
-            <h3>
-                2. Preparación de los datos
-            </h3>
+                </p>
 
-            <p>
+                <p class="mb-0">
 
-                Una vez cargado el fichero CSV, los datos se encuentran almacenados
-                en un DataFrame de Pandas. Esta estructura permite realizar las
-                operaciones necesarias para preparar la información antes de
-                realizar la conversión.
-
-            </p>
-
-            <p>
-
-                La preparación de los datos resulta especialmente importante cuando
-                se trabaja con formatos estructurados como Parquet, ya que cada
-                columna debe mantener un tipo de dato coherente durante el proceso
-                de serialización.
-
-            </p>
-
-            <div class="paso">
-
-                <strong>
-                    Comprobación de los datos:
-                </strong>
-
-                Se puede consultar la estructura del DataFrame, el número de registros
-                y los tipos de datos de sus diferentes columnas antes de realizar
-                la conversión.
-
-            </div>
-
-        </div>
-
-
-        <!-- =====================================================
-         PASO 3
-    ====================================================== -->
-
-        <div class="bloque-ejercicio">
-
-            <h3>
-                3. Conversión al formato Apache Parquet
-            </h3>
-            <!-- IMAGEN ADJUNTA -->
-
-            <div class="text-center mt-4">
-
-                <img src="../img/csv_parquet_pandas.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Código Python utilizado para cargar el fichero CSV mediante Pandas">
-
-                <p class="figura">
-
-                    <strong>Figura 41.</strong>
-                    Carga y preparación del fichero
-                    <code>TABLA_ACCIDENTES_24.csv</code> mediante Pandas.
-                    Fuente: elaboración propia.
+                    Posteriormente, mediante <code>pd.notnull()</code>, se identifican
+                    los valores que no son nulos y se sustituyen los valores ausentes
+                    por <code>None</code>, preparando los datos para su posterior
+                    conversión al formato Parquet.
 
                 </p>
 
             </div>
-            <p>
 
-                Una vez preparados los datos, se procede a generar el fichero
-                <strong>Apache Parquet</strong>. Para ello se utiliza la biblioteca
-                <strong>PyArrow</strong>, que permite convertir el DataFrame de
-                Pandas a una estructura compatible con Parquet.
 
-            </p>
+            <!-- =====================================================
+         PASO 2
+    ====================================================== -->
 
-            <p>
+            <div class="bloque-ejercicio">
 
-                Durante este proceso se aplica compresión <strong>Snappy</strong>,
-                con el objetivo de reducir el espacio ocupado por el fichero
-                manteniendo un buen rendimiento durante las operaciones de lectura
-                y escritura.
+                <h3>
+                    2. Preparación de los datos
+                </h3>
 
-            </p>
+                <p>
 
-            <div class="codigo">
+                    Una vez cargado el fichero CSV, los datos se encuentran almacenados
+                    en un DataFrame de Pandas. Esta estructura permite realizar las
+                    operaciones necesarias para preparar la información antes de
+                    realizar la conversión.
 
-                df.to_parquet(<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.parquet",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;engine="pyarrow",<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;compression="snappy"<br>
-                )
+                </p>
+
+                <p>
+
+                    La preparación de los datos resulta especialmente importante cuando
+                    se trabaja con formatos estructurados como Parquet, ya que cada
+                    columna debe mantener un tipo de dato coherente durante el proceso
+                    de serialización.
+
+                </p>
+
+                <div class="paso">
+
+                    <strong>
+                        Comprobación de los datos:
+                    </strong>
+
+                    Se puede consultar la estructura del DataFrame, el número de registros
+                    y los tipos de datos de sus diferentes columnas antes de realizar
+                    la conversión.
+
+                </div>
 
             </div>
 
-        </div>
+
+            <!-- =====================================================
+         PASO 3
+    ====================================================== -->
+
+            <div class="bloque-ejercicio">
+
+                <h3>
+                    3. Conversión al formato Apache Parquet
+                </h3>
+                <!-- IMAGEN ADJUNTA -->
+
+                <div class="text-center mt-4">
+
+                    <img src="../img/csv_parquet_pandas.png" class="img-fluid rounded shadow imagen-ejercicio"
+                        alt="Código Python utilizado para cargar el fichero CSV mediante Pandas">
+
+                    <p class="figura">
+
+                        <strong>Figura 41.</strong>
+                        Carga y preparación del fichero
+                        <code>TABLA_ACCIDENTES_24.csv</code> mediante Pandas.
+                        Fuente: elaboración propia.
+
+                    </p>
+
+                </div>
+                <p>
+
+                    Una vez preparados los datos, se procede a generar el fichero
+                    <strong>Apache Parquet</strong>. Para ello se utiliza la biblioteca
+                    <strong>PyArrow</strong>, que permite convertir el DataFrame de
+                    Pandas a una estructura compatible con Parquet.
+
+                </p>
+
+                <p>
+
+                    Durante este proceso se aplica compresión <strong>Snappy</strong>,
+                    con el objetivo de reducir el espacio ocupado por el fichero
+                    manteniendo un buen rendimiento durante las operaciones de lectura
+                    y escritura.
+
+                </p>
+
+                <div class="codigo">
+
+                    df.to_parquet(<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"TABLA_ACCIDENTES_24.parquet",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;engine="pyarrow",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;compression="snappy"<br>
+                    )
+
+                </div>
+
+            </div>
 
 
-        <!-- =====================================================
+            <!-- =====================================================
          PASO 4
     ====================================================== -->
 
-        <div class="bloque-ejercicio">
+            <div class="bloque-ejercicio">
 
-            <h3>
-                4. Generación del fichero Parquet
-            </h3>
+                <h3>
+                    4. Generación del fichero Parquet
+                </h3>
 
-            <p>
+                <p>
 
-                Como resultado de la ejecución se obtiene el fichero:
+                    Como resultado de la ejecución se obtiene el fichero:
 
-            </p>
+                </p>
 
-            <div class="codigo">
+                <div class="codigo">
 
-                TABLA_ACCIDENTES_24.parquet
+                    TABLA_ACCIDENTES_24.parquet
+
+                </div>
+
+                <p>
+
+                    Este fichero contiene la información del conjunto de datos original
+                    en un formato binario y columnar, preparado para su utilización
+                    en procesos de análisis dentro de una arquitectura Big Data.
+
+                </p>
 
             </div>
 
-            <p>
 
-                Este fichero contiene la información del conjunto de datos original
-                en un formato binario y columnar, preparado para su utilización
-                en procesos de análisis dentro de una arquitectura Big Data.
-
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
+            <!-- =====================================================
          COMPARACION
     ====================================================== -->
 
-        <div class="comparacion">
+            <div class="comparacion">
 
-            <h3>
-                <i class="bi bi-bar-chart-line"></i>
-                CSV frente a Parquet
-            </h3>
+                <h3>
+                    <i class="bi bi-bar-chart-line"></i>
+                    CSV frente a Parquet
+                </h3>
 
-            <p>
+                <p>
 
-                La conversión permite observar las diferencias existentes entre
-                ambos formatos de almacenamiento.
+                    La conversión permite observar las diferencias existentes entre
+                    ambos formatos de almacenamiento.
 
-            </p>
+                </p>
 
-            <ul>
+                <ul>
 
-                <li>
-                    <strong>CSV:</strong> formato de texto plano, sencillo de
-                    intercambiar y visualizar, pero menos eficiente para grandes
-                    volúmenes de datos.
-                </li>
+                    <li>
+                        <strong>CSV:</strong> formato de texto plano, sencillo de
+                        intercambiar y visualizar, pero menos eficiente para grandes
+                        volúmenes de datos.
+                    </li>
 
-                <li>
-                    <strong>Parquet:</strong> formato binario y columnar,
-                    optimizado para consultas analíticas y almacenamiento
-                    distribuido.
-                </li>
+                    <li>
+                        <strong>Parquet:</strong> formato binario y columnar,
+                        optimizado para consultas analíticas y almacenamiento
+                        distribuido.
+                    </li>
 
-                <li>
-                    <strong>Compresión Snappy:</strong> permite reducir el espacio
-                    ocupado y mejorar la eficiencia de las operaciones de
-                    almacenamiento y lectura.
-                </li>
+                    <li>
+                        <strong>Compresión Snappy:</strong> permite reducir el espacio
+                        ocupado y mejorar la eficiencia de las operaciones de
+                        almacenamiento y lectura.
+                    </li>
 
-            </ul>
+                </ul>
 
-        </div>
+            </div>
 
 
-        <!-- =====================================================
+            <!-- =====================================================
          RESULTADO
     ====================================================== -->
 
-        <div class="objetivo">
+            <div class="objetivo">
 
-            <h3>
-                <i class="bi bi-check-circle-fill"></i>
-                Resultado del ejercicio
-            </h3>
+                <h3>
+                    <i class="bi bi-check-circle-fill"></i>
+                    Resultado del ejercicio
+                </h3>
 
-            <p>
+                <p>
 
-                Al finalizar el ejercicio, el estudiante habrá transformado el
-                conjunto de datos <strong>TABLA_ACCIDENTES_24.csv</strong> en un
-                fichero <strong>TABLA_ACCIDENTES_24.parquet</strong>, utilizando
-                PyArrow y compresión Snappy.
+                    Al finalizar el ejercicio, el estudiante habrá transformado el
+                    conjunto de datos <strong>TABLA_ACCIDENTES_24.csv</strong> en un
+                    fichero <strong>TABLA_ACCIDENTES_24.parquet</strong>, utilizando
+                    PyArrow y compresión Snappy.
 
-            </p>
+                </p>
 
-            <p class="mb-0">
+                <p class="mb-0">
 
-                Este proceso permite comprobar de forma práctica cómo los formatos
-                de almacenamiento optimizados pueden mejorar la eficiencia en
-                arquitecturas Big Data y facilita la posterior utilización de los
-                datos mediante herramientas del ecosistema Hadoop.
+                    Este proceso permite comprobar de forma práctica cómo los formatos
+                    de almacenamiento optimizados pueden mejorar la eficiencia en
+                    arquitecturas Big Data y facilita la posterior utilización de los
+                    datos mediante herramientas del ecosistema Hadoop.
 
-            </p>
+                </p>
+
+            </div>
+            <div class="text-center mt-4">
+
+                <a href="EjerP2Jupyter.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-journal-code"></i>
+
+                    Ver solución completa en Jupyter.
+
+                </a>
+
+            </div>
+            <div class="text-center mt-4">
+
+
+
+            </div>
+            <div class="text-center mb-5">
+
+                <a href="ejerP3.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    Siguiente Ejercicio.
+
+                </a>
+
+            </div>
+
 
         </div>
-        <div class="text-center mt-4">
-
-            <a href="EjerP2Jupyter.html" class="btn btn-success btn-lg">
-
-                <i class="bi bi-journal-code"></i>
-
-                Ver solución completa en Jupyter.
-
-            </a>
-
-        </div>
-<div class="text-center mt-4">
-
-  
-
-</div>
-        <div class="text-center mb-5">
-
-            <a href="ejerP3.html" class="btn btn-success btn-lg">
-
-                <i class="bi bi-arrow-right-circle-fill"></i>
-                Siguiente Ejercicio.
-
-            </a>
-
-        </div>
-
-
-
-    </main>
+    </div>
 
 
     <!-- =====================================================
