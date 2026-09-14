@@ -751,6 +751,45 @@ agent.sinks = sink1</code></pre>
                 </div>
 
             </div>
+            <!-- =================================================
+                         5. CONEXIONES
+                    ================================================== -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        5. Conexión entre Source, Channel y Sink
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        Una vez definidos los tres componentes principales, es
+                        necesario establecer la relación entre ellos para completar
+                        el flujo de ingesta.
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>agent.sources.src1.channels = ch1
+            agent.sinks.sink1.channel = ch1</code></pre>
+
+                    <p class="mb-0">
+
+                        La <strong>Source</strong> envía los eventos al
+                        <strong>Channel</strong>, mientras que el
+                        <strong>Sink</strong> recupera dichos eventos desde el canal
+                        para almacenarlos finalmente en HDFS.
+
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <hr class="my-5">
