@@ -293,12 +293,19 @@
 
             </p>
 
-
             <hr class="my-5">
 
             <h3 class="text-success">
-                Componentes del agente Flume
+                Configuración del agente
             </h3>
+
+            <p>
+
+                La configuración del agente se realiza mediante el fichero
+                <strong>flume_accidentes.conf</strong>, donde se definen todos los parámetros
+                necesarios para el funcionamiento del flujo de ingesta.
+
+            </p>
             <div class="text-center my-5">
 
                 <img src="../img/flume_accidentes_conf.png" class="img-fluid rounded shadow" style="max-width: 90%;"
@@ -314,6 +321,63 @@
                 </p>
 
             </div>
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Elemento</th>
+
+                        <th>Función</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Agent</td>
+
+                        <td>Define el agente y los componentes que lo forman.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Source</td>
+
+                        <td>Detecta nuevos archivos en el directorio monitorizado.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Channel</td>
+
+                        <td>Almacena temporalmente los eventos generados.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Sink</td>
+
+                        <td>Escribe los datos dentro del sistema HDFS.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Componentes del agente Flume
+            </h3>
+
             <div class="row">
 
                 <div class="col-md-4">
@@ -426,71 +490,7 @@
 
             </div>
 
-            <hr class="my-5">
 
-            <h3 class="text-success">
-                Configuración del agente
-            </h3>
-
-            <p>
-
-                La configuración del agente se realiza mediante el fichero
-                <strong>flume_accidentes.conf</strong>, donde se definen todos los parámetros
-                necesarios para el funcionamiento del flujo de ingesta.
-
-            </p>
-
-            <table class="table table-bordered table-striped">
-
-                <thead class="table-success">
-
-                    <tr>
-
-                        <th>Elemento</th>
-
-                        <th>Función</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>Agent</td>
-
-                        <td>Define el agente y los componentes que lo forman.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Source</td>
-
-                        <td>Detecta nuevos archivos en el directorio monitorizado.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Channel</td>
-
-                        <td>Almacena temporalmente los eventos generados.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Sink</td>
-
-                        <td>Escribe los datos dentro del sistema HDFS.</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
 
             <hr class="my-5">
 
