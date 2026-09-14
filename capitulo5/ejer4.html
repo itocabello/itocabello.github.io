@@ -591,6 +591,57 @@ agent.sinks = sink1</code></pre>
                 </div>
 
             </div>
+            <!-- =================================================
+                         2. SOURCE
+                    ================================================== -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        2. Configuración de la Source
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        La fuente (<strong>Source</strong>) constituye el punto de
+                        entrada de los datos dentro de Flume. En este caso se utiliza
+                        el componente <strong>spooldir</strong>, diseñado para
+                        monitorizar un directorio del sistema de archivos y detectar
+                        automáticamente la aparición de nuevos ficheros.
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>agent.sources.src1.type = spooldir
+            agent.sources.src1.spoolDir = /home/hadoop/flume_input
+            agent.sources.src1.fileHeader = true</code></pre>
+
+                    <p>
+
+                        La propiedad <strong>spoolDir</strong> especifica el
+                        directorio que será monitorizado por Flume. Cada vez que se
+                        incorpora un nuevo archivo en esta ubicación, el sistema lo
+                        procesa automáticamente y genera eventos internos que serán
+                        enviados al canal configurado.
+
+                    </p>
+
+                    <p>
+
+                        La opción <strong>fileHeader</strong> permite incluir
+                        información adicional sobre el archivo procesado, facilitando
+                        tareas de trazabilidad y auditoría de los datos.
+
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <hr class="my-5">
