@@ -70,129 +70,243 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <div class="row">
 
-        <nav aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li class="breadcrumb-item active">
-                    Capítulo 5.4
-                </li>
-
-            </ol>
-
-        </nav>
+        <!-- Menú lateral -->
+        <!-- Menú lateral -->
 
 
+        <div class="col-lg-3">
 
-        <!-- ===================================================== -->
-        <!-- 3.5.1 APACHE FLUME -->
-        <!-- ===================================================== -->
+            <div class="list-group shadow">
 
-        <h2 class="text-success mb-4">
-            3.5.1 Apache Flume
-        </h2>
+                <div class="list-group-item active bg-success border-success">
 
-        <p class="lead">
+                    <i class="bi bi-book"></i>
 
-            Apache Flume es una de las herramientas que forman parte del ecosistema
-            <strong>Apache Hadoop</strong> y está diseñada para la recolección,
-            agregación y transferencia de grandes volúmenes de datos desde múltiples
-            fuentes hacia sistemas de almacenamiento distribuido como
-            <strong>HDFS</strong>.
+                    Capítulo 5
 
-        </p>
+                </div>
 
-        <p>
+                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-            Se trata de una aplicación desarrollada en Java que permite automatizar los
-            procesos de ingesta de datos mediante una arquitectura distribuida,
-            escalable y tolerante a fallos. Aunque su destino habitual es HDFS,
-            Apache Flume también puede enviar información a otros sistemas del
-            ecosistema Hadoop como <strong>HBase</strong>, <strong>Apache Solr</strong>
-            o diferentes sistemas de almacenamiento compatibles.
+                    1. Lección 1.Características prácticas Big Data.
 
-        </p>
+                </a>
 
-        <div class="alert alert-success">
+                <a href="fundamentos.html" class="list-group-item list-group-item-action">
 
-            <i class="bi bi-info-circle-fill"></i>
+                    2. Lección 2.Fundamentos de Hadoop.
 
-            Apache Flume constituye uno de los mecanismos más utilizados para automatizar
-            la incorporación de datos hacia Hadoop, evitando procesos manuales de copia
-            de archivos y facilitando la integración de flujos continuos de información.
+                </a>
+                <a href="hdfs.html" class="list-group-item list-group-item-action">
 
+                    3. Lección 3.HDFS y Almacenamiento Distribuido.
+
+                </a>
+
+                <a href="procesamiento.html" class="list-group-item list-group-item-action">
+
+                    4. Lección 4.Inyección/Extracción de datos
+
+
+                </a>
+                <a href="serializacion.html" class="list-group-item list-group-item-action">
+
+                    5. Lección 5. Serialización/Deserialización de los Datos
+
+
+                </a>
+
+                <a href="validacion.html" class="list-group-item list-group-item-action">
+
+                    6. Validación operativa del clúster mediante trabajos.
+
+                </a>
+
+
+
+
+
+            </div>
         </div>
+        <!-- Contenido -->
 
-        <hr class="my-5">
+        <div class="col-lg-9">
 
-        <h3 class="text-success">
-            Arquitectura de Apache Flume
-        </h3>
+            <h2 class="text-success mb-4">
+                Apache Flume
+            </h2>
 
-        <p>
+            <p class="lead">
 
-            El funcionamiento de Flume se basa en un flujo de eventos compuesto por tres
-            elementos principales que trabajan conjuntamente para transportar la
-            información desde el origen hasta su destino final.
-
-        </p>
-
-        <div class="text-center my-4">
-
-            <img src="../img/flume-schema.png" class="img-fluid rounded shadow imagen-ampliable"
-                alt="Arquitectura Apache Flume">
-
-            <p class="text-muted">
-
-                <strong>Figura 17.</strong> Esquema general de funcionamiento de Apache Flume.
+                Apache Flume es una de las herramientas que forman parte del ecosistema
+                <strong>Apache Hadoop</strong> y está diseñada para la recolección,
+                agregación y transferencia de grandes volúmenes de datos desde múltiples
+                fuentes hacia sistemas de almacenamiento distribuido como
+                <strong>HDFS</strong>.
 
             </p>
 
-        </div>
+            <p>
 
-        <hr class="my-5">
+                Se trata de una aplicación desarrollada en Java que permite automatizar los
+                procesos de ingesta de datos mediante una arquitectura distribuida,
+                escalable y tolerante a fallos. Aunque su destino habitual es HDFS,
+                Apache Flume también puede enviar información a otros sistemas del
+                ecosistema Hadoop como <strong>HBase</strong>, <strong>Apache Solr</strong>
+                o diferentes sistemas de almacenamiento compatibles.
 
-        <h3 class="text-success">
-            Componentes principales
-        </h3>
+            </p>
 
-        <div class="row">
+            <div class="alert alert-success">
 
-            <div class="col-md-4">
+                <i class="bi bi-info-circle-fill"></i>
 
-                <div class="card shadow-sm h-100">
+                Apache Flume constituye uno de los mecanismos más utilizados para automatizar
+                la incorporación de datos hacia Hadoop, evitando procesos manuales de copia
+                de archivos y facilitando la integración de flujos continuos de información.
 
-                    <div class="card-header bg-success text-white">
+            </div>
 
-                        Source
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Arquitectura de Apache Flume
+            </h3>
+
+            <p>
+
+                El funcionamiento de Flume se basa en un flujo de eventos compuesto por tres
+                elementos principales que trabajan conjuntamente para transportar la
+                información desde el origen hasta su destino final.
+
+            </p>
+
+            <div class="text-center my-4">
+
+                <img src="../img/flume-schema.png" class="img-fluid rounded shadow imagen-ampliable"
+                    alt="Arquitectura Apache Flume">
+
+                <p class="text-muted">
+
+                    <strong>Figura 17.</strong> Esquema general de funcionamiento de Apache Flume.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Componentes principales
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Source
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Representa el punto de entrada de la información.
+
+                            </p>
+
+                            <ul>
+
+                                <li>Recibe los datos desde aplicaciones o ficheros.</li>
+
+                                <li>Genera eventos Flume.</li>
+
+                                <li>Envía los eventos al Channel.</li>
+
+                                <li>Puede monitorizar directorios automáticamente.</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
-                    <div class="card-body">
+                </div>
 
-                        <p>
+                <div class="col-md-4">
 
-                            Representa el punto de entrada de la información.
+                    <div class="card shadow-sm h-100">
 
-                        </p>
+                        <div class="card-header bg-success text-white">
 
-                        <ul>
+                            Channel
 
-                            <li>Recibe los datos desde aplicaciones o ficheros.</li>
+                        </div>
 
-                            <li>Genera eventos Flume.</li>
+                        <div class="card-body">
 
-                            <li>Envía los eventos al Channel.</li>
+                            <p>
 
-                            <li>Puede monitorizar directorios automáticamente.</li>
+                                Almacén temporal que conecta Source y Sink.
 
-                        </ul>
+                            </p>
+
+                            <ul>
+
+                                <li>Guarda los eventos temporalmente.</li>
+
+                                <li>Desacopla origen y destino.</li>
+
+                                <li>Garantiza una transferencia fiable.</li>
+
+                                <li>Puede implementarse en memoria o disco.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Sink
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+
+                                Destino final de los datos.
+
+                            </p>
+
+                            <ul>
+
+                                <li>Recibe los eventos desde el Channel.</li>
+
+                                <li>Escribe la información en HDFS.</li>
+
+                                <li>También puede enviar datos a HBase o Solr.</li>
+
+                                <li>Finaliza el flujo de transferencia.</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
@@ -200,106 +314,32 @@
 
             </div>
 
-            <div class="col-md-4">
+            <hr class="my-5">
 
-                <div class="card shadow-sm h-100">
+            <h3 class="text-success">
+                Funcionamiento del agente Flume
+            </h3>
 
-                    <div class="card-header bg-success text-white">
+            <p>
 
-                        Channel
+                Para utilizar Apache Flume es necesario ejecutar un
+                <strong>Agente Flume</strong>, un proceso Java encargado de coordinar
+                el funcionamiento de los componentes Source, Channel y Sink.
 
-                    </div>
+            </p>
 
-                    <div class="card-body">
+            <p>
 
-                        <p>
+                Durante la ejecución, la Source detecta nuevos datos y genera eventos que
+                son almacenados temporalmente en el Channel. Posteriormente, el Sink recupera
+                dichos eventos y los escribe automáticamente en el sistema de almacenamiento
+                configurado.
 
-                            Almacén temporal que conecta Source y Sink.
+            </p>
 
-                        </p>
+            <div class="alert alert-light border">
 
-                        <ul>
-
-                            <li>Guarda los eventos temporalmente.</li>
-
-                            <li>Desacopla origen y destino.</li>
-
-                            <li>Garantiza una transferencia fiable.</li>
-
-                            <li>Puede implementarse en memoria o disco.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Sink
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <p>
-
-                            Destino final de los datos.
-
-                        </p>
-
-                        <ul>
-
-                            <li>Recibe los eventos desde el Channel.</li>
-
-                            <li>Escribe la información en HDFS.</li>
-
-                            <li>También puede enviar datos a HBase o Solr.</li>
-
-                            <li>Finaliza el flujo de transferencia.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Funcionamiento del agente Flume
-        </h3>
-
-        <p>
-
-            Para utilizar Apache Flume es necesario ejecutar un
-            <strong>Agente Flume</strong>, un proceso Java encargado de coordinar
-            el funcionamiento de los componentes Source, Channel y Sink.
-
-        </p>
-
-        <p>
-
-            Durante la ejecución, la Source detecta nuevos datos y genera eventos que
-            son almacenados temporalmente en el Channel. Posteriormente, el Sink recupera
-            dichos eventos y los escribe automáticamente en el sistema de almacenamiento
-            configurado.
-
-        </p>
-
-        <div class="alert alert-light border">
-
-            <pre class="mb-0">
+                <pre class="mb-0">
 Aplicación / Archivo
           │
           ▼
@@ -315,113 +355,115 @@ Aplicación / Archivo
          HDFS
 </pre>
 
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Arquitectura distribuida
-        </h3>
-
-        <p>
-
-            Una instalación completa de Apache Flume puede estar formada por múltiples
-            agentes distribuidos dentro de una red. Cada agente ejecuta uno o varios
-            componentes Source, Channel y Sink, permitiendo construir arquitecturas de
-            ingesta altamente escalables.
-
-        </p>
-
-        <p>
-
-            Los agentes situados en los extremos de la infraestructura recopilan la
-            información desde diferentes fuentes, mientras que otros agentes intermedios
-            pueden agregar, transformar y reenviar los eventos hasta su almacenamiento
-            definitivo en HDFS.
-
-        </p>
-
-        <div class="card shadow-sm">
-
-            <div class="card-header bg-success text-white">
-
-                Ventajas de Apache Flume
-
             </div>
 
-            <div class="card-body">
+            <hr class="my-5">
 
-                <ul>
+            <h3 class="text-success">
+                Arquitectura distribuida
+            </h3>
 
-                    <li>Automatiza completamente la ingesta de datos.</li>
+            <p>
 
-                    <li>Arquitectura distribuida y escalable.</li>
-
-                    <li>Tolerancia frente a fallos.</li>
-
-                    <li>Alta disponibilidad.</li>
-
-                    <li>Integración nativa con Hadoop.</li>
-
-                    <li>Configuración sencilla mediante archivos <strong>.conf</strong>.</li>
-
-                    <li>Compatible con diferentes orígenes y destinos de datos.</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Aplicación en este proyecto
-        </h3>
-
-        <p>
-
-            En la infraestructura desarrollada para este proyecto, Apache Flume será el
-            encargado de automatizar la transferencia del conjunto de datos
-            <strong>TABLA_ACCIDENTES_24.csv</strong> desde el sistema de archivos local
-            hasta el sistema distribuido HDFS.
-
-        </p>
-
-        <p>
-
-            El agente Flume se ejecutará sobre el contenedor
-            <strong>NameNode</strong>, donde supervisará continuamente un directorio
-            compartido. Cada vez que aparezca un nuevo fichero, éste será enviado
-            automáticamente al clúster Hadoop para su posterior procesamiento mediante
-            <strong>Hadoop Streaming</strong>, <strong>MapReduce</strong> y
-            <strong>Apache Hive</strong>.
-
-        </p>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>Conclusión</h4>
-
-            <p class="mb-0">
-
-                Apache Flume constituye una herramienta fundamental dentro del ecosistema
-                Hadoop para la automatización de la ingesta de datos. Gracias a su modelo
-                basado en agentes, Source, Channel y Sink, permite construir flujos de
-                transferencia robustos, escalables y completamente automatizados,
-                facilitando la incorporación continua de información hacia HDFS y sirviendo
-                como punto de partida para el procesamiento distribuido de grandes volúmenes
-                de datos.
+                Una instalación completa de Apache Flume puede estar formada por múltiples
+                agentes distribuidos dentro de una red. Cada agente ejecuta uno o varios
+                componentes Source, Channel y Sink, permitiendo construir arquitecturas de
+                ingesta altamente escalables.
 
             </p>
 
+            <p>
+
+                Los agentes situados en los extremos de la infraestructura recopilan la
+                información desde diferentes fuentes, mientras que otros agentes intermedios
+                pueden agregar, transformar y reenviar los eventos hasta su almacenamiento
+                definitivo en HDFS.
+
+            </p>
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-success text-white">
+
+                    Ventajas de Apache Flume
+
+                </div>
+
+                <div class="card-body">
+
+                    <ul>
+
+                        <li>Automatiza completamente la ingesta de datos.</li>
+
+                        <li>Arquitectura distribuida y escalable.</li>
+
+                        <li>Tolerancia frente a fallos.</li>
+
+                        <li>Alta disponibilidad.</li>
+
+                        <li>Integración nativa con Hadoop.</li>
+
+                        <li>Configuración sencilla mediante archivos <strong>.conf</strong>.</li>
+
+                        <li>Compatible con diferentes orígenes y destinos de datos.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Aplicación en este proyecto
+            </h3>
+
+            <p>
+
+                En la infraestructura desarrollada para este proyecto, Apache Flume será el
+                encargado de automatizar la transferencia del conjunto de datos
+                <strong>TABLA_ACCIDENTES_24.csv</strong> desde el sistema de archivos local
+                hasta el sistema distribuido HDFS.
+
+            </p>
+
+            <p>
+
+                El agente Flume se ejecutará sobre el contenedor
+                <strong>NameNode</strong>, donde supervisará continuamente un directorio
+                compartido. Cada vez que aparezca un nuevo fichero, éste será enviado
+                automáticamente al clúster Hadoop para su posterior procesamiento mediante
+                <strong>Hadoop Streaming</strong>, <strong>MapReduce</strong> y
+                <strong>Apache Hive</strong>.
+
+            </p>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p class="mb-0">
+
+                    Apache Flume constituye una herramienta fundamental dentro del ecosistema
+                    Hadoop para la automatización de la ingesta de datos. Gracias a su modelo
+                    basado en agentes, Source, Channel y Sink, permite construir flujos de
+                    transferencia robustos, escalables y completamente automatizados,
+                    facilitando la incorporación continua de información hacia HDFS y sirviendo
+                    como punto de partida para el procesamiento distribuido de grandes volúmenes
+                    de datos.
+
+                </p>
+
+            </div>
+
+
+
         </div>
-
-
-
     </div>
+
     <div class="text-center mt-5">
 
         <a href="index.html" class="btn btn-outline-success btn-lg">
