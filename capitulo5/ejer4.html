@@ -179,29 +179,35 @@
             </div>
             <hr class="my-5">
 
-            <h3 class="text-success">
-                Aplicación en este proyecto
-            </h3>
+            <div class="card shadow-sm mb-4">
 
-            <p>
+                <div class="card-body">
 
-                En la infraestructura desarrollada para este proyecto, Apache Flume será el
-                encargado de automatizar la transferencia del conjunto de datos
-                <strong>TABLA_ACCIDENTES_24.csv</strong> desde el sistema de archivos local
-                hasta el sistema distribuido HDFS.
+                    <h3 class="text-success">
+                        Aplicación en este proyecto
+                    </h3>
 
-            </p>
+                    <p>
 
-            <p>
+                        En la infraestructura desarrollada para este proyecto, Apache Flume será el
+                        encargado de automatizar la transferencia del conjunto de datos
+                        <strong>TABLA_ACCIDENTES_24.csv</strong> desde el sistema de archivos local
+                        hasta el sistema distribuido HDFS.
 
-                El agente Flume se ejecutará sobre el contenedor
-                <strong>NameNode</strong>, donde supervisará continuamente un directorio
-                compartido. Cada vez que aparezca un nuevo fichero, éste será enviado
-                automáticamente al clúster Hadoop para su posterior procesamiento mediante
-                <strong>Hadoop Streaming</strong>, <strong>MapReduce</strong> y
-                <strong>Apache Hive</strong>.
+                    </p>
 
-            </p>
+                    <p>
+
+                        El agente Flume se ejecutará sobre el contenedor
+                        <strong>NameNode</strong>, donde supervisará continuamente un directorio
+                        compartido. Cada vez que aparezca un nuevo fichero, éste será enviado
+                        automáticamente al clúster Hadoop para su posterior procesamiento mediante
+                        <strong>Hadoop Streaming</strong>, <strong>MapReduce</strong> y
+                        <strong>Apache Hive</strong>.
+
+                    </p>
+                </div>
+            </div>
             <hr class="my-5">
 
             <h3 class="text-success">
