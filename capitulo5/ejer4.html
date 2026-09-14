@@ -233,49 +233,52 @@
 
 
             <hr class="my-5">
+            <div class="card shadow-sm mb-4">
 
-            <h3 class="text-success">
-                Conjunto de datos utilizado
-            </h3>
+                <div class="card-body">
+                    <h3 class="text-success">
+                        Conjunto de datos utilizado
+                    </h3>
 
-            <div class="row">
+                    <div class="row">
 
-                <div class="col-md-8">
+                        <div class="col-md-8">
 
-                    <p>
+                            <p>
 
-                        Como caso práctico se utilizará el fichero
-                        <strong>TABLA_ACCIDENTES_24.csv</strong>,
-                        correspondiente a los microdatos oficiales de accidentes con víctimas publicados
-                        por la Dirección General de Tráfico.
+                                Como caso práctico se utilizará el fichero
+                                <strong>TABLA_ACCIDENTES_24.csv</strong>,
+                                correspondiente a los microdatos oficiales de accidentes con víctimas publicados
+                                por la Dirección General de Tráfico.
 
-                    </p>
+                            </p>
 
-                    <p>
+                            <p>
 
-                        Tal y como se explicó en el apartado <strong>5.2.3</strong>, el fichero ha sido
-                        descargado previamente desde la fuente oficial y almacenado en el directorio:
+                                Tal y como se explicó en el apartado <strong>5.2.3</strong>, el fichero ha sido
+                                descargado previamente desde la fuente oficial y almacenado en el directorio:
 
-                    </p>
+                            </p>
 
-                    <div class="alert alert-light border">
+                            <div class="alert alert-light border">
 
-                        <pre class="mb-0">
+                                <pre class="mb-0">
     /media/notebooks/dataset
     </pre>
 
+                            </div>
+
+                            <p>
+
+                                Este directorio está compartido con el contenedor <strong>NameNode</strong>,
+                                permitiendo que Apache Flume pueda acceder directamente al fichero para iniciar
+                                su proceso de ingesta.
+
+                            </p>
+
+                        </div>
                     </div>
-
-                    <p>
-
-                        Este directorio está compartido con el contenedor <strong>NameNode</strong>,
-                        permitiendo que Apache Flume pueda acceder directamente al fichero para iniciar
-                        su proceso de ingesta.
-
-                    </p>
-
                 </div>
-
 
 
             </div>
