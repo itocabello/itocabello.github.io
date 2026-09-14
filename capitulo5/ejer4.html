@@ -290,24 +290,54 @@
 
             <hr class="my-5">
 
-            <h3 class="text-success">
-                Configuración del agente
-            </h3>
+            <div class="card shadow-sm mb-4">
 
-            <p>
+                <div class="card-body">
 
-                La configuración del agente se realiza mediante el fichero
-                <strong>flume_accidentes.conf</strong>, donde se definen todos los parámetros
-                necesarios para el funcionamiento del flujo de ingesta.
+                    <h2 class="text-success">
+                        Configuración del agente Apache Flume
+                    </h2>
 
-            </p>
-            <div class="text-center my-5">
+                    <p>
 
-                <img src="../img/flume_accidentes_conf.png" class="img-fluid rounded shadow" style="max-width: 90%;"
-                    alt="Configuración del agente Apache Flume">
+                        Una vez definido el objetivo de la ingesta de datos mediante
+                        <strong>Apache Flume</strong>, es necesario configurar el agente
+                        encargado de realizar el proceso de transferencia desde el
+                        sistema de archivos local hasta <strong>HDFS</strong>.
 
-                <p class="text-muted mt-3">
+                    </p>
 
+                    <p>
+
+                        La configuración se realiza mediante un fichero de propiedades
+                        denominado <code>flume_accidentes.conf</code>, en el que se
+                        definen los componentes que forman parte del flujo de datos y
+                        las relaciones existentes entre ellos.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                         IMAGEN
+                    ================================================== -->
+
+
+
+            <div class="text-center my-4">
+
+
+
+                <img src="../img/flume_accidentes_conf.png" class="img-fluid rounded shadow" style="cursor:pointer;"
+                    alt="Configuración del agente Apache Flume" data-bs-toggle="modal"
+                    data-bs-target="#imgClusterModal3">
+
+
+
+                <p class="text-muted">
 
                     Configuración del agente Apache Flume mediante el fichero
                     <code>flume_accidentes.conf</code>.
@@ -316,57 +346,6 @@
                 </p>
 
             </div>
-            <table class="table table-bordered table-striped">
-
-                <thead class="table-success">
-
-                    <tr>
-
-                        <th>Elemento</th>
-
-                        <th>Función</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>Agent</td>
-
-                        <td>Define el agente y los componentes que lo forman.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Source</td>
-
-                        <td>Detecta nuevos archivos en el directorio monitorizado.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Channel</td>
-
-                        <td>Almacena temporalmente los eventos generados.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Sink</td>
-
-                        <td>Escribe los datos dentro del sistema HDFS.</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
             <hr class="my-5">
 
             <h3 class="text-success">
