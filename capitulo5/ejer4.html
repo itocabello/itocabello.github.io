@@ -489,7 +489,108 @@
                 </div>
 
             </div>
+            <div class="card shadow-sm mb-4">
 
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        1. Definición del agente
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        En primer lugar, se declara la existencia del agente y de los
+                        componentes que lo integran:
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>agent.sources = src1
+agent.channels = ch1
+agent.sinks = sink1</code></pre>
+
+                    <p>
+
+                        Esta configuración indica que el agente dispone de una fuente
+                        de datos denominada <strong>src1</strong>, un canal de
+                        comunicación denominado <strong>ch1</strong> y un mecanismo
+                        de almacenamiento final denominado <strong>sink1</strong>.
+
+                    </p>
+
+
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-striped">
+
+                            <thead class="table-success">
+
+                                <tr>
+
+                                    <th>Componente</th>
+                                    <th>Identificador</th>
+                                    <th>Función</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>Source</td>
+
+                                    <td>
+                                        <code>src1</code>
+                                    </td>
+
+                                    <td>
+                                        Entrada de los datos al agente Flume.
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Channel</td>
+
+                                    <td>
+                                        <code>ch1</code>
+                                    </td>
+
+                                    <td>
+                                        Almacenamiento temporal de los eventos.
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>Sink</td>
+
+                                    <td>
+                                        <code>sink1</code>
+                                    </td>
+
+                                    <td>
+                                        Destino final de los datos en HDFS.
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
             <hr class="my-5">
