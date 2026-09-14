@@ -642,6 +642,56 @@ agent.sinks = sink1</code></pre>
                 </div>
 
             </div>
+            <!-- =================================================
+                         3. CHANNEL
+                    ================================================== -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        3. Configuración del Channel
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        El canal (<strong>Channel</strong>) actúa como una memoria
+                        intermedia entre la fuente y el destino. Su función principal
+                        es garantizar la transferencia de los eventos, desacoplando la
+                        velocidad de recepción de datos de la velocidad de escritura
+                        en el sistema de almacenamiento.
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>agent.channels.ch1.type = memory
+            agent.channels.ch1.capacity = 1000
+            agent.channels.ch1.transactionCapacity = 100</code></pre>
+
+                    <p>
+
+                        En este proyecto se utiliza un canal en memoria
+                        (<strong>memory</strong>), adecuado para entornos de
+                        laboratorio y escenarios formativos.
+
+                    </p>
+
+                    <p>
+
+                        La propiedad <strong>capacity</strong> determina el número
+                        máximo de eventos que pueden almacenarse simultáneamente,
+                        mientras que <strong>transactionCapacity</strong> establece
+                        el número máximo de eventos procesados en cada transacción.
+
+                    </p>
+
+                </div>
+
+            </div>
 
 
             <hr class="my-5">
