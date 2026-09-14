@@ -693,6 +693,65 @@ agent.sinks = sink1</code></pre>
 
             </div>
 
+            <!-- =================================================
+                         4. SINK
+                    ================================================== -->
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-header bg-success text-white">
+
+                    <h3 class="mb-0">
+                        4. Configuración del Sink
+                    </h3>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        El componente <strong>Sink</strong> representa el destino final
+                        de los datos capturados por Flume. En este caso se configura un
+                        sumidero HDFS encargado de almacenar la información en el
+                        clúster Hadoop.
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>agent.sinks.sink1.type = hdfs
+            agent.sinks.sink1.hdfs.path = hdfs://namenode:9000/datasets/accidentes24/
+            agent.sinks.sink1.hdfs.fileType = DataStream
+            agent.sinks.sink1.hdfs.writeFormat = Text
+            agent.sinks.sink1.hdfs.batchSize = 50</code></pre>
+
+                    <p>
+
+                        La propiedad <strong>hdfs.path</strong> define la ubicación
+                        dentro del sistema distribuido donde se almacenarán los datos.
+
+                    </p>
+
+                    <p>
+
+                        Por su parte, <strong>fileType</strong> establece el modo de
+                        escritura empleado por Flume, mientras que
+                        <strong>writeFormat</strong> indica que la información será
+                        almacenada como texto plano.
+
+                    </p>
+
+                    <p class="mb-0">
+
+                        El parámetro <strong>batchSize</strong> determina el número de
+                        eventos que serán enviados a HDFS en cada operación de
+                        escritura, mejorando la eficiencia del proceso.
+
+                    </p>
+
+                </div>
+
+            </div>
+
 
             <hr class="my-5">
 
