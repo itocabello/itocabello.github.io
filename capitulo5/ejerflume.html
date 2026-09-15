@@ -290,17 +290,20 @@
 
                     <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>3. Incorporación del fichero.</strong>
+                        <strong>3. Incorporación del fichero a cargar en HDFS.</strong>
 
                         <p class="mt-2 mb-2">
 
-                            El usuario copia el fichero
+                            Una vez iniciado el agente, para verificar que todo funciona correctamente, el usuario
+                            copiara el fichero
                             <code>TABLA_ACCIDENTES_24.csv</code> en el directorio
-                            monitorizado:
+                            monitorizado <strong>/home/hadoop/flume_input</strong>.
 
                         </p>
 
-                        <pre class="bg-dark text-light p-3 rounded"><code>/home/hadoop/flume_input</code></pre>
+                        <pre
+                            class="bg-dark text-light p-3 rounded"><code>cp /media/notebooks/dataset/TABLA_ACCIDENTES_24.csv /home/hadoop/flume_input</code></pre>
+
 
                     </div>
 
