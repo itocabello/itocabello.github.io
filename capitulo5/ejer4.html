@@ -680,10 +680,11 @@ agent.sources.src1.fileHeader = true</code></pre>
                         en el sistema de almacenamiento.
 
                     </p>
-
                     <pre class="bg-dark text-light p-3 rounded"><code>agent.channels.ch1.type = memory
-            agent.channels.ch1.capacity = 1000
-            agent.channels.ch1.transactionCapacity = 100</code></pre>
+agent.channels.ch1.capacity = 1000
+agent.channels.ch1.transactionCapacity = 100</code></pre>
+
+
 
                     <p>
 
@@ -730,12 +731,12 @@ agent.sources.src1.fileHeader = true</code></pre>
                         clúster Hadoop.
 
                     </p>
-
                     <pre class="bg-dark text-light p-3 rounded"><code>agent.sinks.sink1.type = hdfs
-            agent.sinks.sink1.hdfs.path = hdfs://namenode:9000/datasets/accidentes24/
-            agent.sinks.sink1.hdfs.fileType = DataStream
-            agent.sinks.sink1.hdfs.writeFormat = Text
-            agent.sinks.sink1.hdfs.batchSize = 50</code></pre>
+agent.sinks.sink1.hdfs.path = hdfs://namenode:9000/datasets/accidentes24/
+agent.sinks.sink1.hdfs.fileType = DataStream
+agent.sinks.sink1.hdfs.writeFormat = Text
+agent.sinks.sink1.hdfs.batchSize = 50</code></pre>
+
 
                     <p>
 
@@ -787,9 +788,9 @@ agent.sources.src1.fileHeader = true</code></pre>
                         el flujo de ingesta.
 
                     </p>
-
                     <pre class="bg-dark text-light p-3 rounded"><code>agent.sources.src1.channels = ch1
-            agent.sinks.sink1.channel = ch1</code></pre>
+agent.sinks.sink1.channel = ch1</code></pre>
+
 
                     <p class="mb-0">
 
