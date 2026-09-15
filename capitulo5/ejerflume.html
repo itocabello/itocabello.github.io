@@ -222,13 +222,13 @@
 
                     <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>1. Incorporación del fichero flume_accidentes.conf a directorio flume del
+                        <strong>1. Incorporación del fichero flume_accidentes.conf al directorio flume del
                             Namenode.</strong>
 
                         <p class="mt-2 mb-2">
 
-                            El usuario copia el fichero vista en el punto anterior,
-                            <code>flume_accidentes.conf</code>,al directorio <strong>/usr/local/flume/conf/</strong>
+                            El usuario copiara el fichero analizado en el punto anterior denominado
+                            <code>flume_accidentes.conf</code>,en el directorio <strong>/usr/local/flume/conf/</strong>
 
 
                         </p>
@@ -253,7 +253,9 @@
 
                         <p class="mt-2 mb-2">
 
-                            Una vez configurado el agente, se procede a su ejecución mediante el comando mostrado a
+                            Dentro del contenedor Namenode, <strong>sudo docker exec -it namenode /bin/bash</strong> y
+                            tras el punto 1 anterior, se procede a iniciar el agente flume, mediante el comando mostrado
+                            a
                             continuación. La instrucción
                             inicia Apache Flume utilizando el agente denominado agent y la configuración definida en el
                             fichero
@@ -272,11 +274,11 @@
 
                         <div class="text-center mt-4">
 
-                            <a href="Ejer4Jupyter.html" target="_blank" class="btn btn-success btn-lg">
+                            <a href="IniFlumeJupyter.html" target="_blank" class="btn btn-success btn-lg">
 
                                 <i class="bi bi-journal-code"></i>
 
-                                Consultar fichero flume_accidentes.conf en Jupyter.
+                                Consultar Iniciar Agente Flume en Jupyter.
 
                             </a>
 
