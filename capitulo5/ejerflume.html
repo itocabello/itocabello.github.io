@@ -76,7 +76,15 @@
 
     </nav>
 
+    <nav aria-label="breadcrumb">
 
+        <ol class="breadcrumb">
+
+
+
+        </ol>
+
+    </nav>
     <div class="row">
 
         <!-- Menú lateral -->
@@ -146,10 +154,16 @@
 
                 <div class="card-body">
 
-                    <h2 class="text-success">
-                        Generación de los ficheros en HDFS
-                    </h2>
+                    <section class="bg-success text-white py-4">
 
+                        <div class="container">
+
+                            <h2 class="mb-1">
+                                Generación de los ficheros en HDFS
+                            </h2>
+                        </div>
+
+                    </section>
                     <p>
 
                         Durante el proceso de ingesta, Apache Flume almacena la
@@ -244,12 +258,12 @@
                             inicia Apache Flume utilizando el agente denominado agent y la configuración definida en el
                             fichero
                             <strong>flume_accidentes.conf</strong>.
-                        <pre class="bg-dark text-light p-3 rounded"><code>
-                            flume-ng agent \
+                        <pre class="bg-dark text-light p-3 rounded"><code>flume-ng agent \
                             --name agent \
-                            --conf /usr/local/flume/conf \
-                            --conf-file /usr/local/flume/conf/flume_accidentes.conf \
-                            -Dflume.root.logger=INFO,console</code></pre>
+                        --conf /usr/local/flume/conf \
+                    --conf-file /usr/local/flume/conf/flume_accidentes.conf \
+                -Dflume.root.logger=INFO,console</code></pre>
+
 
 
                         </p>
