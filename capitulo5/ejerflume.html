@@ -317,7 +317,7 @@
                         <p class="mb-0 mt-2">
 
                             La Source detecta automáticamente el nuevo archivo
-                            incorporado al directorio monitorizado.
+                            <strong>TABLA_ACCIDENTES_24.csv</strong> incorporado al directorio monitorizado.
 
                         </p>
 
@@ -328,7 +328,7 @@
 
                     <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>3. Generación de eventos.</strong>
+                        <strong>5. Generación de eventos.</strong>
 
                         <p class="mb-0 mt-2">
 
@@ -344,7 +344,7 @@
 
                     <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>4. Almacenamiento temporal.</strong>
+                        <strong>6. Almacenamiento temporal.</strong>
 
                         <p class="mb-0 mt-2">
 
@@ -360,15 +360,38 @@
 
                     <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>5. Transferencia a HDFS.</strong>
+                        <strong>7. Transferencia a HDFS.</strong>
 
                         <p class="mb-0 mt-2">
 
                             El <strong>Sink</strong> recupera los eventos y los
                             transfiere al sistema de archivos distribuido
-                            <strong>HDFS</strong>.
-
+                            <strong>HDFS</strong>. Consultar los ficheros generados en HDFS para confirmar que se estan
+                            cargando los datos correctamente.
+                        <pre
+                            class="bg-dark text-light p-3 rounded"><code>!hadoop dfs -ls   /datasets/accidentes24</code></pre>
                         </p>
+                        <div class="text-center my-4">
+
+
+
+                            <img src="../img/hadoop_dfs_flume.png" class="img-fluid rounded shadow"
+                                style="cursor:pointer;"
+                                alt="ficheros generados mediante flume y cargados en HDFS de forma automatica"
+                                data-bs-toggle="modal" data-bs-target="#imgClusterModal3">
+
+
+
+                            <p class="text-muted">
+
+                                Ficheros generados mediante flume y cargados en HDFS de forma automatica.
+
+                            </p>
+
+                        </div>
+
+
+
 
                     </div>
 
@@ -510,7 +533,34 @@
             </div>
 
         </div>
+        <div class="modal fade" id="imgClusterModal" tabindex="-1">
 
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            hadoop_dfs_flume
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img src="../img/hadoop_dfs_flume.png" class="img-fluid">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
         <!-- =====================================================
          PIE DE PÁGINA
     ====================================================== -->
