@@ -82,7 +82,15 @@
         </div>
 
     </nav>
+    <nav aria-label="breadcrumb">
 
+        <ol class="breadcrumb">
+
+
+
+        </ol>
+
+    </nav>
     <div class="row">
 
         <!-- Menú lateral -->
@@ -146,59 +154,70 @@
         <!-- Contenido -->
 
         <div class="col-lg-9">
-            <h2 class="text-success fw-bold mb-4">
+            <div class="card shadow-sm mb-4">
 
-                <i class="bi bi-book"></i>
+                <div class="card-body">
 
-                Ejercicio resuelto con Hadoop Streaming
+                    <section class="bg-success text-white py-4">
 
-            </h2>
+                        <div class="container">
 
+                            <h2 class="mb-1">
 
+                                <i class="bi bi-book"></i>
 
+                                Ejercicio resuelto con Hadoop Streaming
 
+                            </h2>
 
+                        </div>
 
-
-            <p class="lead">
-
-                Si continuamos con los ejemplos prácticos propuestos para
-                realizar por parte del estudiante de una forma ordenada, en
-                el ejercicio del punto
-                <a href="ejer5.2.html" class="fw-bold">5.3.1</a>,
-                hemos cargado en HDFS los ficheros <strong>.txt</strong>
-                con los cuales queremos comprender el funcionamiento del
-                modelo <strong>MapReduce</strong>.
-
-            </p>
-
-
-            <p>
-
-                En esta práctica se ejecuta una tarea de MapReduce basada
-                en un documento médico perteneciente al corpus
-                <strong>MEDDOCAN</strong>. La finalidad es enseñar al
-                estudiante cómo funciona la programación distribuida y
-                facilitar su familiarización con los diferentes elementos
-                que intervienen en un trabajo Hadoop.
-
-            </p>
-
-
-            <p>
-
-                Para ello se utilizan dos scripts desarrollados en
-                <strong>Python</strong>, que actúan respectivamente como
-                <strong>Mapper</strong> y <strong>Reducer</strong>.
-                Estos programas serán ejecutados mediante
-                <strong>Hadoop Streaming</strong> desde el entorno de
-                trabajo utilizado durante el proyecto.
-
-            </p>
+                    </section>
 
 
 
 
+
+                    <p class="lead">
+
+                        Si continuamos con los ejemplos prácticos propuestos para
+                        realizar por parte del estudiante de una forma ordenada, en
+                        el ejercicio del punto
+                        <a href="ejer5.2.html" class="fw-bold">5.3.1</a>,
+                        hemos cargado en HDFS los ficheros <strong>.txt</strong>
+                        con los cuales queremos comprender el funcionamiento del
+                        modelo <strong>MapReduce</strong>.
+
+                    </p>
+
+
+                    <p>
+
+                        En esta práctica se ejecuta una tarea de MapReduce basada
+                        en un documento médico perteneciente al corpus
+                        <strong>MEDDOCAN</strong>. La finalidad es enseñar al
+                        estudiante cómo funciona la programación distribuida y
+                        facilitar su familiarización con los diferentes elementos
+                        que intervienen en un trabajo Hadoop.
+
+                    </p>
+
+
+                    <p>
+
+                        Para ello se utilizan dos scripts desarrollados en
+                        <strong>Python</strong>, que actúan respectivamente como
+                        <strong>Mapper</strong> y <strong>Reducer</strong>.
+                        Estos programas serán ejecutados mediante
+                        <strong>Hadoop Streaming</strong> desde el entorno de
+                        trabajo utilizado durante el proyecto.
+
+                    </p>
+
+
+
+                </div>
+            </div>
 
 
 
