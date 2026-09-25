@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ejercicio práctico Apache Hive - Calidad del aire de Madrid</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+
+        /* CABECERA */
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 5px solid #78be20;
+            padding: 15px 0;
+        }
+
+        .header img {
+            max-height: 70px;
+            width: auto;
+        }
+
+        /* TITULO */
+
+        .title-section {
+            background-color: #006633;
+            color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* CONTENIDO */
+
+        .content {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: #006633;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #006633;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* OBJETIVO */
+
+        .objetivo {
+            background-color: #eef7e8;
+            border-left: 5px solid #78be20;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+
+        /* BLOQUES */
+
+        .bloque {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 25px 0;
+            background-color: #fafafa;
+        }
+
+        .bloque h3 {
+            margin-top: 0;
+        }
+
+        /* CODIGO */
+
+        .codigo {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: Consolas, "Courier New", monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        /* COMANDO DESTACADO */
+
+        .codigo-principal {
+            background-color: #f4f4f4;
+            border-left: 5px solid #006633;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: Consolas, "Courier New", monospace;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        /* IMAGEN */
+
+        .imagen-ejercicio {
+            max-width: 85%;
+            height: auto;
+            display: block;
+            margin: 25px auto 10px auto;
+        }
+
+        .figura {
+            text-align: center;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        /* PASOS */
+
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 15px 20px;
+            margin: 12px 0;
+            border-radius: 4px;
+        }
+
+        .paso strong {
+            color: #006633;
+        }
+
+        /* REFERENCIA */
+
+        .referencia {
+            background-color: #f1f1f1;
+            border-left: 4px solid #006633;
+            padding: 18px;
+            margin-top: 30px;
+            border-radius: 4px;
+        }
+
+        /* BOTONES */
+
+        .botones {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-uned {
+            background-color: #006633;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        .btn-uned:hover {
+            background-color: #004d26;
+            color: white;
+        }
+
+        /* PIE */
+
+        footer {
+            background-color: #006633;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     CABECERA
+====================================================== -->
+
+    <header class="header">
+
+        <div class="container d-flex align-items-center">
+
+            <img src="../img/logo-uned.png" alt="Logo de la Universidad Nacional de Educación a Distancia">
+
+            <div class="ms-3">
+
+                <h1 class="h4 mb-1">
+                    Curso práctico Big Data · Docker · Hadoop
+                </h1>
+
+                <p class="mb-0 text-muted">
+                    Virtualización ligera para el despliegue de infraestructuras Big Data
+                </p>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+     TITULO
+====================================================== -->
+
+    <section class="title-section">
+
+        <div class="container">
+
+            <h1>
+                5.9.1. Ejercicio práctico con Apache Hive
+            </h1>
+
+            <p class="mb-0">
+                Análisis de datos de calidad del aire mediante HiveQL
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+     CONTENIDO
+====================================================== -->
+
+    <main class="container">
+
+        <div class="content">
+
+
+            <!-- INTRODUCCIÓN -->
+
+            <h2>Ejercicio práctico con Apache Hive</h2>
+
+            <p>
+                En este ejercicio se propone utilizar <strong>Apache Hive</strong> para
+                realizar consultas sobre un conjunto de datos abiertos correspondiente a
+                la <strong>calidad del aire de Madrid</strong>.
+            </p>
+
+            <p>
+                El objetivo es aplicar los conocimientos adquiridos sobre el ecosistema
+                Hadoop, especialmente sobre <strong>HDFS</strong>, <strong>Hive</strong>
+                y el lenguaje de consultas <strong>HiveQL</strong>, utilizando un conjunto
+                de datos real procedente de una fuente de datos abiertos.
+            </p>
+
+            <p>
+                El fichero de datos será descargado inicialmente desde el entorno
+                <strong>Jupyter Notebook</strong> y almacenado en el volumen compartido
+                utilizado por el clúster. Posteriormente, será incorporado al sistema de
+                archivos distribuido HDFS para poder ser consultado mediante Apache Hive.
+            </p>
+
+
+            <!-- OBJETIVO -->
+
+            <div class="objetivo">
+
+                <h3>Objetivo del ejercicio</h3>
+
+                <p>
+                    El objetivo principal consiste en familiarizar al estudiante con el
+                    proceso completo de incorporación de un conjunto de datos externo a
+                    Hadoop y su posterior explotación mediante consultas HiveQL.
+                </p>
+
+                <p class="mb-0">
+                    Durante el ejercicio se trabajará con las diferentes fases del proceso:
+                    descarga del fichero, almacenamiento en HDFS, creación de la tabla
+                    externa y realización de consultas sobre los datos.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     1. CONEXIÓN CON HIVE
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>1. Conexión con Apache Hive mediante Beeline</h3>
+
+                <p>
+                    La creación y gestión de las tablas Hive se realizará mediante el
+                    cliente <strong>Beeline</strong>, conectado al servicio
+                    <strong>HiveServer2</strong>.
+                </p>
+
+                <p>
+                    Para establecer la conexión se ejecuta desde el contenedor
+                    correspondiente:
+                </p>
+
+                <div class="codigo">
+
+                    beeline -u jdbc:hive2://localhost:10000
+
+                </div>
+
+                <p>
+                    Si la conexión se establece correctamente, Beeline muestra información
+                    relativa a la versión de Apache Hive y queda disponible el intérprete
+                    de comandos HiveQL.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     IMAGEN BEELINE
+====================================================== -->
+
+            <div class="text-center my-4">
+
+                <img src="../img/hive_beeline.png" class="img-fluid rounded shadow imagen-ejercicio"
+                    alt="Conexión a Apache Hive mediante Beeline">
+
+                <p class="figura">
+
+                    <strong>Figura XX.</strong>
+                    Conexión con Apache Hive mediante el cliente Beeline.
+                    Fuente: elaboración propia.
+
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     2. CREACIÓN BASE DE DATOS
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>2. Selección de la base de datos</h3>
+
+                <p>
+                    Una vez establecida la conexión con Hive, se selecciona la base de
+                    datos que será utilizada para realizar el ejercicio.
+                </p>
+
+                <div class="codigo">
+
+                    USE healthcare;
+
+                </div>
+
+                <p>
+                    A partir de este momento, las tablas creadas mediante HiveQL quedarán
+                    asociadas a la base de datos seleccionada.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     3. DATOS DE CALIDAD DEL AIRE
+====================================================== -->
+
+            <h2>3. Incorporación del conjunto de datos</h2>
+
+            <p>
+                El conjunto de datos utilizado corresponde a información de
+                <strong>calidad del aire de Madrid</strong>. El fichero CSV será descargado
+                inicialmente desde Jupyter y posteriormente almacenado en HDFS.
+            </p>
+
+            <p>
+                Para mantener la separación entre el almacenamiento local y el
+                almacenamiento distribuido, el fichero se guardará inicialmente en el
+                volumen compartido:
+            </p>
+
+            <div class="codigo-principal">
+
+                /media/notebooks/calidad_aire_madrid.csv
+
+            </div>
+
+
+            <!-- =====================================================
+     4. CARGA HDFS
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>4. Almacenamiento del fichero en HDFS</h3>
+
+                <p>
+                    Una vez disponible el fichero CSV en el volumen compartido, se crea
+                    un directorio específico dentro de HDFS para almacenar los datos.
+                </p>
+
+                <div class="codigo">
+
+                    hdfs dfs -mkdir -p /dataset/calidad_aire_madrid
+
+                </div>
+
+                <p>
+                    Posteriormente se copia el fichero desde el sistema de archivos local
+                    al directorio creado:
+                </p>
+
+                <div class="codigo">
+
+                    hdfs dfs -put /media/notebooks/calidad_aire_madrid.csv /dataset/calidad_aire_madrid/
+
+                </div>
+
+                <p>
+                    Finalmente, se comprueba que el fichero se encuentra disponible en
+                    HDFS:
+                </p>
+
+                <div class="codigo">
+
+                    hdfs dfs -ls /dataset/calidad_aire_madrid
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+     5. CREACIÓN TABLA
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>5. Creación de la tabla externa en Hive</h3>
+
+                <p>
+                    Una vez almacenado el fichero en HDFS, se crea una tabla externa en
+                    Hive mediante el cliente Beeline.
+                </p>
+
+                <p>
+                    La utilización de una tabla externa permite que Hive mantenga la
+                    definición de la estructura de los datos sin asumir la gestión física
+                    del fichero original almacenado en HDFS.
+                </p>
+
+                <p>
+                    La definición definitiva de la tabla deberá adaptarse a las columnas
+                    existentes en el fichero CSV descargado.
+                </p>
+
+                <div class="codigo">
+
+                    CREATE EXTERNAL TABLE IF NOT EXISTS calidad_aire_madrid (<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;...<br>
+                    )<br>
+                    ROW FORMAT DELIMITED<br>
+                    FIELDS TERMINATED BY ';'<br>
+                    STORED AS TEXTFILE<br>
+                    LOCATION '/dataset/calidad_aire_madrid';
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+     6. COMPROBACIÓN
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>6. Comprobación de la tabla</h3>
+
+                <p>
+                    Una vez creada la tabla, se puede comprobar su existencia mediante
+                    HiveQL:
+                </p>
+
+                <div class="codigo">
+
+                    SHOW TABLES;
+
+                </div>
+
+                <p>
+                    También es posible consultar la estructura de la tabla:
+                </p>
+
+                <div class="codigo">
+
+                    DESCRIBE calidad_aire_madrid;
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+     7. CONSULTA DE DATOS
+====================================================== -->
+
+            <div class="bloque">
+
+                <h3>7. Consulta de los datos</h3>
+
+                <p>
+                    Para comprobar que Hive puede acceder correctamente a la información
+                    almacenada en HDFS, se realiza una primera consulta sobre la tabla.
+                </p>
+
+                <div class="codigo">
+
+                    SELECT *<br>
+                    FROM calidad_aire_madrid<br>
+                    LIMIT 10;
+
+                </div>
+
+                <p>
+                    Esta consulta permite comprobar que los registros del fichero CSV han
+                    sido interpretados correctamente por Hive.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     8. ANÁLISIS MEDIANTE HIVEQL
+====================================================== -->
+
+            <h2>8. Análisis de los datos mediante HiveQL</h2>
+
+            <p>
+                Una vez comprobada la correcta lectura de los datos, el estudiante puede
+                realizar diferentes consultas de análisis utilizando las capacidades de
+                HiveQL.
+            </p>
+
+            <div class="paso">
+
+                <strong>Consulta 1. Número de registros.</strong>
+
+                <div class="codigo">
+
+                    SELECT COUNT(*)<br>
+                    FROM calidad_aire_madrid;
+
+                </div>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>Consulta 2. Agrupación de los datos.</strong>
+
+                <div class="codigo">
+
+                    SELECT ...<br>
+                    FROM calidad_aire_madrid<br>
+                    GROUP BY ...;
+
+                </div>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>Consulta 3. Cálculo de valores medios.</strong>
+
+                <div class="codigo">
+
+                    SELECT ..., AVG(...)<br>
+                    FROM calidad_aire_madrid<br>
+                    GROUP BY ...;
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+     9. RELACIÓN CON HADOOP
+====================================================== -->
+
+            <div class="objetivo">
+
+                <h3>Relación con el procesamiento distribuido</h3>
+
+                <p>
+                    Este ejercicio permite observar cómo Apache Hive proporciona una capa
+                    de consulta de alto nivel sobre los datos almacenados en HDFS.
+                </p>
+
+                <p class="mb-0">
+                    El estudiante utiliza HiveQL para expresar las consultas, mientras que
+                    Hive se encarga de generar el plan de ejecución correspondiente y
+                    utilizar los recursos disponibles en el ecosistema Hadoop para procesar
+                    la información.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+     CONCLUSIÓN
+====================================================== -->
+
+            <h2>Conclusión</h2>
+
+            <p>
+                El ejercicio permite completar el ciclo de explotación de un conjunto de
+                datos abiertos dentro de la infraestructura Big Data desarrollada en el
+                proyecto. El fichero de calidad del aire es descargado inicialmente desde
+                Jupyter, almacenado en HDFS y posteriormente consultado mediante Apache
+                Hive.
+            </p>
+
+            <p>
+                De esta forma, el estudiante puede comprobar cómo una fuente de datos
+                externa puede incorporarse al ecosistema Hadoop y ser posteriormente
+                explotada mediante consultas HiveQL sin necesidad de implementar
+                directamente programas MapReduce.
+            </p>
+
+
+            <!-- REFERENCIA -->
+
+            <div class="referencia">
+
+                <strong>Referencia:</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Ejercicio práctico desarrollado sobre Apache Hive y el sistema de
+                    archivos distribuido HDFS, utilizando datos abiertos de calidad del
+                    aire de Madrid.
+
+                </p>
+
+            </div>
+
+
+            <!-- NAVEGACIÓN -->
+
+            <div class="botones">
+
+                <a href="javascript:history.back()" class="btn btn-uned">
+                    ← Punto anterior
+                </a>
+
+                <a href="index.html" class="btn btn-uned">
+                    Índice de ejercicios →
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+     PIE
+====================================================== -->
+
+    <footer>
+
+        <p class="mb-1">
+            Proyecto Fin de Grado - Ingeniería Informática
+        </p>
+
+        <p class="mb-0">
+            Universidad Nacional de Educación a Distancia (UNED)
+        </p>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+
+</html>
