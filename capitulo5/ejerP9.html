@@ -257,26 +257,65 @@
             <h2>Ejercicio práctico con Apache Hive</h2>
 
             <p>
-                En este ejercicio se propone utilizar <strong>Apache Hive</strong> para
-                realizar consultas sobre un conjunto de datos abiertos correspondiente a
-                la <strong>calidad del aire de Madrid</strong>.
+                Como continuación del ejercicio anterior dedicado a la utilización de
+                <strong>Apache Hive</strong>, en esta práctica se propone aplicar los
+                conocimientos adquiridos sobre la creación y consulta de tablas mediante
+                <strong>HiveQL</strong> utilizando un conjunto de datos abiertos
+                correspondiente a la <strong>calidad del aire de Madrid</strong>.
             </p>
 
             <p>
-                El objetivo es aplicar los conocimientos adquiridos sobre el ecosistema
-                Hadoop, especialmente sobre <strong>HDFS</strong>, <strong>Hive</strong>
-                y el lenguaje de consultas <strong>HiveQL</strong>, utilizando un conjunto
-                de datos real procedente de una fuente de datos abiertos.
+                En el ejercicio anterior, el estudiante ha trabajado con la conexión a
+                Hive mediante el cliente <strong>Beeline</strong>, así como con la creación
+                de bases de datos y tablas y la realización de consultas sobre información
+                almacenada en HDFS. En esta nueva práctica se amplía este procedimiento
+                incorporando un conjunto de datos procedente de una fuente externa de
+                datos abiertos.
             </p>
 
             <p>
-                El fichero de datos será descargado inicialmente desde el entorno
-                <strong>Jupyter Notebook</strong> y almacenado en el volumen compartido
-                utilizado por el clúster. Posteriormente, será incorporado al sistema de
-                archivos distribuido HDFS para poder ser consultado mediante Apache Hive.
+                El proceso comienza con la <strong>descarga del fichero CSV desde
+                    Jupyter Notebook</strong>, utilizando para ello el volumen compartido
+                disponible en la infraestructura desplegada. Posteriormente, el fichero
+                será incorporado al sistema de archivos distribuido
+                <strong>HDFS</strong>, siguiendo el mismo procedimiento de almacenamiento
+                utilizado en los ejercicios anteriores.
             </p>
 
+            <p>
+                Una vez disponible el conjunto de datos en HDFS, se utilizará
+                <strong>Apache Hive</strong> para definir la estructura de la información
+                mediante una tabla y realizar diferentes consultas utilizando
+                <strong>HiveQL</strong>. De esta forma, el estudiante podrá comprobar cómo
+                Hive permite trabajar con conjuntos de datos almacenados en HDFS mediante
+                un lenguaje de consulta similar a SQL.
+            </p>
 
+            <div class="objetivo">
+
+                <h3>Objetivo del ejercicio</h3>
+
+                <p>
+                    El objetivo principal es ampliar los conocimientos adquiridos en el
+                    ejercicio anterior de <strong>Apache Hive</strong>, aplicándolos sobre
+                    un conjunto de datos abierto y procedente de una fuente externa al
+                    clúster Hadoop.
+                </p>
+
+                <p>
+                    Durante el ejercicio se recorrerá el proceso completo de
+                    <strong>descarga, almacenamiento en HDFS, creación de la tabla y
+                        consulta de los datos mediante HiveQL</strong>.
+                </p>
+
+                <p class="mb-0">
+                    De esta manera, el estudiante podrá comprobar de forma práctica cómo
+                    un conjunto de datos externo puede incorporarse a la infraestructura
+                    Big Data desarrollada y posteriormente ser explotado mediante las
+                    herramientas del ecosistema Hadoop.
+                </p>
+
+            </div>
             <!-- OBJETIVO -->
 
             <div class="objetivo">
