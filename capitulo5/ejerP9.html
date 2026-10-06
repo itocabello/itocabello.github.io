@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ejercicio Final 4 Hive 2º sobre cluster Hadoop.</title>
+    <title>Ejercicio Final 3 Hive 2º sobre cluster Hadoop.</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -225,554 +225,770 @@
     <!-- =====================================================
      TITULO
 ====================================================== -->
+    <div class="row">
+        <section class="title-section">
 
-    <section class="title-section">
+            <div class="container">
 
-        <div class="container">
+                <h1>
+                    Ejercicio Final 4 Hive 2º sobre cluster Hadoop.
+                </h1>
 
-            <h1>
-                Ejercicio Final 4 Hive 2º sobre cluster Hadoop.
-            </h1>
+                <p class="mb-0">
+                    Análisis de datos de calidad del aire mediante HiveQL
+                </p>
 
-            <p class="mb-0">
-                Análisis de datos de calidad del aire mediante HiveQL
-            </p>
+            </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- =====================================================
+        <!-- =====================================================
      CONTENIDO
 ====================================================== -->
-    <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
 
-        <ol class="breadcrumb">
+            <ol class="breadcrumb">
 
 
-        </ol>
+            </ol>
 
-    </nav>
+        </nav>
 
-    <div class="row">
-        <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-3">
 
-            <div class="list-group shadow">
+                <div class="list-group shadow">
 
-                <div class="list-group-item active bg-success border-success">
+                    <div class="list-group-item active bg-success border-success">
 
-                    <i class="bi bi-book"></i>
+                        <i class="bi bi-book"></i>
 
-                    Ejercicios Practicos
+                        Ejercicios Practicos
+
+                    </div>
+                    <a href="ejerP1.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
+
+                    </a>
+                    <a href="ejerP2.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
+
+                    </a>
+                    <a href="ejerP3.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
+
+                    </a>
+                    <a href="ejerP4.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
+
+                    </a>
+                    <a href="ejerP5.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
+
+                    </a>
+                    <a href="ejerP6.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 1 con python3 y MySql.
+
+                    </a>
+                    <a href="ejerP7.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
+
+                    </a>
+                    <a href="ejerP8.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 3 Hive 1º sobre cluster Hadoop.
+
+                    </a>
+                    <a href="ejerP9.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 4 Hive 2º sobre cluster Hadoop.
+
+                    </a>
+
 
                 </div>
-                <a href="ejerP1.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
-
-                </a>
-                <a href="ejerP2.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
-
-                </a>
-                <a href="ejerP3.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
-
-                </a>
-                <a href="ejerP4.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
-
-                </a>
-                <a href="ejerP5.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
-
-                </a>
-                <a href="ejerP6.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 1 con python3 y MySql.
-
-                </a>
-                <a href="ejerP7.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
-
-                </a>
-                <a href="ejerP8.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 3 Hive 1º sobre cluster Hadoop.
-
-                </a>
-                <a href="ejerP9.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 4 Hive 2º sobre cluster Hadoop.
-
-                </a>
-
 
             </div>
+            <!-- =========================================================
+         EJERCICIO APACHE HIVE - CALIDAD DEL AIRE DE MADRID
+         ========================================================= -->
 
+            <div class="col-lg-9">
+
+                <!-- TÍTULO -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h2 class="text-success mb-3">
+                            Ejercicio resuelto: Explotación de datos de calidad del aire mediante Apache Hive
+                        </h2>
+
+                        <p>
+                            En este ejercicio se propone utilizar <strong>Apache Hive</strong>
+                            para realizar consultas sobre un conjunto de datos abiertos
+                            correspondiente a la <strong>calidad del aire de Madrid</strong>.
+                            El objetivo es aplicar los conocimientos adquiridos sobre el
+                            ecosistema Hadoop, especialmente sobre <strong>HDFS</strong>,
+                            <strong>Hive</strong> y el lenguaje de consultas
+                            <strong>HiveQL</strong>.
+                        </p>
+
+                        <p>
+                            El conjunto de datos se descarga inicialmente desde el entorno
+                            <strong>Jupyter Notebook</strong> y posteriormente se almacena
+                            en el sistema de archivos distribuido <strong>HDFS</strong>.
+                            Una vez disponible en HDFS, los datos pueden ser registrados
+                            mediante una tabla de Apache Hive y explotados mediante
+                            consultas SQL.
+                        </p>
+
+                        <p>
+                            Este ejercicio permite al estudiante comprobar cómo una fuente
+                            de datos externa puede incorporarse al ecosistema Hadoop y ser
+                            posteriormente consultada mediante una interfaz SQL, sin
+                            necesidad de desarrollar directamente programas MapReduce.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- OBJETIVO -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            Objetivo del ejercicio
+                        </h3>
+
+                        <p>
+                            El objetivo principal consiste en familiarizar al estudiante
+                            con el proceso completo de incorporación y explotación de un
+                            conjunto de datos abiertos mediante Apache Hive.
+                        </p>
+
+                        <p>
+                            Durante el ejercicio se trabajan las siguientes fases:
+                        </p>
+
+                        <ul>
+                            <li>Descarga del conjunto de datos desde Jupyter Notebook.</li>
+                            <li>Almacenamiento del fichero CSV en HDFS.</li>
+                            <li>Creación de una base de datos en Hive.</li>
+                            <li>Creación de una tabla para almacenar los datos.</li>
+                            <li>Consulta de los registros mediante HiveQL.</li>
+                            <li>Agrupación de los datos por magnitud.</li>
+                            <li>Identificación de los contaminantes presentes en el conjunto de datos.</li>
+                            <li>Análisis de la cantidad de registros disponibles para cada magnitud.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+                <!-- DATOS -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            1. Conjunto de datos utilizado
+                        </h3>
+
+                        <p>
+                            Para realizar el ejercicio se utiliza un conjunto de datos
+                            correspondiente a las mediciones de calidad del aire de Madrid.
+                            El fichero se encuentra almacenado en HDFS en la siguiente
+                            ubicación:
+                        </p>
+
+                        <div class="alert alert-secondary">
+                            <code>
+                        /dataset/calidad_aire_madrid/calidad_aire_madrid.csv
+                    </code>
+                        </div>
+
+                        <p>
+                            El fichero contiene información relativa a las estaciones de
+                            medición, las magnitudes contaminantes y los valores horarios
+                            registrados durante cada día.
+                        </p>
+
+                        <p>
+                            Entre los principales campos disponibles se encuentran:
+                        </p>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-success">
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td><code>PROVINCIA</code></td>
+                                        <td>Código de la provincia.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>MUNICIPIO</code></td>
+                                        <td>Código del municipio.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>ESTACION</code></td>
+                                        <td>Código de la estación de medición.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>MAGNITUD</code></td>
+                                        <td>Código de la magnitud contaminante medida.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>PUNTO_MUESTREO</code></td>
+                                        <td>Identificador del punto de muestreo.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>ANO</code></td>
+                                        <td>Año de la medición.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>MES</code></td>
+                                        <td>Mes de la medición.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>DIA</code></td>
+                                        <td>Día de la medición.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>H01 ... H24</code></td>
+                                        <td>Valores registrados durante las 24 horas.</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><code>V01 ... V24</code></td>
+                                        <td>Indicadores de validez asociados a cada medición.</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- HIVE -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            2. Creación de la base de datos en Apache Hive
+                        </h3>
+
+                        <p>
+                            Una vez disponible el fichero en HDFS, se accede al servidor
+                            Hive mediante <strong>Beeline</strong>. En este ejercicio,
+                            las operaciones de creación de la base de datos y de las
+                            tablas se realizan desde el cliente Beeline.
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>beeline -u jdbc:hive2://localhost:10000</code></pre>
+                        </div>
+
+                        <p>
+                            A continuación se crea la base de datos destinada a almacenar
+                            la información de calidad del aire:
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>CREATE DATABASE IF NOT EXISTS calidad_aire;
+    
+    USE calidad_aire;</code></pre>
+                        </div>
+
+                        <p>
+                            De esta forma se dispone de un espacio lógico independiente
+                            dentro de Hive para realizar las consultas sobre el conjunto
+                            de datos.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- TABLA -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            3. Creación de la tabla de calidad del aire y magnitudes
+                        </h3>
+
+                        <p>
+                            Una vez creada la base de datos, se definen las tablas que
+                            permitirá consultar el fichero CSV mediante HiveQL.
+                            La estructura de la tabla reproduce los principales campos
+                            disponibles en el conjunto de datos.
+                        </p>
+
+                        <p>
+                            Entre ellos destacan la estación de medición, la magnitud
+                            contaminante, la fecha y los valores correspondientes a las
+                            diferentes horas del día.
+                        </p>
+                        <p>
+                            Además, los datos de la tabla de calidad del aire serán cruzados
+                            con los datos de la tabla maestra <strong>magnitudes</strong> para detallar los tipos
+                            de magnitudes a explotar.
+                        </p>
+
+                        <div class="alert alert-info">
+                            <strong>Importante:</strong>
+                            En la infraestructura utilizada en este proyecto, la creación
+                            y modificación de las tablas Hive se realiza desde
+                            <strong>Beeline</strong> utilizando Jupyter Notebook para
+                            ejecutar las instrucciones de Beeline y visualizar sus
+                            resultados.
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="EjerFinal3_3.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar Jupyter Notebook Creación B.D y tablas.
+
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- MAGNITUD -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            4. Identificación de las magnitudes contaminantes
+                        </h3>
+
+                        <p>
+                            Uno de los campos más importantes del conjunto de datos es
+                            <strong>MAGNITUD</strong>. Este campo contiene un código
+                            numérico que identifica el contaminante o parámetro medido
+                            por la estación.
+                        </p>
+
+                        <p>
+                            La correspondencia entre los códigos y las magnitudes
+                            disponibles permite interpretar correctamente los resultados
+                            obtenidos mediante Hive.
+                        </p>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+
+                                <thead class="table-success">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Magnitud</th>
+                                        <th>Abreviatura</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td>01</td>
+                                        <td>Dióxido de Azufre</td>
+                                        <td>SO₂</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>06</td>
+                                        <td>Monóxido de Carbono</td>
+                                        <td>CO</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>07</td>
+                                        <td>Monóxido de Nitrógeno</td>
+                                        <td>NO</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>08</td>
+                                        <td>Dióxido de Nitrógeno</td>
+                                        <td>NO₂</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>09</td>
+                                        <td>Partículas &lt; 2.5 µm</td>
+                                        <td>PM2.5</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Partículas &lt; 10 µm</td>
+                                        <td>PM10</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Óxidos de Nitrógeno</td>
+                                        <td>NOx</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Ozono</td>
+                                        <td>O₃</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>20</td>
+                                        <td>Tolueno</td>
+                                        <td>TOL</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>30</td>
+                                        <td>Benceno</td>
+                                        <td>BEN</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>35</td>
+                                        <td>Etilbenceno</td>
+                                        <td>EBE</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>37</td>
+                                        <td>Metaxileno</td>
+                                        <td>MXY</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>38</td>
+                                        <td>Paraxileno</td>
+                                        <td>PXY</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>39</td>
+                                        <td>Ortoxileno</td>
+                                        <td>OXY</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>42</td>
+                                        <td>Hidrocarburos totales (hexano)</td>
+                                        <td>TCH</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>43</td>
+                                        <td>Metano</td>
+                                        <td>CH₄</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>44</td>
+                                        <td>Hidrocarburos no metánicos (hexano)</td>
+                                        <td>NMHC</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>431</td>
+                                        <td>Metaparaxileno</td>
+                                        <td>MPX</td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- CONSULTA 1 -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            5. Consulta de las magnitudes disponibles
+                        </h3>
+
+                        <p>
+                            Una vez creada y cargada la tabla, se puede utilizar HiveQL
+                            para comprobar qué magnitudes aparecen en el conjunto de datos
+                            y conocer el número de registros asociados a cada una.
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>SELECT MAGNITUD,
+           COUNT(*) AS registros
+    FROM datos_calidad_aire
+    GROUP BY MAGNITUD
+    ORDER BY MAGNITUD;</code></pre>
+                        </div>
+
+                        <p>
+                            Esta consulta utiliza la cláusula <strong>GROUP BY</strong>
+                            para agrupar los registros según el código de magnitud y la
+                            función <strong>COUNT()</strong> para obtener el número de
+                            registros disponibles para cada contaminante.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- CONSULTA 2 -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            6. Interpretación de las magnitudes mediante HiveQL
+                        </h3>
+
+                        <p>
+                            Para facilitar la interpretación de los resultados, se puede
+                            utilizar la expresión <strong>CASE</strong> de HiveQL para
+                            transformar el código numérico de la magnitud en el nombre del
+                            contaminante correspondiente.
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>SELECT
+        MAGNITUD,
+    
+        CASE MAGNITUD
+            WHEN 1 THEN 'Dióxido de Azufre (SO2)'
+            WHEN 6 THEN 'Monóxido de Carbono (CO)'
+            WHEN 7 THEN 'Monóxido de Nitrógeno (NO)'
+            WHEN 8 THEN 'Dióxido de Nitrógeno (NO2)'
+            WHEN 9 THEN 'Partículas &lt; 2.5 µm (PM2.5)'
+            WHEN 10 THEN 'Partículas &lt; 10 µm (PM10)'
+            WHEN 12 THEN 'Óxidos de Nitrógeno (NOx)'
+            WHEN 14 THEN 'Ozono (O3)'
+            WHEN 20 THEN 'Tolueno (TOL)'
+            WHEN 30 THEN 'Benceno (BEN)'
+            WHEN 35 THEN 'Etilbenceno (EBE)'
+            WHEN 37 THEN 'Metaxileno (MXY)'
+            WHEN 38 THEN 'Paraxileno (PXY)'
+            WHEN 39 THEN 'Ortoxileno (OXY)'
+            WHEN 42 THEN 'Hidrocarburos totales (hexano)'
+            WHEN 43 THEN 'Metano (CH4)'
+            WHEN 44 THEN 'Hidrocarburos no metánicos (hexano)'
+            WHEN 431 THEN 'Metaparaxileno (MPX)'
+            ELSE 'Magnitud desconocida'
+        END AS contaminante,
+    
+        COUNT(*) AS registros
+    
+    FROM datos_calidad_aire
+    
+    GROUP BY MAGNITUD
+    
+    ORDER BY registros DESC;</code></pre>
+                        </div>
+
+                        <p>
+                            De esta forma, el resultado obtenido por Hive resulta más
+                            sencillo de interpretar, ya que cada código aparece asociado
+                            al nombre del contaminante correspondiente.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- CONSULTA 3 -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            7. Consulta de una magnitud concreta
+                        </h3>
+
+                        <p>
+                            Como ejercicio adicional, se puede seleccionar una magnitud
+                            concreta para analizar sus mediciones. Por ejemplo, el código
+                            <strong>8</strong> corresponde al <strong>dióxido de nitrógeno
+                                (NO₂)</strong>.
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>SELECT
+        PROVINCIA,
+        MUNICIPIO,
+        ESTACION,
+        MAGNITUD,
+        ANO,
+        MES,
+        DIA,
+        H01,
+        H02,
+        H03,
+        H04,
+        H05,
+        H06,
+        H07,
+        H08,
+        H09,
+        H10,
+        H11,
+        H12,
+        H13,
+        H14,
+        H15,
+        H16,
+        H17,
+        H18,
+        H19,
+        H20,
+        H21,
+        H22,
+        H23,
+        H24
+    FROM datos_calidad_aire
+    WHERE MAGNITUD = 8
+    LIMIT 20;</code></pre>
+                        </div>
+
+                        <p>
+                            Esta consulta permite observar cómo se distribuyen los valores
+                            horarios de un contaminante concreto y constituye un punto de
+                            partida para realizar posteriormente análisis más avanzados.
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- RESULTADO -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            8. Ejecución desde Jupyter Notebook
+                        </h3>
+
+                        <p>
+                            Aunque las operaciones se realizan mediante el cliente
+                            <strong>Beeline</strong>, las instrucciones pueden ejecutarse
+                            desde Jupyter Notebook utilizando comandos del sistema.
+                            Por ejemplo:
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>!beeline -u jdbc:hive2://localhost:10000 -e "
+    USE calidad_aire;
+    
+    SELECT MAGNITUD, COUNT(*) AS registros
+    FROM datos_calidad_aire
+    GROUP BY MAGNITUD
+    ORDER BY registros DESC;
+    "</code></pre>
+                        </div>
+
+                        <p>
+                            El resultado de la consulta se muestra directamente en la
+                            salida de la celda de Jupyter, permitiendo al estudiante
+                            comprobar de forma práctica el funcionamiento de HiveQL sobre
+                            los datos almacenados en Hadoop.
+                        </p>
+
+                        <!-- Espacio para imagen -->
+                        <div class="text-center my-4">
+
+                            <img src="img/hive-calidad-aire.png" class="img-fluid rounded shadow"
+                                style="max-width: 850px;"
+                                alt="Consulta Apache Hive sobre los datos de calidad del aire de Madrid">
+
+                            <p class="text-muted mt-2">
+                                <strong>Figura XX.</strong> Consulta de los datos de calidad
+                                del aire mediante Apache Hive desde Jupyter Notebook.
+                                Fuente: elaboración propia.
+                            </p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- CONCLUSIONES -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            9. Conclusiones del ejercicio
+                        </h3>
+
+                        <p>
+                            La realización de este ejercicio permite comprobar cómo
+                            <strong>Apache Hive</strong> facilita la explotación de grandes
+                            conjuntos de datos almacenados en HDFS mediante un lenguaje
+                            basado en SQL.
+                        </p>
+
+                        <p>
+                            A partir del conjunto de datos de calidad del aire de Madrid,
+                            el estudiante ha realizado el proceso completo de incorporación
+                            de información externa al ecosistema Hadoop, desde su
+                            almacenamiento en HDFS hasta su consulta mediante HiveQL.
+                        </p>
+
+                        <p>
+                            Además, la utilización del campo <strong>MAGNITUD</strong>
+                            permite introducir operaciones de agrupación, recuento y
+                            clasificación de los datos, relacionando los códigos existentes
+                            en el fichero con los diferentes contaminantes atmosféricos.
+                        </p>
+
+                        <p>
+                            Este ejercicio complementa los trabajos realizados anteriormente
+                            con HDFS, MapReduce, Hadoop Streaming y otros componentes del
+                            ecosistema, mostrando una alternativa basada en consultas
+                            declarativas para el análisis de información almacenada en un
+                            entorno Big Data.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="col-lg-9">
-
-
-            <!-- INTRODUCCIÓN -->
-
-            <h2>Ejercicio práctico con Apache Hive</h2>
-
-            <p>
-                Como continuación del ejercicio anterior dedicado a la utilización de
-                <strong>Apache Hive</strong>, en esta práctica se propone aplicar los
-                conocimientos adquiridos sobre la creación y consulta de tablas mediante
-                <strong>HiveQL</strong> utilizando un conjunto de datos abiertos
-                correspondiente a la <strong>calidad del aire de Madrid</strong>.
-            </p>
-
-            <p>
-                En el ejercicio anterior, el estudiante ha trabajado con la conexión a
-                Hive mediante el cliente <strong>Beeline</strong>, así como con la creación
-                de bases de datos y tablas y la realización de consultas sobre información
-                almacenada en HDFS. En esta nueva práctica se amplía este procedimiento
-                incorporando un conjunto de datos procedente de una fuente externa de
-                datos abiertos.
-            </p>
-
-            <p>
-                El proceso comienza con la <strong>descarga del fichero CSV desde
-                    Jupyter Notebook</strong>, utilizando para ello el volumen compartido
-                disponible en la infraestructura desplegada. Posteriormente, el fichero
-                será incorporado al sistema de archivos distribuido
-                <strong>HDFS</strong>, siguiendo el mismo procedimiento de almacenamiento
-                utilizado en los ejercicios anteriores.
-            </p>
-
-            <p>
-                Una vez disponible el conjunto de datos en HDFS, se utilizará
-                <strong>Apache Hive</strong> para definir la estructura de la información
-                mediante una tabla y realizar diferentes consultas utilizando
-                <strong>HiveQL</strong>. De esta forma, el estudiante podrá comprobar cómo
-                Hive permite trabajar con conjuntos de datos almacenados en HDFS mediante
-                un lenguaje de consulta similar a SQL.
-            </p>
-
-            <div class="objetivo">
-
-                <h3>Objetivo del ejercicio</h3>
-
-                <p>
-                    El objetivo principal es ampliar los conocimientos adquiridos en el
-                    ejercicio anterior de <strong>Apache Hive</strong>, aplicándolos sobre
-                    un conjunto de datos abierto y procedente de una fuente externa al
-                    clúster Hadoop.
-                </p>
-
-                <p>
-                    Durante el ejercicio se recorrerá el proceso completo de
-                    <strong>descarga, almacenamiento en HDFS, creación de la tabla y
-                        consulta de los datos mediante HiveQL</strong>.
-                </p>
-
-                <p class="mb-0">
-                    De esta manera, el estudiante podrá comprobar de forma práctica cómo
-                    un conjunto de datos externo puede incorporarse a la infraestructura
-                    Big Data desarrollada y posteriormente ser explotado mediante las
-                    herramientas del ecosistema Hadoop.
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     1. CONEXIÓN CON HIVE
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>1. Conexión con Apache Hive mediante Beeline</h3>
-
-                <p>
-                    La creación y gestión de las tablas Hive se realizará mediante el
-                    cliente <strong>Beeline</strong>, conectado al servicio
-                    <strong>HiveServer2</strong>.
-                </p>
-
-                <p>
-                    Para establecer la conexión se ejecuta desde el contenedor
-                    correspondiente:
-                </p>
-
-                <div class="codigo">
-
-                    beeline -u jdbc:hive2://localhost:10000
-
-                </div>
-
-                <p>
-                    Si la conexión se establece correctamente, Beeline muestra información
-                    relativa a la versión de Apache Hive y queda disponible el intérprete
-                    de comandos HiveQL.
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     IMAGEN BEELINE
-====================================================== -->
-
-            <div class="text-center my-4">
-
-                <img src="../img/hive_beeline.png" class="img-fluid rounded shadow imagen-ejercicio"
-                    alt="Conexión a Apache Hive mediante Beeline">
-
-                <p class="figura">
-
-
-                    Conexión con Apache Hive mediante el cliente Beeline.
-                    Fuente: elaboración propia.
-
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     2. CREACIÓN BASE DE DATOS
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>2. Selección de la base de datos</h3>
-
-                <p>
-                    Una vez establecida la conexión con Hive, se selecciona la base de
-                    datos que será utilizada para realizar el ejercicio.
-                </p>
-
-                <div class="codigo">
-
-                    USE healthcare;
-
-                </div>
-
-                <p>
-                    A partir de este momento, las tablas creadas mediante HiveQL quedarán
-                    asociadas a la base de datos seleccionada.
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     3. DATOS DE CALIDAD DEL AIRE
-====================================================== -->
-
-            <h2>3. Incorporación del conjunto de datos</h2>
-
-            <p>
-                El conjunto de datos utilizado corresponde a información de
-                <strong>calidad del aire de Madrid</strong>. El fichero CSV será descargado
-                inicialmente desde Jupyter y posteriormente almacenado en HDFS.
-            </p>
-
-            <p>
-                Para mantener la separación entre el almacenamiento local y el
-                almacenamiento distribuido, el fichero se guardará inicialmente en el
-                volumen compartido:
-            </p>
-
-            <div class="codigo-principal">
-
-                /media/notebooks/calidad_aire_madrid.csv
-
-            </div>
-
-
-            <!-- =====================================================
-     4. CARGA HDFS
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>4. Almacenamiento del fichero en HDFS</h3>
-
-                <p>
-                    Una vez disponible el fichero CSV en el volumen compartido, se crea
-                    un directorio específico dentro de HDFS para almacenar los datos.
-                </p>
-
-                <div class="codigo">
-
-                    hdfs dfs -mkdir -p /dataset/calidad_aire_madrid
-
-                </div>
-
-                <p>
-                    Posteriormente se copia el fichero desde el sistema de archivos local
-                    al directorio creado:
-                </p>
-
-                <div class="codigo">
-
-                    hdfs dfs -put /media/notebooks/calidad_aire_madrid.csv /dataset/calidad_aire_madrid/
-
-                </div>
-
-                <p>
-                    Finalmente, se comprueba que el fichero se encuentra disponible en
-                    HDFS:
-                </p>
-
-                <div class="codigo">
-
-                    hdfs dfs -ls /dataset/calidad_aire_madrid
-
-                </div>
-
-            </div>
-
-
-            <!-- =====================================================
-     5. CREACIÓN TABLA
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>5. Creación de la tabla externa en Hive</h3>
-
-                <p>
-                    Una vez almacenado el fichero en HDFS, se crea una tabla externa en
-                    Hive mediante el cliente Beeline.
-                </p>
-
-                <p>
-                    La utilización de una tabla externa permite que Hive mantenga la
-                    definición de la estructura de los datos sin asumir la gestión física
-                    del fichero original almacenado en HDFS.
-                </p>
-
-                <p>
-                    La definición definitiva de la tabla deberá adaptarse a las columnas
-                    existentes en el fichero CSV descargado.
-                </p>
-
-                <div class="codigo">
-
-                    CREATE EXTERNAL TABLE IF NOT EXISTS calidad_aire_madrid (<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;...<br>
-                    )<br>
-                    ROW FORMAT DELIMITED<br>
-                    FIELDS TERMINATED BY ';'<br>
-                    STORED AS TEXTFILE<br>
-                    LOCATION '/dataset/calidad_aire_madrid';
-
-                </div>
-
-            </div>
-
-
-            <!-- =====================================================
-     6. COMPROBACIÓN
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>6. Comprobación de la tabla</h3>
-
-                <p>
-                    Una vez creada la tabla, se puede comprobar su existencia mediante
-                    HiveQL:
-                </p>
-
-                <div class="codigo">
-
-                    SHOW TABLES;
-
-                </div>
-
-                <p>
-                    También es posible consultar la estructura de la tabla:
-                </p>
-
-                <div class="codigo">
-
-                    DESCRIBE calidad_aire_madrid;
-
-                </div>
-
-            </div>
-
-
-            <!-- =====================================================
-     7. CONSULTA DE DATOS
-====================================================== -->
-
-            <div class="bloque">
-
-                <h3>7. Consulta de los datos</h3>
-
-                <p>
-                    Para comprobar que Hive puede acceder correctamente a la información
-                    almacenada en HDFS, se realiza una primera consulta sobre la tabla.
-                </p>
-
-                <div class="codigo">
-
-                    SELECT *<br>
-                    FROM calidad_aire_madrid<br>
-                    LIMIT 10;
-
-                </div>
-
-                <p>
-                    Esta consulta permite comprobar que los registros del fichero CSV han
-                    sido interpretados correctamente por Hive.
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     8. ANÁLISIS MEDIANTE HIVEQL
-====================================================== -->
-
-            <h2>8. Análisis de los datos mediante HiveQL</h2>
-
-            <p>
-                Una vez comprobada la correcta lectura de los datos, el estudiante puede
-                realizar diferentes consultas de análisis utilizando las capacidades de
-                HiveQL.
-            </p>
-
-            <div class="paso">
-
-                <strong>Consulta 1. Número de registros.</strong>
-
-                <div class="codigo">
-
-                    SELECT COUNT(*)<br>
-                    FROM calidad_aire_madrid;
-
-                </div>
-
-            </div>
-
-
-            <div class="paso">
-
-                <strong>Consulta 2. Agrupación de los datos.</strong>
-
-                <div class="codigo">
-
-                    SELECT ...<br>
-                    FROM calidad_aire_madrid<br>
-                    GROUP BY ...;
-
-                </div>
-
-            </div>
-
-
-            <div class="paso">
-
-                <strong>Consulta 3. Cálculo de valores medios.</strong>
-
-                <div class="codigo">
-
-                    SELECT ..., AVG(...)<br>
-                    FROM calidad_aire_madrid<br>
-                    GROUP BY ...;
-
-                </div>
-
-            </div>
-
-
-            <!-- =====================================================
-     9. RELACIÓN CON HADOOP
-====================================================== -->
-
-            <div class="objetivo">
-
-                <h3>Relación con el procesamiento distribuido</h3>
-
-                <p>
-                    Este ejercicio permite observar cómo Apache Hive proporciona una capa
-                    de consulta de alto nivel sobre los datos almacenados en HDFS.
-                </p>
-
-                <p class="mb-0">
-                    El estudiante utiliza HiveQL para expresar las consultas, mientras que
-                    Hive se encarga de generar el plan de ejecución correspondiente y
-                    utilizar los recursos disponibles en el ecosistema Hadoop para procesar
-                    la información.
-                </p>
-
-            </div>
-
-
-            <!-- =====================================================
-     CONCLUSIÓN
-====================================================== -->
-
-            <h2>Conclusión</h2>
-
-            <p>
-                El ejercicio permite completar el ciclo de explotación de un conjunto de
-                datos abiertos dentro de la infraestructura Big Data desarrollada en el
-                proyecto. El fichero de calidad del aire es descargado inicialmente desde
-                Jupyter, almacenado en HDFS y posteriormente consultado mediante Apache
-                Hive.
-            </p>
-
-            <p>
-                De esta forma, el estudiante puede comprobar cómo una fuente de datos
-                externa puede incorporarse al ecosistema Hadoop y ser posteriormente
-                explotada mediante consultas HiveQL sin necesidad de implementar
-                directamente programas MapReduce.
-            </p>
-
-
-            <!-- REFERENCIA -->
-
-            <div class="referencia">
-
-                <strong>Referencia:</strong>
-
-                <p class="mb-0 mt-2">
-
-                    Ejercicio práctico desarrollado sobre Apache Hive y el sistema de
-                    archivos distribuido HDFS, utilizando datos abiertos de calidad del
-                    aire de Madrid.
-
-                </p>
-
-            </div>
-
-
-            <!-- NAVEGACIÓN -->
-
-            <div class="botones">
-
-                <a href="javascript:history.back()" class="btn btn-uned">
-                    ← Punto anterior
-                </a>
-
-                <a href="index.html" class="btn btn-uned">
-                    Índice de ejercicios →
-                </a>
-
-            </div>
-
-
-        </div>
-
     </div>
-
 
     <!-- =====================================================
      PIE
