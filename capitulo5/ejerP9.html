@@ -393,13 +393,46 @@
                     </div>
                 </div>
 
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <h3 class="text-success">
+                            1. Descarga del conjunto de datos desde Jupyter Notebook.
+                        </h3>
+
+                        <p>
+                            Para realizar la descarga del fichero con los datos de calidad del aire de Madrid:
+                        </p>
+
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>
+import requests
+                        
+url = "https://datos.madrid.es/dataset/201200-0-calidad-aire-horario/resource/201200-1-calidad-aire-horario-csv/download/201200-1-calidad-aire-horario-csv.csv"
+                        
+ruta = "/media/notebooks/calidad_aire_madrid.csv"
+                        
+respuesta = requests.get(url)
+                        
+respuesta.raise_for_status()
+                        
+with open(ruta, "wb") as f:
+f.write(respuesta.content)
+                        
+print("Descarga completada")
+print(f"Archivo guardado en: {ruta}")
+                    </code></pre>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!-- DATOS -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            1. Conjunto de datos utilizado
+                            2. Almacenamiento del fichero CSV en HDFS.
                         </h3>
 
                         <p>
@@ -502,7 +535,7 @@
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            2. Creación de la base de datos en Apache Hive
+                            3. Creación de la base de datos en Apache Hive
                         </h3>
 
                         <p>
@@ -542,7 +575,7 @@
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            3. Creación de la tabla de calidad del aire y magnitudes
+                            4. Creación de la tabla de calidad del aire y magnitudes
                         </h3>
 
                         <p>
@@ -582,7 +615,7 @@
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            4. Identificación de las magnitudes contaminantes
+                            5. Identificación de las magnitudes contaminantes
                         </h3>
 
                         <p>
@@ -730,7 +763,7 @@
 
                                 <i class="bi bi-journal-code"></i>
 
-                                Consultar Jupyter Notebook puntos 1,2,3 y 4.
+                                Consultar Jupyter Notebook puntos 1,2,3,4 y 5.
 
                             </a>
                         </div>
@@ -743,7 +776,7 @@
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            5. Consulta de las magnitudes disponibles
+                            6. Consulta de las magnitudes disponibles
                         </h3>
 
                         <p>
