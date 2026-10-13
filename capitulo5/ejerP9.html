@@ -380,14 +380,13 @@
                         </p>
 
                         <ul>
-                            <li>Descarga del conjunto de datos desde Jupyter Notebook.</li>
-                            <li>Almacenamiento del fichero CSV en HDFS.</li>
-                            <li>Creación de una base de datos en Hive.</li>
-                            <li>Creación de una tabla para almacenar los datos.</li>
-                            <li>Consulta de los registros mediante HiveQL.</li>
-                            <li>Agrupación de los datos por magnitud.</li>
-                            <li>Identificación de los contaminantes presentes en el conjunto de datos.</li>
-                            <li>Análisis de la cantidad de registros disponibles para cada magnitud.</li>
+                            <li>Descargar el conjunto de datos desde Jupyter Notebook y almacenarlo en HDFS.</li>
+                            <li>Crear la base de datos y las tablas necesarias en Hive.</li>
+                            <li>Preparar las tablas de mediciones en formato CSV y Parquet.</li>
+                            <li>Comparar el tiempo de ejecución de una consulta analítica en ambos formatos.</li>
+                            <li>Identificar las magnitudes contaminantes disponibles.</li>
+                            <li>Analizar la distribución de registros, los valores medios y las superaciones de umbrales
+                                de referencia.</li>
                         </ul>
 
                     </div>
@@ -399,7 +398,22 @@
                         <h3 class="text-success">
                             1. Descarga del conjunto de datos desde Jupyter Notebook.
                         </h3>
-
+                        <p>El conjunto de datos se proporciona en formato CSV y utiliza el punto y coma (<code>;</code>)
+                            como separador. Cada
+                            registro incluye información de localización, estación, contaminante, fecha y mediciones
+                            horarias.</p>
+                        <p>Entre los campos principales se encuentran:</p>
+                        <ul>
+                            <li><code>PROVINCIA</code>, <code>MUNICIPIO</code> y <code>ESTACION</code>.</li>
+                            <li><code>MAGNITUD</code> y <code>PUNTO_MUESTREO</code>.</li>
+                            <li><code>ANO</code>, <code>MES</code> y <code>DIA</code>.</li>
+                            <li><code>H01</code> a <code>H24</code>: valores horarios registrados.</li>
+                            <li><code>V01</code> a <code>V24</code>: códigos de validación asociados a los valores
+                                horarios.</li>
+                        </ul>
+                        <p>Tras descargar el fichero desde Jupyter Notebook, debe comprobarse que está disponible en la
+                            ruta de HDFS utilizada
+                            por la tabla externa o administrada de Hive.</p>
                         <p>
                             Para realizar la descarga del fichero con los datos de calidad del aire de Madrid:
                         </p>
@@ -426,118 +440,18 @@ print(f"Archivo guardado en: {ruta}")
                     </div>
                 </div>
 
-
-                <!-- DATOS -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            2. Almacenamiento del fichero CSV en HDFS.
+                            2. Creación de la base de datos en Hive
                         </h3>
 
-                        <p>
-                            Para realizar el ejercicio se utiliza un conjunto de datos
-                            correspondiente a las mediciones de calidad del aire de Madrid.
-                            El fichero se encuentra almacenado en HDFS en la siguiente
-                            ubicación:
+                        <p>Se crea una base de datos específica para mantener organizadas las tablas de este ejercicio:
                         </p>
-
                         <div class="alert alert-secondary">
-                            <code>
-                        /dataset/calidad_aire_madrid/calidad_aire_madrid.csv
-                    </code>
+                            <code>CREATE DATABASE IF NOT EXISTS calidad_aire;</code>
                         </div>
-
-                        <p>
-                            El fichero contiene información relativa a las estaciones de
-                            medición, las magnitudes contaminantes y los valores horarios
-                            registrados durante cada día.
-                        </p>
-
-                        <p>
-                            Entre los principales campos disponibles se encuentran:
-                        </p>
-
-                        <div class="table-responsive">
-
-                            <table class="table table-bordered table-striped">
-
-                                <thead class="table-success">
-                                    <tr>
-                                        <th>Campo</th>
-                                        <th>Descripción</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td><code>PROVINCIA</code></td>
-                                        <td>Código de la provincia.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>MUNICIPIO</code></td>
-                                        <td>Código del municipio.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>ESTACION</code></td>
-                                        <td>Código de la estación de medición.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>MAGNITUD</code></td>
-                                        <td>Código de la magnitud contaminante medida.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>PUNTO_MUESTREO</code></td>
-                                        <td>Identificador del punto de muestreo.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>ANO</code></td>
-                                        <td>Año de la medición.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>MES</code></td>
-                                        <td>Mes de la medición.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>DIA</code></td>
-                                        <td>Día de la medición.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>H01 ... H24</code></td>
-                                        <td>Valores registrados durante las 24 horas.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><code>V01 ... V24</code></td>
-                                        <td>Indicadores de validez asociados a cada medición.</td>
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <!-- HIVE -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-                            3. Creación de la base de datos en Apache Hive
-                        </h3>
-
                         <p>
                             Una vez disponible el fichero en HDFS, se accede al servidor
                             Hive mediante <strong>Beeline</strong>. En este ejercicio,
@@ -548,6 +462,22 @@ print(f"Archivo guardado en: {ruta}")
                         <div class="bg-dark text-light p-3 rounded mb-3">
                             <pre class="mb-0"><code>beeline -u jdbc:hive2://localhost:10000</code></pre>
                         </div>
+                        <p>Las tablas de mediciones y de referencia se crearán dentro de la base de datos
+                            <code>calidad_aire</code>.
+                        </p>
+
+                        <p>
+
+                            El fichero se encuentra almacenado en HDFS en la siguiente
+                            ubicación:
+                        </p>
+                        <div class="alert alert-secondary">
+                            <code>
+                        /dataset/calidad_aire_madrid/calidad_aire_madrid.csv
+                    </code>
+                        </div>
+
+
 
                         <p>
                             A continuación se crea la base de datos destinada a almacenar
@@ -556,8 +486,8 @@ print(f"Archivo guardado en: {ruta}")
 
                         <div class="bg-dark text-light p-3 rounded mb-3">
                             <pre class="mb-0"><code>CREATE DATABASE IF NOT EXISTS calidad_aire;
-    
-    USE calidad_aire;</code></pre>
+                        
+                        USE calidad_aire;</code></pre>
                         </div>
 
                         <p>
@@ -566,16 +496,16 @@ print(f"Archivo guardado en: {ruta}")
                             de datos.
                         </p>
 
+
+
                     </div>
                 </div>
 
-
-                <!-- TABLA -->
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
 
                         <h3 class="text-success">
-                            4. Creación de la tabla de calidad del aire y magnitudes
+                            3. Tablas de mediciones y de magnitudes
                         </h3>
 
                         <p>
@@ -606,9 +536,81 @@ print(f"Archivo guardado en: {ruta}")
                         </div>
 
                     </div>
+                </div>
+                <div class=" card shadow-sm mb-2">
+                    <div class="card-body">
+                        <div class="text-center mt-1">
+                            <a href="EjerP9Jupyter.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar Jupyter Notebook puntos 1,2 y 3.
+
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
 
+                        <h3 class="text-success">
+                            4. Comparación de rendimiento: CSV frente a Parquet
+                        </h3>
+                        <p>Con el objetivo de evaluar los posibles beneficios del formato Parquet frente al for-mato
+                            CSV, se ha realizado una
+                            prueba experimental utilizando Apache Hive sobre el conjunto de datos de calidad del aire de
+                            Madrid. Para ello, se ha
+                            ejecutado la misma consulta analítica sobre las tablas datos_calidad_aire,
+                            almacenada en formato CSV, y
+                            datos_calidad_aire_parquet, almacenada en formato Parquet.</p>
+
+                        <p>Se ejecutó la misma consulta analítica sobre las tablas CSV y Parquet. La consulta relaciona
+                            las mediciones con la
+                            tabla de magnitudes mediante un <code>JOIN</code>, agrupa los resultados por código, nombre,
+                            abreviatura y unidad, y
+                            cuenta los registros asociados a cada contaminante.</p>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Formato de almacenamiento</th>
+                                        <th>Tiempo de ejecución</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CSV</td>
+                                        <td>110,43 segundos</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Parquet</td>
+                                        <td>102,55 segundos</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p>En esta prueba, Parquet finalizó la consulta 7,88 segundos antes que CSV, lo que supone una
+                            reducción aproximada del
+                            7,14 % respecto al tiempo medido para CSV.</p>
+                        <p>Este resultado corresponde a una ejecución concreta y no demuestra que Parquet sea siempre
+                            más rápido. Para obtener
+                            conclusiones más robustas sería conveniente repetir las pruebas, comparar varias consultas y
+                            revisar el espacio
+                            ocupado por los ficheros en HDFS.</p>
+
+                    </div>
+                </div>
+                <!-- DATOS -->
+
+
+                <!-- HIVE -->
+
+
+
+                <!-- TABLA -->
 
                 <!-- MAGNITUD -->
                 <div class="card shadow-sm mb-4">
@@ -758,290 +760,398 @@ print(f"Archivo guardado en: {ruta}")
                             </table>
 
                         </div>
-                        <div class="text-center mt-4">
-                            <a href="EjerP9Jupyter.html" target="_blank" class="btn btn-success">
 
-                                <i class="bi bi-journal-code"></i>
-
-                                Consultar Jupyter Notebook puntos 1,2,3,4 y 5.
-
-                            </a>
+                        <p>La consulta siguiente ilustra el cruce entre ambas tablas. Los códigos se convierten a entero
+                            para evitar diferencias
+                            entre valores almacenados como, por ejemplo, <code>01</code> y <code>1</code>.</p>
+                        <div class="bg-dark text-light p-3 rounded mb-3">
+                            <pre class="mb-0"><code>SELECT
+    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,
+    m.nombre AS contaminante,
+    m.abreviatura,
+    m.unidad,
+    COUNT(*) AS registros
+    FROM calidad_aire.datos_calidad_aire d
+    LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+    CAST(TRIM(m.magnitud) AS INT)
+    WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+    AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'
+    GROUP BY
+    CAST(TRIM(d.MAGNITUD) AS INT),
+    m.nombre,
+    m.abreviatura,
+    m.unidad
+    ORDER BY cod_magnitud;</code></pre>
                         </div>
+
+
+                        <p>Esta consulta permite comprobar qué magnitudes aparecen en los datos y cuántos registros hay
+                            para cada una.</p>
+                        <div class="figure">
+
+                            <img src="../img/img_magnitudes.png" alt="agregado de magnitudes en tabla datos_calidad_aire>
+
+
+                        </div>
+
                     </div>
                 </div>
 
 
                 <!-- CONSULTA 1 -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
+                <div class=" card shadow-sm mb-4">
+                            <div class="card-body">
 
-                        <h3 class="text-success">
-                            6. Consulta de las magnitudes disponibles
-                        </h3>
+                                <h3 class="text-success">
+                                    6. Análisis y explotación de resultados
+                                </h3>
+                                <p>Una vez comprobada la carga de los datos, se realizan consultas HiveQL para estudiar
+                                    la distribución de las
+                                    mediciones y obtener indicadores descriptivos. Los resultados dependen del fichero
+                                    cargado, de los filtros aplicados
+                                    y de los criterios de cálculo.</p>
 
-                        <p>
-                            Una vez creada y cargada la tabla, se puede utilizar HiveQL
-                            para comprobar qué magnitudes aparecen en el conjunto de datos
-                            y conocer el número de registros asociados a cada una.
-                        </p>
+                                <h3>6.1. Distribución de registros por magnitud</h3>
+                                <p>La agrupación por contaminante permite identificar las magnitudes con mayor número de
+                                    observaciones. En el conjunto
+                                    analizado, los óxidos de nitrógeno (NOx) presentan 17.638 registros. Les siguen el
+                                    monóxido de nitrógeno (NO) y el
+                                    dióxido de nitrógeno (NO₂), con 17.627 registros cada uno. El ozono registra 10.940
+                                    observaciones, mientras que PM10
+                                    y PM2.5 cuentan con 9.715 y 7.288 registros, respectivamente.</p>
 
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <pre class="mb-0"><code>SELECT MAGNITUD,
-           COUNT(*) AS registros
-    FROM datos_calidad_aire
-    GROUP BY MAGNITUD
-    ORDER BY MAGNITUD;</code></pre>
+                                <div class="bg-dark text-light p-3 rounded mb-3">
+                                    <pre class="mb-0"><code>SELECT
+    d.MAGNITUD AS cod_magnitud,
+    m.NOMBRE AS nombre,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+    CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) <> 'MAGNITUD'
+    AND TRIM(m.MAGNITUD) <> 'Cod. Magnitud'
+GROUP BY
+    d.MAGNITUD,
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+    ORDER BY
+    CAST(d.MAGNITUD AS INT);
+    </code></pre>
+                                </div>
+
+                                <p>La distribución no es homogénea entre las magnitudes. El número de observaciones
+                                    depende, entre otros factores,
+                                    de los contaminantes medidos por las estaciones y de la disponibilidad de registros.
+                                </p>
+                                <div class="figure">
+
+                                    <img src="../img/img_distmagnitudes.png"
+                                        alt="distribución de magnitudes en tabla datos_calidad_aire">
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" card shadow-sm mb-4">
+                            <div class="card-body">
+
+                                <h3>6.2. Registros por municipio</h3>
+                                <p>El análisis por municipio permite conocer cómo se distribuyen
+                                    territorialmente las observaciones disponibles. La
+                                    consulta siguiente cuenta los registros asociados a cada municipio:</p>
+
+                                <div class="bg-dark text-light p-3 rounded mb-3">
+                                    <pre class="mb-0"><code>SELECT
+m.NOMBRE AS magnitud,
+m.ABREVIATURA AS abreviatura,
+m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+    CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) <> 'MAGNITUD'
+GROUP BY
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY registros DESC;</code></pre>
+                                </div>
+
+                                <p>El número de registros no debe interpretarse directamente como una medida de
+                                    la calidad del aire de un municipio.
+                                    También depende del número de estaciones, de las magnitudes que se miden y
+                                    del periodo de observación.</p>
+                                <div class="figure">
+
+                                    <img src="../img/img_distxmuni_magnitudes.png"
+                                        alt="distribución de magnitudes en tabla datos_calidad_aire">
+
+
+                                </div>
+
+                            </div>
                         </div>
 
-                        <p>
-                            Esta consulta utiliza la cláusula <strong>GROUP BY</strong>
-                            para agrupar los registros según el código de magnitud y la
-                            función <strong>COUNT()</strong> para obtener el número de
-                            registros disponibles para cada contaminante.
-                        </p>
+                        <div class=" card shadow-sm mb-4">
+                            <div class="card-body">
+
+                                <h3>6.3. ¿Qué contaminante presenta los valores medios más elevados?
+                                </h3>
+                                <p>El cálculo de las medias permite comparar las concentraciones
+                                    registradas para cada magnitud. En los resultados
+                                    obtenidos, el ozono presenta el mayor valor medio numérico entre los
+                                    contaminantes analizados, seguido por los
+                                    óxidos de nitrógeno y el dióxido de nitrógeno.</p>
+
+
+                                <div class="bg-dark text-light p-3 rounded mb-3">
+                                    <pre class="mb-0"><code>SELECT
+m.NOMBRE AS contaminante,
+m.ABREVIATURA AS abreviatura,
+m.UNIDAD AS unidad,
+AVG(
+    (COALESCE(d.H01,0) + COALESCE(d.H02,0) +
+    COALESCE(d.H03,0) + COALESCE(d.H04,0) +
+    COALESCE(d.H05,0) + COALESCE(d.H06,0) +
+    COALESCE(d.H07,0) + COALESCE(d.H08,0) +
+    COALESCE(d.H09,0) + COALESCE(d.H10,0) +
+    COALESCE(d.H11,0) + COALESCE(d.H12,0) +
+    COALESCE(d.H13,0) + COALESCE(d.H14,0) +
+    COALESCE(d.H15,0) + COALESCE(d.H16,0) +
+    COALESCE(d.H17,0) + COALESCE(d.H18,0) +
+    COALESCE(d.H19,0) + COALESCE(d.H20,0) +
+    COALESCE(d.H21,0) + COALESCE(d.H22,0) +
+    COALESCE(d.H23,0) + COALESCE(d.H24,0)
+    ) / 24.0
+    ) AS valor_medio
+FROM calidad_aire.datos_calidad_aire d
+JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+    CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) <> 'MAGNITUD'
+GROUP BY
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY valor_medio DESC;</code></pre>
+                                </div>
+
+
+                                <div class="figure">
+
+                                    <img src="../img/img_distvaloresmagnitudes.png"
+                                        alt="distribución de magnitudes en tabla datos_calidad_aire">
+
+
+                                </div>
+                                <div class="note">
+                                    <strong>Precaución en la interpretación:</strong> las unidades y los
+                                    criterios de evaluación pueden ser diferentes
+                                    entre contaminantes. Una media numéricamente mayor no implica
+                                    necesariamente un mayor riesgo para la salud. La
+                                    comparación debe considerar las unidades, los periodos de promedio y
+                                    los valores de referencia aplicables.
+                                </div>
+                                <p>Como los valores horarios se encuentran en las columnas
+                                    <code>H01</code> a <code>H24</code>, la media debe
+                                    calcularse utilizando únicamente mediciones válidas y no nulas,
+                                    según el criterio definido para el conjunto de
+                                    datos. La consulta exacta debe ajustarse al método de validación y
+                                    tratamiento de valores ausentes empleado en la
+                                    práctica.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class=" card shadow-sm mb-4">
+                            <div class="card-body">
+
+                                <h3>6.4. ¿Qué contaminante supera con mayor frecuencia su valor de referencia?
+                                </h3>
+                                <p>Para este análisis se contabilizan los registros que superan los umbrales utilizados
+                                    en el ejercicio. La tabla
+                                    siguiente recoge los resultados de la consulta más reciente:</p>
+                                <div class="table-responsive">
+
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Contaminante</th>
+                                                <th>Valor de referencia</th>
+                                                <th>Número de superaciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>NO₂</td>
+                                                <td>200</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>O₃</td>
+                                                <td>180</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>PM10</td>
+                                                <td>50</td>
+                                                <td class="result">1.114</td>
+                                            </tr>
+                                            <tr>
+                                                <td>PM2.5</td>
+                                                <td>25</td>
+                                                <td class="result">808</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SO₂</td>
+                                                <td>350</td>
+                                                <td>0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Las partículas PM10 presentan el mayor número de superaciones, con 1.114 registros
+                                    por encima del valor de
+                                    referencia de 50. En segundo lugar se encuentran las partículas PM2.5, con 808
+                                    superaciones respecto al umbral de
+                                    25. Para NO₂, O₃ y SO₂ no se detectaron superaciones con los umbrales aplicados.</p>
+
+                                <div class="bg-dark text-light p-3 rounded mb-3">
+                                    <pre
+                                        class="mb-0"><code>Consultar punto In [32] Jupyter Notebook pra analizar consulta sql</code></pre>
+                                </div>
+
+                                <p>Estos resultados identifican las magnitudes con más superaciones en los datos
+                                    analizados. Antes de interpretar
+                                    los recuentos como incumplimientos normativos, es necesario comprobar que los
+                                    valores de referencia, las unidades,
+                                    los periodos de promedio y los criterios de validez de las mediciones coinciden con
+                                    los exigidos por la normativa
+                                    aplicable.</p>
+
+
+
+                                <div class="figure">
+
+                                    <img src="../img/img_distvaloresfrecmagnitudes.png"
+                                        alt="distribución de magnitudes en tabla datos_calidad_aire">
+
+
+                                </div>
+                                <div class="note">
+                                    <strong>Precaución en la interpretación:</strong> las unidades y los
+                                    criterios de evaluación pueden ser diferentes
+                                    entre contaminantes. Una media numéricamente mayor no implica
+                                    necesariamente un mayor riesgo para la salud. La
+                                    comparación debe considerar las unidades, los periodos de promedio y
+                                    los valores de referencia aplicables.
+                                </div>
+                                <p>Como los valores horarios se encuentran en las columnas
+                                    <code>H01</code> a <code>H24</code>, la media debe
+                                    calcularse utilizando únicamente mediciones válidas y no nulas,
+                                    según el criterio definido para el conjunto de
+                                    datos. La consulta exacta debe ajustarse al método de validación y
+                                    tratamiento de valores ausentes empleado en la
+                                    práctica.
+                                </p>
+
+                            </div>
+
+                        </div>
+                        <div class=" card shadow-sm mb-2">
+                            <div class="card-body">
+                                <div class="text-center mt-1">
+                                    <a href="EjerP9_1Jupyter.html" target="_blank" class="btn btn-success">
+
+                                        <i class="bi bi-journal-code"></i>
+
+                                        Consultar Jupyter Notebook puntos 4, 5 y 6.
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- CONSULTA 2 -->
+
+
+                        <!-- CONCLUSIONES -->
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body">
+
+                                <h3 class="text-success">
+                                    9. Conclusiones del ejercicio
+                                </h3>
+
+                                <p>
+                                    La realización de este ejercicio permite comprobar cómo
+                                    <strong>Apache Hive</strong> facilita la explotación de
+                                    grandes
+                                    conjuntos de datos almacenados en HDFS mediante un lenguaje
+                                    basado en SQL.
+                                </p>
+
+                                <p>
+                                    A partir del conjunto de datos de calidad del aire de
+                                    Madrid,
+                                    el estudiante ha realizado el proceso completo de
+                                    incorporación
+                                    de información externa al ecosistema Hadoop, desde su
+                                    almacenamiento en HDFS hasta su consulta mediante HiveQL.
+                                </p>
+
+                                <p>
+                                    Además, la utilización del campo <strong>MAGNITUD</strong>
+                                    permite introducir operaciones de agrupación, recuento y
+                                    clasificación de los datos, relacionando los códigos
+                                    existentes
+                                    en el fichero con los diferentes contaminantes atmosféricos.
+                                </p>
+
+                                <p>
+                                    Este ejercicio complementa los trabajos realizados
+                                    anteriormente
+                                    con HDFS, MapReduce, Hadoop Streaming y otros componentes
+                                    del
+                                    ecosistema, mostrando una alternativa basada en consultas
+                                    declarativas para el análisis de información almacenada en
+                                    un
+                                    entorno Big Data.
+                                </p>
+
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
-
-                <!-- CONSULTA 2 -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-                            6. Interpretación de las magnitudes mediante HiveQL
-                        </h3>
-
-                        <p>
-                            Para facilitar la interpretación de los resultados, se puede
-                            utilizar la expresión <strong>CASE</strong> de HiveQL para
-                            transformar el código numérico de la magnitud en el nombre del
-                            contaminante correspondiente.
-                        </p>
-
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <pre class="mb-0"><code>SELECT
-        MAGNITUD,
-    
-        CASE MAGNITUD
-            WHEN 1 THEN 'Dióxido de Azufre (SO2)'
-            WHEN 6 THEN 'Monóxido de Carbono (CO)'
-            WHEN 7 THEN 'Monóxido de Nitrógeno (NO)'
-            WHEN 8 THEN 'Dióxido de Nitrógeno (NO2)'
-            WHEN 9 THEN 'Partículas &lt; 2.5 µm (PM2.5)'
-            WHEN 10 THEN 'Partículas &lt; 10 µm (PM10)'
-            WHEN 12 THEN 'Óxidos de Nitrógeno (NOx)'
-            WHEN 14 THEN 'Ozono (O3)'
-            WHEN 20 THEN 'Tolueno (TOL)'
-            WHEN 30 THEN 'Benceno (BEN)'
-            WHEN 35 THEN 'Etilbenceno (EBE)'
-            WHEN 37 THEN 'Metaxileno (MXY)'
-            WHEN 38 THEN 'Paraxileno (PXY)'
-            WHEN 39 THEN 'Ortoxileno (OXY)'
-            WHEN 42 THEN 'Hidrocarburos totales (hexano)'
-            WHEN 43 THEN 'Metano (CH4)'
-            WHEN 44 THEN 'Hidrocarburos no metánicos (hexano)'
-            WHEN 431 THEN 'Metaparaxileno (MPX)'
-            ELSE 'Magnitud desconocida'
-        END AS contaminante,
-    
-        COUNT(*) AS registros
-    
-    FROM datos_calidad_aire
-    
-    GROUP BY MAGNITUD
-    
-    ORDER BY registros DESC;</code></pre>
-                        </div>
-
-                        <p>
-                            De esta forma, el resultado obtenido por Hive resulta más
-                            sencillo de interpretar, ya que cada código aparece asociado
-                            al nombre del contaminante correspondiente.
-                        </p>
-
-                    </div>
-                </div>
-
-
-                <!-- CONSULTA 3 -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-                            7. Consulta de una magnitud concreta
-                        </h3>
-
-                        <p>
-                            Como ejercicio adicional, se puede seleccionar una magnitud
-                            concreta para analizar sus mediciones. Por ejemplo, el código
-                            <strong>8</strong> corresponde al <strong>dióxido de nitrógeno
-                                (NO₂)</strong>.
-                        </p>
-
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <pre class="mb-0"><code>SELECT
-        PROVINCIA,
-        MUNICIPIO,
-        ESTACION,
-        MAGNITUD,
-        ANO,
-        MES,
-        DIA,
-        H01,
-        H02,
-        H03,
-        H04,
-        H05,
-        H06,
-        H07,
-        H08,
-        H09,
-        H10,
-        H11,
-        H12,
-        H13,
-        H14,
-        H15,
-        H16,
-        H17,
-        H18,
-        H19,
-        H20,
-        H21,
-        H22,
-        H23,
-        H24
-    FROM datos_calidad_aire
-    WHERE MAGNITUD = 8
-    LIMIT 20;</code></pre>
-                        </div>
-
-                        <p>
-                            Esta consulta permite observar cómo se distribuyen los valores
-                            horarios de un contaminante concreto y constituye un punto de
-                            partida para realizar posteriormente análisis más avanzados.
-                        </p>
-
-                    </div>
-                </div>
-
-
-                <!-- RESULTADO -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-                            8. Ejecución desde Jupyter Notebook
-                        </h3>
-
-                        <p>
-                            Aunque las operaciones se realizan mediante el cliente
-                            <strong>Beeline</strong>, las instrucciones pueden ejecutarse
-                            desde Jupyter Notebook utilizando comandos del sistema.
-                            Por ejemplo:
-                        </p>
-
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <pre class="mb-0"><code>!beeline -u jdbc:hive2://localhost:10000 -e "
-    USE calidad_aire;
-    
-    SELECT MAGNITUD, COUNT(*) AS registros
-    FROM datos_calidad_aire
-    GROUP BY MAGNITUD
-    ORDER BY registros DESC;
-    "</code></pre>
-                        </div>
-
-                        <p>
-                            El resultado de la consulta se muestra directamente en la
-                            salida de la celda de Jupyter, permitiendo al estudiante
-                            comprobar de forma práctica el funcionamiento de HiveQL sobre
-                            los datos almacenados en Hadoop.
-                        </p>
-
-                        <!-- Espacio para imagen -->
-                        <div class="text-center my-4">
-
-                            <img src="img/hive-calidad-aire.png" class="img-fluid rounded shadow"
-                                style="max-width: 850px;"
-                                alt="Consulta Apache Hive sobre los datos de calidad del aire de Madrid">
-
-                            <p class="text-muted mt-2">
-                                <strong>Figura XX.</strong> Consulta de los datos de calidad
-                                del aire mediante Apache Hive desde Jupyter Notebook.
-                                Fuente: elaboración propia.
-                            </p>
-
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <!-- CONCLUSIONES -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-
-                        <h3 class="text-success">
-                            9. Conclusiones del ejercicio
-                        </h3>
-
-                        <p>
-                            La realización de este ejercicio permite comprobar cómo
-                            <strong>Apache Hive</strong> facilita la explotación de grandes
-                            conjuntos de datos almacenados en HDFS mediante un lenguaje
-                            basado en SQL.
-                        </p>
-
-                        <p>
-                            A partir del conjunto de datos de calidad del aire de Madrid,
-                            el estudiante ha realizado el proceso completo de incorporación
-                            de información externa al ecosistema Hadoop, desde su
-                            almacenamiento en HDFS hasta su consulta mediante HiveQL.
-                        </p>
-
-                        <p>
-                            Además, la utilización del campo <strong>MAGNITUD</strong>
-                            permite introducir operaciones de agrupación, recuento y
-                            clasificación de los datos, relacionando los códigos existentes
-                            en el fichero con los diferentes contaminantes atmosféricos.
-                        </p>
-
-                        <p>
-                            Este ejercicio complementa los trabajos realizados anteriormente
-                            con HDFS, MapReduce, Hadoop Streaming y otros componentes del
-                            ecosistema, mostrando una alternativa basada en consultas
-                            declarativas para el análisis de información almacenada en un
-                            entorno Big Data.
-                        </p>
-
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </div>
 
-    <!-- =====================================================
+            <!-- =====================================================
      PIE
 ====================================================== -->
 
-    <footer>
+            <footer>
 
-        <p class="mb-1">
-            Proyecto Fin de Grado - Ingeniería Informática
-        </p>
+                <p class="mb-1">
+                    Proyecto Fin de Grado - Ingeniería Informática
+                </p>
 
-        <p class="mb-0">
-            Universidad Nacional de Educación a Distancia (UNED)
-        </p>
+                <p class="mb-0">
+                    Universidad Nacional de Educación a Distancia (UNED)
+                </p>
 
-    </footer>
+            </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+            </script>
 
 </body>
 

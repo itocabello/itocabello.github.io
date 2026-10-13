@@ -7821,7 +7821,7 @@ a.anchor-link {
 -rw-r--r--   3 root supergroup   20166384 2026-10-01 12:24 /dataset/calidad_aire_madrid/calidad_aire_madrid.csv
 -rw-r--r--   3 root supergroup    3828371 2026-10-01 13:19 /dataset/calidad_aire_madrid/calidad_aire_madrid_20000.csv
 Found 1 items
--rw-r--r--   3 root supergroup        352 2026-10-05 10:58 /dataset/magnitudes/magnitudes.csv
+-rw-r--r--   3 root supergroup       1142 2026-10-09 10:01 /dataset/magnitudes/magnitudes.csv
 </pre>
 </div>
 </div>
@@ -7832,7 +7832,7 @@ Found 1 items
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span>    
@@ -7863,18 +7863,18 @@ Connecting to jdbc:hive2://localhost:10000
 Connected to: Apache Hive (version 3.1.3)
 Driver: Hive JDBC (version 3.1.3)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
-INFO  : Compiling command(queryId=root_20261006073033_e984d8d2-04cf-4c0e-ac70-48f0e1f14cc2): CREATE DATABASE IF NOT EXISTS calidad_aire
+INFO  : Compiling command(queryId=root_20261009100202_b07cf081-b02a-472d-ba79-eea5e7c7cf8a): CREATE DATABASE IF NOT EXISTS calidad_aire
 INFO  : Concurrency mode is disabled, not creating a lock manager
 INFO  : Semantic Analysis Completed (retrial = false)
 INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
-INFO  : Completed compiling command(queryId=root_20261006073033_e984d8d2-04cf-4c0e-ac70-48f0e1f14cc2); Time taken: 0.087 seconds
+INFO  : Completed compiling command(queryId=root_20261009100202_b07cf081-b02a-472d-ba79-eea5e7c7cf8a); Time taken: 0.106 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
-INFO  : Executing command(queryId=root_20261006073033_e984d8d2-04cf-4c0e-ac70-48f0e1f14cc2): CREATE DATABASE IF NOT EXISTS calidad_aire
+INFO  : Executing command(queryId=root_20261009100202_b07cf081-b02a-472d-ba79-eea5e7c7cf8a): CREATE DATABASE IF NOT EXISTS calidad_aire
 INFO  : Starting task [Stage-0:DDL] in serial mode
-INFO  : Completed executing command(queryId=root_20261006073033_e984d8d2-04cf-4c0e-ac70-48f0e1f14cc2); Time taken: 0.075 seconds
+INFO  : Completed executing command(queryId=root_20261009100202_b07cf081-b02a-472d-ba79-eea5e7c7cf8a); Time taken: 0.092 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-No rows affected (0.578 seconds)
+No rows affected (0.383 seconds)
 Beeline version 3.1.3 by Apache Hive
 Closing: 0: jdbc:hive2://localhost:10000
 </pre>
@@ -7887,7 +7887,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Crear tabla datos_calidad_aire y cargar datos procendentes del .csv  /dataset/calidad_aire_madrid/calidad_aire_madrid.csv</span>
@@ -8016,7 +8016,7 @@ Connecting to jdbc:hive2://localhost:10000
 Connected to: Apache Hive (version 3.1.3)
 Driver: Hive JDBC (version 3.1.3)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
-INFO  : Compiling command(queryId=root_20261006073056_4efbdb3b-3741-48b5-9bc7-36f56c069a1f): CREATE TABLE calidad_aire.datos_calidad_aire (
+INFO  : Compiling command(queryId=root_20261009100215_049ab32a-222f-42df-a1cf-25fcabcde7a8): CREATE TABLE calidad_aire.datos_calidad_aire (
     provincia STRING,
     municipio STRING,
     estacion STRING,
@@ -8084,9 +8084,9 @@ LOCATION 'hdfs://namenode:9000/dataset/calidad_aire_madrid'
 INFO  : Concurrency mode is disabled, not creating a lock manager
 INFO  : Semantic Analysis Completed (retrial = false)
 INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
-INFO  : Completed compiling command(queryId=root_20261006073056_4efbdb3b-3741-48b5-9bc7-36f56c069a1f); Time taken: 0.223 seconds
+INFO  : Completed compiling command(queryId=root_20261009100215_049ab32a-222f-42df-a1cf-25fcabcde7a8); Time taken: 0.241 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
-INFO  : Executing command(queryId=root_20261006073056_4efbdb3b-3741-48b5-9bc7-36f56c069a1f): CREATE TABLE calidad_aire.datos_calidad_aire (
+INFO  : Executing command(queryId=root_20261009100215_049ab32a-222f-42df-a1cf-25fcabcde7a8): CREATE TABLE calidad_aire.datos_calidad_aire (
     provincia STRING,
     municipio STRING,
     estacion STRING,
@@ -8153,7 +8153,7 @@ STORED AS TEXTFILE
 LOCATION 'hdfs://namenode:9000/dataset/calidad_aire_madrid'
 INFO  : Starting task [Stage-0:DDL] in serial mode
 ERROR : FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. AlreadyExistsException(message:Table hive.calidad_aire.datos_calidad_aire already exists)
-INFO  : Completed executing command(queryId=root_20261006073056_4efbdb3b-3741-48b5-9bc7-36f56c069a1f); Time taken: 0.166 seconds
+INFO  : Completed executing command(queryId=root_20261009100215_049ab32a-222f-42df-a1cf-25fcabcde7a8); Time taken: 1.056 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
 Error: Error while processing statement: FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. AlreadyExistsException(message:Table hive.calidad_aire.datos_calidad_aire already exists) (state=08S01,code=1)
 Closing: 0: jdbc:hive2://localhost:10000
@@ -8168,7 +8168,7 @@ Connecting to jdbc:hive2://localhost:10000
 Connected to: Apache Hive (version 3.1.3)
 Driver: Hive JDBC (version 3.1.3)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
-INFO  : Compiling command(queryId=root_20261006073105_c13bf9d8-d443-44c4-8eac-7bf87cf4abe6): CREATE TABLE calidad_aire.magnitudes (
+INFO  : Compiling command(queryId=root_20261009100220_f2110d5d-a02b-4099-88d6-4262a5e57cb3): CREATE TABLE calidad_aire.magnitudes (
     MAGNITUD STRING,
     NOMBRE STRING,
     ABREVIATURA STRING,
@@ -8184,9 +8184,9 @@ LOCATION 'hdfs://namenode:9000/dataset/magnitudes'
 INFO  : Concurrency mode is disabled, not creating a lock manager
 INFO  : Semantic Analysis Completed (retrial = false)
 INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
-INFO  : Completed compiling command(queryId=root_20261006073105_c13bf9d8-d443-44c4-8eac-7bf87cf4abe6); Time taken: 0.059 seconds
+INFO  : Completed compiling command(queryId=root_20261009100220_f2110d5d-a02b-4099-88d6-4262a5e57cb3); Time taken: 0.024 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
-INFO  : Executing command(queryId=root_20261006073105_c13bf9d8-d443-44c4-8eac-7bf87cf4abe6): CREATE TABLE calidad_aire.magnitudes (
+INFO  : Executing command(queryId=root_20261009100220_f2110d5d-a02b-4099-88d6-4262a5e57cb3): CREATE TABLE calidad_aire.magnitudes (
     MAGNITUD STRING,
     NOMBRE STRING,
     ABREVIATURA STRING,
@@ -8200,13 +8200,240 @@ WITH SERDEPROPERTIES (
 STORED AS TEXTFILE
 LOCATION 'hdfs://namenode:9000/dataset/magnitudes'
 INFO  : Starting task [Stage-0:DDL] in serial mode
-INFO  : Completed executing command(queryId=root_20261006073105_c13bf9d8-d443-44c4-8eac-7bf87cf4abe6); Time taken: 0.731 seconds
+ERROR : FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. AlreadyExistsException(message:Table hive.calidad_aire.magnitudes already exists)
+INFO  : Completed executing command(queryId=root_20261009100220_f2110d5d-a02b-4099-88d6-4262a5e57cb3); Time taken: 0.094 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+Error: Error while processing statement: FAILED: Execution Error, return code 1 from org.apache.hadoop.hive.ql.exec.DDLTask. AlreadyExistsException(message:Table hive.calidad_aire.magnitudes already exists) (state=08S01,code=1)
+Closing: 0: jdbc:hive2://localhost:10000
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4bf86b5b-3a84-4f48-8f72-af2431bee8db">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Crear tabla datos_calidad_aire </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">sql</span> <span class="o">=</span> <span class="s1">'''</span>
+<span class="s1">CREATE TABLE calidad_aire.datos_calidad_aire_parquet</span>
+<span class="s1">STORED AS PARQUET</span>
+<span class="s1">AS</span>
+<span class="s1">SELECT *</span>
+<span class="s1">FROM calidad_aire.datos_calidad_aire</span>
+<span class="s1">;</span>
+<span class="s1">'''</span>
+
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261008113210_62659b71-3b33-4d9c-a097-24ccf80fd220): CREATE TABLE calidad_aire.datos_calidad_aire_parquet
+STORED AS PARQUET
+AS
+SELECT *
+FROM calidad_aire.datos_calidad_aire
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:datos_calidad_aire.provincia, type:string, comment:null), FieldSchema(name:datos_calidad_aire.municipio, type:string, comment:null), FieldSchema(name:datos_calidad_aire.estacion, type:string, comment:null), FieldSchema(name:datos_calidad_aire.magnitud, type:string, comment:null), FieldSchema(name:datos_calidad_aire.punto_muestreo, type:string, comment:null), FieldSchema(name:datos_calidad_aire.ano, type:string, comment:null), FieldSchema(name:datos_calidad_aire.mes, type:string, comment:null), FieldSchema(name:datos_calidad_aire.dia, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h01, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v01, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h02, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v02, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h03, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v03, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h04, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v04, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h05, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v05, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h06, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v06, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h07, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v07, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h08, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v08, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h09, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v09, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h10, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v10, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h11, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v11, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h12, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v12, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h13, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v13, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h14, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v14, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h15, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v15, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h16, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v16, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h17, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v17, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h18, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v18, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h19, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v19, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h20, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v20, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h21, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v21, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h22, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v22, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h23, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v23, type:string, comment:null), FieldSchema(name:datos_calidad_aire.h24, type:string, comment:null), FieldSchema(name:datos_calidad_aire.v24, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261008113210_62659b71-3b33-4d9c-a097-24ccf80fd220); Time taken: 0.636 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261008113210_62659b71-3b33-4d9c-a097-24ccf80fd220): CREATE TABLE calidad_aire.datos_calidad_aire_parquet
+STORED AS PARQUET
+AS
+SELECT *
+FROM calidad_aire.datos_calidad_aire
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261008113210_62659b71-3b33-4d9c-a097-24ccf80fd220
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0007
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0007/
+INFO  : Starting Job = job_1791452885867_0007, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0007/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0007
+INFO  : Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+INFO  : 2026-10-08 11:32:20,673 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-08 11:32:33,306 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 7.37 sec
+INFO  : MapReduce Total cumulative CPU time: 7 seconds 370 msec
+INFO  : Ended Job = job_1791452885867_0007
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_11-32-11_024_4668611183718053880-2/-ext-10002 from hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_11-32-11_024_4668611183718053880-2/-ext-10004
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/datos_calidad_aire_parquet from hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_11-32-11_024_4668611183718053880-2/-ext-10002
+INFO  : Starting task [Stage-8:DDL] in serial mode
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 1   Cumulative CPU: 7.37 sec   HDFS Read: 24007143 HDFS Write: 3042907 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 7 seconds 370 msec
+INFO  : Completed executing command(queryId=root_20261008113210_62659b71-3b33-4d9c-a097-24ccf80fd220); Time taken: 25.274 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-No rows affected (1.192 seconds)
+No rows affected (25.94 seconds)
 Beeline version 3.1.3 by Apache Hive
 Closing: 0: jdbc:hive2://localhost:10000
 
+Tiempo total: 29.01 segundos
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d07673b2-d22b-4d56-ae6f-2ef8f606e65f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Crear tabla datos_calidad_aire </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="n">sql</span> <span class="o">=</span> <span class="s1">'''</span>
+<span class="s1">CREATE TABLE calidad_aire.magnitudes_parquet</span>
+<span class="s1">STORED AS PARQUET</span>
+<span class="s1">AS</span>
+<span class="s1">SELECT *</span>
+<span class="s1">FROM calidad_aire.magnitudes</span>
+<span class="s1">;</span>
+<span class="s1">'''</span>
+
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261008122041_56dfbf1d-ad2b-42d8-be94-e6aff907de59): CREATE TABLE calidad_aire.magnitudes_parquet
+STORED AS PARQUET
+AS
+SELECT *
+FROM calidad_aire.magnitudes
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:magnitudes.magnitud, type:string, comment:null), FieldSchema(name:magnitudes.nombre, type:string, comment:null), FieldSchema(name:magnitudes.abreviatura, type:string, comment:null), FieldSchema(name:magnitudes.unidad, type:string, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261008122041_56dfbf1d-ad2b-42d8-be94-e6aff907de59); Time taken: 0.449 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261008122041_56dfbf1d-ad2b-42d8-be94-e6aff907de59): CREATE TABLE calidad_aire.magnitudes_parquet
+STORED AS PARQUET
+AS
+SELECT *
+FROM calidad_aire.magnitudes
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261008122041_56dfbf1d-ad2b-42d8-be94-e6aff907de59
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks is set to 0 since there's no reduce operator
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0031
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0031/
+INFO  : Starting Job = job_1791452885867_0031, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0031/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0031
+INFO  : Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+INFO  : 2026-10-08 12:20:53,979 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-08 12:21:05,568 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.2 sec
+INFO  : MapReduce Total cumulative CPU time: 3 seconds 200 msec
+INFO  : Ended Job = job_1791452885867_0031
+INFO  : Starting task [Stage-7:CONDITIONAL] in serial mode
+INFO  : Stage-4 is selected by condition resolver.
+INFO  : Stage-3 is filtered out by condition resolver.
+INFO  : Stage-5 is filtered out by condition resolver.
+INFO  : Starting task [Stage-4:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_12-20-42_137_4871579903158194385-2/-ext-10002 from hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_12-20-42_137_4871579903158194385-2/-ext-10004
+INFO  : Starting task [Stage-0:MOVE] in serial mode
+INFO  : Moving data to directory hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/magnitudes_parquet from hdfs://namenode:9000/user/hive/warehouse/calidad_aire.db/.hive-staging_hive_2026-10-08_12-20-42_137_4871579903158194385-2/-ext-10002
+INFO  : Starting task [Stage-8:DDL] in serial mode
+INFO  : Starting task [Stage-2:STATS] in serial mode
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 1   Cumulative CPU: 3.2 sec   HDFS Read: 6353 HDFS Write: 1495 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 3 seconds 200 msec
+INFO  : Completed executing command(queryId=root_20261008122041_56dfbf1d-ad2b-42d8-be94-e6aff907de59); Time taken: 24.661 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+No rows affected (25.146 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
+
+Tiempo total: 30.06 segundos
 </pre>
 </div>
 </div>
@@ -8217,7 +8444,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultar la tabla creada</span>
@@ -8243,36 +8470,38 @@ Connecting to jdbc:hive2://localhost:10000
 Connected to: Apache Hive (version 3.1.3)
 Driver: Hive JDBC (version 3.1.3)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
-INFO  : Compiling command(queryId=root_20261006073131_7ffb0e21-7f29-4337-b41d-ebe7d49d7bc2): USE calidad_aire
+INFO  : Compiling command(queryId=root_20261009100259_47cb757a-b8f0-43be-9b6e-2385c037ab2c): USE calidad_aire
 INFO  : Concurrency mode is disabled, not creating a lock manager
 INFO  : Semantic Analysis Completed (retrial = false)
 INFO  : Returning Hive schema: Schema(fieldSchemas:null, properties:null)
-INFO  : Completed compiling command(queryId=root_20261006073131_7ffb0e21-7f29-4337-b41d-ebe7d49d7bc2); Time taken: 0.087 seconds
+INFO  : Completed compiling command(queryId=root_20261009100259_47cb757a-b8f0-43be-9b6e-2385c037ab2c); Time taken: 0.224 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
-INFO  : Executing command(queryId=root_20261006073131_7ffb0e21-7f29-4337-b41d-ebe7d49d7bc2): USE calidad_aire
+INFO  : Executing command(queryId=root_20261009100259_47cb757a-b8f0-43be-9b6e-2385c037ab2c): USE calidad_aire
 INFO  : Starting task [Stage-0:DDL] in serial mode
-INFO  : Completed executing command(queryId=root_20261006073131_7ffb0e21-7f29-4337-b41d-ebe7d49d7bc2); Time taken: 0.023 seconds
+INFO  : Completed executing command(queryId=root_20261009100259_47cb757a-b8f0-43be-9b6e-2385c037ab2c); Time taken: 0.158 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-No rows affected (0.207 seconds)
-INFO  : Compiling command(queryId=root_20261006073131_a0d34c31-2928-485a-951b-380d039bef33): SHOW TABLES
+No rows affected (0.845 seconds)
+INFO  : Compiling command(queryId=root_20261009100300_f910d848-d0dc-405c-8f19-f0169eb0529a): SHOW TABLES
 INFO  : Concurrency mode is disabled, not creating a lock manager
 INFO  : Semantic Analysis Completed (retrial = false)
 INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:tab_name, type:string, comment:from deserializer)], properties:null)
-INFO  : Completed compiling command(queryId=root_20261006073131_a0d34c31-2928-485a-951b-380d039bef33); Time taken: 0.045 seconds
+INFO  : Completed compiling command(queryId=root_20261009100300_f910d848-d0dc-405c-8f19-f0169eb0529a); Time taken: 0.215 seconds
 INFO  : Concurrency mode is disabled, not creating a lock manager
-INFO  : Executing command(queryId=root_20261006073131_a0d34c31-2928-485a-951b-380d039bef33): SHOW TABLES
+INFO  : Executing command(queryId=root_20261009100300_f910d848-d0dc-405c-8f19-f0169eb0529a): SHOW TABLES
 INFO  : Starting task [Stage-0:DDL] in serial mode
-INFO  : Completed executing command(queryId=root_20261006073131_a0d34c31-2928-485a-951b-380d039bef33); Time taken: 0.028 seconds
+INFO  : Completed executing command(queryId=root_20261009100300_f910d848-d0dc-405c-8f19-f0169eb0529a); Time taken: 0.138 seconds
 INFO  : OK
 INFO  : Concurrency mode is disabled, not creating a lock manager
-+---------------------+
-|      tab_name       |
-+---------------------+
-| datos_calidad_aire  |
-| magnitudes          |
-+---------------------+
-2 rows selected (0.373 seconds)
++-----------------------------+
+|          tab_name           |
++-----------------------------+
+| datos_calidad_aire          |
+| datos_calidad_aire_parquet  |
+| magnitudes                  |
+| magnitudes_parquet          |
++-----------------------------+
+4 rows selected (1.453 seconds)
 Beeline version 3.1.3 by Apache Hive
 Closing: 0: jdbc:hive2://localhost:10000
 </pre>
@@ -8285,7 +8514,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Cargar el CSV en la tabla</span>
@@ -8402,121 +8631,20 @@ Closing: 0: jdbc:hive2://localhost:10000
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4bf86b5b-3a84-4f48-8f72-af2431bee8db">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Crear tabla datos_calidad_aire </span>
-<span class="n">sql</span> <span class="o">=</span> <span class="s1">'''</span>
-<span class="s1">CREATE TABLE calidad_aire.datos_calidad_aire_parquet</span>
-<span class="s1">STORED AS PARQUET</span>
-<span class="s1">AS</span>
-<span class="s1">SELECT *</span>
-<span class="s1">FROM calidad_aire.datos_calidad_aire</span>
-<span class="s1">LIMIT 5;</span>
-<span class="s1">'''</span>
-
-<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
-    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-
-<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=27fdf34d-6aa0-4871-a348-bfc7449c0b5b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-cat<span class="w"> </span>/dataset/magnitudes/magnitudes.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Cod. Magnitud;Magnitud;Abrevia.;Unidad;Código Técnica;Técnica de medida
-01;Dióxido de Azufre;SO2;µg/m3;38;Fluorescencia ultravioleta
-06;Monóxido de Carbono;CO;mg/m3;48;Absorción infrarroja
-07;Monóxido de Nitrógeno;NO;µg/m3;08;Quimioluminiscencia
-08;Dióxido de Nitrógeno;NO2;µg/m3;08;Quimioluminiscencia
-09;Partículas &lt; 2.5 µm;PM2.5;µg/m3;47;Microbalanza/Espectrometría*
-10;Partículas &lt; 10 µm;PM10;µg/m3;47;Microbalanza/Espectrometría*
-12;Óxidos de Nitrógeno;NOx;µg/m3;08;Quimioluminiscencia
-14;Ozono;O3;µg/m3;06;Absorción ultravioleta
-20;Tolueno;TOL;µg/m3;59;Cromatografía de gases
-30;Benceno;BEN;µg/m3;59;Cromatografía de gases
-35;Etilbenceno;EBE;µg/m3;59;Cromatografía de gases
-37;Metaxileno;MXY;µg/m3;59;Cromatografía de gases
-38;Paraxileno;PXY;µg/m3;59;Cromatografía de gases
-39;Ortoxileno;OXY;µg/m3;59;Cromatografía de gases
-42;Hidrocarburos totales (hexano);TCH;mg/m3;59;Cromatografía de gases
-43;Metano;CH4;mg/m3;59;Cromatografía de gases
-44;Hidrocarburos no metánicos (hexano);NMHC;mg/m3;59;Cromatografía de gases
-431;Metaparaxileno;MPX;mg/m3;59;Cromatografía de gasess
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Si detectamos algo erroneo, podemos eliminar la tabla deseada y volver al paso de creación de tabla y de carga de datos</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2d8079e9-8556-4c2d-8ab0-eecbc44d6235">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 1: ¿Numero de contaminantes aparecen en el conjunto de datos?</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
-<span class="s2">USE calidad_aire;</span>
-
-<span class="s2">SELECT</span>
-<span class="s2">    d.MAGNITUD AS cod_magnitud,</span>
-<span class="s2">    m.MAGNITUD AS magnitud,</span>
-<span class="s2">    m.ABREVIA AS abreviatura,</span>
-<span class="s2">    m.UNIDAD AS unidad,</span>
-<span class="s2">    m.COD_TECNICA AS codigo_tecnica,</span>
-<span class="s2">    m.TECNICA_MEDIDA AS tecnica_medida,</span>
-<span class="s2">    COUNT(*) AS registros</span>
-<span class="s2">FROM calidad_aire.datos_calidad_aire d</span>
-<span class="s2">LEFT JOIN calidad_aire.magnitudes m</span>
-<span class="s2">    ON d.MAGNITUD = m.COD_MAGNITUD</span>
-<span class="s2">GROUP BY</span>
-<span class="s2">    d.MAGNITUD,</span>
-<span class="s2">    m.MAGNITUD,</span>
-<span class="s2">    m.ABREVIA,</span>
-<span class="s2">    m.UNIDAD,</span>
-<span class="s2">    m.COD_TECNICA,</span>
-<span class="s2">    m.TECNICA_MEDIDA</span>
-<span class="s2">ORDER BY</span>
-<span class="s2">    d.MAGNITUD;</span>
+<span class="s2">SELECT COUNT(*)</span>
+<span class="s2">FROM calidad_aire.datos_calidad_aire_parquet;</span>
 <span class="s2">"""</span>
 
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -8538,23 +8666,434 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+-----------+------------+
-| magnitud  | registros  |
-+-----------+------------+
-| 1         | 2432       |
-| 10        | 9715       |
-| 12        | 17638      |
-| 14        | 10940      |
-| 20        | 3605       |
-| 30        | 3605       |
-| 35        | 3605       |
-| 6         | 2431       |
-| 7         | 17627      |
-| 8         | 17627      |
-| 9         | 7288       |
-| MAGNITUD  | 2          |
-+-----------+------------+
+<pre>+--------+
+|  _c0   |
++--------+
+| 96515  |
++--------+
 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2d8079e9-8556-4c2d-8ab0-eecbc44d6235">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Comparar los tiempos de ejecución entre formato csv y parquet</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">SELECT</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,</span>
+<span class="s2">    m.nombre AS contaminante,</span>
+<span class="s2">    m.abreviatura AS abreviatura,</span>
+<span class="s2">    m.unidad AS unidad,</span>
+<span class="s2">    COUNT(*) AS registros</span>
+<span class="s2">FROM calidad_aire.datos_calidad_aire d</span>
+<span class="s2">LEFT JOIN calidad_aire.magnitudes m</span>
+<span class="s2">    ON CAST(TRIM(d.MAGNITUD) AS INT) =</span>
+<span class="s2">       CAST(TRIM(m.magnitud) AS INT)</span>
+<span class="s2">WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'</span>
+<span class="s2">  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'</span>
+<span class="s2">GROUP BY</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT),</span>
+<span class="s2">    m.nombre,</span>
+<span class="s2">    m.abreviatura,</span>
+<span class="s2">    m.unidad</span>
+<span class="s2">ORDER BY</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT);</span>
+<span class="s2">"""</span>
+
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>+---------------+------------------------+--------------+---------+------------+
+| cod_magnitud  |      contaminante      | abreviatura  | unidad  | registros  |
++---------------+------------------------+--------------+---------+------------+
+| 1             | Di?xido de Azufre      | SO2          | ?g/m3   | 2432       |
+| 6             | Mon?xido de Carbono    | CO           | mg/m3   | 2431       |
+| 7             | Mon?xido de Nitr?geno  | NO           | ?g/m3   | 17627      |
+| 8             | Di?xido de Nitr?geno   | NO2          | ?g/m3   | 17627      |
+| 9             | Part?culas &lt; 2.5 ?m    | PM2.5        | ?g/m3   | 7288       |
+| 10            | Part?culas &lt; 10 ?m     | PM10         | ?g/m3   | 9715       |
+| 12            | ?xidos de Nitr?geno    | NOx          | ?g/m3   | 17638      |
+| 14            | Ozono                  | O3           | ?g/m3   | 10940      |
+| 20            | Tolueno                | TOL          | ?g/m3   | 3605       |
+| 30            | Benceno                | BEN          | ?g/m3   | 3605       |
+| 35            | Etilbenceno            | EBE          | ?g/m3   | 3605       |
++---------------+------------------------+--------------+---------+------------+
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261009081827_549def1e-08f7-4641-a87e-74d934aa8276): SELECT
+    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,
+    m.nombre AS contaminante,
+    m.abreviatura AS abreviatura,
+    m.unidad AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.magnitud) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    CAST(TRIM(d.MAGNITUD) AS INT),
+    m.nombre,
+    m.abreviatura,
+    m.unidad
+ORDER BY
+    CAST(TRIM(d.MAGNITUD) AS INT)
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:cod_magnitud, type:int, comment:null), FieldSchema(name:contaminante, type:string, comment:null), FieldSchema(name:abreviatura, type:string, comment:null), FieldSchema(name:unidad, type:string, comment:null), FieldSchema(name:registros, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261009081827_549def1e-08f7-4641-a87e-74d934aa8276); Time taken: 0.333 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261009081827_549def1e-08f7-4641-a87e-74d934aa8276): SELECT
+    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,
+    m.nombre AS contaminante,
+    m.abreviatura AS abreviatura,
+    m.unidad AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.magnitud) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    CAST(TRIM(d.MAGNITUD) AS INT),
+    m.nombre,
+    m.abreviatura,
+    m.unidad
+ORDER BY
+    CAST(TRIM(d.MAGNITUD) AS INT)
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261009081827_549def1e-08f7-4641-a87e-74d934aa8276
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1791452885867_0053
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0053/
+INFO  : Starting Job = job_1791452885867_0053, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0053/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0053
+INFO  : Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+INFO  : 2026-10-09 08:18:37,392 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:18:51,158 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 2.55 sec
+INFO  : 2026-10-09 08:18:56,446 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 8.14 sec
+INFO  : 2026-10-09 08:19:03,804 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 12.08 sec
+INFO  : MapReduce Total cumulative CPU time: 12 seconds 80 msec
+INFO  : Ended Job = job_1791452885867_0053
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0054
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0054/
+INFO  : Starting Job = job_1791452885867_0054, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0054/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0054
+INFO  : Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:19:20,361 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:19:31,216 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 2.01 sec
+INFO  : 2026-10-09 08:19:40,600 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 3.58 sec
+INFO  : MapReduce Total cumulative CPU time: 3 seconds 580 msec
+INFO  : Ended Job = job_1791452885867_0054
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0055
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0055/
+INFO  : Starting Job = job_1791452885867_0055, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0055/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0055
+INFO  : Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:19:55,156 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:20:02,446 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.77 sec
+INFO  : 2026-10-09 08:20:11,839 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 3.61 sec
+INFO  : MapReduce Total cumulative CPU time: 3 seconds 610 msec
+INFO  : Ended Job = job_1791452885867_0055
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 12.08 sec   HDFS Read: 24021887 HDFS Write: 633 SUCCESS
+INFO  : Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 3.58 sec   HDFS Read: 9001 HDFS Write: 633 SUCCESS
+INFO  : Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 3.61 sec   HDFS Read: 9223 HDFS Write: 656 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 19 seconds 270 msec
+INFO  : Completed executing command(queryId=root_20261009081827_549def1e-08f7-4641-a87e-74d934aa8276); Time taken: 105.956 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+11 rows selected (106.373 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
+
+Tiempo total: 110.43 segundos
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=36d30b7f-ead2-4c4e-9426-d3b00ca3dff7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Comparar los tiempos de ejecución entre formato csv y parquet</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">SELECT</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,</span>
+<span class="s2">    m.nombre AS contaminante,</span>
+<span class="s2">    m.abreviatura AS abreviatura,</span>
+<span class="s2">    m.unidad AS unidad,</span>
+<span class="s2">    COUNT(*) AS registros</span>
+<span class="s2">FROM calidad_aire.datos_calidad_aire_parquet d</span>
+<span class="s2">LEFT JOIN calidad_aire.magnitudes_parquet m</span>
+<span class="s2">    ON CAST(TRIM(d.MAGNITUD) AS INT) =</span>
+<span class="s2">       CAST(TRIM(m.magnitud) AS INT)</span>
+<span class="s2">WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'</span>
+<span class="s2">  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'</span>
+<span class="s2">GROUP BY</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT),</span>
+<span class="s2">    m.nombre,</span>
+<span class="s2">    m.abreviatura,</span>
+<span class="s2">    m.unidad</span>
+<span class="s2">ORDER BY</span>
+<span class="s2">    CAST(TRIM(d.MAGNITUD) AS INT);</span>
+<span class="s2">"""</span>
+
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>+---------------+------------------------+--------------+---------+------------+
+| cod_magnitud  |      contaminante      | abreviatura  | unidad  | registros  |
++---------------+------------------------+--------------+---------+------------+
+| 1             | Di?xido de Azufre      | SO2          | ?g/m3   | 2432       |
+| 6             | Mon?xido de Carbono    | CO           | mg/m3   | 2431       |
+| 7             | Mon?xido de Nitr?geno  | NO           | ?g/m3   | 17627      |
+| 8             | Di?xido de Nitr?geno   | NO2          | ?g/m3   | 17627      |
+| 9             | Part?culas &lt; 2.5 ?m    | PM2.5        | ?g/m3   | 7288       |
+| 10            | Part?culas &lt; 10 ?m     | PM10         | ?g/m3   | 9715       |
+| 12            | ?xidos de Nitr?geno    | NOx          | ?g/m3   | 17638      |
+| 14            | Ozono                  | O3           | ?g/m3   | 10940      |
+| 20            | Tolueno                | TOL          | ?g/m3   | 3605       |
+| 30            | Benceno                | BEN          | ?g/m3   | 3605       |
+| 35            | Etilbenceno            | EBE          | ?g/m3   | 3605       |
++---------------+------------------------+--------------+---------+------------+
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261009082136_66a9ee5b-c16f-41ca-b085-4e57f4449022): SELECT
+    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,
+    m.nombre AS contaminante,
+    m.abreviatura AS abreviatura,
+    m.unidad AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire_parquet d
+LEFT JOIN calidad_aire.magnitudes_parquet m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.magnitud) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    CAST(TRIM(d.MAGNITUD) AS INT),
+    m.nombre,
+    m.abreviatura,
+    m.unidad
+ORDER BY
+    CAST(TRIM(d.MAGNITUD) AS INT)
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:cod_magnitud, type:int, comment:null), FieldSchema(name:contaminante, type:string, comment:null), FieldSchema(name:abreviatura, type:string, comment:null), FieldSchema(name:unidad, type:string, comment:null), FieldSchema(name:registros, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261009082136_66a9ee5b-c16f-41ca-b085-4e57f4449022); Time taken: 0.313 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261009082136_66a9ee5b-c16f-41ca-b085-4e57f4449022): SELECT
+    CAST(TRIM(d.MAGNITUD) AS INT) AS cod_magnitud,
+    m.nombre AS contaminante,
+    m.abreviatura AS abreviatura,
+    m.unidad AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire_parquet d
+LEFT JOIN calidad_aire.magnitudes_parquet m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.magnitud) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.magnitud) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    CAST(TRIM(d.MAGNITUD) AS INT),
+    m.nombre,
+    m.abreviatura,
+    m.unidad
+ORDER BY
+    CAST(TRIM(d.MAGNITUD) AS INT)
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261009082136_66a9ee5b-c16f-41ca-b085-4e57f4449022
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1791452885867_0056
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0056/
+INFO  : Starting Job = job_1791452885867_0056, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0056/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0056
+INFO  : Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+INFO  : 2026-10-09 08:21:47,671 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:22:03,938 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 3.92 sec
+INFO  : 2026-10-09 08:22:04,963 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 9.23 sec
+INFO  : 2026-10-09 08:22:14,419 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 14.03 sec
+INFO  : MapReduce Total cumulative CPU time: 14 seconds 30 msec
+INFO  : Ended Job = job_1791452885867_0056
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0057
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0057/
+INFO  : Starting Job = job_1791452885867_0057, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0057/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0057
+INFO  : Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:22:29,842 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:22:37,139 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.25 sec
+INFO  : 2026-10-09 08:22:44,502 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 2.68 sec
+INFO  : MapReduce Total cumulative CPU time: 2 seconds 680 msec
+INFO  : Ended Job = job_1791452885867_0057
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0058
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0058/
+INFO  : Starting Job = job_1791452885867_0058, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0058/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0058
+INFO  : Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:22:59,654 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:23:07,928 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.29 sec
+INFO  : 2026-10-09 08:23:15,266 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 2.81 sec
+INFO  : MapReduce Total cumulative CPU time: 2 seconds 810 msec
+INFO  : Ended Job = job_1791452885867_0058
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 14.03 sec   HDFS Read: 39721 HDFS Write: 633 SUCCESS
+INFO  : Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 2.68 sec   HDFS Read: 9001 HDFS Write: 633 SUCCESS
+INFO  : Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 2.81 sec   HDFS Read: 9223 HDFS Write: 656 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 19 seconds 520 msec
+INFO  : Completed executing command(queryId=root_20261009082136_66a9ee5b-c16f-41ca-b085-4e57f4449022); Time taken: 99.184 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+11 rows selected (99.659 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
+
+Tiempo total: 102.55 segundos
 </pre>
 </div>
 </div>
@@ -8565,11 +9104,12 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 1: ¿Que contaminantes aparecen en el conjunto de datos?</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">SELECT</span>
@@ -8593,6 +9133,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <span class="s2">    CAST(d.MAGNITUD AS INT);</span>
 
 <span class="s2">"""</span>
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
@@ -8600,7 +9141,12 @@ Closing: 0: jdbc:hive2://localhost:10000
     <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8629,6 +9175,138 @@ Closing: 0: jdbc:hive2://localhost:10000
 | 35            | Etilbenceno            | EBE          | ?g/m3   | 3605       |
 +---------------+------------------------+--------------+---------+------------+
 
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261009082646_36ac547c-25b5-4158-8e65-b898738682bb): SELECT
+    d.MAGNITUD AS cod_magnitud,
+    m.NOMBRE AS nombre,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.MAGNITUD) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    d.MAGNITUD,
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY
+    CAST(d.MAGNITUD AS INT)
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:cod_magnitud, type:string, comment:null), FieldSchema(name:nombre, type:string, comment:null), FieldSchema(name:abreviatura, type:string, comment:null), FieldSchema(name:unidad, type:string, comment:null), FieldSchema(name:registros, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261009082646_36ac547c-25b5-4158-8e65-b898738682bb); Time taken: 0.287 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261009082646_36ac547c-25b5-4158-8e65-b898738682bb): SELECT
+    d.MAGNITUD AS cod_magnitud,
+    m.NOMBRE AS nombre,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+  AND TRIM(m.MAGNITUD) &lt;&gt; 'Cod. Magnitud'
+GROUP BY
+    d.MAGNITUD,
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY
+    CAST(d.MAGNITUD AS INT)
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261009082646_36ac547c-25b5-4158-8e65-b898738682bb
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1791452885867_0059
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0059/
+INFO  : Starting Job = job_1791452885867_0059, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0059/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0059
+INFO  : Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+INFO  : 2026-10-09 08:26:56,810 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:27:11,894 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 3.05 sec
+INFO  : 2026-10-09 08:27:14,040 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 8.91 sec
+INFO  : 2026-10-09 08:27:23,558 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 13.58 sec
+INFO  : MapReduce Total cumulative CPU time: 13 seconds 580 msec
+INFO  : Ended Job = job_1791452885867_0059
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0060
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0060/
+INFO  : Starting Job = job_1791452885867_0060, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0060/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0060
+INFO  : Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:27:40,041 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:27:48,396 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.86 sec
+INFO  : 2026-10-09 08:27:55,733 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 4.14 sec
+INFO  : MapReduce Total cumulative CPU time: 4 seconds 140 msec
+INFO  : Ended Job = job_1791452885867_0060
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0061
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0061/
+INFO  : Starting Job = job_1791452885867_0061, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0061/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0061
+INFO  : Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:28:11,068 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:28:18,433 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.8 sec
+INFO  : 2026-10-09 08:28:25,704 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 3.41 sec
+INFO  : MapReduce Total cumulative CPU time: 3 seconds 410 msec
+INFO  : Ended Job = job_1791452885867_0061
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 13.58 sec   HDFS Read: 24021764 HDFS Write: 650 SUCCESS
+INFO  : Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 4.14 sec   HDFS Read: 9212 HDFS Write: 661 SUCCESS
+INFO  : Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 3.41 sec   HDFS Read: 9460 HDFS Write: 656 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 21 seconds 130 msec
+INFO  : Completed executing command(queryId=root_20261009082646_36ac547c-25b5-4158-8e65-b898738682bb); Time taken: 101.306 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+11 rows selected (101.668 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
+
+Tiempo total: 106.64 segundos
 </pre>
 </div>
 </div>
@@ -8639,10 +9317,10 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 3: Número de registros por magnitud</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 2: Número de registros por magnitud</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
@@ -8663,14 +9341,19 @@ Closing: 0: jdbc:hive2://localhost:10000
 <span class="s2">ORDER BY registros DESC;</span>
 
 <span class="s2">"""</span>
-
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
     <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 
+<span class="n">fin</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tiempo total: </span><span class="si">{</span><span class="n">fin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">inicio</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> segundos"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8699,6 +9382,130 @@ Closing: 0: jdbc:hive2://localhost:10000
 | Mon?xido de Carbono    | CO           | mg/m3   | 2431       |
 +------------------------+--------------+---------+------------+
 
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261009080919_cd5d1a0d-bc6a-4a18-9650-a08fadebdeb4): SELECT
+    m.NOMBRE AS magnitud,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+GROUP BY
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY registros DESC
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:magnitud, type:string, comment:null), FieldSchema(name:abreviatura, type:string, comment:null), FieldSchema(name:unidad, type:string, comment:null), FieldSchema(name:registros, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261009080919_cd5d1a0d-bc6a-4a18-9650-a08fadebdeb4); Time taken: 0.386 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261009080919_cd5d1a0d-bc6a-4a18-9650-a08fadebdeb4): SELECT
+    m.NOMBRE AS magnitud,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+GROUP BY
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY registros DESC
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261009080919_cd5d1a0d-bc6a-4a18-9650-a08fadebdeb4
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1791452885867_0044
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0044/
+INFO  : Starting Job = job_1791452885867_0044, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0044/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0044
+INFO  : Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+INFO  : 2026-10-09 08:09:29,231 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:09:44,291 Stage-1 map = 50%,  reduce = 0%
+INFO  : 2026-10-09 08:09:47,417 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 8.51 sec
+INFO  : 2026-10-09 08:09:54,734 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 11.16 sec
+INFO  : MapReduce Total cumulative CPU time: 11 seconds 160 msec
+INFO  : Ended Job = job_1791452885867_0044
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0045
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0045/
+INFO  : Starting Job = job_1791452885867_0045, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0045/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0045
+INFO  : Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:10:08,870 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:10:16,221 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 1.32 sec
+INFO  : 2026-10-09 08:10:25,570 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 3.35 sec
+INFO  : MapReduce Total cumulative CPU time: 3 seconds 350 msec
+INFO  : Ended Job = job_1791452885867_0045
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791452885867_0046
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791452885867_0046/
+INFO  : Starting Job = job_1791452885867_0046, Tracking URL = http://yarnmanager:8088/proxy/application_1791452885867_0046/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791452885867_0046
+INFO  : Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 08:10:43,868 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 08:10:51,244 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.24 sec
+INFO  : 2026-10-09 08:10:57,472 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 2.81 sec
+INFO  : MapReduce Total cumulative CPU time: 2 seconds 810 msec
+INFO  : Ended Job = job_1791452885867_0046
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 11.16 sec   HDFS Read: 24021509 HDFS Write: 622 SUCCESS
+INFO  : Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 3.35 sec   HDFS Read: 8052 HDFS Write: 622 SUCCESS
+INFO  : Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 2.81 sec   HDFS Read: 8953 HDFS Write: 628 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 17 seconds 320 msec
+INFO  : Completed executing command(queryId=root_20261009080919_cd5d1a0d-bc6a-4a18-9650-a08fadebdeb4); Time taken: 98.217 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+11 rows selected (98.675 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
+
+Tiempo total: 102.96 segundos
 </pre>
 </div>
 </div>
@@ -8709,21 +9516,34 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 4: Registros por municipio</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 3: Registros por municipio</span>
+<span class="c1"># Consulta analítica: número de registros de cada contaminante por municipio</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">SELECT</span>
-<span class="s2">    MUNICIPIO,</span>
+<span class="s2">    d.MUNICIPIO AS municipio,</span>
+<span class="s2">    m.NOMBRE AS contaminante,</span>
+<span class="s2">    m.ABREVIATURA AS abreviatura,</span>
+<span class="s2">    m.UNIDAD AS unidad,</span>
 <span class="s2">    COUNT(*) AS registros</span>
-<span class="s2">FROM calidad_aire.datos_calidad_aire</span>
-<span class="s2">WHERE TRIM(MAGNITUD) &lt;&gt; 'MAGNITUD'</span>
-<span class="s2">GROUP BY MUNICIPIO</span>
-<span class="s2">ORDER BY registros DESC;</span>
-
+<span class="s2">FROM calidad_aire.datos_calidad_aire d</span>
+<span class="s2">LEFT JOIN calidad_aire.magnitudes m</span>
+<span class="s2">    ON CAST(TRIM(d.MAGNITUD) AS INT) =</span>
+<span class="s2">       CAST(TRIM(m.MAGNITUD) AS INT)</span>
+<span class="s2">WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'</span>
+<span class="s2">GROUP BY</span>
+<span class="s2">    d.MUNICIPIO,</span>
+<span class="s2">    m.NOMBRE,</span>
+<span class="s2">    m.ABREVIATURA,</span>
+<span class="s2">    m.UNIDAD</span>
+<span class="s2">ORDER BY</span>
+<span class="s2">    d.MUNICIPIO,</span>
+<span class="s2">    registros DESC;</span>
 <span class="s2">"""</span>
 
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
@@ -8733,6 +9553,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8745,12 +9566,162 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+------------+------------+
-| municipio  | registros  |
-+------------+------------+
-| 079        | 76513      |
-| 79         | 20000      |
-+------------+------------+
+<pre>+------------+------------------------+--------------+---------+------------+
+| municipio  |      contaminante      | abreviatura  | unidad  | registros  |
++------------+------------------------+--------------+---------+------------+
+| 079        | ?xidos de Nitr?geno    | NOx          | ?g/m3   | 13981      |
+| 079        | Di?xido de Nitr?geno   | NO2          | ?g/m3   | 13981      |
+| 079        | Mon?xido de Nitr?geno  | NO           | ?g/m3   | 13981      |
+| 079        | Part?culas &lt; 10 ?m     | PM10         | ?g/m3   | 8501       |
+| 079        | Ozono                  | O3           | ?g/m3   | 7902       |
+| 079        | Part?culas &lt; 2.5 ?m    | PM2.5        | ?g/m3   | 6682       |
+| 079        | Mon?xido de Carbono    | CO           | mg/m3   | 2431       |
+| 079        | Benceno                | BEN          | ?g/m3   | 2410       |
+| 079        | Tolueno                | TOL          | ?g/m3   | 2410       |
+| 079        | Etilbenceno            | EBE          | ?g/m3   | 2410       |
+| 079        | Di?xido de Azufre      | SO2          | ?g/m3   | 1824       |
+| 79         | ?xidos de Nitr?geno    | NOx          | ?g/m3   | 3657       |
+| 79         | Di?xido de Nitr?geno   | NO2          | ?g/m3   | 3646       |
+| 79         | Mon?xido de Nitr?geno  | NO           | ?g/m3   | 3646       |
+| 79         | Ozono                  | O3           | ?g/m3   | 3038       |
+| 79         | Part?culas &lt; 10 ?m     | PM10         | ?g/m3   | 1214       |
+| 79         | Etilbenceno            | EBE          | ?g/m3   | 1195       |
+| 79         | Tolueno                | TOL          | ?g/m3   | 1195       |
+| 79         | Benceno                | BEN          | ?g/m3   | 1195       |
+| 79         | Di?xido de Azufre      | SO2          | ?g/m3   | 608        |
+| 79         | Part?culas &lt; 2.5 ?m    | PM2.5        | ?g/m3   | 606        |
++------------+------------------------+--------------+---------+------------+
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/local/hive/lib/log4j-slf4j-impl-2.17.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/local/hadoop/share/hadoop/common/lib/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.3)
+Driver: Hive JDBC (version 3.1.3)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+INFO  : Compiling command(queryId=root_20261009100346_ad95d8a2-c91f-44ae-bb8c-5f6b6c2936da): SELECT
+    d.MUNICIPIO AS municipio,
+    m.NOMBRE AS contaminante,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+GROUP BY
+    d.MUNICIPIO,
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY
+    d.MUNICIPIO,
+    registros DESC
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Semantic Analysis Completed (retrial = false)
+INFO  : Returning Hive schema: Schema(fieldSchemas:[FieldSchema(name:municipio, type:string, comment:null), FieldSchema(name:contaminante, type:string, comment:null), FieldSchema(name:abreviatura, type:string, comment:null), FieldSchema(name:unidad, type:string, comment:null), FieldSchema(name:registros, type:bigint, comment:null)], properties:null)
+INFO  : Completed compiling command(queryId=root_20261009100346_ad95d8a2-c91f-44ae-bb8c-5f6b6c2936da); Time taken: 4.27 seconds
+INFO  : Concurrency mode is disabled, not creating a lock manager
+INFO  : Executing command(queryId=root_20261009100346_ad95d8a2-c91f-44ae-bb8c-5f6b6c2936da): SELECT
+    d.MUNICIPIO AS municipio,
+    m.NOMBRE AS contaminante,
+    m.ABREVIATURA AS abreviatura,
+    m.UNIDAD AS unidad,
+    COUNT(*) AS registros
+FROM calidad_aire.datos_calidad_aire d
+LEFT JOIN calidad_aire.magnitudes m
+    ON CAST(TRIM(d.MAGNITUD) AS INT) =
+       CAST(TRIM(m.MAGNITUD) AS INT)
+WHERE TRIM(d.MAGNITUD) &lt;&gt; 'MAGNITUD'
+GROUP BY
+    d.MUNICIPIO,
+    m.NOMBRE,
+    m.ABREVIATURA,
+    m.UNIDAD
+ORDER BY
+    d.MUNICIPIO,
+    registros DESC
+WARN  : Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+INFO  : Query ID = root_20261009100346_ad95d8a2-c91f-44ae-bb8c-5f6b6c2936da
+INFO  : Total jobs = 3
+INFO  : Launching Job 1 out of 3
+INFO  : Starting task [Stage-1:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:2
+INFO  : Submitting tokens for job: job_1791539915649_0001
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791539915649_0001/
+INFO  : Starting Job = job_1791539915649_0001, Tracking URL = http://yarnmanager:8088/proxy/application_1791539915649_0001/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791539915649_0001
+INFO  : Hadoop job information for Stage-1: number of mappers: 2; number of reducers: 1
+INFO  : 2026-10-09 10:04:33,623 Stage-1 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 10:05:06,667 Stage-1 map = 50%,  reduce = 0%, Cumulative CPU 9.93 sec
+INFO  : 2026-10-09 10:05:13,229 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 13.18 sec
+INFO  : 2026-10-09 10:05:21,978 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 18.07 sec
+INFO  : MapReduce Total cumulative CPU time: 18 seconds 70 msec
+INFO  : Ended Job = job_1791539915649_0001
+INFO  : Launching Job 2 out of 3
+INFO  : Starting task [Stage-2:MAPRED] in serial mode
+INFO  : Number of reduce tasks not specified. Estimated from input data size: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791539915649_0002
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791539915649_0002/
+INFO  : Starting Job = job_1791539915649_0002, Tracking URL = http://yarnmanager:8088/proxy/application_1791539915649_0002/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791539915649_0002
+INFO  : Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 10:05:51,003 Stage-2 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 10:06:01,959 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 3.43 sec
+INFO  : 2026-10-09 10:06:17,590 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 7.03 sec
+INFO  : MapReduce Total cumulative CPU time: 7 seconds 30 msec
+INFO  : Ended Job = job_1791539915649_0002
+INFO  : Launching Job 3 out of 3
+INFO  : Starting task [Stage-3:MAPRED] in serial mode
+INFO  : Number of reduce tasks determined at compile time: 1
+INFO  : In order to change the average load for a reducer (in bytes):
+INFO  :   set hive.exec.reducers.bytes.per.reducer=&lt;number&gt;
+INFO  : In order to limit the maximum number of reducers:
+INFO  :   set hive.exec.reducers.max=&lt;number&gt;
+INFO  : In order to set a constant number of reducers:
+INFO  :   set mapreduce.job.reduces=&lt;number&gt;
+INFO  : number of splits:1
+INFO  : Submitting tokens for job: job_1791539915649_0003
+INFO  : Executing with tokens: []
+INFO  : The url to track the job: http://yarnmanager:8088/proxy/application_1791539915649_0003/
+INFO  : Starting Job = job_1791539915649_0003, Tracking URL = http://yarnmanager:8088/proxy/application_1791539915649_0003/
+INFO  : Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1791539915649_0003
+INFO  : Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+INFO  : 2026-10-09 10:06:37,441 Stage-3 map = 0%,  reduce = 0%
+INFO  : 2026-10-09 10:06:49,435 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 2.5 sec
+INFO  : 2026-10-09 10:07:03,555 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 6.26 sec
+INFO  : MapReduce Total cumulative CPU time: 6 seconds 260 msec
+INFO  : Ended Job = job_1791539915649_0003
+INFO  : MapReduce Jobs Launched: 
+INFO  : Stage-Stage-1: Map: 2  Reduce: 1   Cumulative CPU: 18.07 sec   HDFS Read: 24021366 HDFS Write: 1172 SUCCESS
+INFO  : Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 7.03 sec   HDFS Read: 9407 HDFS Write: 1172 SUCCESS
+INFO  : Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 6.26 sec   HDFS Read: 9663 HDFS Write: 1187 SUCCESS
+INFO  : Total MapReduce CPU Time Spent: 31 seconds 360 msec
+INFO  : Completed executing command(queryId=root_20261009100346_ad95d8a2-c91f-44ae-bb8c-5f6b6c2936da); Time taken: 193.529 seconds
+INFO  : OK
+INFO  : Concurrency mode is disabled, not creating a lock manager
+21 rows selected (198.261 seconds)
+Beeline version 3.1.3 by Apache Hive
+Closing: 0: jdbc:hive2://localhost:10000
 
 </pre>
 </div>
@@ -8765,7 +9736,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 6: qué contaminante presenta los valores medios más elevados</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 4: qué contaminante presenta los valores medios más elevados</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
@@ -8799,7 +9770,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <span class="s2">    m.UNIDAD</span>
 <span class="s2">ORDER BY valor_medio DESC;</span>
 <span class="s2">"""</span>
-
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
     <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -8845,11 +9816,12 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 7: Contaminante que más veces supera un umbral de referencia</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 5: Contaminante que más veces supera un umbral de referencia</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">SELECT</span>
@@ -8951,7 +9923,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 
 <span class="s2">ORDER BY superaciones DESC;</span>
 <span class="s2">"""</span>
-
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
     <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -9000,7 +9972,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 8: ¿Qué contaminante supera con mayor frecuencia su valor de referencia?</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Consultas analíticas 6: ¿Qué contaminante supera con mayor frecuencia su valor de referencia?</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
@@ -9064,7 +10036,7 @@ Closing: 0: jdbc:hive2://localhost:10000
 <span class="s2">GROUP BY MAGNITUD</span>
 <span class="s2">ORDER BY contaminante;</span>
 <span class="s2">"""</span>
-
+<span class="n">inicio</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">resultado</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">"beeline"</span><span class="p">,</span> <span class="s2">"-u"</span><span class="p">,</span> <span class="s2">"jdbc:hive2://localhost:10000"</span><span class="p">,</span> <span class="s2">"-e"</span><span class="p">,</span> <span class="n">sql</span><span class="p">],</span>
     <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
