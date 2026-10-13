@@ -4,34 +4,36 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Ejercicio Final 3 Hive 2º sobre cluster Hadoop.</title>
 
+
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Estilos del proyecto -->
+    <link href="../css/estilos.css" rel="stylesheet">
 
     <style>
         body {
             background-color: #f5f5f5;
-            font-family: Arial, Helvetica, sans-serif;
             color: #333;
         }
-
-        /* CABECERA */
 
         .header {
             background-color: #ffffff;
             border-bottom: 5px solid #78be20;
-            padding: 15px 0;
+            padding: 20px 0;
         }
 
         .header img {
-            max-height: 70px;
+            max-height: 75px;
             width: auto;
         }
-
-        /* TITULO */
 
         .title-section {
             background-color: #006633;
@@ -39,8 +41,6 @@
             padding: 30px;
             margin-bottom: 30px;
         }
-
-        /* CONTENIDO */
 
         .content {
             background-color: white;
@@ -66,8 +66,6 @@
             text-align: justify;
         }
 
-        /* OBJETIVO */
-
         .objetivo {
             background-color: #eef7e8;
             border-left: 5px solid #78be20;
@@ -76,8 +74,6 @@
             border-radius: 5px;
         }
 
-        /* BLOQUES */
-
         .bloque {
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -85,12 +81,6 @@
             margin: 25px 0;
             background-color: #fafafa;
         }
-
-        .bloque h3 {
-            margin-top: 0;
-        }
-
-        /* CODIGO */
 
         .codigo {
             background-color: #272822;
@@ -103,22 +93,20 @@
             line-height: 1.7;
         }
 
-        /* COMANDO DESTACADO */
-
-        .codigo-principal {
-            background-color: #f4f4f4;
-            border-left: 5px solid #006633;
-            padding: 20px;
-            border-radius: 5px;
-            font-family: Consolas, "Courier New", monospace;
-            margin: 20px 0;
-            line-height: 1.8;
+        .paso {
+            background-color: #f8f8f8;
+            border-left: 4px solid #78be20;
+            padding: 18px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
         }
 
-        /* IMAGEN */
+        .paso strong {
+            color: #006633;
+        }
 
         .imagen-ejercicio {
-            max-width: 85%;
+            max-width: 95%;
             height: auto;
             display: block;
             margin: 25px auto 10px auto;
@@ -131,21 +119,21 @@
             margin-bottom: 30px;
         }
 
-        /* PASOS */
-
-        .paso {
-            background-color: #f8f8f8;
-            border-left: 4px solid #78be20;
-            padding: 15px 20px;
-            margin: 12px 0;
-            border-radius: 4px;
+        .resultado {
+            background-color: #eaf4fb;
+            border-left: 5px solid #0d6efd;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 5px;
         }
 
-        .paso strong {
-            color: #006633;
+        .conclusion {
+            background-color: #eef7e8;
+            border-left: 5px solid #006633;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
         }
-
-        /* REFERENCIA */
 
         .referencia {
             background-color: #f1f1f1;
@@ -154,8 +142,6 @@
             margin-top: 30px;
             border-radius: 4px;
         }
-
-        /* BOTONES */
 
         .botones {
             display: flex;
@@ -178,8 +164,6 @@
             color: white;
         }
 
-        /* PIE */
-
         footer {
             background-color: #006633;
             color: white;
@@ -195,27 +179,36 @@
 <body>
 
 
-    <!-- =====================================================
-     CABECERA
-====================================================== -->
+    <!-- =========================================================
+         CABECERA
+    ========================================================= -->
 
     <header class="header">
 
-        <div class="container d-flex align-items-center">
+        <div class="container">
 
-            <img src="../img/logo-uned.png" alt="Logo de la Universidad Nacional de Educación a Distancia">
+            <div class="row align-items-center">
 
-            <div class="ms-3">
+                <div class="col-md-9">
 
-                <h1 class="h4 mb-1">
-                    Curso práctico Big Data · Docker · Hadoop
-                </h1>
+                    <h1 class="h3 mb-2 text-success fw-bold">
+                        Curso práctico Big Data · Docker · Hadoop
+                    </h1>
 
-                <p class="mb-0 text-muted">
-                    Virtualización ligera para el despliegue de infraestructuras Big Data
-                </p>
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" alt="Logo UNED">
+
+                </div>
 
             </div>
+
+
 
         </div>
 
