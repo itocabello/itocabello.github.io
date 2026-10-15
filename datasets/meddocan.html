@@ -26,13 +26,12 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Fuente de datos MEDDOCAN
+                        Conjunto de datasets
                     </h1>
 
-                    <p class="lead">
-                        Fuente de datos MEDDOCAN
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
                     </p>
-
                 </div>
 
                 <div class="col-md-3 text-end">
@@ -55,11 +54,6 @@
                 Inicio
             </a>
 
-            <a href="index.html" class="navbar-brand">
-
-                Volver al índice del datasets
-
-            </a>
 
         </div>
 
@@ -67,376 +61,353 @@
 
     </nav>
 
-    <div class="container mt-5">
+    <nav aria-label="breadcrumb">
 
-        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
 
-            <ol class="breadcrumb">
 
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
 
-                <li class="breadcrumb-item active">
-                    Fuente de datos MEDDOCAN
-                </li>
+        </ol>
 
-            </ol>
-
-        </nav>
+    </nav>
+    <div class="row">
 
         <!-- Contenido principal -->
+        <div class="col-lg-3">
 
-        <h2 class="text-success mb-4">
-            Dataset MEDDOCAN (Anonimización de Documentos Clínicos)
-        </h2>
+            <div class="list-group shadow">
 
-        <p class="lead">
-            Como segunda fuente de datos utilizada durante el desarrollo de las prácticas,
-            se emplea el corpus <strong>MEDDOCAN</strong> (Medical Document Anonymization),
-            un conjunto de documentos clínicos sintéticos diseñado para la investigación
-            en Procesamiento del Lenguaje Natural (NLP) y anonimización de información
-            sanitaria.
-        </p>
+                <div class="list-group-item active bg-success border-success">
 
-        <p>
+                    <i class="bi bi-book"></i>
 
-            MEDDOCAN fue desarrollado en el marco de la competición
-            <strong>MEDDOCAN IberLEF</strong>, cuyo objetivo consiste en fomentar la
-            investigación sobre técnicas automáticas de anonimización de documentos
-            clínicos escritos en español.
+                    Conjunto de datasets
 
-            El corpus contiene información médica anonimizada y puede utilizarse con fines
-            académicos y de investigación sin comprometer la privacidad de pacientes reales.
+                </div>
 
-            PlanTL-GOB-ES, SPACCC_MEDDOCAN.
-            https://github.com/PlanTL-GOB-ES/SPACCC_MEDDOCAN
+                <a href="synthea.html" class="list-group-item list-group-item-action">
 
-        </p>
+                    1. Datos clínicos Synthea.
 
-        <div class="alert alert-success">
+                </a>
 
-            <i class="bi bi-shield-check"></i>
+                <a href="meddocan.html" class="list-group-item list-group-item-action">
 
-            <strong>Objetivo del dataset</strong>
+                    2. Fuente de datos MEDDOCAN
 
-            <ul class="mt-3 mb-0">
+                </a>
 
-                <li>Anonimización de información clínica.</li>
+                <a href="dgt.html" class="list-group-item list-group-item-action">
 
-                <li>Procesamiento de lenguaje natural (NLP).</li>
+                    3 Dgt. Accidentes de tráfico con víctimas en España
 
-                <li>Procesamiento distribuido mediante Hadoop.</li>
+                </a>
+                <a href="calidad.html" class="list-group-item list-group-item-action">
 
-                <li>Prácticas de Big Data sobre datos no estructurados.</li>
+                    4 Calidad del aire de Madrid
 
-            </ul>
+                </a>
+
+            </div>
 
         </div>
+        <div class="col-lg-9">
 
-        <hr class="my-5">
+            <section class="bg-success text-white py-4">
 
-        <h3 class="text-success">
-            Características generales del corpus
-        </h3>
+                <div class="container">
 
-        <div class="row">
+                    <h2 class="mb-1">
+                        Dataset MEDDOCAN (Anonimización de Documentos Clínicos)
+                    </h2>
+                </div>
 
-            <div class="col-md-7">
+            </section>
+            <p class="lead">
+                Como segunda fuente de datos utilizada durante el desarrollo de las prácticas,
+                se emplea el corpus <strong>MEDDOCAN</strong> (Medical Document Anonymization),
+                un conjunto de documentos clínicos sintéticos diseñado para la investigación
+                en Procesamiento del Lenguaje Natural (NLP) y anonimización de información
+                sanitaria.
+            </p>
 
-                <p>
+            <p>
 
-                    MEDDOCAN contiene una colección de
-                    <strong>1.000 documentos clínicos sintéticos</strong>
-                    redactados en español.
+                MEDDOCAN fue desarrollado en el marco de la competición
+                <strong>MEDDOCAN IberLEF</strong>, cuyo objetivo consiste en fomentar la
+                investigación sobre técnicas automáticas de anonimización de documentos
+                clínicos escritos en español.
 
-                    En conjunto, el corpus supera las
-                    <strong>33.000 oraciones</strong> y las
-                    <strong>495.000 palabras</strong>, con una media aproximada de
-                    494 términos por documento.
+                El corpus contiene información médica anonimizada y puede utilizarse con fines
+                académicos y de investigación sin comprometer la privacidad de pacientes reales.
 
-                    Gracias a este volumen de información, constituye un excelente caso práctico
-                    para experimentar con tecnologías Big Data orientadas al procesamiento de texto.
+                PlanTL-GOB-ES, SPACCC_MEDDOCAN.
+                https://github.com/PlanTL-GOB-ES/SPACCC_MEDDOCAN
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-shield-check"></i>
+
+                <strong>Objetivo del dataset</strong>
+
+                <ul class="mt-3 mb-0">
+
+                    <li>Anonimización de información clínica.</li>
+
+                    <li>Procesamiento de lenguaje natural (NLP).</li>
+
+                    <li>Procesamiento distribuido mediante Hadoop.</li>
+
+                    <li>Prácticas de Big Data sobre datos no estructurados.</li>
+
+                </ul>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Características generales del corpus
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-7">
+
+                    <p>
+
+                        MEDDOCAN contiene una colección de
+                        <strong>1.000 documentos clínicos sintéticos</strong>
+                        redactados en español.
+
+                        En conjunto, el corpus supera las
+                        <strong>33.000 oraciones</strong> y las
+                        <strong>495.000 palabras</strong>, con una media aproximada de
+                        494 términos por documento.
+
+                        Gracias a este volumen de información, constituye un excelente caso práctico
+                        para experimentar con tecnologías Big Data orientadas al procesamiento de texto.
+
+                    </p>
+
+                </div>
+
+                <div class="col-md-5">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-success">
+
+                            <tr>
+
+                                <th>Característica</th>
+
+                                <th>Valor</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>Documentos</td>
+
+                                <td>1.000</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Idioma</td>
+
+                                <td>Español</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Oraciones</td>
+
+                                <td>≈ 33.000</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Palabras</td>
+
+                                <td>≈ 495.000</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Formato</td>
+
+                                <td>TXT (UTF-8)</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Integración con Hadoop
+            </h3>
+
+            <p>
+
+                Los documentos se distribuyen en formato
+                <strong>texto plano (.txt)</strong>, almacenándose cada caso clínico
+                en un fichero independiente codificado en UTF-8.
+
+                Esta organización facilita su integración con el ecosistema Hadoop,
+                permitiendo cargar directamente los archivos en HDFS y procesarlos mediante
+                MapReduce o Hadoop Streaming utilizando Python.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-folder2-open"></i>
+
+                Los documentos se almacenan dentro del directorio compartido:
+
+                <pre class="mt-3 mb-0">
+    /media/notebooks/txt
+    </pre>
+
+                Desde este directorio los archivos quedan disponibles automáticamente dentro
+                del contenedor <strong>NameNode</strong>, pudiendo ser procesados mediante
+                HDFS, Hadoop Streaming y MapReduce.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Ejemplo de documento MEDDOCAN
+            </h3>
+
+            <div class="text-center">
+
+
+                <img src="../img/meddocan-txt.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
+
+
+
+                <p class="text-muted mt-3">
+
+                    Ejemplo de un documento clínico del corpus MEDDOCAN.
 
                 </p>
 
             </div>
 
-            <div class="col-md-5">
-
-                <table class="table table-bordered">
-
-                    <thead class="table-success">
-
-                        <tr>
-
-                            <th>Característica</th>
-
-                            <th>Valor</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>Documentos</td>
-
-                            <td>1.000</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Idioma</td>
-
-                            <td>Español</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Oraciones</td>
-
-                            <td>≈ 33.000</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Palabras</td>
-
-                            <td>≈ 495.000</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Formato</td>
-
-                            <td>TXT (UTF-8)</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Integración con Hadoop
-        </h3>
-
-        <p>
-
-            Los documentos se distribuyen en formato
-            <strong>texto plano (.txt)</strong>, almacenándose cada caso clínico
-            en un fichero independiente codificado en UTF-8.
-
-            Esta organización facilita su integración con el ecosistema Hadoop,
-            permitiendo cargar directamente los archivos en HDFS y procesarlos mediante
-            MapReduce o Hadoop Streaming utilizando Python.
-
-        </p>
-
-        <div class="alert alert-info">
-
-            <i class="bi bi-folder2-open"></i>
-
-            Los documentos se almacenan dentro del directorio compartido:
-
-            <pre class="mt-3 mb-0">
-    /media/notebooks/txt
-    </pre>
-
-            Desde este directorio los archivos quedan disponibles automáticamente dentro
-            del contenedor <strong>NameNode</strong>, pudiendo ser procesados mediante
-            HDFS, Hadoop Streaming y MapReduce.
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Ejemplo de documento MEDDOCAN
-        </h3>
-
-        <div class="text-center">
-
-
-            <img src="../img/meddocan-txt.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
-
-
-
-            <p class="text-muted mt-3">
-
-                Ejemplo de un documento clínico del corpus MEDDOCAN.
-
-            </p>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Información contenida en los documentos
-        </h3>
-
-        <p>
-
-            Cada documento incorpora información clínica anonimizada correspondiente a un
-            paciente, incluyendo datos personales, administrativos y médicos.
-
-        </p>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Datos personales
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Nombre</li>
-
-                            <li>Apellidos</li>
-
-                            <li>NHC</li>
-
-                            <li>NASS</li>
-
-                            <li>Domicilio</li>
-
-                            <li>Localidad</li>
-
-                            <li>Provincia</li>
-
-                            <li>Código Postal</li>
-
-                            <li>Fecha de nacimiento</li>
-
-                            <li>País</li>
-
-                            <li>Edad</li>
-
-                            <li>Sexo</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Información clínica
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Fecha de ingreso</li>
-
-                            <li>Médico responsable</li>
-
-                            <li>Número de colegiado</li>
-
-                            <li>Informe clínico</li>
-
-                            <li>Profesional remitente</li>
-
-                            <li>Dirección del remitente</li>
-
-                            <li>Correo electrónico</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Aplicación práctica en el proyecto
-        </h3>
-
-        <p>
-
-            Durante las prácticas del curso, el corpus MEDDOCAN se utilizará para desarrollar
-            ejercicios relacionados con el procesamiento distribuido de texto utilizando
-            el ecosistema Apache Hadoop.
-
-            Los estudiantes podrán cargar los documentos en HDFS, procesarlos mediante
-            trabajos MapReduce implementados en Python, aplicar técnicas de anonimización,
-            extraer información relevante y analizar grandes volúmenes de texto clínico
-            de forma distribuida.
-
-        </p>
-
-        <div class="alert alert-primary">
-
-            <h4>Conclusión</h4>
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Información contenida en los documentos
+            </h3>
 
             <p>
 
-                MEDDOCAN constituye un excelente ejemplo de conjunto de datos no estructurados
-                para el aprendizaje de tecnologías Big Data. Su integración con Hadoop permite
-                combinar procesamiento distribuido, análisis documental y técnicas de
-                anonimización sobre un corpus clínico de gran tamaño, proporcionando un entorno
-                seguro y realista para la realización de prácticas académicas.
+                Cada documento incorpora información clínica anonimizada correspondiente a un
+                paciente, incluyendo datos personales, administrativos y médicos.
 
             </p>
 
-        </div>
-        <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+            <div class="row">
 
-            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="col-md-6">
 
-                <div class="modal-content">
+                    <div class="card shadow-sm h-100">
 
-                    <div class="modal-header">
+                        <div class="card-header bg-success text-white">
 
-                        <h5 class="modal-title">
-                            meddocan-txt
-                        </h5>
+                            Datos personales
 
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Nombre</li>
+
+                                <li>Apellidos</li>
+
+                                <li>NHC</li>
+
+                                <li>NASS</li>
+
+                                <li>Domicilio</li>
+
+                                <li>Localidad</li>
+
+                                <li>Provincia</li>
+
+                                <li>Código Postal</li>
+
+                                <li>Fecha de nacimiento</li>
+
+                                <li>País</li>
+
+                                <li>Edad</li>
+
+                                <li>Sexo</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
-                    <div class="modal-body text-center">
+                </div>
 
-                        <img src="../img/meddocan-txt.png" class="img-fluid">
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Información clínica
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Fecha de ingreso</li>
+
+                                <li>Médico responsable</li>
+
+                                <li>Número de colegiado</li>
+
+                                <li>Informe clínico</li>
+
+                                <li>Profesional remitente</li>
+
+                                <li>Dirección del remitente</li>
+
+                                <li>Correo electrónico</li>
+
+                            </ul>
+
+                        </div>
 
                     </div>
 
@@ -444,6 +415,67 @@
 
             </div>
 
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Aplicación práctica en el proyecto
+            </h3>
+
+            <p>
+
+                Durante las prácticas del curso, el corpus MEDDOCAN se utilizará para desarrollar
+                ejercicios relacionados con el procesamiento distribuido de texto utilizando
+                el ecosistema Apache Hadoop.
+
+                Los estudiantes podrán cargar los documentos en HDFS, procesarlos mediante
+                trabajos MapReduce implementados en Python, aplicar técnicas de anonimización,
+                extraer información relevante y analizar grandes volúmenes de texto clínico
+                de forma distribuida.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p>
+
+                    MEDDOCAN constituye un excelente ejemplo de conjunto de datos no estructurados
+                    para el aprendizaje de tecnologías Big Data. Su integración con Hadoop permite
+                    combinar procesamiento distribuido, análisis documental y técnicas de
+                    anonimización sobre un corpus clínico de gran tamaño, proporcionando un entorno
+                    seguro y realista para la realización de prácticas académicas.
+
+                </p>
+
+            </div>
+            <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                meddocan-txt
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/meddocan-txt.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
         <div class="text-center mt-5">
 
@@ -456,7 +488,30 @@
             </a>
 
         </div>
+        <div class="text-center mt-4">
 
+
+
+        </div>
+        <div class="text-center mb-5">
+
+            <a href="dgt.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Siguiente Fuente de datos.
+
+            </a>
+
+
+            <a href="synthea.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Fuente de datos Anterior.
+
+            </a>
+
+        </div>
         <footer class="bg-success text-white mt-5">
 
             <div class="container py-3 text-center">
