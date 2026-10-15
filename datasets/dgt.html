@@ -17,463 +17,500 @@
 
 <body>
 
-<header class="bg-white border-bottom shadow-sm">
+    <header class="bg-white border-bottom shadow-sm">
 
-    <div class="container py-4">
+        <div class="container py-4">
 
-        <div class="row align-items-center">
+            <div class="row align-items-center">
 
-            <div class="col-md-9">
+                <div class="col-md-9">
 
-                <h1 class="text-success fw-bold">
+                    <h1 class="text-success fw-bold">
+                        Conjunto de datasets
+                    </h1>
+
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+
+
+        </ol>
+
+    </nav>
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
                     Conjunto de datasets
-                </h1>
-
-                <p class="mb-0">
-                    Trabajo Fin de Grado - Arturo Cabello Rodríguez
-                </p>
-            </div>
-
-            <div class="col-md-3 text-end">
-
-                <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
-
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
-   
-    <div class="container mt-5">
-
-        <nav aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item">
-                    <a href="../index.html">Inicio</a>
-                </li>
-
-                <li class="breadcrumb-item active">
-                    Accidentes de tráfico con víctimas en España - 2024 - dgt
-                </li>
-
-            </ol>
-
-        </nav>
-
-        <!-- ===================================================== -->
-        <!-- DATASET DGT ACCIDENTES 2024 -->
-        <!-- ===================================================== -->
-
-        <h2 class="text-success mb-4">
-            Dataset DGT. Accidentes de tráfico con víctimas (España 2024)
-        </h2>
-
-        <p class="lead">
-
-            Como tercera fuente de datos utilizada en el proyecto se emplea el conjunto de
-            <strong>Microdatos de Accidentes de Tráfico con Víctimas (2024)</strong>,
-            publicado por la Dirección General de Tráfico (DGT).
-
-        </p>
-
-        <p>
-
-            Este conjunto de datos constituye una fuente oficial de información sobre la
-            siniestralidad vial en España y contiene más de
-            <strong>101.996 registros</strong>, ofreciendo un elevado nivel de detalle
-            sobre los accidentes con víctimas ocurridos durante el año 2024.
-
-        </p>
-
-        <div class="alert alert-success">
-
-            <i class="bi bi-database-fill"></i>
-
-            <strong>Fuente oficial</strong>
-
-            <p class="mt-3 mb-2">
-
-                Ministerio del Interior. <strong>Dirección General de Tráfico (DGT)</strong>.
-                <em>Datos abiertos de accidentes de tráfico con víctimas (2024)</em>.
-
-            </p>
-
-            <p class="mb-2">
-
-                Fecha de último acceso:
-                <strong>17 de julio de 2026</strong>
-
-            </p>
-
-            <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Ficheros-de-microdatos-de-accidentes-con-victimas-2024/"
-                target="_blank" class="btn btn-outline-success btn-sm">
-
-                <i class="bi bi-box-arrow-up-right"></i>
-
-                Acceder al portal oficial de la DGT
-
-            </a>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Características del conjunto de datos
-        </h3>
-
-        <div class="row">
-
-            <div class="col-md-7">
-
-                <p>
-
-                    Los microdatos proporcionan información detallada sobre las circunstancias del
-                    accidente, la localización geográfica, el tipo de vía, las condiciones
-                    meteorológicas, los vehículos implicados y las víctimas.
-
-                    Gracias a su gran volumen de registros y elevado número de variables, este
-                    dataset resulta especialmente adecuado para desarrollar prácticas de
-                    procesamiento distribuido mediante Hadoop.
-
-                </p>
-
-            </div>
-
-            <div class="col-md-5">
-
-                <table class="table table-bordered">
-
-                    <thead class="table-success">
-
-                        <tr>
-
-                            <th>Característica</th>
-
-                            <th>Valor</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>Organismo</td>
-
-                            <td>DGT</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Año</td>
-
-                            <td>2024</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Registros</td>
-
-                            <td>101.996</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Formato</td>
-
-                            <td>CSV</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td>Tipo</td>
-
-                            <td>Datos estructurados</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Aplicación dentro del proyecto
-        </h3>
-
-        <p>
-
-            La relevancia de este conjunto de datos radica en su carácter oficial y en el
-            gran volumen de información disponible, lo que permite validar el funcionamiento
-            de arquitecturas Big Data basadas en Hadoop.
-
-            Los datos serán almacenados en HDFS y posteriormente procesados mediante
-            trabajos MapReduce implementados con Hadoop Streaming, obteniendo métricas y
-            patrones relacionados con la siniestralidad vial.
-
-        </p>
-
-        <div class="alert alert-info">
-
-            <i class="bi bi-cpu-fill"></i>
-
-            Durante las prácticas este dataset será utilizado para:
-
-            <ul class="mt-3 mb-0">
-
-                <li>Almacenamiento distribuido en HDFS.</li>
-
-                <li>Procesamiento mediante MapReduce.</li>
-
-                <li>Análisis estadístico de accidentes.</li>
-
-                <li>Carga de resultados en MySQL.</li>
-
-                <li>Consulta mediante Apache Hive.</li>
-
-                <li>Conversión a formatos Parquet y Avro.</li>
-
-            </ul>
-
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Análisis propuestos
-        </h3>
-
-        <div class="row">
-
-            <div class="col-md-6">
-
-                <div class="card shadow-sm h-100">
-
-                    <div class="card-header bg-success text-white">
-
-                        Análisis geográfico
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Accidentes por provincia.</li>
-
-                            <li>Accidentes por municipio.</li>
-
-                            <li>Distribución por tipo de vía.</li>
-
-                            <li>Carreteras con mayor siniestralidad.</li>
-
-                        </ul>
-
-                    </div>
 
                 </div>
 
+                <a href="synthea.html" class="list-group-item list-group-item-action">
+
+                    1. Datos clínicos Synthea.
+
+                </a>
+
+                <a href="meddocan.html" class="list-group-item list-group-item-action">
+
+                    2. Fuente de datos MEDDOCAN
+
+                </a>
+
+                <a href="dgt.html" class="list-group-item list-group-item-action">
+
+                    3 Dgt. Accidentes de tráfico con víctimas en España
+
+                </a>
+                <a href="calidad.html" class="list-group-item list-group-item-action">
+
+                    4 Calidad del aire de Madrid
+
+                </a>
+
             </div>
 
-            <div class="col-md-6">
+        </div>
+        <div class="col-lg-9">
+            <!-- ===================================================== -->
+            <!-- DATASET DGT ACCIDENTES 2024 -->
+            <!-- ===================================================== -->
 
-                <div class="card shadow-sm h-100">
+            <section class="bg-success text-white py-4">
 
-                    <div class="card-header bg-success text-white">
+                <div class="container">
 
-                        Análisis estadístico
-
-                    </div>
-
-                    <div class="card-body">
-
-                        <ul>
-
-                            <li>Número de víctimas.</li>
-
-                            <li>Fallecidos a 24 horas.</li>
-
-                            <li>Fallecidos a 30 días.</li>
-
-                            <li>Condiciones meteorológicas.</li>
-
-                            <li>Tipos de accidente.</li>
-
-                            <li>Distribución temporal.</li>
-
-                        </ul>
-
-                    </div>
-
+                    <h2 class="mb-1">
+                        Dataset DGT. Accidentes de tráfico con víctimas (España 2024)
+                    </h2>
                 </div>
 
-            </div>
+            </section>
+            <p class="lead">
 
-        </div>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Principales grupos de variables
-        </h3>
-
-        <table class="table table-striped table-bordered">
-
-            <thead class="table-success">
-
-                <tr>
-
-                    <th>Categoría</th>
-
-                    <th>Ejemplos de variables</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-
-                    <td>Identificación</td>
-
-                    <td>ID_ACCIDENTE, ANYO, MES, DIA_SEMANA, HORA</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Localización</td>
-
-                    <td>Provincia, Municipio, Isla, Carretera, Punto kilométrico</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Características de la vía</td>
-
-                    <td>Tipo de vía, Titularidad, Zona, Nudo, Sentido</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Accidente</td>
-
-                    <td>Tipo de accidente, Vehículos implicados, Víctimas</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Condiciones ambientales</td>
-
-                    <td>Meteorología, Iluminación, Viento, Niebla</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Prioridad y señalización</td>
-
-                    <td>STOP, CEDA, Semáforo, Marcas viales</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Víctimas</td>
-
-                    <td>Fallecidos, Heridos graves, Heridos leves</td>
-
-                </tr>
-
-                <tr>
-
-                    <td>Tipo de usuario</td>
-
-                    <td>Peatones, Bicicletas, Motocicletas, Turismos, Autobuses</td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-        <hr class="my-5">
-
-        <h3 class="text-success">
-            Definiciones oficiales
-        </h3>
-
-        <p>
-
-            Las definiciones de los indicadores utilizados en este conjunto de datos
-            (accidente con víctimas, fallecido a 30 días, herido hospitalizado y herido no
-            hospitalizado) se encuentran reguladas por la
-
-            <strong>Orden INT/2223/2014, de 27 de octubre</strong>,
-
-            que establece los criterios de comunicación de información al Registro Nacional
-            de Víctimas de Accidentes de Tráfico.
-
-        </p>
-
-        <hr class="my-5">
-
-        <div class="text-center">
-
-
-            <img src="../img/dgt-accidentes.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
-                style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
-
-
-
-            <p class="text-muted mt-3">
-
-                Figura. Dataset oficial de accidentes de tráfico con víctimas publicado por la
-                Dirección General de Tráfico (DGT).
+                Como tercera fuente de datos utilizada en el proyecto se emplea el conjunto de
+                <strong>Microdatos de Accidentes de Tráfico con Víctimas (2024)</strong>,
+                publicado por la Dirección General de Tráfico (DGT).
 
             </p>
-
-        </div>
-
-        <hr class="my-5">
-
-        <div class="alert alert-primary">
-
-            <h4>Conclusión</h4>
 
             <p>
 
-                El conjunto de microdatos de accidentes con víctimas de la DGT constituye una
-                fuente oficial de datos estructurados especialmente adecuada para el aprendizaje
-                de tecnologías Big Data. Su volumen de información y la diversidad de variables
-                permiten desarrollar ejercicios completos de almacenamiento distribuido,
-                procesamiento MapReduce, consultas mediante Hive y análisis estadístico sobre
-                infraestructuras Hadoop.
+                Este conjunto de datos constituye una fuente oficial de información sobre la
+                siniestralidad vial en España y contiene más de
+                <strong>101.996 registros</strong>, ofreciendo un elevado nivel de detalle
+                sobre los accidentes con víctimas ocurridos durante el año 2024.
 
             </p>
 
-        </div>
+            <div class="alert alert-success">
 
+                <i class="bi bi-database-fill"></i>
+
+                <strong>Fuente oficial</strong>
+
+                <p class="mt-3 mb-2">
+
+                    Ministerio del Interior. <strong>Dirección General de Tráfico (DGT)</strong>.
+                    <em>Datos abiertos de accidentes de tráfico con víctimas (2024)</em>.
+
+                </p>
+
+                <p class="mb-2">
+
+                    Fecha de último acceso:
+                    <strong>17 de julio de 2026</strong>
+
+                </p>
+
+                <a href="https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Ficheros-de-microdatos-de-accidentes-con-victimas-2024/"
+                    target="_blank" class="btn btn-outline-success btn-sm">
+
+                    <i class="bi bi-box-arrow-up-right"></i>
+
+                    Acceder al portal oficial de la DGT
+
+                </a>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Características del conjunto de datos
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-7">
+
+                    <p>
+
+                        Los microdatos proporcionan información detallada sobre las circunstancias del
+                        accidente, la localización geográfica, el tipo de vía, las condiciones
+                        meteorológicas, los vehículos implicados y las víctimas.
+
+                        Gracias a su gran volumen de registros y elevado número de variables, este
+                        dataset resulta especialmente adecuado para desarrollar prácticas de
+                        procesamiento distribuido mediante Hadoop.
+
+                    </p>
+
+                </div>
+
+                <div class="col-md-5">
+
+                    <table class="table table-bordered">
+
+                        <thead class="table-success">
+
+                            <tr>
+
+                                <th>Característica</th>
+
+                                <th>Valor</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>Organismo</td>
+
+                                <td>DGT</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Año</td>
+
+                                <td>2024</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Registros</td>
+
+                                <td>101.996</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Formato</td>
+
+                                <td>CSV</td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td>Tipo</td>
+
+                                <td>Datos estructurados</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Aplicación dentro del proyecto
+            </h3>
+
+            <p>
+
+                La relevancia de este conjunto de datos radica en su carácter oficial y en el
+                gran volumen de información disponible, lo que permite validar el funcionamiento
+                de arquitecturas Big Data basadas en Hadoop.
+
+                Los datos serán almacenados en HDFS y posteriormente procesados mediante
+                trabajos MapReduce implementados con Hadoop Streaming, obteniendo métricas y
+                patrones relacionados con la siniestralidad vial.
+
+            </p>
+
+            <div class="alert alert-info">
+
+                <i class="bi bi-cpu-fill"></i>
+
+                Durante las prácticas este dataset será utilizado para:
+
+                <ul class="mt-3 mb-0">
+
+                    <li>Almacenamiento distribuido en HDFS.</li>
+
+                    <li>Procesamiento mediante MapReduce.</li>
+
+                    <li>Análisis estadístico de accidentes.</li>
+
+                    <li>Carga de resultados en MySQL.</li>
+
+                    <li>Consulta mediante Apache Hive.</li>
+
+                    <li>Conversión a formatos Parquet y Avro.</li>
+
+                </ul>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Análisis propuestos
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Análisis geográfico
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Accidentes por provincia.</li>
+
+                                <li>Accidentes por municipio.</li>
+
+                                <li>Distribución por tipo de vía.</li>
+
+                                <li>Carreteras con mayor siniestralidad.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Análisis estadístico
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Número de víctimas.</li>
+
+                                <li>Fallecidos a 24 horas.</li>
+
+                                <li>Fallecidos a 30 días.</li>
+
+                                <li>Condiciones meteorológicas.</li>
+
+                                <li>Tipos de accidente.</li>
+
+                                <li>Distribución temporal.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Principales grupos de variables
+            </h3>
+
+            <table class="table table-striped table-bordered">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Categoría</th>
+
+                        <th>Ejemplos de variables</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Identificación</td>
+
+                        <td>ID_ACCIDENTE, ANYO, MES, DIA_SEMANA, HORA</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Localización</td>
+
+                        <td>Provincia, Municipio, Isla, Carretera, Punto kilométrico</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Características de la vía</td>
+
+                        <td>Tipo de vía, Titularidad, Zona, Nudo, Sentido</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Accidente</td>
+
+                        <td>Tipo de accidente, Vehículos implicados, Víctimas</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Condiciones ambientales</td>
+
+                        <td>Meteorología, Iluminación, Viento, Niebla</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Prioridad y señalización</td>
+
+                        <td>STOP, CEDA, Semáforo, Marcas viales</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Víctimas</td>
+
+                        <td>Fallecidos, Heridos graves, Heridos leves</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Tipo de usuario</td>
+
+                        <td>Peatones, Bicicletas, Motocicletas, Turismos, Autobuses</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Definiciones oficiales
+            </h3>
+
+            <p>
+
+                Las definiciones de los indicadores utilizados en este conjunto de datos
+                (accidente con víctimas, fallecido a 30 días, herido hospitalizado y herido no
+                hospitalizado) se encuentran reguladas por la
+
+                <strong>Orden INT/2223/2014, de 27 de octubre</strong>,
+
+                que establece los criterios de comunicación de información al Registro Nacional
+                de Víctimas de Accidentes de Tráfico.
+
+            </p>
+
+            <hr class="my-5">
+
+            <div class="text-center">
+
+
+                <img src="../img/dgt-accidentes.png" class="img-fluid rounded shadow" alt="Cluster Hadoop"
+                    style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#imgClusterModal1">
+
+
+
+                <p class="text-muted mt-3">
+
+                    Figura. Dataset oficial de accidentes de tráfico con víctimas publicado por la
+                    Dirección General de Tráfico (DGT).
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>Conclusión</h4>
+
+                <p>
+
+                    El conjunto de microdatos de accidentes con víctimas de la DGT constituye una
+                    fuente oficial de datos estructurados especialmente adecuada para el aprendizaje
+                    de tecnologías Big Data. Su volumen de información y la diversidad de variables
+                    permiten desarrollar ejercicios completos de almacenamiento distribuido,
+                    procesamiento MapReduce, consultas mediante Hive y análisis estadístico sobre
+                    infraestructuras Hadoop.
+
+                </p>
+
+            </div>
+        </div>
         <div class="text-center mt-5">
 
             <a href="index.html" class="btn btn-success btn-lg">
@@ -485,7 +522,30 @@
             </a>
 
         </div>
+        <div class="text-center mt-4">
 
+
+
+        </div>
+        <div class="text-center mb-5">
+
+            <a href="calidad.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Siguiente Fuente de datos.
+
+            </a>
+
+
+            <a href="meddocan.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Fuente de datos Anterior.
+
+            </a>
+
+        </div>
         <hr class="my-5">
 
 

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Calidad del aire de Madrid</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Conjunto de datasets
+                    </h1>
+
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+
+
+        </ol>
+
+    </nav>
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Conjunto de datasets
+
+                </div>
+
+                <a href="synthea.html" class="list-group-item list-group-item-action">
+
+                    1. Datos clínicos Synthea.
+
+                </a>
+
+                <a href="meddocan.html" class="list-group-item list-group-item-action">
+
+                    2. Fuente de datos MEDDOCAN
+
+                </a>
+
+                <a href="dgt.html" class="list-group-item list-group-item-action">
+
+                    3 Dgt. Accidentes de tráfico con víctimas en España
+
+                </a>
+                <a href="calidad.html" class="list-group-item list-group-item-action">
+
+                    4 Calidad del aire de Madrid
+
+                </a>
+
+            </div>
+
+        </div>
+        <div class="col-lg-9">
+            <!-- ===================================================== -->
+            <!-- DATASET DGT ACCIDENTES 2024 -->
+            <!-- ===================================================== -->
+
+            <section class="bg-success text-white py-4">
+
+                <div class="container">
+
+                    <h2 class="mb-1">
+                        Calidad del aire de Madrid - 2025
+                    </h2>
+                </div>
+
+            </section>
+            <p class="lead">
+
+                Como cuarto conjunto de datos, se incorporan los datos
+                correspondientes a la calidad del aire de la ciudad de Madrid,
+                procedentes de la red de vigilancia de la calidad del aire.
+
+            </p>
+
+            <p>
+                Este conjunto de datos permite trabajar con información
+                ambiental obtenida mediante las estaciones de medición
+                distribuidas por el municipio de Madrid, proporcionando
+                registros asociados a diferentes contaminantes atmosféricos
+                y periodos temporales.
+            </p>
+
+            <!-- Fuente oficial -->
+            <section class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-link-45deg"></i>
+                    Fuente de los datos
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        Los datos utilizados en este ejercicio proceden del
+                        portal de datos abiertos del Ayuntamiento de Madrid.
+                        Desde el siguiente enlace se puede acceder al conjunto
+                        de datos de calidad del aire:
+                    </p>
+
+                    <a href="https://datos.madrid.es/dataset/212531-0-calidad-aire-tiempo-real" class="btn btn-success"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-download"></i>
+                        Acceder al conjunto de datos de calidad del aire
+                        <i class="bi bi-box-arrow-up-right ms-1"></i>
+                    </a>
+
+                    <p class="text-muted small mt-3 mb-0">
+                        Fuente: Portal de datos abiertos del Ayuntamiento de Madrid.
+                        Consultar la referencia bibliográfica [76] para la
+                        descripción específica del fichero empleado.
+                    </p>
+                </div>
+            </section>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Características del conjunto de datos
+            </h3>
+
+            <section class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-cloud-haze"></i>
+                    Descripción del conjunto de datos
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        Este conjunto de datos permite trabajar con información
+                        ambiental obtenida mediante las estaciones de medición
+                        distribuidas por el municipio de Madrid, proporcionando
+                        registros asociados a diferentes contaminantes atmosféricos
+                        y periodos temporales.
+                    </p>
+
+                    <p>
+                        Para este ejercicio se emplea un fichero en formato
+                        <strong>CSV correspondiente a datos horarios de calidad
+                            del aire [76]</strong>.
+                    </p>
+
+                    <p>
+                        Cada registro identifica la provincia, el municipio y la
+                        estación de medida, así como la magnitud analizada, el
+                        punto de muestreo y la fecha correspondiente.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Estructura de los datos -->
+            <section class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-table"></i>
+                    Estructura del fichero CSV
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        La estructura empleada en el ejercicio está formada por
+                        los siguientes campos:
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped align-middle">
+                            <thead class="table-success">
+                                <tr>
+                                    <th scope="col" style="width: 25%;">
+                                        Campo
+                                    </th>
+                                    <th scope="col">
+                                        Descripción
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td><code>PROVINCIA</code></td>
+                                    <td>Código de la provincia.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>MUNICIPIO</code></td>
+                                    <td>Código del municipio.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>ESTACION</code></td>
+                                    <td>Identificador de la estación de medición.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>MAGNITUD</code></td>
+                                    <td>Código de la magnitud o contaminante medido.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>PUNTO_MUESTREO</code></td>
+                                    <td>Identificador completo del punto de muestreo.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>ANO, MES, DIA</code></td>
+                                    <td>Fecha correspondiente al registro.</td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>H01–H24</code></td>
+                                    <td>
+                                        Valores registrados para cada una de las
+                                        24 horas del día.
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><code>V01–V24</code></td>
+                                    <td>
+                                        Códigos de validación asociados a cada uno
+                                        de los valores horarios.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <strong>Nota:</strong> los campos horarios permiten
+                        analizar la evolución diaria de las mediciones, mientras
+                        que los códigos de validación aportan información sobre
+                        la validez de los valores registrados.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Magnitudes -->
+            <section class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-activity"></i>
+                    Magnitudes y contaminantes
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        La variable <code>MAGNITUD</code> permite identificar
+                        el contaminante objeto de medición. La documentación de
+                        la fuente recoge, entre otros, los siguientes contaminantes:
+                    </p>
+
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Dióxido de azufre</strong>
+                                <span class="badge text-bg-secondary ms-1">SO₂</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Monóxido de carbono</strong>
+                                <span class="badge text-bg-secondary ms-1">CO</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Monóxido de nitrógeno</strong>
+                                <span class="badge text-bg-secondary ms-1">NO</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Dióxido de nitrógeno</strong>
+                                <span class="badge text-bg-secondary ms-1">NO₂</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Partículas finas</strong>
+                                <span class="badge text-bg-secondary ms-1">PM2.5</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Partículas inhalables</strong>
+                                <span class="badge text-bg-secondary ms-1">PM10</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Óxidos de nitrógeno</strong>
+                                <span class="badge text-bg-secondary ms-1">NOx</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="border rounded p-3 h-100 bg-white">
+                                <strong>Ozono</strong>
+                                <span class="badge text-bg-secondary ms-1">O₃</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        Cada magnitud está asociada a una unidad de medida y a
+                        una técnica de medición determinada. Esta información
+                        permite interpretar los datos y relacionar los códigos
+                        numéricos con las denominaciones de los contaminantes.
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div class="text-center mt-5">
+
+            <a href="index.html" class="btn btn-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Volver al índice
+
+            </a>
+
+        </div>
+        <div class="text-center mt-4">
+
+
+
+        </div>
+        <div class="text-center mb-5">
+
+
+            <a href="dgt.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                Fuente de datos Anterior.
+
+            </a>
+
+        </div>
+        <hr class="my-5">
+
+
+        <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            dgt-accidentes
+                        </h5>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                        <img src="../img/dgt-accidentes.png" class="img-fluid">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
