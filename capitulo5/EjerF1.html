@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>EjerFinalNuevo1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Untitled8</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7795,15 +7795,15 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b488df7f-66d2-4406-8690-b322338b788e">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b1e8514e-6afc-42bb-8f5a-330112f96c37">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-ls<span class="w"> </span>/
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">notebooks</span><span class="o">/</span><span class="n">synthea</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
@@ -7816,25 +7816,25 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Found 4 items
-drwxr-xr-x   - root supergroup          0 2026-09-02 11:40 /datasets
-drwxrwxrwt   - root supergroup          0 2026-08-31 08:07 /tmp
-drwxrwxrwx   - root supergroup          0 2026-08-31 08:07 /user
-drwxrwxrwt   - root root                0 2026-09-03 07:14 /yarn
+<pre><span class="ansi-blue-intense-fg ansi-bold">avro</span>/  encounters.csv  organizations.csv  <span class="ansi-blue-intense-fg ansi-bold">parquet</span>/  patients.csv
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ff422a30-ea93-4fc2-9da9-2ab2eb0f7c47">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6e9e27d9-fc5d-4c68-8d3e-540b93b5f09d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-ls<span class="w"> </span>/datasets/synthea/resultados
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-mkdir<span class="w"> </span>-p<span class="w"> </span>/datasets/synthea/resultados
+<span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-mkdir<span class="w"> </span>-p<span class="w"> </span>/datasets/synthea/csv
+<span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-put<span class="w">  </span>/media/notebooks/synthea/*.csv<span class="w"> </span>/datasets/synthea/csv
+
+<span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-ls<span class="w"> </span>/datasets/synthea/csv
 </pre></div>
 </div>
 </div>
@@ -7848,20 +7848,20 @@ drwxrwxrwt   - root root                0 2026-09-03 07:14 /yarn
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 3 items
-drwxr-xr-x   - root supergroup          0 2026-09-02 11:48 /datasets/synthea/resultados/encounters_analisis
-drwxr-xr-x   - root supergroup          0 2026-09-02 11:48 /datasets/synthea/resultados/organizations_ubicacion
-drwxr-xr-x   - root supergroup          0 2026-09-02 11:47 /datasets/synthea/resultados/pacientes_genero_decada
+-rw-r--r--   3 root supergroup   78760575 2026-10-18 07:38 /datasets/synthea/csv/encounters.csv
+-rw-r--r--   3 root supergroup       8356 2026-10-18 07:38 /datasets/synthea/csv/organizations.csv
+-rw-r--r--   3 root supergroup    1123211 2026-10-18 07:38 /datasets/synthea/csv/patients.csv
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8242631e-47aa-4645-bd8f-88a967c1de8a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=18252106-ee2e-47b0-b694-82cfec1d76bf">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> mapper_pacientes.py
@@ -7914,12 +7914,12 @@ drwxr-xr-x   - root supergroup          0 2026-09-02 11:47 /datasets/synthea/res
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=45c2a73b-c791-44ca-bc46-7ecfeae2df82">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=728b4c49-6ecb-449b-b2d4-c06691310519">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> reducer_pacientes.py
@@ -7974,18 +7974,18 @@ drwxr-xr-x   - root supergroup          0 2026-09-02 11:47 /datasets/synthea/res
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Overwriting reducer_pacientes.py
+<pre>Writing reducer_pacientes.py
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f2d959e8-b363-41b9-80d8-4f7a6c9d1421">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a896b2e6-2d37-4447-b815-246362dfadba">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#1. Ejercicio — Pacientes por género y década</span>
@@ -8010,30 +8010,28 @@ drwxr-xr-x   - root supergroup          0 2026-09-02 11:47 /datasets/synthea/res
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Deleted /datasets/synthea/resultados/pacientes_genero_decada
-packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob529719988075523096.jar tmpDir=null
-2026-09-04 07:54:49,433 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at yarnmanager/172.18.0.3:8032
-2026-09-04 07:54:49,878 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at yarnmanager/172.18.0.3:8032
-2026-09-04 07:54:50,598 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1788506010458_0003
-2026-09-04 07:54:52,336 INFO mapred.FileInputFormat: Total input files to process : 1
-2026-09-04 07:54:52,590 INFO mapreduce.JobSubmitter: number of splits:2
-2026-09-04 07:54:53,068 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1788506010458_0003
-2026-09-04 07:54:53,069 INFO mapreduce.JobSubmitter: Executing with tokens: []
-2026-09-04 07:54:53,496 INFO conf.Configuration: resource-types.xml not found
-2026-09-04 07:54:53,496 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
-2026-09-04 07:54:53,665 INFO impl.YarnClientImpl: Submitted application application_1788506010458_0003
-2026-09-04 07:54:53,813 INFO mapreduce.Job: The url to track the job: http://yarnmanager:8088/proxy/application_1788506010458_0003/
-2026-09-04 07:54:53,819 INFO mapreduce.Job: Running job: job_1788506010458_0003
-2026-09-04 07:55:20,515 INFO mapreduce.Job: Job job_1788506010458_0003 running in uber mode : false
-2026-09-04 07:55:20,518 INFO mapreduce.Job:  map 0% reduce 0%
-2026-09-04 07:55:42,314 INFO mapreduce.Job:  map 50% reduce 0%
-2026-09-04 07:55:43,338 INFO mapreduce.Job:  map 100% reduce 0%
-2026-09-04 07:55:51,511 INFO mapreduce.Job:  map 100% reduce 100%
-2026-09-04 07:55:52,535 INFO mapreduce.Job: Job job_1788506010458_0003 completed successfully
-2026-09-04 07:55:52,726 INFO mapreduce.Job: Counters: 54
+<pre>packageJobJar: [/tmp/hadoop-unjar7067183478780933310/] [] /tmp/streamjob5622969943823734348.jar tmpDir=null
+2026-10-18 07:39:08,630 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at yarnmanager/172.18.0.3:8032
+2026-10-18 07:39:08,913 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at yarnmanager/172.18.0.3:8032
+2026-10-18 07:39:09,480 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/root/.staging/job_1791539915649_0004
+2026-10-18 07:39:11,299 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-10-18 07:39:11,717 INFO mapreduce.JobSubmitter: number of splits:2
+2026-10-18 07:39:12,389 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1791539915649_0004
+2026-10-18 07:39:12,389 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-10-18 07:39:13,992 INFO conf.Configuration: resource-types.xml not found
+2026-10-18 07:39:13,993 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-10-18 07:39:14,735 INFO impl.YarnClientImpl: Submitted application application_1791539915649_0004
+2026-10-18 07:39:15,223 INFO mapreduce.Job: The url to track the job: http://yarnmanager:8088/proxy/application_1791539915649_0004/
+2026-10-18 07:39:15,238 INFO mapreduce.Job: Running job: job_1791539915649_0004
+2026-10-18 07:39:41,956 INFO mapreduce.Job: Job job_1791539915649_0004 running in uber mode : false
+2026-10-18 07:39:41,959 INFO mapreduce.Job:  map 0% reduce 0%
+2026-10-18 07:39:55,451 INFO mapreduce.Job:  map 100% reduce 0%
+2026-10-18 07:40:04,529 INFO mapreduce.Job:  map 100% reduce 100%
+2026-10-18 07:40:04,540 INFO mapreduce.Job: Job job_1791539915649_0004 completed successfully
+2026-10-18 07:40:04,772 INFO mapreduce.Job: Counters: 54
 	File System Counters
 		FILE: Number of bytes read=23018
-		FILE: Number of bytes written=988868
+		FILE: Number of bytes written=988827
 		FILE: Number of read operations=0
 		FILE: Number of large read operations=0
 		FILE: Number of write operations=0
@@ -8047,14 +8045,14 @@ packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob52971998
 		Launched map tasks=2
 		Launched reduce tasks=1
 		Data-local map tasks=2
-		Total time spent by all maps in occupied slots (ms)=37101
-		Total time spent by all reduces in occupied slots (ms)=6751
-		Total time spent by all map tasks (ms)=37101
-		Total time spent by all reduce tasks (ms)=6751
-		Total vcore-milliseconds taken by all map tasks=37101
-		Total vcore-milliseconds taken by all reduce tasks=6751
-		Total megabyte-milliseconds taken by all map tasks=37991424
-		Total megabyte-milliseconds taken by all reduce tasks=6913024
+		Total time spent by all maps in occupied slots (ms)=21141
+		Total time spent by all reduces in occupied slots (ms)=5712
+		Total time spent by all map tasks (ms)=21141
+		Total time spent by all reduce tasks (ms)=5712
+		Total vcore-milliseconds taken by all map tasks=21141
+		Total vcore-milliseconds taken by all reduce tasks=5712
+		Total megabyte-milliseconds taken by all map tasks=21648384
+		Total megabyte-milliseconds taken by all reduce tasks=5849088
 	Map-Reduce Framework
 		Map input records=4188
 		Map output records=2092
@@ -8071,15 +8069,15 @@ packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob52971998
 		Shuffled Maps =2
 		Failed Shuffles=0
 		Merged Map outputs=2
-		GC time elapsed (ms)=1068
-		CPU time spent (ms)=4310
-		Physical memory (bytes) snapshot=808640512
-		Virtual memory (bytes) snapshot=7605903360
-		Total committed heap usage (bytes)=795344896
-		Peak Map Physical memory (bytes)=318062592
-		Peak Map Virtual memory (bytes)=2533810176
-		Peak Reduce Physical memory (bytes)=214560768
-		Peak Reduce Virtual memory (bytes)=2540396544
+		GC time elapsed (ms)=553
+		CPU time spent (ms)=2880
+		Physical memory (bytes) snapshot=816410624
+		Virtual memory (bytes) snapshot=7599321088
+		Total committed heap usage (bytes)=846725120
+		Peak Map Physical memory (bytes)=304992256
+		Peak Map Virtual memory (bytes)=2532978688
+		Peak Reduce Physical memory (bytes)=207290368
+		Peak Reduce Virtual memory (bytes)=2534932480
 	Shuffle Errors
 		BAD_ID=0
 		CONNECTION=0
@@ -8091,18 +8089,18 @@ packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob52971998
 		Bytes Read=1127307
 	File Output Format Counters 
 		Bytes Written=251
-2026-09-04 07:55:52,727 INFO streaming.StreamJob: Output directory: /datasets/synthea/resultados/pacientes_genero_decada
+2026-10-18 07:40:04,772 INFO streaming.StreamJob: Output directory: /datasets/synthea/resultados/pacientes_genero_decada
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a7691ae2-69f2-4d22-b347-565606dc879b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fad632b5-ca48-488c-adb7-37d30914a06c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-ls<span class="w"> </span>/datasets/synthea/resultados/pacientes_genero_decada
@@ -8119,19 +8117,19 @@ packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob52971998
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 2 items
--rw-r--r--   3 root supergroup          0 2026-09-04 07:55 /datasets/synthea/resultados/pacientes_genero_decada/_SUCCESS
--rw-r--r--   3 root supergroup        251 2026-09-04 07:55 /datasets/synthea/resultados/pacientes_genero_decada/part-00000
+-rw-r--r--   3 root supergroup          0 2026-10-18 07:40 /datasets/synthea/resultados/pacientes_genero_decada/_SUCCESS
+-rw-r--r--   3 root supergroup        251 2026-10-18 07:40 /datasets/synthea/resultados/pacientes_genero_decada/part-00000
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b286ecad-371e-4d97-9e5b-1dd49b6c875f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=633e9b6d-4ac7-48fa-a89e-21ed36805bce">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="o">!</span>hdfs<span class="w"> </span>dfs<span class="w"> </span>-cat<span class="w"> </span>/datasets/synthea/resultados/pacientes_genero_decada/part-00000
@@ -8176,7 +8174,7 @@ packageJobJar: [/tmp/hadoop-unjar4745546918566767257/] [] /tmp/streamjob52971998
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4fecb135-cc9d-4b7c-be3e-da5da263cffa">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=243a2720-e1b3-46fc-b462-1ef71bb59477">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
