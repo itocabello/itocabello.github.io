@@ -91,13 +91,13 @@
 
                 <a href="imagenes.html" class="list-group-item list-group-item-action">
 
-                    4.1.1 Imágenes para el entorno.
+                    4.1.1 Tecnologías utilizadas en la infraestructura.
 
                 </a>
 
                 <a href="imagenb.html" class="list-group-item list-group-item-action">
 
-                    4.1.2 Imagen de base.
+                    4.1.2 Imagen base de Docker.
 
                 </a>
                 <a href="imagenn.html" class="list-group-item list-group-item-action">
@@ -136,7 +136,7 @@
 
                     <h2 class="mb-1">
 
-                        4.3 Construcción de la imagen base Docker
+                        4.1.2 Imagen base de Docker
                     </h2>
                 </div>
 
@@ -161,11 +161,74 @@
                 configuración.
 
             </div>
+            <p>
+                La imagen base proporciona el entorno común sobre el que se
+                apoyan las imágenes específicas de los distintos nodos del
+                clúster Hadoop. Incluye el software y las herramientas
+                compartidas que necesitan los contenedores para funcionar
+                de forma homogénea.
+            </p>
 
+            <p>
+                A partir de esta base se utilizan imágenes especializadas para
+                los diferentes servicios de la infraestructura, como el
+                NameNode, los DataNodes y los componentes de YARN. Cada una
+                incorpora la función específica que desempeña el nodo dentro
+                del clúster.
+            </p>
+
+            <div class="card shadow-sm my-4">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-diagram-3-fill"></i>
+                    Organización de las imágenes
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3 text-center align-items-stretch">
+
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <i class="bi bi-box-seam text-success fs-1"></i>
+                                <h3 class="h5 mt-2">Imagen base</h3>
+                                <p class="mb-0">
+                                    Entorno común y herramientas compartidas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <i class="bi bi-hdd-stack text-success fs-1"></i>
+                                <h3 class="h5 mt-2">NameNode</h3>
+                                <p class="mb-0">
+                                    Gestión de los metadatos del sistema HDFS.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="border rounded p-3 h-100">
+                                <i class="bi bi-hdd-network text-success fs-1"></i>
+                                <h3 class="h5 mt-2">DataNodes y YARN</h3>
+                                <p class="mb-0">
+                                    Almacenamiento distribuido y gestión de
+                                    recursos y tareas.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p class="text-secondary small mt-3 mb-0">
+                        Esquema conceptual de la relación entre la imagen base
+                        y las imágenes específicas de los nodos.
+                    </p>
+                </div>
+            </div>
             <hr class="my-5">
 
             <h3 class="text-success">
-                1. Sistema operativo base
+                Sistema operativo base
             </h3>
 
             <p>
@@ -188,275 +251,34 @@
 
             </div>
 
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                2. Instalación de Python y Jupyter Notebook
+            <h3 class="h5 text-success mt-4">
+                ¿Cómo se utiliza?
             </h3>
 
             <p>
-
-                La imagen incorpora <strong>Python 3</strong> y
-                <strong>Jupyter Notebook</strong>, herramientas que serán utilizadas durante
-                todo el curso para desarrollar ejercicios prácticos y ejecutar aplicaciones
-                MapReduce mediante Hadoop Streaming.
-
+                Para desplegar el entorno docente no es necesario construir
+                manualmente la imagen base. Se utilizan las imágenes del
+                proyecto y el archivo de configuración de Docker Compose,
+                que define los servicios, sus relaciones, los puertos y la
+                red de comunicación entre los contenedores.
             </p>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <ul>
-
-                        <li>Python 3.</li>
-
-                        <li>pip.</li>
-
-                        <li>Jupyter Notebook.</li>
-
-                        <li>Librerías necesarias para prácticas.</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6 text-center">
-
-                    <img src="../img/python-jupyter.png" class="img-fluid rounded shadow" alt="Python y Jupyter">
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                3. Instalación de Java y herramientas del sistema
-            </h3>
 
             <p>
-
-                Dado que Apache Hadoop está desarrollado sobre Java, la imagen instala
-                <strong>OpenJDK 8</strong>, además de otras utilidades necesarias para el
-                funcionamiento de los contenedores.
-
+                Docker Compose permite iniciar conjuntamente los contenedores
+                que forman el clúster. De esta manera, el estudiante puede
+                centrarse en las prácticas de Hadoop, HDFS, YARN y MapReduce
+                sin tener que instalar individualmente todos los componentes
+                del entorno.
             </p>
 
-            <table class="table table-striped">
-
-                <thead class="table-success">
-
-                    <tr>
-
-                        <th>Componente</th>
-
-                        <th>Finalidad</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>OpenJDK 8</td>
-
-                        <td>Ejecución de Hadoop.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Supervisor</td>
-
-                        <td>Gestión de procesos dentro del contenedor.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>SSH</td>
-
-                        <td>Comunicación entre nodos.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Herramientas Linux</td>
-
-                        <td>Administración del sistema.</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <div class="text-center my-4">
-
-                <img src="../img/openjdk-supervisor.png" class="img-fluid rounded shadow" alt="OpenJDK">
-
+            <div class="alert alert-info mt-4" role="alert">
+                <i class="bi bi-info-circle-fill"></i>
+                <strong>Para realizar las prácticas:</strong>
+                En el siguiente capitulo <strong>4.2 Despliegue de la infraestructura</strong> se detalla como desplegar
+                las imagenes. No es necesario reconstruir la
+                imagen base para ejecutar los ejercicios.
             </div>
 
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                4. Instalación de Apache Hadoop 3.4.0
-            </h3>
-
-            <p>
-
-                Una vez instalado Java, se descarga e instala
-                <strong>Apache Hadoop 3.4.0</strong>, versión utilizada durante todo el
-                proyecto.
-
-            </p>
-
-            <div class="text-center my-4">
-
-                <img src="../img/install-hadoop.png" class="img-fluid rounded shadow" alt="Instalación Hadoop">
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                5. Configuración de variables de entorno
-            </h3>
-
-            <p>
-
-                Durante la construcción de la imagen se configuran las variables de entorno
-                necesarias para facilitar el funcionamiento de Hadoop y Java.
-
-            </p>
-
-            <div class="card shadow">
-
-                <div class="card-header bg-success text-white">
-
-                    Variables principales
-
-                </div>
-
-                <div class="card-body">
-
-                    <pre class="mb-0">
-    JAVA_HOME
-    HADOOP_HOME
-    HADOOP_CONF_DIR
-    HADOOP_COMMON_HOME
-    HADOOP_HDFS_HOME
-    HADOOP_MAPRED_HOME
-    HADOOP_YARN_HOME
-    PATH
-    </pre>
-
-                </div>
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                6. Copia de los archivos de configuración
-            </h3>
-
-            <p>
-
-                Finalmente, la imagen incorpora los archivos de configuración personalizados
-                que definen el comportamiento del clúster Hadoop.
-
-            </p>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <ul class="list-group">
-
-                        <li class="list-group-item">
-                            core-site.xml
-                        </li>
-
-                        <li class="list-group-item">
-                            hdfs-site.xml
-                        </li>
-
-                        <li class="list-group-item">
-                            mapred-site.xml
-                        </li>
-
-                        <li class="list-group-item">
-                            yarn-site.xml
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6 text-center">
-
-                    <img src="../img/hadoop-config-files.png" class="img-fluid rounded shadow"
-                        alt="Configuración Hadoop">
-
-                </div>
-
-            </div>
-
-            <p class="mt-4">
-
-                Estos archivos contienen toda la configuración relativa al sistema HDFS, el
-                motor MapReduce y el gestor de recursos YARN, permitiendo que todos los
-                contenedores compartan exactamente la misma configuración.
-
-            </p>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-                Ventajas de utilizar una imagen base
-            </h3>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <ul>
-
-                        <li>Configuración homogénea.</li>
-
-                        <li>Facilidad de mantenimiento.</li>
-
-                        <li>Despliegue automatizado.</li>
-
-                        <li>Menor tiempo de instalación.</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <ul>
-
-                        <li>Reutilización de imágenes.</li>
-
-                        <li>Mayor consistencia.</li>
-
-                        <li>Escalabilidad del clúster.</li>
-
-                        <li>Actualizaciones centralizadas.</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
 
             <hr class="my-5">
 
