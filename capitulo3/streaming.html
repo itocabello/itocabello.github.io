@@ -433,168 +433,53 @@
                 </tbody>
 
             </table>
-            <hr class="my-5">
 
+            <hr class="my-5">
             <h3 class="text-success">
 
-                Objetivos de aprendizaje
+                Ejercicios prácticos: Hadoop Streaming
 
             </h3>
 
             <p>
 
-                Tras completar esta lección el estudiante será capaz de comprender el
-                funcionamiento del almacenamiento distribuido implementado sobre el clúster
-                Hadoop desplegado durante el proyecto.
+
+                Una vez llegado a este punto, y tras haber estudiado y
+                realizado la practica del capitulo <a href="estructurahdfs.html" class="fw-bold">3.2.2</a> ,
+                entonces se habra cargado en HDFS los ficheros <strong>.txt</strong>
+                con los cuales queremos comprender el funcionamiento del
+                modelo <strong>MapReduce</strong>.
 
             </p>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            Competencias adquiridas
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>Comprender el funcionamiento de HDFS.</li>
-
-                                <li>Diferenciar NameNode y DataNode.</li>
-
-                                <li>Entender la división de archivos en bloques.</li>
-
-                                <li>Conocer la replicación de datos.</li>
-
-                                <li>Relacionar HDFS con Docker.</li>
-
-                                <li>Interpretar la arquitectura distribuida.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-            <hr class="my-5">
-
-            <h3 class="text-success">
-
-                Arquitectura distribuida implementada
-
-            </h3>
-
             <p>
 
-                En la infraestructura desarrollada durante este proyecto,
-                HDFS funciona sobre un clúster Hadoop desplegado mediante
-                contenedores Docker.
 
-                Cada uno de los <strong>DataNodes</strong> representa un nodo de almacenamiento
-                encargado de guardar físicamente los bloques de información,
-                mientras que el <strong>NameNode</strong> mantiene la información
-                sobre la estructura del sistema de archivos y coordina todas
-                las operaciones de lectura y escritura.
+                A continuacion, se exponen varios ejercicios que van a permitir comprender el funcionamiento interno de
+                las fases
+                <strong>Map</strong> y <strong>Reduce</strong>, mediante <strong>Hadoop Streaming</strong>.
+            <div class="text-center mt-2">
 
+                <a href="ejer1hadoop.html" target="_blank" class="btn btn-success ">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    1º Ejercicio Resuelto con Hadoop Streaming.
+
+                </a>
+
+            </div>
+            <div class="text-center mt-3">
+
+                <a href="ejer2hadoop.html" target="_blank" class="btn btn-success ">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    2º Ejercicio Resuelto con Hadoop Streaming.
+
+                </a>
+
+            </div>
             </p>
-
-            <div class="alert alert-light border">
-
-                <i class="bi bi-info-circle-fill text-success"></i>
-
-                Los archivos almacenados en HDFS se fragmentan automáticamente
-                en bloques que posteriormente son distribuidos entre los distintos
-                DataNodes del clúster para garantizar escalabilidad,
-                alto rendimiento y tolerancia frente a fallos.
-
-            </div>
-
-            <hr class="my-5">
-
-            <h3 class="text-success">
-
-                Componentes principales
-
-            </h3>
-
-            <div class="row">
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            NameNode
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>Gestiona el sistema HDFS.</li>
-
-                                <li>Controla la ubicación de los bloques.</li>
-
-                                <li>Mantiene los metadatos.</li>
-
-                                <li>Coordina las operaciones de lectura y escritura.</li>
-
-                                <li>Supervisa el estado del clúster.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-
-                    <div class="card shadow-sm h-100">
-
-                        <div class="card-header bg-success text-white">
-
-                            DataNodes
-
-                        </div>
-
-                        <div class="card-body">
-
-                            <ul>
-
-                                <li>Almacenan los bloques de datos.</li>
-
-                                <li>Ejecutan operaciones de lectura y escritura.</li>
-
-                                <li>Replican automáticamente la información.</li>
-
-                                <li>Informan periódicamente al NameNode.</li>
-
-                                <li>Participan en el procesamiento distribuido.</li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
             <hr class="my-5">
 
             <div class="alert alert-primary">
