@@ -135,15 +135,21 @@
                 <div class="container">
 
                     <h2 class="mb-1">
-                        Inyección de datos en Hadoop
+                        Inyección y extracción de datos en Hadoop
                     </h2>
                 </div>
 
             </section>
+
             <p class="lead">
 
-                La inyección de datos (Data Ingestion) consiste en transferir información desde sistemas
-                externos hacia un clúster Hadoop para su almacenamiento, procesamiento y análisis.
+                La inyección de datos (Data Ingestion) consiste en transferir información desde sistemas externos o
+                sistemas de archivos
+                locales hacia un clúster Hadoop para su almacenamiento, procesamiento y análisis. La calidad de los
+                resultados obtenidos
+                en una plataforma Big Data depende, en gran medida, de disponer de mecanismos eficientes para incorporar
+                datos
+                procedentes de distintas fuentes.
 
             </p>
 
@@ -151,24 +157,39 @@
 
                 <i class="bi bi-info-circle-fill"></i>
 
-                La calidad del análisis Big Data depende en gran medida de disponer de un mecanismo
-                eficiente para incorporar datos procedentes de múltiples fuentes.
+                En esta lección se estudian las operaciones necesarias para gestionar el ciclo de vida de los datos en
+                el ecosistema
+                Hadoop, desde su incorporación al sistema de archivos distribuido HDFS hasta la recuperación de los
+                resultados generados
+                durante el procesamiento. El estudiante aprenderá a cargar información, gestionar directorios
+                distribuidos, automatizar
+                procesos de ingesta mediante herramientas del ecosistema y recuperar los resultados obtenidos con Hadoop
+                Streaming y
+                MapReduce.
 
             </div>
 
             <hr class="my-5">
 
-            <h3 class="text-success">
-                ¿Qué es la inyección de datos?
-            </h3>
+
 
             <p>
 
-                La inyección de datos permite cargar información desde diferentes orígenes hacia HDFS
-                u otros componentes del ecosistema Hadoop para su posterior procesamiento mediante
+                El objetivo de la inyección de datos es una vez cargado toda la información desde diferentes orígenes
+                hacia HDFS
+                para su posterior procesamiento mediante
                 herramientas como MapReduce, Spark, Hive o Pig.
 
             </p>
+            <div class="alert alert-success">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                Durante esta lección el estudiante aprenderá a introducir datos en HDFS,
+                gestionar directorios distribuidos, automatizar procesos de ingesta y
+                recuperar los resultados generados por Hadoop Streaming y MapReduce.
+
+            </div>
 
             <div class="text-center my-5">
 
@@ -280,7 +301,7 @@
             <hr class="my-5">
 
             <h2 class="text-success">
-                3.5.1 Apache Flume
+                1. Apache Flume
             </h2>
 
             <p>
@@ -352,101 +373,6 @@
 
             </div>
 
-            <hr class="my-5">
-
-            <h2 class="text-success">
-                3.5.2 Apache Kafka
-            </h2>
-
-            <p>
-
-                Apache Kafka es una plataforma distribuida de procesamiento de eventos en tiempo real
-                desarrollada por Apache Software Foundation.
-
-            </p>
-
-            <p>
-
-                Kafka permite publicar, almacenar y consumir millones de mensajes por segundo,
-                proporcionando alta disponibilidad y tolerancia a fallos.
-
-            </p>
-
-
-            <h4>Características principales</h4>
-
-            <ul>
-
-                <li>Procesamiento en tiempo real.</li>
-
-                <li>Alta escalabilidad.</li>
-
-                <li>Tolerancia a fallos.</li>
-
-                <li>Arquitectura distribuida.</li>
-
-                <li>Muy utilizado junto con Spark Streaming.</li>
-
-            </ul>
-
-            <hr class="my-5">
-
-            <h2 class="text-success">
-                3.5.3 Apache NiFi
-            </h2>
-
-            <p>
-
-                Apache NiFi es una plataforma visual para automatizar el flujo de datos entre sistemas
-                heterogéneos.
-
-            </p>
-
-            <p>
-
-                Permite construir canales de ingestión de datos mediante una interfaz gráfica,
-                facilitando la recopilación, transformación y envío de información hacia HDFS.
-
-            </p>
-
-
-
-            <h4>Ventajas</h4>
-
-            <ul>
-
-                <li>Interfaz gráfica intuitiva.</li>
-
-                <li>Automatización del flujo de datos.</li>
-
-                <li>Transformación de información.</li>
-
-                <li>Integración con APIs, IoT y bases de datos.</li>
-
-                <li>Alta trazabilidad.</li>
-
-            </ul>
-
-            <hr class="my-5">
-
-            <h2 class="text-success">
-                3.5.4 Apache Sqoop
-            </h2>
-
-            <p>
-
-                Apache Sqoop es una herramienta diseñada para transferir datos entre bases de datos
-                relacionales y el ecosistema Hadoop.
-
-            </p>
-
-            <p>
-
-                Su principal objetivo consiste en importar grandes volúmenes de datos desde sistemas
-                RDBMS hacia HDFS, Hive o HBase, así como exportar información desde Hadoop hacia
-                bases de datos relacionales.
-
-            </p>
 
 
 
@@ -463,96 +389,90 @@
                 <li>Integración con Hive y HBase.</li>
 
             </ul>
+            <hr class="my-5">
+            <h3 class="text-success">
+                Objetivos de aprendizaje
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            Competencias
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender el ciclo de vida de los datos en Hadoop.</li>
+
+                                <li>Incorporar información al sistema HDFS.</li>
+
+                                <li>Extraer datos desde HDFS al sistema local.</li>
+
+                                <li>Gestionar directorios y ficheros distribuidos.</li>
+
+                                <li>Automatizar la ingesta mediante Apache Flume.</li>
+
+                                <li>Preparar los datos para Hadoop Streaming y MapReduce.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
 
             <hr class="my-5">
 
             <h3 class="text-success">
-                Comparativa de herramientas de ingestión
+                Ciclo de vida de los datos
             </h3>
 
-            <table class="table table-striped table-hover">
+            <p>
 
-                <thead class="table-success">
+                Los conjuntos de datos utilizados durante el curso, descritos previamente en
+                el apartado de <strong>Datasets</strong>, serán incorporados al sistema de
+                archivos distribuido <strong>HDFS</strong> mediante los comandos Hadoop
+                correspondientes. Posteriormente serán procesados utilizando
+                <strong>Hadoop Streaming</strong> y los resultados obtenidos podrán ser
+                almacenados en sistemas externos como <strong>MySQL</strong> para facilitar
+                su explotación y análisis.
 
-                    <tr>
+            </p>
 
-                        <th>Tecnología</th>
+            <p>
 
-                        <th>Origen</th>
+                Durante este proceso, los datos podrán almacenarse utilizando diferentes
+                formatos de serialización como CSV, Avro o Parquet, optimizando tanto el
+                almacenamiento como el rendimiento de lectura y escritura dentro del
+                ecosistema Hadoop.
 
-                        <th>Destino</th>
+            </p>
 
-                        <th>Uso principal</th>
+            <div class="text-center my-4">
 
-                    </tr>
+                <img src="../img/cluster-uned-dataflow.png" class="img-fluid rounded shadow imagen-ampliable"
+                    alt="Arquitectura Cluster UNED">
 
-                </thead>
+                <p class="text-muted">
 
-                <tbody>
+                    Flujo de datos dentro de la arquitectura Cluster-UNED.
 
-                    <tr>
+                </p>
 
-                        <td>HDFS</td>
-
-                        <td>Archivos locales</td>
-
-                        <td>HDFS</td>
-
-                        <td>Carga manual</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Flume</td>
-
-                        <td>Logs y eventos</td>
-
-                        <td>HDFS</td>
-
-                        <td>Captura continua</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Kafka</td>
-
-                        <td>Streaming</td>
-
-                        <td>Consumidores</td>
-
-                        <td>Tiempo real</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>NiFi</td>
-
-                        <td>Múltiples fuentes</td>
-
-                        <td>HDFS</td>
-
-                        <td>Automatización visual</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Sqoop</td>
-
-                        <td>Bases de datos</td>
-
-                        <td>HDFS / Hive</td>
-
-                        <td>Datos relacionales</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
+            </div>
 
             <hr class="my-5">
 
@@ -567,34 +487,40 @@
                 </h4>
 
                 <p class="mb-0">
-
                     El ecosistema Hadoop dispone de múltiples mecanismos para incorporar datos desde
-                    diferentes fuentes. Mientras que Flume está orientado a la captura de eventos y logs,
-                    Kafka permite el procesamiento en tiempo real, NiFi facilita la automatización de flujos
-                    de datos mediante una interfaz gráfica y Sqoop constituye la solución más adecuada para
-                    integrar bases de datos relacionales con HDFS y Hive.
+                    diferentes fuentes.La correcta gestión de la entrada y salida de datos constituye uno de los
+                    aspectos fundamentales en cualquier arquitectura Big Data. Tras completar esta
+                    lección, el estudiante será capaz de incorporar información al clúster Hadoop,
+                    administrar ficheros distribuidos, automatizar procesos de ingesta mediante
+                    Apache Flume y preparar los datos para su posterior procesamiento utilizando
+                    las distintas tecnologías del ecosistema Hadoop.
+
+
 
                 </p>
 
             </div>
-            <div class="botones">
+            <hr class="my-5">
+            <h3 class="text-success">
 
-                <a href="index.html" class="btn btn-success btn-lg px-5">
+                Ejercicios prácticos: Inyección y Extracción de datos Hadoop.
 
-                    <i class="bi bi-list"></i>
-                    Volver al índice del capítulo 3.2
+            </h3>
+            <div class="text-center mt-5">
+
+                <a href="ejer4.html" target="_blank" class="btn btn-success">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Ejercicio Resuelto Inyección Apache Flume.
 
                 </a>
 
-
-
+            </div>
+            <div class="text-center mb-5">
 
 
             </div>
-        </div>
-
-        <div class="text-center mt-5">
-
             <a href="serializacion.html" class="btn btn-outline-success btn-lg">
 
                 <i class="bi bi-arrow-left-circle"></i>
@@ -602,8 +528,9 @@
                 Capitulo Anterior.
 
             </a>
-
         </div>
+
+
         <footer class="bg-success text-white mt-5">
 
             <div class="container py-3 text-center">
