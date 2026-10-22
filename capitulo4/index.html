@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Capítulo 3 - Ecosistema de Hadoop</title>
+    <title>Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -26,7 +26,7 @@
                 <div class="col-md-9">
 
                     <h1 class="text-success fw-bold">
-                        Capítulo 4. Despliegue de la infraestructura
+                        Capítulo 5 Generación de lecciones teórico-prácticas.
                     </h1>
 
                     <p class="mb-0">
@@ -70,6 +70,8 @@
     <div class="row">
 
         <!-- Menú lateral -->
+        <!-- Menú lateral -->
+
 
         <div class="col-lg-3">
 
@@ -79,81 +81,418 @@
 
                     <i class="bi bi-book"></i>
 
-                    Capítulo 4
+                    Capítulo 5
 
                 </div>
 
-                <a href="indeximagen.html" class="list-group-item list-group-item-action">
+                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-                    4.1 Arquitectura de Contenedores para el Despliegue del Entorno Big Data.
+                    1. Lección 1.Características prácticas Big Data.
+
+                </a>
+
+                <a href="fundamentos.html" class="list-group-item list-group-item-action">
+
+                    2. Lección 2.Fundamentos de Hadoop.
+
+                </a>
+                <a href="hdfs.html" class="list-group-item list-group-item-action">
+
+                    3. Lección 3.HDFS y Almacenamiento Distribuido.
 
                 </a>
 
-                <a href="indexdespliegue.html" class="list-group-item list-group-item-action">
+                <a href="procesamiento.html" class="list-group-item list-group-item-action">
 
-                    4.2 Despliegue de la infraestructura.
+                    4. Lección 4.Inyección/Extracción de datos
+
 
                 </a>
+                <a href="serializacion.html" class="list-group-item list-group-item-action">
+
+                    5. Lección 5. Serialización/Deserialización de los Datos
+
+
+                </a>
+
+                <a href="validacion.html" class="list-group-item list-group-item-action">
+
+                    6. Validación operativa del clúster mediante trabajos.
+
+                </a>
+
+
+
+
 
             </div>
-
         </div>
-
         <!-- Contenido -->
 
         <div class="col-lg-9">
+
 
             <section class="bg-success text-white py-4">
 
                 <div class="container">
 
                     <h2 class="mb-1">
-                        Capítulo 4. Despliegue de la infraestructura
+                        Capítulo 5: Introducción a las prácticas sobre la infraestructura Big Data.
                     </h2>
                 </div>
 
             </section>
-            <div class="alert alert-info mt-4">
-                <p class="text-justify">
-                    Como forma de evidenciar de manera práctica el uso de la virtualización
-                    ligera y las infraestructuras Cloud, se desarrollará paso a paso la
-                    construcción del clúster Hadoop, la codificación de las imágenes Docker,
-                    el despliegue automatizado de todos los servicios necesarios y la descarga
-                    de diferentes conjuntos de datos (Datasets) que servirán posteriormente
-                    para realizar las actividades prácticas del curso.
-                </p>
+            <p class="lead">
+                Finalizada la parte teórica desarrollada en los capítulos anteriores, este apartado
+                marca el inicio de la fase práctica del proyecto, donde el estudiante podrá aplicar
+                los conocimientos adquiridos sobre un clúster Hadoop completamente operativo.
+            </p>
 
-                <p class="text-justify">
-                    Esta metodología permite reproducir un entorno real de trabajo utilizado en
-                    organizaciones que gestionan grandes volúmenes de información, facilitando
-                    al estudiante la comprensión de la arquitectura distribuida y del proceso
-                    completo de instalación de una infraestructura Big Data.
-                </p>
+            <p>
+                El objetivo principal consiste en trasladar los conceptos estudiados al ámbito
+                práctico mediante el despliegue y utilización de una infraestructura Big Data
+                basada en tecnologías del ecosistema Apache Hadoop.
+            </p>
 
-                <h5 class="mb-3">
-                    Objetivo del capítulo
-                </h5>
+            <div class="alert alert-success">
 
-                <p class="mb-0">
-                    El propósito principal de este capítulo consiste en que el estudiante
-                    comprenda el proceso completo de despliegue de una infraestructura Big
-                    Data basada en Hadoop utilizando tecnologías de virtualización ligera,
-                    Docker, Docker Compose y Cloud Computing. Además de aprender la
-                    instalación y configuración de cada componente, se pretende
-                    familiarizar al alumno con un entorno real de administración de
-                    infraestructuras distribuidas, preparándolo para la realización de los
-                    ejercicios prácticos desarrollados en los capítulos posteriores.
+                <i class="bi bi-lightbulb-fill"></i>
+
+                La mejor forma de comprender el funcionamiento de una arquitectura Big Data
+                es experimentar directamente con un entorno distribuido real, ejecutando
+                procesos sobre datos y observando el comportamiento de cada uno de sus
+                componentes.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Objetivos de esta fase práctica
+            </h3>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-book-half"></i>
+
+                            Conocimientos
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Comprender los fundamentos de Big Data.</li>
+
+                                <li>Identificar los retos asociados al procesamiento masivo de datos.</li>
+
+                                <li>Conocer las arquitecturas distribuidas utilizadas actualmente.</li>
+
+                                <li>Relacionar teoría y práctica sobre un entorno real.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-header bg-success text-white">
+
+                            <i class="bi bi-laptop"></i>
+
+                            Competencias prácticas
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Administrar un clúster Hadoop.</li>
+
+                                <li>Ejecutar aplicaciones distribuidas.</li>
+
+                                <li>Gestionar datos mediante HDFS.</li>
+
+                                <li>Realizar prácticas utilizando Docker y Jupyter Notebook.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Componentes que intervienen
+            </h3>
+
+            <p>
+
+                Las actividades prácticas se desarrollarán utilizando los principales componentes
+                del ecosistema Hadoop, responsables del almacenamiento, gestión de recursos y
+                procesamiento distribuido de la información.
+
+            </p>
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Componente</th>
+
+                        <th>Función principal</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td><strong>HDFS</strong></td>
+
+                        <td>Almacenamiento distribuido de grandes volúmenes de datos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><strong>YARN</strong></td>
+
+                        <td>Administración de recursos y planificación de tareas.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><strong>MapReduce</strong></td>
+
+                        <td>Procesamiento distribuido mediante operaciones Map y Reduce.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><strong>Docker</strong></td>
+
+                        <td>Virtualización ligera de toda la infraestructura.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td><strong>Jupyter Notebook</strong></td>
+
+                        <td>Desarrollo y ejecución de ejercicios prácticos.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Metodología de aprendizaje
+            </h3>
+
+            <p>
+
+                El aprendizaje se desarrolla de forma progresiva, comenzando por la comprensión
+                de los conceptos fundamentales y evolucionando hacia la ejecución de ejercicios
+                sobre un clúster Hadoop completamente funcional.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-1-circle-fill display-5 text-success"></i>
+
+                            <h5 class="mt-3">Conceptos</h5>
+
+                            <p class="small">
+
+                                Introducción al ecosistema Big Data.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-2-circle-fill display-5 text-success"></i>
+
+                            <h5 class="mt-3">Infraestructura</h5>
+
+                            <p class="small">
+
+                                Despliegue del clúster mediante Docker.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-3-circle-fill display-5 text-success"></i>
+
+                            <h5 class="mt-3">Procesamiento</h5>
+
+                            <p class="small">
+
+                                Ejecución de programas MapReduce y HDFS.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="card text-center shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <i class="bi bi-4-circle-fill display-5 text-success"></i>
+
+                            <h5 class="mt-3">Experimentación</h5>
+
+                            <p class="small">
+
+                                Análisis de resultados sobre datos reales.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-mortarboard-fill"></i>
+
+                    Conclusión
+
+                </h4>
+
+                <p>
+
+                    La combinación de contenidos teóricos y ejercicios prácticos permite que el
+                    estudiante adquiera una visión integral del funcionamiento de un entorno Big Data.
+                    La infraestructura desarrollada proporciona un laboratorio completamente operativo
+                    sobre el que experimentar con Hadoop, comprender el procesamiento distribuido y
+                    adquirir experiencia en la administración y explotación de tecnologías utilizadas
+                    habitualmente en entornos profesionales.
+
                 </p>
 
             </div>
-            <hr class="my-5">
 
+            <div class="text-center mt-5">
+
+                <a href="index.html" class="btn btn-success btn-lg">
+
+                    <i class="bi bi-arrow-left-circle"></i>
+
+                    Volver al índice
+
+                </a>
+
+            </div>
             <div class="text-center mb-5">
 
-                <a href="indeximagen.html" class="btn btn-success btn-lg px-5">
+
+            </div>
+            <div class="modal fade" id="imgClusterModal" tabindex="-1">
+
+                <div class="modal-dialog modal-xl modal-dialog-centered">
+
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h5 class="modal-title">
+                                Cluster Hadoop
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+
+                        </div>
+
+                        <div class="modal-body text-center">
+
+                            <img src="../img/docker-hadoop-cluster.png" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="text-center mb-5">
+
+                <a href="caracteristicas.html" class="btn btn-success btn-lg px-5">
 
                     <i class="bi bi-arrow-right-circle-fill"></i>
-                    Siguiente punto
+                    Siguiente Lección.
 
                 </a>
 
