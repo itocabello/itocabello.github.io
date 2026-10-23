@@ -6,14 +6,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Segundo Ejercicio Resuelto - Hadoop Streaming - Análisis de pacientes</title>
+    <title>Tercer Ejercicio Resuelto - Hadoop Streaming - Análisis de accidentes de tráfico con víctimas</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link href="../css/estilos.css" rel="stylesheet">
 
+    <link href="../css/estilos.css" rel="stylesheet">
+    <style>
+        pre {
+            background: #17221d;
+            color: #e9f4ed;
+            padding: 1rem;
+            border-radius: .65rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        code {
+            color: #14613f;
+        }
+
+        pre code {
+            color: inherit;
+        }
+
+        .note {
+            background: #eef7f1;
+            border-left: 4px solid var(--uned-green);
+            padding: 1rem;
+            border-radius: .35rem;
+        }
+
+        .table thead th {
+            background: #eaf2ed;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: .25rem .65rem;
+            border-radius: 99px;
+            background: #eaf2ed;
+            color: var(--uned-dark);
+            font-size: .85rem;
+        }
+
+        .flow-step {
+            height: 100%;
+            border: 1px solid #dce7e0;
+            border-radius: .75rem;
+            padding: 1rem;
+            background: var(--soft);
+        }
+
+        .flow-step i {
+            color: var(--uned-green);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width:575px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .section-card {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 
 
@@ -107,51 +168,37 @@
 
                         <i class="bi bi-book"></i>
 
-                        Capítulo 5
+                        Capítulo 2
 
                     </div>
 
-
                     <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-                        1. Lección 1. Características prácticas Big Data.
+                        2.1 Características de Hadoop.
 
                     </a>
 
+                    <a href="indexestructura.html" class="list-group-item list-group-item-action">
 
-                    <a href="fundamentos.html" class="list-group-item list-group-item-action">
-
-                        2. Lección 2. Fundamentos de Hadoop.
-
-                    </a>
-
-
-                    <a href="hdfs.html" class="list-group-item list-group-item-action">
-
-                        3. Lección 3. HDFS y Almacenamiento Distribuido.
+                        2.2 Estructura de Hadoop.
 
                     </a>
+                    <a href="streaming.html" class="list-group-item list-group-item-action">
 
-
-                    <a href="procesamiento.html" class="list-group-item list-group-item-action">
-
-                        4. Lección 4. Inyección/Extracción de datos
+                        2.3 Modelo de programación MapReduce mediante Hadoop Streaming.
 
                     </a>
-
-
                     <a href="serializacion.html" class="list-group-item list-group-item-action">
 
-                        5. Lección 5. Serialización/Deserialización de los Datos
+                        2.4 Serialización de datos.
+
+                    </a>
+                    <a href="inyeccion.html" class="list-group-item list-group-item-action">
+
+                        2.5 Inyección de datos mediante Apache Flume.
 
                     </a>
 
-
-                    <a href="validacion.html" class="list-group-item list-group-item-action">
-
-                        6. Validación operativa del clúster mediante trabajos.
-
-                    </a>
 
                 </div>
 
@@ -169,7 +216,6 @@
                 <div class="card shadow-sm mb-4">
 
                     <div class="card-body">
-
                         <section class="bg-success text-white py-4">
 
                             <div class="container">
@@ -178,7 +224,10 @@
 
                                     <i class="bi bi-book"></i>
 
-                                    Segundo ejercicio resuelto con Hadoop Streaming - Análisis de pacientes
+                                    Tercer ejercicio resuelto con Hadoop Streaming - Agrupación
+                                    del número de accidentes por provincia y mes a partir del conjunto de datos de
+                                    la DGT de
+                                    2024.
 
                                 </h2>
 
@@ -187,881 +236,311 @@
                         </section>
 
 
-                        <p class="lead mt-4">
 
-                            En este Segundo ejercicio práctico se continúa con el
-                            procesamiento de los conjuntos de datos disponibles en
-                            el entorno Hadoop, utilizando en este caso el fichero
-                            <strong>patients.csv</strong> del conjunto de datos
-                            <strong>Synthea</strong>.
 
-                        </p>
+                        <div class="alert alert-success shadow-sm">
 
+                            <h3 class="h5">
 
-                        <p>
+                                <i class="bi bi-bullseye me-2"></i>
 
-                            El fichero contiene información asociada a los pacientes
-                            y se encuentra previamente almacenado en
-                            <strong>HDFS</strong>. A partir de estos datos, se plantea
-                            una tarea de procesamiento distribuido que permite al
-                            estudiante aplicar los conceptos estudiados sobre el
-                            modelo de programación <strong>MapReduce</strong>.
+                                Objetivo del ejercicio
 
-                        </p>
-
-
-                        <p>
-
-                            Para desarrollar el ejercicio se han creado dos scripts
-                            en Python, <strong>mapper_pacientes.py</strong> y
-                            <strong>reducer_pacientes.py</strong>, que permiten
-                            realizar el procesamiento de los registros mediante
-                            <strong>Hadoop Streaming</strong>.
-
-                        </p>
-
-
-                        <p>
-
-                            El Mapper se encarga de leer los datos de entrada y
-                            generar los pares clave-valor necesarios para el análisis,
-                            mientras que Hadoop realiza automáticamente las fases de
-                            <strong>Shuffle y Sort</strong>, agrupando los registros
-                            que presentan una misma clave. Finalmente, el Reducer
-                            procesa estos grupos y obtiene el número de pacientes
-                            correspondiente a cada combinación de género y década
-                            de nacimiento.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- OBJETIVO -->
-                <!-- ===================================================== -->
-
-                <div class="alert alert-success shadow-sm">
-
-                    <h3 class="h5">
-
-                        <i class="bi bi-bullseye"></i>
-
-                        Objetivo del ejercicio
-
-                    </h3>
-
-
-                    <p class="mb-2">
-
-                        El objetivo del ejercicio consiste en procesar el fichero
-                        <strong>patients.csv</strong> almacenado en
-                        <strong>HDFS</strong> mediante <strong>Hadoop Streaming</strong>,
-                        utilizando Python para realizar una agrupación de los
-                        pacientes en función de su género y década de nacimiento.
-
-                    </p>
-
-
-                    <ul class="mb-0">
-
-                        <li>
-
-                            Utilizar el fichero
-                            <strong>patients.csv</strong> del conjunto de datos
-                            <strong>Synthea</strong>.
-
-                        </li>
-
-
-                        <li>
-
-                            Procesar los datos almacenados en
-                            <strong>HDFS</strong>.
-
-                        </li>
-
-
-                        <li>
-
-                            Utilizar <strong>mapper_pacientes.py</strong> como
-                            programa Mapper.
-
-                        </li>
-
-
-                        <li>
-
-                            Utilizar <strong>reducer_pacientes.py</strong> como
-                            programa Reducer.
-
-                        </li>
-
-
-                        <li>
-
-                            Comprender las fases
-                            <strong>Map, Shuffle, Sort y Reduce</strong>.
-
-                        </li>
-
-
-                        <li>
-
-                            Agrupar los pacientes por
-                            <strong>género y década de nacimiento</strong>.
-
-                        </li>
-
-
-                        <li>
-
-                            Obtener el número de pacientes correspondiente a cada
-                            grupo.
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- FUNCIONAMIENTO -->
-                <!-- ===================================================== -->
-
-                <div class="card shadow-sm mb-4">
-
-                    <div class="card-header bg-success text-white">
-
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-diagram-3"></i>
-
-                            Funcionamiento del ejercicio
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            El ejercicio parte del fichero
-                            <strong>patients.csv</strong>, almacenado previamente
-                            en el sistema de archivos distribuido
-                            <strong>HDFS</strong>. Sobre este fichero se ejecuta
-                            un trabajo de procesamiento distribuido utilizando
-                            <strong>Hadoop Streaming</strong>.
-
-                        </p>
-
-
-                        <p>
-
-                            El procesamiento utiliza la información correspondiente
-                            a la fecha de nacimiento y al género de cada paciente.
-                            A partir de estos campos, el Mapper genera una clave que
-                            permite agrupar los pacientes según su década de nacimiento
-                            y género.
-
-                        </p>
-
-
-                        <div class="row mt-4">
-
-
-                            <!-- MAP -->
-
-                            <div class="col-md-4 mb-3">
-
-                                <div class="card h-100 border-primary">
-
-                                    <div class="card-header bg-primary text-white">
-
-                                        <strong>
-
-                                            <i class="bi bi-1-circle"></i>
-
-                                            Map
-
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="card-body">
-
-                                        <p>
-
-                                            El Mapper lee cada registro del fichero
-                                            <strong>patients.csv</strong> y obtiene
-                                            los datos necesarios para realizar la
-                                            clasificación.
-
-                                        </p>
-
-
-                                        <p>
-
-                                            A partir de la fecha de nacimiento y del
-                                            género genera un par clave-valor.
-
-                                        </p>
-
-
-                                        <p class="text-center">
-
-                                            <code>(década_genero, 1)</code>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- SHUFFLE -->
-
-                            <div class="col-md-4 mb-3">
-
-                                <div class="card h-100 border-warning">
-
-                                    <div class="card-header bg-warning">
-
-                                        <strong>
-
-                                            <i class="bi bi-2-circle"></i>
-
-                                            Shuffle y Sort
-
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="card-body">
-
-                                        <p>
-
-                                            Hadoop agrupa automáticamente los pares
-                                            generados por el Mapper según su clave.
-
-                                        </p>
-
-
-                                        <p>
-
-                                            De esta forma, todos los pacientes que
-                                            pertenecen al mismo grupo son enviados
-                                            al mismo Reducer.
-
-                                        </p>
-
-
-                                        <p class="text-center">
-
-                                            <code>grupo → [1,1,1,1...]</code>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <!-- REDUCE -->
-
-                            <div class="col-md-4 mb-3">
-
-                                <div class="card h-100 border-success">
-
-                                    <div class="card-header bg-success text-white">
-
-                                        <strong>
-
-                                            <i class="bi bi-3-circle"></i>
-
-                                            Reduce
-
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="card-body">
-
-                                        <p>
-
-                                            El Reducer recibe los registros agrupados
-                                            y suma los valores asociados a cada
-                                            combinación de género y década.
-
-                                        </p>
-
-
-                                        <p class="text-center">
-
-                                            <code>grupo → total</code>
-
-                                        </p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
+                            </h3>
+                            <p class="mb-2">Aplicar el modelo de programación MapReduce mediante Hadoop Streaming para
+                                calcular
+                                cuántos accidentes se
+                                registran en cada provincia y mes. El Mapper lee el CSV y emite una clave formada
+                                por
+                                provincia y mes, junto con
+                                el valor <code>1</code>. Hadoop agrupa las claves y el Reducer suma los valores.</p>
+                            <div class="note"><strong>Interpretación:</strong> el cálculo cuenta filas del fichero
+                                como
+                                accidentes. Esto
+                                presupone que cada fila representa un accidente individual en el conjunto de datos
+                                utilizado.</div>
                         </div>
 
-                    </div>
+                        <div class="card shadow-sm mb-4">
 
-                </div>
+                            <div class="card-header bg-success text-white">
 
+                                <h2 class="h4 mb-0">
 
-                <!-- ===================================================== -->
-                <!-- PROGRAMAS -->
-                <!-- ===================================================== -->
+                                    <i class="bi bi-database me-2"></i>
 
-                <div class="card shadow-sm mb-4">
+                                    2. Conjunto de datos
+                                </h2>
 
-                    <div class="card-header bg-success text-white">
+                            </div>
+                            <div class="card-body">
 
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-filetype-py"></i>
-
-                            Programas utilizados
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            Para realizar el procesamiento se utilizan dos programas
-                            escritos en Python, que son proporcionados a Hadoop
-                            Streaming mediante la línea de comandos.
-
-                        </p>
-
-
-                        <div class="row">
-
-
-                            <!-- MAPPER -->
-
-                            <div class="col-md-6 mb-3">
-
-                                <div class="card h-100">
-
-                                    <div class="card-header">
-
-                                        <strong>
-
-                                            mapper_pacientes.py
-
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="card-body">
-
-                                        <p>
-
-                                            El programa Mapper se encarga de leer los
-                                            registros del fichero de pacientes y
-                                            generar una clave formada por la década
-                                            de nacimiento y el género.
-
-                                        </p>
-
-
-                                        <p>
-
-                                            Para cada paciente se genera un valor
-                                            inicial igual a <strong>1</strong>,
-                                            que posteriormente será utilizado por
-                                            el Reducer para realizar el recuento.
-
-                                        </p>
-
-
-                                        <pre class="bg-light p-3 rounded"><code>1980_M    1
-1980_F    1
-1990_F    1
-1970_M    1</code></pre>
-
-                                    </div>
-
+                                <p>Se utiliza el fichero <code>TABLA_ACCIDENTES_24.csv</code>, separado por punto y coma
+                                    (<code>;</code>). Entre sus
+                                    campos se encuentran:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>Campo</th>
+                                                <th>Uso en el ejercicio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>MES</code></td>
+                                                <td>Mes en el que se produjo el accidente (índice 2 del CSV).</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>COD_PROVINCIA</code></td>
+                                                <td>Código de la provincia (índice 5 del CSV), convertido a nombre
+                                                    mediante
+                                                    un
+                                                    diccionario.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>ID_ACCIDENTE</code></td>
+                                                <td>Identificador del accidente; se utiliza para reconocer y omitir la
+                                                    cabecera
+                                                    del CSV.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
+                                <p>Ruta de entrada en HDFS empleada en el notebook:</p>
+                                <pre
+                                    class="bg-dark text-white p-4 rounded"><code>/datasets/accidentes/csv/TABLA_ACCIDENTES_24.csv</code></pre>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-diagram-3 me-2"></i>
+
+                                    3. Flujo de procesamiento
+                                </h2>
+
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-file-earmark-spreadsheet"></i>
+                                        <h3>Entrada</h3>
+                                        <p class="mb-0">Hadoop lee el CSV almacenado en HDFS y distribuye sus registros
+                                            entre las tareas Map.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-arrow-left-right"></i>
+                                        <h3>Mapper</h3>
+                                        <p class="mb-0">Convierte el código provincial en nombre y emite
+                                            <code>provincia|mes → 1</code>.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-calculator"></i>
+                                        <h3>Reducer</h3>
+                                        <p class="mb-0">Suma los valores de cada combinación de provincia y mes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-code-slash me-2"></i>
+
+                                    4. Mapper: preparar las claves
+                                </h2>
 
                             </div>
 
 
-                            <!-- REDUCER -->
+                            <p>El Mapper analiza cada línea como un registro CSV, ignora la cabecera, obtiene el mes
+                                y
+                                el código provincial, y
+                                consulta el diccionario <code>PROVINCIAS</code>. El diccionario debe incluir los
+                                códigos
+                                utilizados por el fichero.
+                            </p>
 
-                            <div class="col-md-6 mb-3">
+                            <p class="mb-0">La salida intermedia tiene una clave compuesta, por ejemplo
+                                <code>Madrid|1</code>, y el valor
+                                <code>1</code>. El diccionario completo se mantiene en el archivo
+                                <code>mapper_accidentes.py</code>.
+                            </p>
 
-                                <div class="card h-100">
+                        </div>
+                        <div class="card shadow-sm mb-4">
 
-                                    <div class="card-header">
+                            <div class="card-header bg-success text-white">
 
-                                        <strong>
+                                <h2 class="h4 mb-0">
 
-                                            reducer_pacientes.py
+                                    <i class="bi bi-calculator me-2"></i>
 
-                                        </strong>
-
-                                    </div>
-
-
-                                    <div class="card-body">
-
-                                        <p>
-
-                                            El Reducer recibe las claves agrupadas
-                                            por Hadoop y suma los valores asociados
-                                            a cada grupo.
-
-                                        </p>
-
-
-                                        <p>
-
-                                            El resultado permite conocer el número
-                                            de pacientes perteneciente a cada
-                                            combinación de década de nacimiento y
-                                            género.
-
-                                        </p>
-
-
-                                        <pre class="bg-light p-3 rounded"><code>1970_M    125
-1980_F    143
-1980_M    137
-1990_F    158</code></pre>
-
-                                    </div>
-
-                                </div>
+                                    5. Reducer: sumar accidentes
+                                </h2>
 
                             </div>
 
-
+                            <p>Hadoop Streaming ordena y agrupa las claves emitidas por el Mapper. El Reducer acumula
+                                los
+                                valores de cada clave
+                                y devuelve el nombre de la provincia, el mes y el total.</p>
                         </div>
+                        <div class="card shadow-sm mb-4">
 
-                    </div>
+                            <div class="card-header bg-success text-white">
 
-                </div>
+                                <h2 class="h4 mb-0">
 
+                                    <i class="bi bi-terminal me-2"></i>
 
-                <!-- ===================================================== -->
-                <!-- HADOOP STREAMING -->
-                <!-- ===================================================== -->
+                                    6. Ejecución con Hadoop Streaming
+                                </h2>
 
-                <div class="card shadow-sm mb-4">
+                            </div>
 
-                    <div class="card-header bg-dark text-white">
+                            <p>El trabajo se lanza desde el contenedor <code>namenode</code> o desde una celda de
+                                Jupyter Notebook. La opción
+                                <code>-files</code> distribuye ambos scripts a las tareas del clúster.
+                            </p>
+                            <pre class="bg-dark text-white p-4 rounded"><code>!hdfs dfs -rm -r -f /datasets/accidentes/resultados/dgt_accidentes_provincia_mes
 
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-terminal"></i>
-
-                            Ejecución mediante Hadoop Streaming
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            Una vez preparados los programas
-                            <strong>mapper_pacientes.py</strong> y
-                            <strong>reducer_pacientes.py</strong>, se ejecuta el
-                            trabajo utilizando Hadoop Streaming.
-
-                        </p>
-
-
-                        <div class="alert alert-info">
-
-                            <i class="bi bi-info-circle-fill"></i>
-
-                            La ejecución se realiza desde
-                            <strong>Jupyter Notebook</strong>, utilizando el entorno
-                            Hadoop desplegado mediante contenedores.
-
+!hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \\
+    -files mapper_accidentes.py,reducer_accidentes.py \\
+    -mapper "python3 mapper_accidentes.py" \\
+    -reducer "python3 reducer_accidentes.py" \\
+    -input /datasets/accidentes/csv/TABLA_ACCIDENTES_24.csv \\
+    -output /datasets/accidentes/resultados/dgt_accidentes_provincia_mes</code></pre>
+                            <div class="note"><strong>Importante:</strong> el directorio de salida debe estar libre
+                                antes de lanzar el trabajo.
+                                El comando de eliminación elimina únicamente la carpeta de resultados de este ejercicio;
+                                úsalo solo si no
+                                necesitas conservarla.</div>
                         </div>
-
-
-                        <pre class="bg-dark text-white p-4 rounded"><code>hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
--files mapper_pacientes.py,reducer_pacientes.py \
--mapper mapper_pacientes.py \
--reducer reducer_pacientes.py \
--input /datasets/synthea/csv/patients.csv \
--output /datasets/synthea/resultados/pacientes_genero_decada</code></pre>
-
-
-                    </div>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- CONSULTA RESULTADO -->
-                <!-- ===================================================== -->
-
-                <div class="card shadow-sm mb-4">
-
-                    <div class="card-header bg-success text-white">
-
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-search"></i>
-
-                            Consulta del resultado
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            Una vez finalizada la ejecución del trabajo MapReduce,
-                            el resultado se encuentra almacenado en HDFS dentro
-                            del directorio de salida definido para el ejercicio.
-
-                        </p>
-
-
-                        <p>
-
-                            Para comprobar los ficheros generados y consultar
-                            los resultados obtenidos se pueden utilizar los
-                            siguientes comandos:
-
-                        </p>
-
-
-                        <pre class="bg-dark text-white p-4 rounded"><code>hdfs dfs -ls /datasets/synthea/resultados/pacientes_genero_decada
-
-hdfs dfs -cat /datasets/synthea/resultados/pacientes_genero_decada/part-*</code></pre>
-
-
-                    </div>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- SECUENCIA -->
-                <!-- ===================================================== -->
-
-                <div class="card shadow-sm mb-4">
-
-                    <div class="card-header bg-success text-white">
-
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-arrow-repeat"></i>
-
-                            Secuencia de ejecución
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            El funcionamiento completo del ejercicio puede resumirse
-                            en las siguientes etapas:
-
-                        </p>
-
-
-                        <ol class="list-group list-group-numbered">
-
-
-                            <li class="list-group-item">
-
-                                Se dispone del fichero
-                                <strong>patients.csv</strong> perteneciente al
-                                conjunto de datos <strong>Synthea</strong>.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                El fichero se encuentra almacenado en
-                                <strong>HDFS</strong>.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                Se preparan los programas
-                                <strong>mapper_pacientes.py</strong> y
-                                <strong>reducer_pacientes.py</strong>.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                Hadoop Streaming inicia el trabajo
-                                <strong>MapReduce</strong>.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                El <strong>Mapper</strong> lee los registros y
-                                genera pares clave-valor utilizando la década
-                                de nacimiento y el género.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                Hadoop realiza automáticamente las fases
-                                <strong>Shuffle y Sort</strong>, agrupando las
-                                claves iguales.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                El <strong>Reducer</strong> suma los valores
-                                correspondientes a cada grupo.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                El resultado se almacena nuevamente en
-                                <strong>HDFS</strong>.
-
-                            </li>
-
-
-                            <li class="list-group-item">
-
-                                Finalmente, el estudiante puede consultar los
-                                resultados obtenidos.
-
-                            </li>
-
-
-                        </ol>
-
-
-                    </div>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- RESULTADO -->
-                <!-- ===================================================== -->
-
-                <div class="alert alert-success shadow-sm">
-
-                    <h3 class="h5">
-
-                        <i class="bi bi-check-circle-fill"></i>
-
-                        Resultado del ejercicio
-
-                    </h3>
-
-
-                    <p>
-
-                        Como resultado del procesamiento se obtiene un listado
-                        con las diferentes combinaciones de
-                        <strong>género y década de nacimiento</strong>, junto con
-                        el número de pacientes correspondiente a cada grupo.
-
-                    </p>
-
-
-                    <p class="mb-0">
-
-                        De esta forma, el estudiante puede comprobar de manera
-                        práctica cómo un conjunto de datos estructurado almacenado
-                        en HDFS puede ser procesado mediante un trabajo distribuido
-                        de <strong>MapReduce</strong> utilizando
-                        <strong>Hadoop Streaming</strong> y programas desarrollados
-                        en Python.
-
-                    </p>
-
-                </div>
-
-
-                <!-- ===================================================== -->
-                <!-- SOLUCIÓN JUPYTER -->
-                <!-- ===================================================== -->
-
-                <div class="card shadow-sm mb-5">
-
-                    <div class="card-header bg-success text-white">
-
-                        <h2 class="h4 mb-0">
-
-                            <i class="bi bi-journal-code"></i>
-
-                            Solución del ejercicio en Jupyter Notebook
-
-                        </h2>
-
-                    </div>
-
-
-                    <div class="card-body">
-
-
-                        <p>
-
-                            A continuación se presenta la solución completa del
-                            ejercicio desarrollada mediante
-                            <strong>Jupyter Notebook</strong>.
-
-                        </p>
-
-
-                        <p>
-
-                            El cuaderno permite observar de forma ordenada los
-                            diferentes pasos necesarios para comprobar el fichero
-                            de pacientes, preparar los programas Python y ejecutar
-                            el trabajo mediante Hadoop Streaming.
-
-                        </p>
-
-
-                        <div class="alert alert-primary">
-
-                            <i class="bi bi-lightbulb-fill"></i>
-
-                            <strong>Contenido de la solución:</strong>
-
-                            <ul class="mb-0 mt-2">
-
-                                <li>
-
-                                    Preparación del entorno.
-
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-table me-2"></i>7. Consulta de resultados
+                                </h2>
+
+                            </div>
+
+                            <p>Los resultados se guardan en HDFS. Para mostrarlos en la salida de Jupyter:</p>
+                            <pre><code>!hdfs dfs -cat /datasets/accidentes/resultados/dgt_accidentes_provincia_mes/part-*</code></pre>
+                            <p>El formato de cada línea es:</p>
+                            <pre><code>Provincia    Mes    Número de accidentes</code></pre>
+                            <p>La ejecución incluida en el HTML de resultados adjunto contiene una salida anterior con
+                                códigos provinciales.
+                                Algunos registros reales de esa salida son:</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Código provincial</th>
+                                            <th>Provincia</th>
+                                            <th>Mes</th>
+                                            <th>Accidentes registrados</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>1 (enero)</td>
+                                            <td>1.145</td>
+                                        </tr>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>2 (febrero)</td>
+                                            <td>1.100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>7 (julio)</td>
+                                            <td>1.168</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>1 (enero)</td>
+                                            <td>68</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>8 (agosto)</td>
+                                            <td>94</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>12 (diciembre)</td>
+                                            <td>92</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Barcelona</td>
+                                            <td>7 (julio)</td>
+                                            <td>1.670</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="small text-secondary mb-0">Estos valores se han tomado de la salida de la
+                                ejecución incluida en el archivo
+                                facilitado. La salida que genera el Mapper con nombres de provincia debe volver a
+                                ejecutarse para que dichos
+                                nombres aparezcan directamente en el resultado de Hadoop Streaming.</p>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-check2-circle me-2"></i>8. Conclusiones
+                                </h2>
+
+                            </div>
+
+                            <ul>
+                                <li>Hadoop Streaming permite implementar las funciones Map y Reduce usando scripts
+                                    Python
+                                    sin
+                                    necesidad de
+                                    escribir clases Java para la lógica de procesamiento.</li>
+                                <li>El Mapper prepara una clave por provincia y mes y genera una contribución unitaria
+                                    por
+                                    cada
+                                    registro válido.
                                 </li>
-
-
-                                <li>
-
-                                    Comprobación del fichero
-                                    <strong>patients.csv</strong>.
-
+                                <li>El Reducer agrega las contribuciones para obtener el número de accidentes por grupo.
                                 </li>
-
-
-                                <li>
-
-                                    Comprobación de los datos almacenados en HDFS.
-
+                                <li>La salida permite comparar la distribución mensual de los accidentes entre
+                                    provincias.
+                                    Los
+                                    recuentos deben
+                                    interpretarse teniendo en cuenta la definición y el contenido del conjunto de datos.
                                 </li>
-
-
-                                <li>
-
-                                    Creación del
-                                    <strong>Mapper de pacientes</strong>.
-
-                                </li>
-
-
-                                <li>
-
-                                    Creación del
-                                    <strong>Reducer de pacientes</strong>.
-
-                                </li>
-
-
-                                <li>
-
-                                    Ejecución de Hadoop Streaming.
-
-                                </li>
-
-
-                                <li>
-
-                                    Consulta del resultado generado.
-
-                                </li>
-
-
                             </ul>
-
                         </div>
-
-
-                        <!-- BOTÓN -->
-
-                        <div class="text-center mt-4">
-
-                            <a href="jupyter_leccion3.3.html" target="_blank" class="btn btn-success">
-
-                                <i class="bi bi-journal-code"></i>
-
-                                Ver solución completa en Jupyter.
-
-                            </a>
-
-                            <a href="down_jupyter_leccion3.3.ipynb" download="down_jupyter_leccion3.3.ipynb"
-                                class="btn btn-success">
-                                <i class="bi bi-journal-code"></i>
-                                Descargar notebook para ejecutar en Jupyter.
-                            </a>
-
-
-                        </div>
-
-
                     </div>
+
 
                 </div>
 
@@ -1075,18 +554,11 @@ hdfs dfs -cat /datasets/synthea/resultados/pacientes_genero_decada/part-*</code>
         <!-- BOTÓN VOLVER -->
         <!-- ========================================================= -->
 
-        <div class="text-center mt-5">
-
-            <a href="hdfs.html" class="btn btn-outline-success btn-lg">
-
-                <i class="bi bi-arrow-left-circle"></i>
-
-                Volver al índice del capítulo 5.3.
-            </a>
-
-
+        <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-outline-success" onclick="window.close()">
+                <i class="bi bi-x-circle"></i> Cerrar Ejercicio
+            </button>
         </div>
-
 
     </div>
 
