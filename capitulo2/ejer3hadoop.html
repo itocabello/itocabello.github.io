@@ -74,12 +74,130 @@
                 padding: 1rem;
             }
         }
+
+        pre {
+            background: #17231d;
+            color: #e4f5e9;
+            border-radius: .75rem;
+            padding: 1rem;
+            overflow: auto;
+            font-size: .9rem;
+        }
+
+        code {
+            color: inherit;
+        }
+
+        .path {
+            overflow-wrap: anywhere;
+            background: var(--soft);
+            border-radius: .4rem;
+            padding: .15rem .35rem;
+        }
+
+        .note {
+            background: #fff8e6;
+            border-left: 4px solid #e0a526;
+            padding: 1rem;
+            border-radius: .5rem;
+        }
+
+        .table thead th {
+            background: #eaf3ed;
+            color: #164a32;
+            white-space: nowrap;
+        }
+
+        footer {
+            background: #123d2b;
+            color: #eaf4ee;
+        }
+
+        .flow-step {
+            height: 100%;
+            border: 1px solid #dce8df;
+            border-radius: .8rem;
+            padding: 1rem;
+            background: #fbfdfb;
+        }
+
+        .flow-step .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--uned-green);
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: .6rem;
+        }
+
+        :root {
+            --uned-green: #176b45;
+            --uned-dark: #10452f;
+            --soft: #f2f7f4;
+        }
+
+        body {
+            background: #f7f9f8;
+            color: #26332c;
+            line-height: 1.65;
+        }
+
+        .navbar {
+            background: var(--uned-green);
+        }
+
+        .navbar-brand,
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--uned-dark), var(--uned-green));
+            color: #fff;
+            padding: 1.2rem 0;
+        }
+
+        .hero .tag {
+            background: #ffffff20;
+            border: 1px solid #ffffff55;
+            border-radius: 50rem;
+            padding: .35rem .8rem;
+            display: inline-block;
+        }
+
+        .section-card {
+            background: #fff;
+            border: 0;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px #163d2810;
+            margin-bottom: 1.4rem;
+        }
+
+        .section-card .card-body {
+            padding: clamp(1.1rem, 3vw, 2rem);
+        }
+
+
+
+        .icon-title {
+            color: var(--uned-green);
+            margin-right: .45rem;
+        }
     </style>
 </head>
 
 
 <body>
+    <header class="hero">
+        <div class="container">
+            <span class="tag mb-1"><i class="bi bi-bar-chart-line me-1"></i>Hadoop Streaming · MapReduce</span>
 
+        </div>
+    </header>
 
     <!-- ========================================================= -->
     <!-- CABECERA -->
@@ -95,7 +213,8 @@
 
                     <h1 class="text-success fw-bold">
 
-                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+                        Tercer ejercicio resuelto con Hadoop Streaming - Análisis de accidentes de tráfico con víctimas
+                        2024.
 
                     </h1>
 
