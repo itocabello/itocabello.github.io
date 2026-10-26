@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Capítulo 2 - Ecosistema de Hadoop</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="../css/estilos.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+                        Capítulo 2. Ecosistema de Hadoop
+                    </h1>
+
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+                </div>
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+                <i class="bi bi-house-fill"></i>Inicio
+            </a>
+
+            <a href="index.html" class="navbar-brand">
+
+                <i class="bi bi-list"></i>Volver al índice del Capítulo 2
+
+            </a>
+
+        </div>
+
+
+
+    </nav>
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+
+
+        </ol>
+
+    </nav>
+    <div class="row">
+
+        <!-- Menú lateral -->
+
+        <div class="col-lg-3">
+
+            <div class="list-group shadow">
+
+                <div class="list-group-item active bg-success border-success">
+
+                    <i class="bi bi-book"></i>
+
+                    Ejercicios Practicos.
+
+                </div>
+
+                <a href="../capitulo2/estructurahdfs.html" target="_blank"
+                    class="list-group-item list-group-item-action">
+
+                    1. Ejercicio práctico: Gestión de datos en HDFS.
+
+                </a>
+
+                <a href="ejer1hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+
+                    2. Hadoop Streaming: Primer Ejercicio - Contador de palabras.
+
+                </a>
+                <a href="ejer2hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+
+                    3. Hadoop Streaming: Segundo ejercicio - Análisis de pacientes
+
+                </a>
+                <a href="../capitulo2/ejer3hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+
+                    3. Hadoop Streaming:Tercer ejercicio - Análisis de pacientes
+
+                </a>
+
+                <a href="ejer4.html" target="_blank" class="list-group-item list-group-item-action">
+
+                    4. Apache Flume: Primer Ejercicio de ingesta de datos
+
+
+                </a>
+                <a href="validacion.html" class="list-group-item list-group-item-action">
+
+                    5. Apache Flume: Segundo Ejercicio - Validación operativa del clúster mediante trabajos.
+
+                </a>
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+
+        <!-- Contenido -->
+
+        <div class="col-lg-9">
+
+
+
+
+
+            <!-- ======================= CONTENIDO ======================= -->
+
+            <section class="bg-success text-white py-4">
+
+                <div class="container">
+
+                    <h2 class="mb-1">
+                        HDFS: El sistema de archivos distribuido de Hadoop
+                    </h2>
+                </div>
+
+            </section>
+            <p class="lead">
+
+                El <strong>Hadoop Distributed File System (HDFS)</strong> es el sistema de archivos
+                distribuido de Apache Hadoop. Está diseñado para almacenar grandes volúmenes de datos
+                de forma fiable y proporcionar un acceso de alto rendimiento mediante una arquitectura
+                distribuida basada en múltiples nodos.
+
+            </p>
+
+            <div class="alert alert-success">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                HDFS constituye la base del almacenamiento distribuido de Hadoop y proporciona
+                escalabilidad, tolerancia a fallos y alta disponibilidad.
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                ¿Qué es HDFS?
+            </h3>
+
+            <p>
+
+                HDFS es un sistema de archivos distribuido desarrollado en Java que permite almacenar
+                datos de forma redundante sobre un conjunto de servidores que forman un clúster
+                Hadoop.
+
+            </p>
+
+            <p>
+
+                Su diseño está orientado a hardware convencional (<em>commodity hardware</em>), donde
+                los fallos de los equipos son habituales. Gracias a la replicación automática de los
+                bloques de datos, el sistema puede seguir funcionando incluso cuando uno o varios
+                servidores dejan de estar disponibles.
+
+            </p>
+
+            <div class="text-center my-5">
+
+                <img src="../img/hdfs-bloques.png" class="img-fluid rounded shadow" alt="Bloques HDFS">
+
+                <p class="text-muted">
+
+                    División de un archivo en bloques distribuidos dentro de
+                    HDFS.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Funcionamiento del almacenamiento en bloques
+            </h3>
+
+            <p>
+
+                Cuando un archivo se almacena en HDFS, éste se divide automáticamente en bloques de
+                tamaño fijo. El tamaño predeterminado de cada bloque es de <strong>128 MB</strong>,
+                aunque puede modificarse según las necesidades de la infraestructura.
+
+            </p>
+
+            <div class="card shadow-sm">
+
+                <div class="card-body">
+
+                    <h5 class="text-success">
+
+                        Ejemplo
+
+                    </h5>
+
+                    <p>
+
+                        Un archivo de <strong>500 MB</strong> se dividiría en:
+
+                    </p>
+
+                    <ul>
+
+                        <li>Bloque 1 → 128 MB</li>
+
+                        <li>Bloque 2 → 128 MB</li>
+
+                        <li>Bloque 3 → 128 MB</li>
+
+                        <li>Bloque 4 → 116 MB</li>
+
+                    </ul>
+
+                    <p class="mb-0">
+
+                        El espacio restante no utilizado se reutiliza posteriormente por el sistema de archivos.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Replicación de bloques
+            </h3>
+
+            <p>
+
+                Cada bloque almacenado en HDFS se replica automáticamente, normalmente
+                <strong>tres veces</strong>, distribuyendo las copias entre diferentes DataNodes del
+                clúster.
+
+            </p>
+
+            <div class="alert alert-primary">
+
+                <i class="bi bi-shield-check"></i>
+
+                Si un nodo falla, HDFS recupera automáticamente la información utilizando alguna de
+                las copias disponibles, garantizando la continuidad del servicio.
+
+            </div>
+
+            <div class="text-center my-4">
+
+                <img src="../img/hdfs-replicacion.png" class="img-fluid rounded shadow" alt="Replicación HDFS">
+
+                <p class="text-muted">
+
+                    Replicación automática de bloques en HDFS.
+
+                </p>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Características principales de HDFS
+            </h3>
+
+            <div class="row g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-hdd-network"></i>
+
+                                Almacenamiento distribuido
+
+                            </h5>
+
+                            <p>
+
+                                Los archivos se dividen en bloques que son distribuidos entre distintos nodos del
+                                clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-arrows-fullscreen"></i>
+
+                                Escalabilidad horizontal
+
+                            </h5>
+
+                            <p>
+
+                                La capacidad aumenta simplemente añadiendo nuevos servidores al clúster.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-shield-check"></i>
+
+                                Tolerancia a fallos
+
+                            </h5>
+
+                            <p>
+
+                                Cada bloque dispone de varias copias distribuidas entre diferentes nodos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-cloud-check"></i>
+
+                                Alta disponibilidad
+
+                            </h5>
+
+                            <p>
+
+                                El sistema continúa funcionando incluso cuando fallan algunos servidores.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-file-earmark"></i>
+
+                                Optimizado para archivos grandes
+
+                            </h5>
+
+                            <p>
+
+                                Especialmente diseñado para almacenar grandes conjuntos de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-arrow-left-right"></i>
+
+                                Acceso secuencial
+
+                            </h5>
+
+                            <p>
+
+                                Optimizado para lecturas y escrituras secuenciales de grandes volúmenes de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-cpu"></i>
+
+                                Localidad de datos
+
+                            </h5>
+
+                            <p>
+
+                                Las aplicaciones se ejecutan cerca de donde se encuentran almacenados los datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <h5 class="text-success">
+
+                                <i class="bi bi-diagram-3"></i>
+
+                                Arquitectura maestro-esclavo
+
+                            </h5>
+
+                            <p>
+
+                                El NameNode administra el sistema de archivos mientras que los DataNodes almacenan
+                                los bloques de datos.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Arquitectura HDFS
+            </h3>
+
+            <p>
+
+                HDFS sigue una arquitectura maestro-esclavo compuesta por dos tipos de nodos.
+
+            </p>
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            NameNode
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Gestiona el sistema de archivos.</li>
+
+                                <li>Almacena los metadatos.</li>
+
+                                <li>Controla la ubicación de cada bloque.</li>
+
+                                <li>Coordina los DataNodes.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="card shadow-sm">
+
+                        <div class="card-header bg-success text-white">
+
+                            DataNodes
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <ul>
+
+                                <li>Almacenan los bloques de datos.</li>
+
+                                <li>Replican la información.</li>
+
+                                <li>Atienden peticiones de lectura y escritura.</li>
+
+                                <li>Informan periódicamente al NameNode.</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="my-5">
+
+            <h3 class="text-success">
+                Resumen de HDFS
+            </h3>
+
+            <table class="table table-striped table-hover">
+
+                <thead class="table-success">
+
+                    <tr>
+
+                        <th>Característica</th>
+                        <th>Descripción</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Bloques</td>
+                        <td>128 MB por defecto.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Replicación</td>
+                        <td>3 copias por defecto.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Escalabilidad</td>
+                        <td>Añadiendo nuevos nodos.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Arquitectura</td>
+                        <td>NameNode + DataNodes.</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Disponibilidad</td>
+                        <td>Alta tolerancia a fallos.</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <hr class="my-5">
+            <h3 class="text-success mt-5 mb-4">
+                Ejercicio práctico: Gestión de datos en HDFS
+            </h3>
+            <p class="lead">
+
+                En esta lección se propone un ejercicio práctico cuyo objetivo es
+                familiarizar al estudiante con las operaciones básicas del sistema de
+                archivos distribuido <strong>HDFS</strong>. Para ello, se utilizarán
+                los comandos fundamentales de Hadoop que permiten crear directorios,
+                copiar archivos, consultar su contenido y gestionar la información
+                almacenada en el clúster.
+
+            </p>
+
+            <p>
+
+                El ejercicio se plantea de forma progresiva, comenzando con la
+                preparación de los archivos en el sistema de archivos local y
+                continuando con su incorporación al sistema distribuido HDFS.
+                Posteriormente, se verificará que los datos se han almacenado
+                correctamente y se realizarán diferentes operaciones de consulta
+                sobre ellos.
+
+            </p>
+            <div class="alert alert-success">
+
+                <i class="bi bi-bullseye"></i>
+
+                <strong>Objetivo del ejercicio</strong>
+
+                <p class="mb-0 mt-2">
+
+                    El estudiante aprenderá a utilizar los principales comandos de
+                    HDFS para crear directorios, cargar archivos desde el sistema
+                    local, consultar su contenido y comprobar el espacio ocupado
+                    por los datos dentro del clúster Hadoop.
+
+                </p>
+
+            </div>
+            <h3 class="text-success mt-5 mb-4">
+                Tareas a realizar
+            </h3>
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <ol>
+
+                        <li class="mb-3">
+                            Crear, dentro de la carpeta perteneciente al volumen
+                            compartido, un directorio denominado
+                            <strong>txt</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Cargar dentro de dicho directorio los ficheros
+                            <strong>.txt</strong> que se deseen analizar, utilizando
+                            los datos proporcionados procedentes de la fuente
+                            <strong>MEDDOCAN</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Comprobar que el servicio HDFS se encuentra operativo
+                            mediante la interfaz web del <strong>NameNode</strong>
+                            o utilizando los comandos de administración de Hadoop.
+                        </li>
+
+                        <li class="mb-3">
+                            Crear en HDFS un directorio denominado
+                            <strong>/datasets/meddocan-hdfs</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Copiar los archivos <strong>.txt</strong> desde el
+                            sistema de archivos local al directorio creado en HDFS.
+                        </li>
+
+                        <li class="mb-3">
+                            Verificar que los archivos se han almacenado correctamente
+                            mostrando el listado del contenido del directorio
+                            <strong>/datasets</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Visualizar el contenido de los archivos almacenados en HDFS
+                            utilizando los comandos del sistema de archivos distribuido.
+                        </li>
+
+                        <li class="mb-3">
+                            Comprobar el tamaño de los archivos y el espacio ocupado
+                            dentro de HDFS.
+                        </li>
+
+                        <li class="mb-3">
+                            Crear, dentro de la carpeta perteneciente al volumen
+                            compartido, un directorio denominado
+                            <strong>Synthea</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Cargar dentro de dicho directorio los ficheros
+                            <strong>.csv</strong> que se desean incorporar a HDFS.
+                            En este ejercicio se utilizarán los archivos:
+
+                            <ul class="mt-2">
+
+                                <li><strong>encounters.csv</strong></li>
+                                <li><strong>organizations.csv</strong></li>
+                                <li><strong>patients.csv</strong></li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="mb-3">
+                            Crear en HDFS un directorio denominado
+                            <strong>/datasets/Synthea</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Copiar los archivos <strong>.csv</strong> desde el
+                            sistema de archivos local al directorio creado
+                            <strong>/datasets/Synthea</strong>.
+                        </li>
+
+                        <li class="mb-3">
+                            Visualizar el contenido de los archivos almacenados en HDFS
+                            utilizando los comandos del sistema de archivos distribuido.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+            <!-- SOLUCIÓN -->
+
+            <h3 class="text-success mt-5 mb-4">
+                Solución del ejercicio
+            </h3>
+
+            <p>
+
+                La resolución del ejercicio se realiza mediante
+                <strong>Jupyter Notebook</strong>, utilizando la terminal integrada
+                en el entorno Hadoop. Desde ella se ejecutan los comandos necesarios
+                para preparar los directorios locales, crear las estructuras
+                correspondientes en HDFS y transferir los archivos al sistema
+                distribuido.
+
+            </p>
+
+            <p>
+
+                En primer lugar, se accede al directorio local donde se encuentran
+                almacenados los documentos del corpus <strong>MEDDOCAN</strong>.
+                Posteriormente, se crea el directorio correspondiente en HDFS y se
+                utilizan los comandos de Hadoop para copiar los archivos.
+
+            </p>
+            <div class="card shadow-sm mt-4">
+
+                <div class="card-header bg-success text-white">
+
+                    <i class="bi bi-terminal"></i>
+
+                    <strong>1. Carga de los archivos MEDDOCAN en HDFS</strong>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        Una vez disponibles los archivos <strong>.txt</strong> en el
+                        directorio local, se crea el directorio de destino en HDFS
+                        mediante el comando:
+
+                    </p>
+
+                    <pre
+                        class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -mkdir /datasets/meddocan-hdfs</code></pre>
+
+                    <p>
+
+                        A continuación, se copian los archivos de texto desde el
+                        sistema de archivos local al directorio creado en HDFS:
+
+                    </p>
+
+                    <pre
+                        class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -put *.txt /datasets/meddocan-hdfs</code></pre>
+
+                    <p>
+
+                        Finalmente, se comprueba que los archivos han sido
+                        incorporados correctamente mediante el listado del directorio:
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>!hdfs dfs -ls /datasets/meddocan-hdfs</code></pre>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGEN SOLUCIÓN 1-8 -->
+
+            <div class="text-center my-5">
+
+                <img src="../img/leccion3-hdfs-meddocan.png" class="img-fluid rounded shadow" style="max-width: 95%;"
+                    alt="Ejecución en Jupyter Notebook de los comandos para cargar archivos MEDDOCAN en HDFS">
+
+                <p class="text-muted mt-3">
+
+                    <strong>Figura.</strong>
+                    Carga y verificación de los archivos del corpus MEDDOCAN en HDFS
+                    mediante Jupyter Notebook.
+
+                </p>
+
+            </div>
+            <div class="alert alert-info">
+
+                <i class="bi bi-info-circle-fill"></i>
+
+                <strong>Resultado de la operación</strong>
+
+                <p class="mb-0 mt-2">
+
+                    La ejecución mostrada permite comprobar que los archivos
+                    <strong>.txt</strong> han sido incorporados correctamente al
+                    directorio <strong>/datasets/meddocan-hdfs</strong> de HDFS.
+                    El comando <strong>hdfs dfs -ls</strong> permite consultar los
+                    archivos almacenados y verificar sus propiedades básicas, como
+                    permisos, propietario, tamaño y fecha de modificación.
+
+                </p>
+
+            </div>
+
+
+            <!-- BLOQUE 2 -->
+
+            <div class="card shadow-sm mt-5">
+
+                <div class="card-header bg-success text-white">
+
+                    <i class="bi bi-folder-fill"></i>
+
+                    <strong>2. Carga de los datos de Synthea</strong>
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+
+                        Una vez completada la carga de los documentos MEDDOCAN, el
+                        ejercicio continúa con la incorporación de datos procedentes
+                        del conjunto de datos sintético <strong>Synthea</strong>.
+
+                    </p>
+
+                    <p>
+
+                        Para esta práctica se utilizarán tres archivos CSV:
+
+                    </p>
+
+                    <ul>
+
+                        <li><strong>encounters.csv</strong></li>
+
+                        <li><strong>organizations.csv</strong></li>
+
+                        <li><strong>patients.csv</strong></li>
+
+                    </ul>
+
+                    <p>
+
+                        Los archivos se sitúan inicialmente en el directorio local
+                        destinado a los datos de Synthea. Posteriormente, se crea en
+                        HDFS el directorio:
+
+                    </p>
+
+                    <pre class="bg-dark text-light p-3 rounded"><code>/datasets/Synthea</code></pre>
+
+                    <p>
+
+                        Finalmente, los archivos CSV se copian desde el sistema
+                        local al directorio de HDFS para que puedan ser utilizados
+                        posteriormente en las diferentes prácticas de procesamiento
+                        y análisis.
+
+                    </p>
+
+                </div>
+
+            </div>
+            <!-- SEGUNDA IMAGEN -->
+
+            <div class="text-center my-5">
+
+                <!--
+                            Sustituir el nombre del archivo por la segunda captura
+                            cuando se incorpore a la carpeta img.
+                        -->
+
+                <img src="../img/leccion3-hdfs-synthea.png" class="img-fluid rounded shadow" style="max-width: 95%;"
+                    alt="Carga de los archivos CSV de Synthea en HDFS mediante Jupyter Notebook">
+
+                <p class="text-muted mt-3">
+
+                    <strong>Figura.</strong>
+                    Carga de los archivos CSV de Synthea y verificación de su
+                    almacenamiento en HDFS mediante Jupyter Notebook.
+
+                </p>
+
+            </div>
+
+
+            <!-- IMPORTANCIA -->
+
+            <div class="alert alert-success mt-5">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                <strong>Resultado final del ejercicio</strong>
+
+                <p class="mb-0 mt-2">
+
+                    Mediante este ejercicio, el estudiante ha realizado el ciclo
+                    básico de incorporación de información al sistema de archivos
+                    distribuido Hadoop: preparación de los datos en el sistema local,
+                    creación de directorios en HDFS, transferencia de archivos y
+                    comprobación de su almacenamiento.
+
+                </p>
+
+            </div>
+
+
+            <p>
+
+                Este procedimiento constituye una operación fundamental dentro de
+                cualquier infraestructura Big Data, ya que HDFS actúa como sistema
+                de almacenamiento sobre el que posteriormente pueden ejecutarse
+                procesos de análisis y transformación mediante tecnologías como
+                <strong>MapReduce</strong> y <strong>Hadoop Streaming</strong>.
+
+            </p>
+            <hr class="my-5">
+
+            <div class="alert alert-primary">
+
+                <h4>
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Conclusión
+
+                </h4>
+
+                <p class="mb-0">
+
+                    HDFS constituye el núcleo del almacenamiento distribuido de Apache Hadoop. Su
+                    capacidad para dividir los archivos en bloques, replicar automáticamente la
+                    información y distribuir los datos entre múltiples nodos permite construir sistemas Big
+                    Data altamente escalables, fiables y preparados para trabajar con volúmenes masivos de
+                    información.
+
+                </p>
+
+            </div>
+        </div>
+        <div class="text-center mt-4">
+
+            <a href="jupyter_leccion3.1.html" target="_blank" class="btn btn-success">
+
+                <i class="bi bi-journal-code"></i>
+
+                Ver solución completa en Jupyter.
+
+            </a>
+            <a href="down_jupyter_leccion3.1.ipynb" download="down_jupyter_leccion3.1.ipynb" class="btn btn-success">
+                <i class="bi bi-journal-code"></i>
+                Descargar notebook para ejecutar en Jupyter.
+            </a>
+
+        </div>
+        <div class="text-center mb-5">
+
+
+        </div>
+        <div class="text-center mb-5">
+
+            <a href="modelo.html" class="btn btn-success btn-lg px-5">
+
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Siguiente SubCapitulo 2.2.3
+
+            </a>
+
+
+            <a href="estructurayarn.html" class="btn btn-outline-success btn-lg">
+
+                <i class="bi bi-arrow-left-circle"></i>
+
+                SubCapitulo Anterior 2.2.1.
+
+            </a>
+
+        </div>
+        <footer class="bg-success text-white mt-5">
+
+            <div class="container py-3 text-center">
+
+                Proyecto Fin de Grado · UNED
+
+            </div>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
