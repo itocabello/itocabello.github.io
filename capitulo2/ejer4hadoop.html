@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tercer Ejercicio Resuelto - Hadoop Streaming - Análisis de accidentes de tráfico con víctimas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <link href="../css/estilos.css" rel="stylesheet">
+    <style>
+        pre {
+            background: #17221d;
+            color: #e9f4ed;
+            padding: 1rem;
+            border-radius: .65rem;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        code {
+            color: #14613f;
+        }
+
+        pre code {
+            color: inherit;
+        }
+
+        .note {
+            background: #eef7f1;
+            border-left: 4px solid var(--uned-green);
+            padding: 1rem;
+            border-radius: .35rem;
+        }
+
+        .table thead th {
+            background: #eaf2ed;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: .25rem .65rem;
+            border-radius: 99px;
+            background: #eaf2ed;
+            color: var(--uned-dark);
+            font-size: .85rem;
+        }
+
+        .flow-step {
+            height: 100%;
+            border: 1px solid #dce7e0;
+            border-radius: .75rem;
+            padding: 1rem;
+            background: var(--soft);
+        }
+
+        .flow-step i {
+            color: var(--uned-green);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width:575px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .section-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ========================================================= -->
+    <!-- CABECERA -->
+    <!-- ========================================================= -->
+
+    <header class="bg-white border-bottom shadow-sm">
+
+        <div class="container py-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
+
+                    <h1 class="text-success fw-bold">
+
+                        Capítulo 5 - Soporte Teórico y Validación Práctica del Proyecto
+
+                    </h1>
+
+                    <p class="mb-0">
+                        Trabajo Fin de Grado - Arturo Cabello Rodríguez
+                    </p>
+
+
+                </div>
+
+
+                <div class="col-md-3 text-end">
+
+                    <img src="../img/logo-uned.png" class="img-fluid" style="max-height:90px;"
+                        alt="Logotipo de la UNED">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- NAVEGACIÓN -->
+    <!-- ========================================================= -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="../index.html">
+
+                <i class="bi bi-house-fill"></i>
+                Inicio
+
+            </a>
+
+            <a class="navbar-brand" href="index.html">
+
+                <i class="bi bi-list"></i>
+                Volver al índice del capítulo 5.
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ========================================================= -->
+    <!-- CONTENIDO -->
+    <!-- ========================================================= -->
+
+    <div class="container mt-4">
+
+        <div class="row">
+
+            <!-- ================================================= -->
+            <!-- MENÚ LATERAL -->
+            <!-- ================================================= -->
+
+            <div class="col-lg-3">
+
+                <div class="list-group shadow">
+
+                    <div class="list-group-item active bg-success border-success">
+
+                        <i class="bi bi-book"></i>
+
+                        Capítulo 2
+
+                    </div>
+
+                    <a href="caracteristicas.html" class="list-group-item list-group-item-action">
+
+                        2.1 Características de Hadoop.
+
+                    </a>
+
+                    <a href="indexestructura.html" class="list-group-item list-group-item-action">
+
+                        2.2 Estructura de Hadoop.
+
+                    </a>
+                    <a href="streaming.html" class="list-group-item list-group-item-action">
+
+                        2.3 Modelo de programación MapReduce mediante Hadoop Streaming.
+
+                    </a>
+                    <a href="serializacion.html" class="list-group-item list-group-item-action">
+
+                        2.4 Serialización de datos.
+
+                    </a>
+                    <a href="inyeccion.html" class="list-group-item list-group-item-action">
+
+                        2.5 Inyección de datos mediante Apache Flume.
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- CONTENIDO PRINCIPAL -->
+            <!-- ================================================= -->
+
+            <div class="col-lg-9">
+
+                <!-- INTRODUCCIÓN -->
+
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-body">
+                        <section class="bg-success text-white py-4">
+
+                            <div class="container">
+
+                                <h2 class="mb-1">
+
+                                    <i class="bi bi-book"></i>
+
+                                    Tercer ejercicio resuelto con Hadoop Streaming - Agrupación
+                                    del número de accidentes por provincia y mes a partir del conjunto de datos de
+                                    la DGT de
+                                    2024.
+
+                                </h2>
+
+                            </div>
+
+                        </section>
+
+
+
+
+                        <div class="alert alert-success shadow-sm">
+
+                            <h3 class="h5">
+
+                                <i class="bi bi-bullseye me-2"></i>
+
+                                Objetivo del ejercicio
+
+                            </h3>
+                            <p class="mb-2">Aplicar el modelo de programación MapReduce mediante Hadoop Streaming para
+                                calcular
+                                cuántos accidentes se
+                                registran en cada provincia y mes. El Mapper lee el CSV y emite una clave formada
+                                por
+                                provincia y mes, junto con
+                                el valor <code>1</code>. Hadoop agrupa las claves y el Reducer suma los valores.</p>
+                            <div class="note"><strong>Interpretación:</strong> el cálculo cuenta filas del fichero
+                                como
+                                accidentes. Esto
+                                presupone que cada fila representa un accidente individual en el conjunto de datos
+                                utilizado.</div>
+                        </div>
+
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-database me-2"></i>
+
+                                    2. Conjunto de datos
+                                </h2>
+
+                            </div>
+                            <div class="card-body">
+
+                                <p>Se utiliza el fichero <code>TABLA_ACCIDENTES_24.csv</code>, separado por punto y coma
+                                    (<code>;</code>). Entre sus
+                                    campos se encuentran:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>Campo</th>
+                                                <th>Uso en el ejercicio</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>MES</code></td>
+                                                <td>Mes en el que se produjo el accidente (índice 2 del CSV).</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>COD_PROVINCIA</code></td>
+                                                <td>Código de la provincia (índice 5 del CSV), convertido a nombre
+                                                    mediante
+                                                    un
+                                                    diccionario.</td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>ID_ACCIDENTE</code></td>
+                                                <td>Identificador del accidente; se utiliza para reconocer y omitir la
+                                                    cabecera
+                                                    del CSV.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p>Ruta de entrada en HDFS empleada en el notebook:</p>
+                                <pre
+                                    class="bg-dark text-white p-4 rounded"><code>/datasets/accidentes/csv/TABLA_ACCIDENTES_24.csv</code></pre>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-diagram-3 me-2"></i>
+
+                                    3. Flujo de procesamiento
+                                </h2>
+
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-file-earmark-spreadsheet"></i>
+                                        <h3>Entrada</h3>
+                                        <p class="mb-0">Hadoop lee el CSV almacenado en HDFS y distribuye sus registros
+                                            entre las tareas Map.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-arrow-left-right"></i>
+                                        <h3>Mapper</h3>
+                                        <p class="mb-0">Convierte el código provincial en nombre y emite
+                                            <code>provincia|mes → 1</code>.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="flow-step"><i class="bi bi-calculator"></i>
+                                        <h3>Reducer</h3>
+                                        <p class="mb-0">Suma los valores de cada combinación de provincia y mes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-code-slash me-2"></i>
+
+                                    4. Mapper: preparar las claves
+                                </h2>
+
+                            </div>
+
+
+                            <p>El Mapper analiza cada línea como un registro CSV, ignora la cabecera, obtiene el mes
+                                y
+                                el código provincial, y
+                                consulta el diccionario <code>PROVINCIAS</code>. El diccionario debe incluir los
+                                códigos
+                                utilizados por el fichero.
+                            </p>
+
+                            <p class="mb-0">La salida intermedia tiene una clave compuesta, por ejemplo
+                                <code>Madrid|1</code>, y el valor
+                                <code>1</code>. El diccionario completo se mantiene en el archivo
+                                <code>mapper_accidentes.py</code>.
+                            </p>
+
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-calculator me-2"></i>
+
+                                    5. Reducer: sumar accidentes
+                                </h2>
+
+                            </div>
+
+                            <p>Hadoop Streaming ordena y agrupa las claves emitidas por el Mapper. El Reducer acumula
+                                los
+                                valores de cada clave
+                                y devuelve el nombre de la provincia, el mes y el total.</p>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-terminal me-2"></i>
+
+                                    6. Ejecución con Hadoop Streaming
+                                </h2>
+
+                            </div>
+
+                            <p>El trabajo se lanza desde el contenedor <code>namenode</code> o desde una celda de
+                                Jupyter Notebook. La opción
+                                <code>-files</code> distribuye ambos scripts a las tareas del clúster.
+                            </p>
+                            <pre class="bg-dark text-white p-4 rounded"><code>!hdfs dfs -rm -r -f /datasets/accidentes/resultados/dgt_accidentes_provincia_mes
+
+!hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \\
+    -files mapper_accidentes.py,reducer_accidentes.py \\
+    -mapper "python3 mapper_accidentes.py" \\
+    -reducer "python3 reducer_accidentes.py" \\
+    -input /datasets/accidentes/csv/TABLA_ACCIDENTES_24.csv \\
+    -output /datasets/accidentes/resultados/dgt_accidentes_provincia_mes</code></pre>
+                            <div class="note"><strong>Importante:</strong> el directorio de salida debe estar libre
+                                antes de lanzar el trabajo.
+                                El comando de eliminación elimina únicamente la carpeta de resultados de este ejercicio;
+                                úsalo solo si no
+                                necesitas conservarla.</div>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-table me-2"></i>7. Consulta de resultados
+                                </h2>
+
+                            </div>
+
+                            <p>Los resultados se guardan en HDFS. Para mostrarlos en la salida de Jupyter:</p>
+                            <pre><code>!hdfs dfs -cat /datasets/accidentes/resultados/dgt_accidentes_provincia_mes/part-*</code></pre>
+                            <p>El formato de cada línea es:</p>
+                            <pre><code>Provincia    Mes    Número de accidentes</code></pre>
+                            <p>La ejecución incluida en el HTML de resultados adjunto contiene una salida anterior con
+                                códigos provinciales.
+                                Algunos registros reales de esa salida son:</p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Código provincial</th>
+                                            <th>Provincia</th>
+                                            <th>Mes</th>
+                                            <th>Accidentes registrados</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>1 (enero)</td>
+                                            <td>1.145</td>
+                                        </tr>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>2 (febrero)</td>
+                                            <td>1.100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>28</td>
+                                            <td>Madrid</td>
+                                            <td>7 (julio)</td>
+                                            <td>1.168</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>1 (enero)</td>
+                                            <td>68</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>8 (agosto)</td>
+                                            <td>94</td>
+                                        </tr>
+                                        <tr>
+                                            <td>45</td>
+                                            <td>Toledo</td>
+                                            <td>12 (diciembre)</td>
+                                            <td>92</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Barcelona</td>
+                                            <td>7 (julio)</td>
+                                            <td>1.670</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="small text-secondary mb-0">Estos valores se han tomado de la salida de la
+                                ejecución incluida en el archivo
+                                facilitado. La salida que genera el Mapper con nombres de provincia debe volver a
+                                ejecutarse para que dichos
+                                nombres aparezcan directamente en el resultado de Hadoop Streaming.</p>
+                        </div>
+                        <div class="card shadow-sm mb-4">
+
+                            <div class="card-header bg-success text-white">
+
+                                <h2 class="h4 mb-0">
+
+                                    <i class="bi bi-check2-circle me-2"></i>8. Conclusiones
+                                </h2>
+
+                            </div>
+
+                            <ul>
+                                <li>Hadoop Streaming permite implementar las funciones Map y Reduce usando scripts
+                                    Python
+                                    sin
+                                    necesidad de
+                                    escribir clases Java para la lógica de procesamiento.</li>
+                                <li>El Mapper prepara una clave por provincia y mes y genera una contribución unitaria
+                                    por
+                                    cada
+                                    registro válido.
+                                </li>
+                                <li>El Reducer agrega las contribuciones para obtener el número de accidentes por grupo.
+                                </li>
+                                <li>La salida permite comparar la distribución mensual de los accidentes entre
+                                    provincias.
+                                    Los
+                                    recuentos deben
+                                    interpretarse teniendo en cuenta la definición y el contenido del conjunto de datos.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+
+                        <a href="jupyter_leccion3.4.html" target="_blank" class="btn btn-success">
+
+                            <i class="bi bi-journal-code"></i>
+
+                            Ver solución completa en Jupyter.
+
+                        </a>
+
+                        <a href="down_jupyter_leccion3.4.ipynb" download="down_jupyter_leccion3.4.ipynb"
+                            class="btn btn-success">
+                            <i class="bi bi-journal-code"></i>
+                            Descargar notebook para ejecutar en Jupyter.
+                        </a>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================================================= -->
+        <!-- BOTÓN VOLVER -->
+        <!-- ========================================================= -->
+
+        <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-outline-success" onclick="window.close()">
+                <i class="bi bi-x-circle"></i> Cerrar Ejercicio
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer class="bg-success text-white mt-5">
+
+        <div class="container py-3 text-center">
+
+            Proyecto Fin de Grado · UNED ·
+            Virtualización ligera para el despliegue de infraestructuras Big Data
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
