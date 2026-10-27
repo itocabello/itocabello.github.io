@@ -85,183 +85,197 @@
         </ol>
 
     </nav>
-    <div class="row">
+    <div class="container mt-4">
 
-        <!-- Menú lateral -->
-        <!-- Menú lateral -->
+        <div class="row">
+
+            <!-- Menú lateral -->
+            <!-- Menú lateral -->
 
 
-        <div class="col-lg-3">
+            <div class="col-lg-3">
 
-            <div class="list-group shadow">
+                <div class="list-group shadow">
 
-                <div class="list-group-item active bg-success border-success">
+                    <div class="list-group-item active bg-success border-success">
 
-                    <i class="bi bi-book"></i>
+                        <i class="bi bi-book"></i>
 
-                    Capítulo 5
+                        Ejercicios Practicos.
+
+                    </div>
+
+                    <a href="estructurahdfs.html" target="_blank" class="list-group-item list-group-item-action">
+                        <i class="bi bi-pencil-square"></i>
+                        1. Ejercicio práctico: Gestión de datos en HDFS.
+
+                    </a>
+
+                    <a href="ejer1hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+                        <i class="bi bi-pencil-square"></i>
+                        2. Hadoop Streaming: Primer Ejercicio - Contador de palabras.
+
+                    </a>
+                    <a href="ejer2hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+                        <i class="bi bi-pencil-square"></i>
+                        3. Hadoop Streaming: Segundo ejercicio - Análisis de pacientes
+
+                    </a>
+                    <a href="ejer3hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+                        <i class="bi bi-pencil-square"></i>
+                        4. Hadoop Streaming: Tercer ejercicio - Análisis de accidentes de tráfico con víctimas.
+
+                    </a>
+                    <a href="ejer4hadoop.html" target="_blank" class="list-group-item list-group-item-action">
+
+
+                        <i class="bi bi-pencil-square"></i>
+                        5. Hadoop Streaming: Cuarto ejercicio - Cruce de accidentes de tráfico y calidad del aire.
+
+                    </a>
+
+                    <a href="ejer4.html" target="_blank" class="btn btn-success ">
+                        <i class="bi bi-pencil-square"></i>
+                        6. Apache Flume: Primer Ejercicio de ingesta de datos
+
+
+                    </a>
+                    <a href="validacion.html" class="list-group-item list-group-item-action">
+                        <i class="bi bi-pencil-square"></i>
+                        7. Mas Ejercicio - Validación operativa del clúster mediante trabajos.
+
+                    </a>
+
+
+
+
+
+
+
+                </div>
+            </div>
+            <!-- Contenido -->
+
+            <div class="col-lg-9">
+
+
+                <div class="card shadow-sm mb-4">
+
+                    <div class="card-body">
+
+                        <section class="bg-success text-white py-4">
+
+                            <div class="container">
+
+                                <h2 class="mb-1">
+                                    Generación de los ficheros en HDFS
+                                </h2>
+                            </div>
+
+                        </section>
+                        <p>
+
+                            Durante el proceso de ingesta, Apache Flume almacena la
+                            información en HDFS generando automáticamente ficheros de
+                            salida con el prefijo <strong>accidentes24</strong>.
+
+                        </p>
+
+                        <p>
+
+                            Este comportamiento forma parte del mecanismo interno de
+                            escritura de Flume, que puede generar múltiples archivos como
+                            resultado del proceso de transferencia.
+
+                        </p>
+
+                        <p class="mb-0">
+
+                            Posteriormente, estos ficheros pueden ser procesados mediante
+                            trabajos <strong>MapReduce</strong> o
+                            <strong>Hadoop Streaming</strong>, ya que HDFS permite
+                            trabajar con el conjunto de datos independientemente de la
+                            fragmentación física de los archivos.
+
+                        </p>
+
+                    </div>
 
                 </div>
 
-                <a href="caracteristicas.html" class="list-group-item list-group-item-action">
 
-                    1. Lección 1.Características prácticas Big Data.
-
-                </a>
-
-                <a href="fundamentos.html" class="list-group-item list-group-item-action">
-
-                    2. Lección 2.Fundamentos de Hadoop.
-
-                </a>
-                <a href="hdfs.html" class="list-group-item list-group-item-action">
-
-                    3. Lección 3.HDFS y Almacenamiento Distribuido.
-
-                </a>
-
-                <a href="procesamiento.html" class="list-group-item list-group-item-action">
-
-                    4. Lección 4.Inyección/Extracción de datos
-
-
-                </a>
-                <a href="serializacion.html" class="list-group-item list-group-item-action">
-
-                    5. Lección 5. Serialización/Deserialización de los Datos
-
-
-                </a>
-
-                <a href="validacion.html" class="list-group-item list-group-item-action">
-
-                    6. Validación operativa del clúster mediante trabajos.
-
-                </a>
-
-
-
-
-
-            </div>
-        </div>
-        <!-- Contenido -->
-
-        <div class="col-lg-9">
-
-
-            <div class="card shadow-sm mb-4">
-
-                <div class="card-body">
-
-                    <section class="bg-success text-white py-4">
-
-                        <div class="container">
-
-                            <h2 class="mb-1">
-                                Generación de los ficheros en HDFS
-                            </h2>
-                        </div>
-
-                    </section>
-                    <p>
-
-                        Durante el proceso de ingesta, Apache Flume almacena la
-                        información en HDFS generando automáticamente ficheros de
-                        salida con el prefijo <strong>accidentes24</strong>.
-
-                    </p>
-
-                    <p>
-
-                        Este comportamiento forma parte del mecanismo interno de
-                        escritura de Flume, que puede generar múltiples archivos como
-                        resultado del proceso de transferencia.
-
-                    </p>
-
-                    <p class="mb-0">
-
-                        Posteriormente, estos ficheros pueden ser procesados mediante
-                        trabajos <strong>MapReduce</strong> o
-                        <strong>Hadoop Streaming</strong>, ya que HDFS permite
-                        trabajar con el conjunto de datos independientemente de la
-                        fragmentación física de los archivos.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================================
+                <!-- =================================================
              EJERCICIO RESUELTO
         ================================================== -->
 
-            <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4">
 
-                <div class="card-header bg-success text-white">
+                    <div class="card-header bg-success text-white">
 
-                    <h2 class="mb-0 h4">
-                        Ejercicio resuelto: ingesta con Flume
-                    </h2>
+                        <h2 class="mb-0 h4">
+                            Ejercicio resuelto: ingesta con Flume
+                        </h2>
 
-                </div>
+                    </div>
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    <p>
+                        <p>
 
-                        El funcionamiento del agente puede resumirse mediante las
-                        siguientes etapas:
-
-                    </p>
-
-                    <!-- PASO 1 -->
-
-                    <div class="alert alert-light border-start border-success border-4">
-
-                        <strong>1. Incorporación del fichero flume_accidentes.conf al directorio flume del
-                            Namenode.</strong>
-
-                        <p class="mt-2 mb-2">
-
-                            El usuario copiara el fichero analizado en el punto anterior denominado
-                            <code>flume_accidentes.conf</code>,en el directorio <strong>/usr/local/flume/conf/</strong>
-
+                            El funcionamiento del agente puede resumirse mediante las
+                            siguientes etapas:
 
                         </p>
 
-                        <div class="text-center my-5">
+                        <!-- PASO 1 -->
 
-                            <img src="../img/cp_flume_accidentes.png" class="img-fluid rounded shadow imagen-ejercicio"
-                                alt="Pasar fichero flume_accidentes.conf al directorio indicado">
+                        <div class="alert alert-light border-start border-success border-4">
 
-                            <p class="figura">
+                            <strong>1. Incorporación del fichero flume_accidentes.conf al directorio flume del
+                                Namenode.</strong>
 
-                                Copiar fichero flume_accidentes.conf al directorio indicado
+                            <p class="mt-2 mb-2">
+
+                                El usuario copiara el fichero analizado en el punto anterior denominado
+                                <code>flume_accidentes.conf</code>,en el directorio
+                                <strong>/usr/local/flume/conf/</strong>
+
 
                             </p>
 
+                            <div class="text-center my-5">
+
+                                <img src="../img/cp_flume_accidentes.png"
+                                    class="img-fluid rounded shadow imagen-ejercicio"
+                                    alt="Pasar fichero flume_accidentes.conf al directorio indicado">
+
+                                <p class="figura">
+
+                                    Copiar fichero flume_accidentes.conf al directorio indicado
+
+                                </p>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="alert alert-light border-start border-success border-4">
+                        <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>2. Iniciar el agente de Apache Flume desde el contenedor
-                            Namenode.</strong>
+                            <strong>2. Iniciar el agente de Apache Flume desde el contenedor
+                                Namenode.</strong>
 
-                        <p class="mt-2 mb-2">
+                            <p class="mt-2 mb-2">
 
-                            Dentro del contenedor Namenode, <strong>sudo docker exec -it namenode /bin/bash</strong> y
-                            tras el punto 1 anterior, se procede a iniciar el agente flume, mediante el comando mostrado
-                            a
-                            continuación. La instrucción
-                            inicia Apache Flume utilizando el agente denominado agent y la configuración definida en el
-                            fichero
-                            <strong>flume_accidentes.conf</strong>.
-                        </p>
-                        <pre class="bg-dark text-light p-3 rounded"><code>agent.sinks.sink1.type = hdfs
+                                Dentro del contenedor Namenode, <strong>sudo docker exec -it namenode /bin/bash</strong>
+                                y
+                                tras el punto 1 anterior, se procede a iniciar el agente flume, mediante el comando
+                                mostrado
+                                a
+                                continuación. La instrucción
+                                inicia Apache Flume utilizando el agente denominado agent y la configuración definida en
+                                el
+                                fichero
+                                <strong>flume_accidentes.conf</strong>.
+                            </p>
+                            <pre class="bg-dark text-light p-3 rounded"><code>agent.sinks.sink1.type = hdfs
 --name agent \
 --conf /usr/local/flume/conf \
 --conf-file /usr/local/flume/conf/flume_accidentes.conf \
@@ -272,284 +286,286 @@
 
 
 
-                        <div class="text-center mt-4">
+                            <div class="text-center mt-4">
 
-                            <a href="IniFlumeJupyter.html" target="_blank" class="btn btn-success btn-lg">
+                                <a href="IniFlumeJupyter.html" target="_blank" class="btn btn-success btn-lg">
 
-                                <i class="bi bi-journal-code"></i>
+                                    <i class="bi bi-journal-code"></i>
 
-                                Consultar Agente Flume en Jupyter.
+                                    Consultar Agente Flume en Jupyter.
 
-                            </a>
-                            <a href="Leccion4_flume_3.ipynb" download="Leccion4_flume_3.ipynb" target="_blank"
-                                class="btn btn-success btn-lg">
-                                <i class="bi bi-journal-code"></i>
-                                Descargar notebook para ejecutar en Jupyter.
-                            </a>
+                                </a>
+                                <a href="Leccion4_flume_3.ipynb" download="Leccion4_flume_3.ipynb" target="_blank"
+                                    class="btn btn-success btn-lg">
+                                    <i class="bi bi-journal-code"></i>
+                                    Descargar notebook para ejecutar en Jupyter.
+                                </a>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        <!-- PASO 1 -->
 
-                    <!-- PASO 1 -->
+                        <div class="alert alert-light border-start border-success border-4">
 
-                    <div class="alert alert-light border-start border-success border-4">
+                            <strong>3. Incorporación del fichero a cargar en HDFS.</strong>
 
-                        <strong>3. Incorporación del fichero a cargar en HDFS.</strong>
+                            <p class="mt-2 mb-2">
 
-                        <p class="mt-2 mb-2">
+                                Una vez iniciado el agente, para verificar que todo funciona correctamente, el usuario
+                                copiara el fichero
+                                <code>TABLA_ACCIDENTES_24.csv</code> en el directorio
+                                monitorizado <strong>/home/hadoop/flume_input</strong>.
 
-                            Una vez iniciado el agente, para verificar que todo funciona correctamente, el usuario
-                            copiara el fichero
-                            <code>TABLA_ACCIDENTES_24.csv</code> en el directorio
-                            monitorizado <strong>/home/hadoop/flume_input</strong>.
+                            </p>
 
-                        </p>
-
-                        <pre
-                            class="bg-dark text-light p-3 rounded"><code>cp /media/notebooks/dataset/TABLA_ACCIDENTES_24.csv /home/hadoop/flume_input</code></pre>
+                            <pre
+                                class="bg-dark text-light p-3 rounded"><code>cp /media/notebooks/dataset/TABLA_ACCIDENTES_24.csv /home/hadoop/flume_input</code></pre>
 
 
-                    </div>
+                        </div>
 
 
-                    <!-- PASO 2 -->
+                        <!-- PASO 2 -->
 
-                    <div class="alert alert-light border-start border-success border-4">
+                        <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>4. Detección del archivo.</strong>
+                            <strong>4. Detección del archivo.</strong>
 
-                        <p class="mb-0 mt-2">
+                            <p class="mb-0 mt-2">
 
-                            La Source detecta automáticamente el nuevo archivo
-                            <strong>TABLA_ACCIDENTES_24.csv</strong> incorporado al directorio monitorizado.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- PASO 3 -->
-
-                    <div class="alert alert-light border-start border-success border-4">
-
-                        <strong>5. Generación de eventos.</strong>
-
-                        <p class="mb-0 mt-2">
-
-                            Los registros del fichero son transformados en eventos
-                            Flume.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- PASO 4 -->
-
-                    <div class="alert alert-light border-start border-success border-4">
-
-                        <strong>6. Almacenamiento temporal.</strong>
-
-                        <p class="mb-0 mt-2">
-
-                            Los eventos son almacenados temporalmente en el
-                            <strong>Channel</strong>.
-
-                        </p>
-
-                    </div>
-
-
-                    <!-- PASO 5 -->
-
-                    <div class="alert alert-light border-start border-success border-4">
-
-                        <strong>7. Transferencia a HDFS.</strong>
-
-                        <p class="mb-0 mt-2">
-
-                            El <strong>Sink</strong> recupera los eventos y los
-                            transfiere al sistema de archivos distribuido
-                            <strong>HDFS</strong>. Consultar los ficheros generados en HDFS para confirmar que se estan
-                            cargando los datos correctamente.
-                        <pre
-                            class="bg-dark text-light p-3 rounded"><code>!hadoop dfs -ls   /datasets/accidentes24</code></pre>
-                        </p>
-                        <div class="text-center my-4">
-
-
-
-                            <img src="../img/hadoop_dfs_flume.png" class="img-fluid rounded shadow"
-                                style="cursor:pointer;"
-                                alt="ficheros generados mediante flume y cargados en HDFS de forma automatica"
-                                data-bs-toggle="modal" data-bs-target="#imgClusterModal2">
-
-
-
-                            <p class="text-muted">
-
-                                Ficheros generados mediante flume y cargados en HDFS de forma automatica.
+                                La Source detecta automáticamente el nuevo archivo
+                                <strong>TABLA_ACCIDENTES_24.csv</strong> incorporado al directorio monitorizado.
 
                             </p>
 
                         </div>
 
 
+                        <!-- PASO 3 -->
+
+                        <div class="alert alert-light border-start border-success border-4">
+
+                            <strong>5. Generación de eventos.</strong>
+
+                            <p class="mb-0 mt-2">
+
+                                Los registros del fichero son transformados en eventos
+                                Flume.
+
+                            </p>
+
+                        </div>
 
 
-                    </div>
+                        <!-- PASO 4 -->
+
+                        <div class="alert alert-light border-start border-success border-4">
+
+                            <strong>6. Almacenamiento temporal.</strong>
+
+                            <p class="mb-0 mt-2">
+
+                                Los eventos son almacenados temporalmente en el
+                                <strong>Channel</strong>.
+
+                            </p>
+
+                        </div>
 
 
-                    <!-- PASO 6 -->
+                        <!-- PASO 5 -->
 
-                    <div class="alert alert-light border-start border-success border-4">
+                        <div class="alert alert-light border-start border-success border-4">
 
-                        <strong>6. Disponibilidad de los datos.</strong>
+                            <strong>7. Transferencia a HDFS.</strong>
 
-                        <p class="mb-0 mt-2">
+                            <p class="mb-0 mt-2">
 
-                            Los datos quedan disponibles en HDFS para su posterior
-                            análisis mediante <strong>Hadoop Streaming</strong> y
-                            <strong>MapReduce</strong>.
+                                El <strong>Sink</strong> recupera los eventos y los
+                                transfiere al sistema de archivos distribuido
+                                <strong>HDFS</strong>. Consultar los ficheros generados en HDFS para confirmar que se
+                                estan
+                                cargando los datos correctamente.
+                            <pre
+                                class="bg-dark text-light p-3 rounded"><code>!hadoop dfs -ls   /datasets/accidentes24</code></pre>
+                            </p>
+                            <div class="text-center my-4">
 
-                        </p>
-                        <div class="text-center mt-4">
 
-                            <a href="agentFlume.html" target="_blank" class="btn btn-success btn-lg">
 
-                                <i class="bi bi-pencil-square"></i>
+                                <img src="../img/hadoop_dfs_flume.png" class="img-fluid rounded shadow"
+                                    style="cursor:pointer;"
+                                    alt="ficheros generados mediante flume y cargados en HDFS de forma automatica"
+                                    data-bs-toggle="modal" data-bs-target="#imgClusterModal2">
 
-                                Consultar resultados Flume.
 
-                            </a>
-                            <a href="Leccion4_flume_2.ipynb" download="Leccion4_flume_2.ipynb" target="_blank"
-                                class="btn btn-success btn-lg">
-                                <i class="bi bi-journal-code"></i>
-                                Descargar notebook para ejecutar en Jupyter.
-                            </a>
+
+                                <p class="text-muted">
+
+                                    Ficheros generados mediante flume y cargados en HDFS de forma automatica.
+
+                                </p>
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        <!-- PASO 6 -->
+
+                        <div class="alert alert-light border-start border-success border-4">
+
+                            <strong>6. Disponibilidad de los datos.</strong>
+
+                            <p class="mb-0 mt-2">
+
+                                Los datos quedan disponibles en HDFS para su posterior
+                                análisis mediante <strong>Hadoop Streaming</strong> y
+                                <strong>MapReduce</strong>.
+
+                            </p>
+                            <div class="text-center mt-4">
+
+                                <a href="agentFlume.html" target="_blank" class="btn btn-success btn-lg">
+
+                                    <i class="bi bi-pencil-square"></i>
+
+                                    Consultar resultados Flume.
+
+                                </a>
+                                <a href="Leccion4_flume_2.ipynb" download="Leccion4_flume_2.ipynb" target="_blank"
+                                    class="btn btn-success btn-lg">
+                                    <i class="bi bi-journal-code"></i>
+                                    Descargar notebook para ejecutar en Jupyter.
+                                </a>
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
 
-            </div>
 
-
-            <!-- =================================================
+                <!-- =================================================
              CONCLUSIÓN
         ================================================== -->
 
-            <div class="alert alert-success shadow-sm">
+                <div class="alert alert-success shadow-sm">
 
-                <h3>
+                    <h3>
 
-                    <i class="bi bi-check-circle-fill"></i>
-                    Conclusión
+                        <i class="bi bi-check-circle-fill"></i>
+                        Conclusión
 
-                </h3>
+                    </h3>
 
-                <p>
+                    <p>
 
-                    La configuración desarrollada permite automatizar la ingesta
-                    de información desde el sistema de archivos local hacia HDFS.
-                    Apache Flume actúa como mecanismo de transferencia basado en
-                    eventos, conectando la fuente de datos local con el sistema de
-                    almacenamiento distribuido.
+                        La configuración desarrollada permite automatizar la ingesta
+                        de información desde el sistema de archivos local hacia HDFS.
+                        Apache Flume actúa como mecanismo de transferencia basado en
+                        eventos, conectando la fuente de datos local con el sistema de
+                        almacenamiento distribuido.
 
-                </p>
+                    </p>
 
-                <p class="mb-0">
+                    <p class="mb-0">
 
-                    De esta manera, el estudiante puede observar de forma práctica
-                    el recorrido de los datos desde el fichero
-                    <code>TABLA_ACCIDENTES_24.csv</code> hasta su almacenamiento
-                    en HDFS y su posterior disponibilidad para tareas de
-                    procesamiento distribuido.
+                        De esta manera, el estudiante puede observar de forma práctica
+                        el recorrido de los datos desde el fichero
+                        <code>TABLA_ACCIDENTES_24.csv</code> hasta su almacenamiento
+                        en HDFS y su posterior disponibilidad para tareas de
+                        procesamiento distribuido.
 
-                </p>
+                    </p>
 
-            </div>
+                </div>
 
 
-            <!-- =================================================
+                <!-- =================================================
              REFERENCIA
         ================================================== -->
 
-            <div class="alert alert-secondary">
+                <div class="alert alert-secondary">
 
-                <h5>
-                    <i class="bi bi-info-circle"></i>
-                    Referencia
-                </h5>
+                    <h5>
+                        <i class="bi bi-info-circle"></i>
+                        Referencia
+                    </h5>
 
-                <p class="mb-0">
+                    <p class="mb-0">
 
-                    Esta práctica se encuentra relacionada con el apartado
-                    correspondiente a la ingesta de datos mediante Apache Flume
-                    y con la arquitectura Hadoop desarrollada en el proyecto.
+                        Esta práctica se encuentra relacionada con el apartado
+                        correspondiente a la ingesta de datos mediante Apache Flume
+                        y con la arquitectura Hadoop desarrollada en el proyecto.
 
-                </p>
+                    </p>
 
-            </div>
+                </div>
 
 
-            <!-- =================================================
+                <!-- =================================================
              NAVEGACIÓN
         ================================================== -->
 
-            <div class="d-flex justify-content-between mt-5 mb-5">
+                <div class="d-flex justify-content-between mt-5 mb-5">
 
-                <a href="javascript:history.back()" class="btn btn-outline-success">
+                    <a href="javascript:history.back()" class="btn btn-outline-success">
 
-                    <i class="bi bi-arrow-left"></i>
-                    Punto anterior
+                        <i class="bi bi-arrow-left"></i>
+                        Punto anterior
 
-                </a>
+                    </a>
 
+                </div>
+
+                <div class="text-center mt-5">
+
+                    <a href="procesamiento.html" class="btn btn-outline-success btn-lg">
+
+                        <i class="bi bi-arrow-left-circle"></i>
+
+                        Volver al índice del capítulo 5.4
+
+                    </a>
+
+                </div>
             </div>
 
-            <div class="text-center mt-5">
+            <div class="modal fade" id="imgClusterModal1" tabindex="-1">
 
-                <a href="procesamiento.html" class="btn btn-outline-success btn-lg">
+                <div class="modal-dialog modal-xl modal-dialog-centered">
 
-                    <i class="bi bi-arrow-left-circle"></i>
+                    <div class="modal-content">
 
-                    Volver al índice del capítulo 5.4
+                        <div class="modal-header">
 
-                </a>
+                            <h5 class="modal-title">
+                                flume_accidentes_conf.png
+                            </h5>
 
-            </div>
-        </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
 
-        <div class="modal fade" id="imgClusterModal1" tabindex="-1">
+                        </div>
 
-            <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-body text-center">
 
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title">
-                            flume_accidentes_conf.png
-                        </h5>
-
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                        </button>
-
-                    </div>
-
-                    <div class="modal-body text-center">
-
-                        <img src="../img/flume_accidentes_conf.png" class="img-fluid">
+                            <img src="../img/flume_accidentes_conf.png" class="img-fluid">
 
 
+
+                        </div>
 
                     </div>
 
                 </div>
-
             </div>
 
         </div>

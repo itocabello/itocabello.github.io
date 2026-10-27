@@ -250,457 +250,142 @@
      CONTENIDO PRINCIPAL
 ====================================================== -->
 
-    <div class="row">
+    <div class="container mt-4">
+
+        <div class="row">
 
 
 
-        <div class="col-lg-3">
+            <div class="col-lg-3">
 
-            <div class="list-group shadow">
+                <div class="list-group shadow">
 
-                <div class="list-group-item active bg-success border-success">
+                    <div class="list-group-item active bg-success border-success">
 
-                    <i class="bi bi-book"></i>
+                        <i class="bi bi-book"></i>
 
-                    Ejercicios Practicos
+                        Ejercicios Practicos
+
+                    </div>
+                    <a href="ejerP1.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
+
+                    </a>
+                    <a href="ejerP2.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
+
+                    </a>
+                    <a href="ejerP3.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
+
+                    </a>
+                    <a href="ejerP4.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
+
+                    </a>
+                    <a href="ejerP5.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
+
+                    </a>
+                    <a href="ejerP6.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 1 con python3 y MySql.
+
+                    </a>
+                    <a href="ejerP7.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
+
+                    </a>
+                    <a href="ejerP8.html" class="btn btn-success ">
+
+                        Ejercicio Final 3 Hive 1º sobre cluster Hadoop.
+
+                    </a>
+                    <a href="ejerP9.html" class="list-group-item list-group-item-action">
+
+                        Ejercicio Final 3 Hive 2º sobre cluster Hadoop.
+
+                    </a>
+
 
                 </div>
-                <a href="ejerP1.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 1: Conversión de un fichero CSV a formato Avro.
-
-                </a>
-                <a href="ejerP2.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 2: Conversión de un fichero CSV a formato Parquet.
-
-                </a>
-                <a href="ejerP3.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 3: Ingesta de datos mediante Apache Flume utilizando Avro.
-
-                </a>
-                <a href="ejerP4.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 4: Visualizar los datos ficheros .avro y .parquet.
-
-                </a>
-                <a href="ejerP5.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio resuelto 5: Comparativa formatos avro y Parquet.
-
-                </a>
-                <a href="ejerP6.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 1 con python3 y MySql.
-
-                </a>
-                <a href="ejerP7.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 2 Levantar contenedor db_cluster – MySql.
-
-                </a>
-                <a href="ejerP8.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 3 Hive 1º sobre cluster Hadoop.
-
-                </a>
-                <a href="ejerP9.html" class="list-group-item list-group-item-action">
-
-                    Ejercicio Final 3 Hive 2º sobre cluster Hadoop.
-
-                </a>
-
 
             </div>
-
-        </div>
-        <div class="col-lg-9">
-
-            <h2>
-                Ejercicio Final 3: Apache Hive sobre el clúster Hadoop
-            </h2>
-            <p>
-                Una vez desplegada la infraestructura Big Data basada en
-                Hadoop sobre contenedores Docker, se propone en este ejercicio
-                utilizar <strong>Apache Hive</strong> para realizar operaciones
-                de consulta e integración de información sobre los conjuntos
-                de datos disponibles en el clúster.
-            </p>
-
-            <p>
-                El objetivo es que el estudiante comprenda cómo Hive permite
-                trabajar con grandes volúmenes de información almacenados en
-                <strong>HDFS</strong>, utilizando una interfaz de consulta
-                basada en SQL denominada <strong>HiveQL</strong>.
-            </p>
-
-            <p>
-                Para ello se emplearán los conjuntos de datos clínicos
-                <strong>patients</strong>, <strong>encounters</strong> y
-                <strong>organizations</strong>, disponibles en diferentes
-                formatos de almacenamiento.
-            </p>
-            <div class="objetivo">
-
-                <h3>
-                    <i class="bi bi-lightbulb-fill"></i>
-                    Objetivo del ejercicio
-                </h3>
-
-                <p class="mb-0">
-
-                    El objetivo principal consiste en realizar una operación
-                    de integración mediante <strong>JOIN</strong> entre los
-                    tres conjuntos de datos y comparar su ejecución utilizando
-                    dos paradigmas de procesamiento distribuido:
-                    <strong>Hadoop Streaming mediante MapReduce</strong> y
-                    <strong>Apache Hive</strong>.
-
-                </p>
-
-            </div>
-
-            <section id="configuracion">
+            <div class="col-lg-9">
 
                 <h2>
-                    Configuración de Apache Hive
+                    Ejercicio Final 3: Apache Hive sobre el clúster Hadoop
                 </h2>
-
                 <p>
-                    Antes de realizar las consultas es necesario disponer de
-                    Apache Hive configurado en la infraestructura Hadoop.
+                    Una vez desplegada la infraestructura Big Data basada en
+                    Hadoop sobre contenedores Docker, se propone en este ejercicio
+                    utilizar <strong>Apache Hive</strong> para realizar operaciones
+                    de consulta e integración de información sobre los conjuntos
+                    de datos disponibles en el clúster.
                 </p>
 
                 <p>
-                    El nodo <strong>NameNode</strong> actúa como punto central
-                    de acceso al entorno Hive. En este entorno se dispone del
-                    componente <strong>metastore</strong>, encargado de mantener
-                    la información asociada a las tablas, esquemas y tipos de
-                    datos.
+                    El objetivo es que el estudiante comprenda cómo Hive permite
+                    trabajar con grandes volúmenes de información almacenados en
+                    <strong>HDFS</strong>, utilizando una interfaz de consulta
+                    basada en SQL denominada <strong>HiveQL</strong>.
                 </p>
 
                 <p>
-                    Los datos propiamente dichos permanecen almacenados en
-                    <strong>HDFS</strong>, mientras que Hive utiliza los metadatos
-                    para conocer cómo interpretar y consultar dicha información.
+                    Para ello se emplearán los conjuntos de datos clínicos
+                    <strong>patients</strong>, <strong>encounters</strong> y
+                    <strong>organizations</strong>, disponibles en diferentes
+                    formatos de almacenamiento.
                 </p>
-
-                <div class="alert alert-info">
-
-                    <i class="bi bi-info-circle-fill"></i>
-
-                    <strong>Importante:</strong>
-
-                    <p class="mb-0 mt-2">
-
-                        En el entorno desarrollado para este proyecto se utiliza
-                        el sistema embebido <strong>Apache Derby</strong> como
-                        base de datos de metadatos.
-
-                    </p>
-
-                </div>
-
-                <p>
-                    Hive también permite aprovechar el procesamiento distribuido
-                    proporcionado por <strong>MapReduce</strong>. Además, dispone
-                    de mecanismos de conexión como <strong>JDBC</strong>,
-                    <strong>ODBC</strong> y <strong>Thrift</strong> para facilitar
-                    el acceso desde otras aplicaciones.
-                </p>
-
-            </section>
-            <!-- =================================================
-                     PREPARACION
-                ================================================== -->
-
-            <section id="preparacion">
-
-                <h2>
-                    1. Preparación y almacenamiento de los datos
-                </h2>
-
-                <p>
-                    Antes de comenzar las consultas es necesario disponer de los
-                    conjuntos de datos en los diferentes formatos que serán
-                    utilizados durante el ejercicio.
-                </p>
-
-                <div class="bloque" id="formatos">
+                <div class="objetivo">
 
                     <h3>
-                        1.1 Generación de CSV, Avro y Parquet
+                        <i class="bi bi-lightbulb-fill"></i>
+                        Objetivo del ejercicio
                     </h3>
 
-                    <p>
-                        Los conjuntos de datos utilizados son:
-                    </p>
+                    <p class="mb-0">
 
-                    <ul>
-
-                        <li>
-                            <strong>patients</strong>: información relacionada
-                            con los pacientes.
-                        </li>
-
-                        <li>
-                            <strong>encounters</strong>: información sobre los
-                            encuentros médicos.
-                        </li>
-
-                        <li>
-                            <strong>organizations</strong>: información sobre
-                            las organizaciones sanitarias.
-                        </li>
-
-                    </ul>
-
-                    <p>
-                        Cada conjunto de datos será preparado en los formatos
-                        <strong>CSV</strong>, <strong>Avro</strong> y
-                        <strong>Parquet</strong>.
-                    </p>
-
-                </div>
-
-
-                <div class="bloque" id="hdfs">
-
-                    <h3>
-                        1.2 Carga de los datos en HDFS
-                    </h3>
-
-                    <p>
-                        Una vez generados los diferentes formatos, los ficheros
-                        deben ser almacenados en el sistema de archivos distribuido
-                        <strong>HDFS</strong>.
-                    </p>
-
-                    <p>
-                        La información se organiza mediante directorios
-                        independientes para cada conjunto de datos y formato.
-                        En el caso de Avro se dispone además de los correspondientes
-                        esquemas <strong>.avsc</strong>.
-                    </p>
-
-
-                    <!-- IMAGEN -->
-
-                    <div class="text-center mt-4">
-
-                        <img src="../img/organizacion_avro_parquet.png"
-                            class="img-fluid rounded shadow imagen-ejercicio"
-                            alt="Organización de los directorios Avro y Parquet">
-
-                        <p class="figura">
-
-
-                            Organización de los directorios correspondientes
-                            a los formatos Avro y Parquet.
-                            Fuente: elaboración propia.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                     HADOOP STREAMING
-                ================================================== -->
-
-            <section id="streaming">
-
-                <h2>
-                    2. Preparación del procesamiento mediante Hadoop Streaming
-                </h2>
-
-                <p>
-                    Una vez disponibles los datos en HDFS, se desarrolla una
-                    solución basada en <strong>Hadoop Streaming</strong> para
-                    realizar la unión de los tres conjuntos de datos mediante
-                    el modelo <strong>MapReduce</strong>.
-                </p>
-
-                <p>
-                    La relación entre los datos se establece utilizando los
-                    identificadores comunes presentes en los diferentes
-                    ficheros.
-                </p>
-
-                <div class="paso">
-
-                    <strong>encounters → patients</strong>
-
-                    <p class="mb-0 mt-2">
-
-                        La relación se establece mediante el campo
-                        <strong>PATIENT</strong>.
+                        El objetivo principal consiste en realizar una operación
+                        de integración mediante <strong>JOIN</strong> entre los
+                        tres conjuntos de datos y comparar su ejecución utilizando
+                        dos paradigmas de procesamiento distribuido:
+                        <strong>Hadoop Streaming mediante MapReduce</strong> y
+                        <strong>Apache Hive</strong>.
 
                     </p>
 
                 </div>
 
-                <div class="paso">
+                <section id="configuracion">
 
-                    <strong>encounters → organizations</strong>
-
-                    <p class="mb-0 mt-2">
-
-                        La relación se establece mediante el campo
-                        <strong>ORGANIZATION</strong>.
-
-                    </p>
-
-                </div>
-
-
-                <div class="bloque" id="mapper">
-
-                    <h3>
-                        Proceso Map
-                    </h3>
+                    <h2>
+                        Configuración de Apache Hive
+                    </h2>
 
                     <p>
-                        El <strong>Mapper</strong> debe leer los registros
-                        procedentes de los tres conjuntos de datos, identificar
-                        el tipo de registro y extraer la clave utilizada para
-                        realizar la unión.
-                    </p>
-
-                    <ul>
-
-                        <li>
-                            Los registros de pacientes utilizan
-                            <strong>PATIENT</strong>.
-                        </li>
-
-                        <li>
-                            Los registros de organizaciones utilizan
-                            <strong>ORGANIZATION</strong>.
-                        </li>
-
-                        <li>
-                            Los registros de encounters contienen la información
-                            necesaria para establecer ambas relaciones.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-
-                <div class="bloque" id="reducer">
-
-                    <h3>
-                        Proceso Reduce
-                    </h3>
-
-                    <p>
-                        El <strong>Reducer</strong> recibe los registros
-                        agrupados mediante sus claves de relación y realiza
-                        la combinación de la información.
+                        Antes de realizar las consultas es necesario disponer de
+                        Apache Hive configurado en la infraestructura Hadoop.
                     </p>
 
                     <p>
-                        El resultado final debe contener la información del
-                        encuentro médico junto con los datos correspondientes
-                        al paciente y a la organización sanitaria asociada.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                     HIVE
-                ================================================== -->
-
-            <section id="hive">
-
-                <h2>
-                    3. Apache Hive
-                </h2>
-
-                <p>
-                    Una vez cargados los conjuntos de datos en HDFS, se procede
-                    a su incorporación a Apache Hive mediante la creación de
-                    las tablas correspondientes.
-                </p>
-
-                <p>
-                    Las tablas se prepararán para los tres formatos utilizados:
-                    <strong>CSV, Avro y Parquet</strong>.
-                </p>
-
-
-                <div class="bloque" id="hiveserver">
-
-                    <h3>
-                        3.1 HiveServer2 y cliente Beeline
-                    </h3>
-
-                    <p>
-                        Para realizar las consultas se utiliza el cliente
-                        <strong>Beeline</strong>, que permite establecer una
-                        conexión JDBC con HiveServer2.
+                        El nodo <strong>NameNode</strong> actúa como punto central
+                        de acceso al entorno Hive. En este entorno se dispone del
+                        componente <strong>metastore</strong>, encargado de mantener
+                        la información asociada a las tablas, esquemas y tipos de
+                        datos.
                     </p>
 
                     <p>
-                        La conexión utilizada en este proyecto es:
-                    </p>
-
-                    <div class="codigo">
-
-                        beeline -u jdbc:hive2://localhost:10000
-
-                    </div>
-
-                    <div class="alert alert-warning">
-
-                        <i class="bi bi-clock-fill"></i>
-
-                        <strong>Nota:</strong>
-
-                        HiveServer2 puede tardar aproximadamente entre
-                        uno y dos minutos en estar completamente operativo.
-
-                    </div>
-                    <div class="text-center mt-4">
-
-                        <a href="EjerFinal3_1.html" target="_blank" class="btn btn-success">
-
-                            <i class="bi bi-journal-code"></i>
-
-                            Consultar script Jupyter.
-
-                        </a>
-
-                        <a href="Ejer_Final3_1.ipynb" download="Ejer_Final3_1.ipynb" class="btn btn-success">
-                            <i class="bi bi-journal-code"></i>
-                            Descargar notebook para ejecutar en Jupyter.
-                        </a>
-
-                    </div>
-                </div>
-
-
-                <div class="bloque" id="tablas">
-
-                    <h3>
-                        3.2 Creación de la base de datos y tablas.
-                    </h3>
-
-                    <p>
-                        Una vez comprobado el correcto funcionamiento de HiveServer2,
-                        el siguiente paso consiste en crear la base de datos que se utilizará
-                        para almacenar y analizar los diferentes conjuntos de datos empleados
-                        en el proyecto.
+                        Los datos propiamente dichos permanecen almacenados en
+                        <strong>HDFS</strong>, mientras que Hive utiliza los metadatos
+                        para conocer cómo interpretar y consultar dicha información.
                     </p>
 
                     <div class="alert alert-info">
@@ -710,407 +395,725 @@
                         <strong>Importante:</strong>
 
                         <p class="mb-0 mt-2">
-                            En la configuración utilizada en este proyecto, la creación de la
-                            base de datos y de las tablas de Hive se realiza directamente desde
-                            el cliente de línea de comandos <strong>Beeline</strong>.
-                            Jupyter Notebook se utilizará posteriormente para realizar tareas
-                            de análisis y explotación de los datos, pero no será el entorno
-                            empleado para ejecutar las sentencias de creación de las tablas
-                            de Hive.
+
+                            En el entorno desarrollado para este proyecto se utiliza
+                            el sistema embebido <strong>Apache Derby</strong> como
+                            base de datos de metadatos.
+
+                        </p>
+
+                    </div>
+
+                    <p>
+                        Hive también permite aprovechar el procesamiento distribuido
+                        proporcionado por <strong>MapReduce</strong>. Además, dispone
+                        de mecanismos de conexión como <strong>JDBC</strong>,
+                        <strong>ODBC</strong> y <strong>Thrift</strong> para facilitar
+                        el acceso desde otras aplicaciones.
+                    </p>
+
+                </section>
+                <!-- =================================================
+                     PREPARACION
+                ================================================== -->
+
+                <section id="preparacion">
+
+                    <h2>
+                        1. Preparación y almacenamiento de los datos
+                    </h2>
+
+                    <p>
+                        Antes de comenzar las consultas es necesario disponer de los
+                        conjuntos de datos en los diferentes formatos que serán
+                        utilizados durante el ejercicio.
+                    </p>
+
+                    <div class="bloque" id="formatos">
+
+                        <h3>
+                            1.1 Generación de CSV, Avro y Parquet
+                        </h3>
+
+                        <p>
+                            Los conjuntos de datos utilizados son:
+                        </p>
+
+                        <ul>
+
+                            <li>
+                                <strong>patients</strong>: información relacionada
+                                con los pacientes.
+                            </li>
+
+                            <li>
+                                <strong>encounters</strong>: información sobre los
+                                encuentros médicos.
+                            </li>
+
+                            <li>
+                                <strong>organizations</strong>: información sobre
+                                las organizaciones sanitarias.
+                            </li>
+
+                        </ul>
+
+                        <p>
+                            Cada conjunto de datos será preparado en los formatos
+                            <strong>CSV</strong>, <strong>Avro</strong> y
+                            <strong>Parquet</strong>.
                         </p>
 
                     </div>
 
 
-                    <div class="codigo">
+                    <div class="bloque" id="hdfs">
 
-                        CREATE DATABASE IF NOT EXISTS healthcare;<br>
-                        USE healthcare;
+                        <h3>
+                            1.2 Carga de los datos en HDFS
+                        </h3>
+
+                        <p>
+                            Una vez generados los diferentes formatos, los ficheros
+                            deben ser almacenados en el sistema de archivos distribuido
+                            <strong>HDFS</strong>.
+                        </p>
+
+                        <p>
+                            La información se organiza mediante directorios
+                            independientes para cada conjunto de datos y formato.
+                            En el caso de Avro se dispone además de los correspondientes
+                            esquemas <strong>.avsc</strong>.
+                        </p>
+
+
+                        <!-- IMAGEN -->
+
+                        <div class="text-center mt-4">
+
+                            <img src="../img/organizacion_avro_parquet.png"
+                                class="img-fluid rounded shadow imagen-ejercicio"
+                                alt="Organización de los directorios Avro y Parquet">
+
+                            <p class="figura">
+
+
+                                Organización de los directorios correspondientes
+                                a los formatos Avro y Parquet.
+                                Fuente: elaboración propia.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     HADOOP STREAMING
+                ================================================== -->
+
+                <section id="streaming">
+
+                    <h2>
+                        2. Preparación del procesamiento mediante Hadoop Streaming
+                    </h2>
+
+                    <p>
+                        Una vez disponibles los datos en HDFS, se desarrolla una
+                        solución basada en <strong>Hadoop Streaming</strong> para
+                        realizar la unión de los tres conjuntos de datos mediante
+                        el modelo <strong>MapReduce</strong>.
+                    </p>
+
+                    <p>
+                        La relación entre los datos se establece utilizando los
+                        identificadores comunes presentes en los diferentes
+                        ficheros.
+                    </p>
+
+                    <div class="paso">
+
+                        <strong>encounters → patients</strong>
+
+                        <p class="mb-0 mt-2">
+
+                            La relación se establece mediante el campo
+                            <strong>PATIENT</strong>.
+
+                        </p>
+
+                    </div>
+
+                    <div class="paso">
+
+                        <strong>encounters → organizations</strong>
+
+                        <p class="mb-0 mt-2">
+
+                            La relación se establece mediante el campo
+                            <strong>ORGANIZATION</strong>.
+
+                        </p>
 
                     </div>
 
 
-                    <p>
-                        A partir de este momento, todas las operaciones de creación y gestión
-                        de tablas realizadas mediante Beeline se ejecutarán dentro de la base
-                        de datos seleccionada.
-                    </p>
-                    <div class="text-center mt-4">
+                    <div class="bloque" id="mapper">
 
-                        <a href="Ejer_Final3_2.html" target="_blank" class="btn btn-success">
+                        <h3>
+                            Proceso Map
+                        </h3>
 
-                            <i class="bi bi-journal-code"></i>
+                        <p>
+                            El <strong>Mapper</strong> debe leer los registros
+                            procedentes de los tres conjuntos de datos, identificar
+                            el tipo de registro y extraer la clave utilizada para
+                            realizar la unión.
+                        </p>
 
-                            Consultar script Creación tablas Beeline.
+                        <ul>
 
-                        </a>
-                        <a href="Ejer_Final3_2.html" download="Ejer_Final3_2.ipynb" class="btn btn-success">
-                            <i class="bi bi-journal-code"></i>
-                            Descargar notebook para ejecutar en Jupyter.
-                        </a>
+                            <li>
+                                Los registros de pacientes utilizan
+                                <strong>PATIENT</strong>.
+                            </li>
 
-                    </div>
+                            <li>
+                                Los registros de organizaciones utilizan
+                                <strong>ORGANIZATION</strong>.
+                            </li>
 
-                </div>
+                            <li>
+                                Los registros de encounters contienen la información
+                                necesaria para establecer ambas relaciones.
+                            </li>
 
-                <div class="bloque" id="tablas">
-
-                    <h2>Consulta de las tablas creadas en Hive</h2>
-
-                    <p>
-                        Finalmente, para consultar los objetos creados en Hive y sobre los
-                        cuales se podrán realizar las consultas posteriores, se puede ejecutar
-                        la instrucción <code>SHOW TABLES;</code>. Esta sentencia permite
-                        visualizar las tablas disponibles en la base de datos actualmente
-                        seleccionada.
-                    </p>
-
-                    <p>
-                        Desde la consola de Hive se ejecuta:
-                    </p>
-
-                    <div class="codigo">
-                        Jdbc:hive2://localhost:10000&gt; SHOW TABLES;
-                    </div>
-
-                    <p>
-                        Como se puede observar en la siguiente figura, Hive muestra el listado
-                        de las tablas creadas durante los ejercicios anteriores, incluyendo
-                        las correspondientes a los formatos CSV, Avro y Parquet.
-                    </p>
-
-                    <div class="figure">
-
-                        <img src="../img/show-tables-hive.png"
-                            alt="Listado de tablas creadas en Hive mediante SHOW TABLES">
-
+                        </ul>
 
                     </div>
 
-                    <p>
-                        El resultado confirma que los objetos han sido creados correctamente
-                        y que se encuentran disponibles para realizar las consultas y
-                        operaciones de análisis posteriores.
-                    </p>
 
-                </div>
-                <div class="bloque" id="join">
+                    <div class="bloque" id="reducer">
 
-                    <h3>
-                        3.3 Creación del JOIN
-                    </h3>
+                        <h3>
+                            Proceso Reduce
+                        </h3>
 
-                    <p>
-                        Una vez creadas y cargadas las tablas, se ejecuta una
-                        operación <strong>INNER JOIN</strong> entre
-                        <strong>encounters</strong>, <strong>patients</strong>
-                        y <strong>organizations</strong>.
-                    </p>
+                        <p>
+                            El <strong>Reducer</strong> recibe los registros
+                            agrupados mediante sus claves de relación y realiza
+                            la combinación de la información.
+                        </p>
 
-                    <p>
-                        El objetivo es obtener una visión integrada de la
-                        información clínica relacionando cada encuentro con
-                        el paciente y la organización sanitaria correspondiente.
-                    </p>
-                    <div class="text-center mt-4">
-                        <a href="Ejer_Final3_3.html" target="_blank" class="btn btn-success">
+                        <p>
+                            El resultado final debe contener la información del
+                            encuentro médico junto con los datos correspondientes
+                            al paciente y a la organización sanitaria asociada.
+                        </p>
 
-                            <i class="bi bi-journal-code"></i>
-
-                            Consultar script JOIN Jupyter.
-
-                        </a>
-                        <a href="Ejer_Final3_3.ipynb" download="Ejer_Final3_3.ipynb" class="btn btn-success">
-                            <i class="bi bi-journal-code"></i>
-                            Descargar notebook para ejecutar en Jupyter.
-                        </a>
                     </div>
-                </div>
 
-            </section>
+                </section>
 
 
-            <!-- =================================================
+                <!-- =================================================
+                     HIVE
+                ================================================== -->
+
+                <section id="hive">
+
+                    <h2>
+                        3. Apache Hive
+                    </h2>
+
+                    <p>
+                        Una vez cargados los conjuntos de datos en HDFS, se procede
+                        a su incorporación a Apache Hive mediante la creación de
+                        las tablas correspondientes.
+                    </p>
+
+                    <p>
+                        Las tablas se prepararán para los tres formatos utilizados:
+                        <strong>CSV, Avro y Parquet</strong>.
+                    </p>
+
+
+                    <div class="bloque" id="hiveserver">
+
+                        <h3>
+                            3.1 HiveServer2 y cliente Beeline
+                        </h3>
+
+                        <p>
+                            Para realizar las consultas se utiliza el cliente
+                            <strong>Beeline</strong>, que permite establecer una
+                            conexión JDBC con HiveServer2.
+                        </p>
+
+                        <p>
+                            La conexión utilizada en este proyecto es:
+                        </p>
+
+                        <div class="codigo">
+
+                            beeline -u jdbc:hive2://localhost:10000
+
+                        </div>
+
+                        <div class="alert alert-warning">
+
+                            <i class="bi bi-clock-fill"></i>
+
+                            <strong>Nota:</strong>
+
+                            HiveServer2 puede tardar aproximadamente entre
+                            uno y dos minutos en estar completamente operativo.
+
+                        </div>
+                        <div class="text-center mt-4">
+
+                            <a href="EjerFinal3_1.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar script Jupyter.
+
+                            </a>
+
+                            <a href="Ejer_Final3_1.ipynb" download="Ejer_Final3_1.ipynb" class="btn btn-success">
+                                <i class="bi bi-journal-code"></i>
+                                Descargar notebook para ejecutar en Jupyter.
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="bloque" id="tablas">
+
+                        <h3>
+                            3.2 Creación de la base de datos y tablas.
+                        </h3>
+
+                        <p>
+                            Una vez comprobado el correcto funcionamiento de HiveServer2,
+                            el siguiente paso consiste en crear la base de datos que se utilizará
+                            para almacenar y analizar los diferentes conjuntos de datos empleados
+                            en el proyecto.
+                        </p>
+
+                        <div class="alert alert-info">
+
+                            <i class="bi bi-info-circle-fill"></i>
+
+                            <strong>Importante:</strong>
+
+                            <p class="mb-0 mt-2">
+                                En la configuración utilizada en este proyecto, la creación de la
+                                base de datos y de las tablas de Hive se realiza directamente desde
+                                el cliente de línea de comandos <strong>Beeline</strong>.
+                                Jupyter Notebook se utilizará posteriormente para realizar tareas
+                                de análisis y explotación de los datos, pero no será el entorno
+                                empleado para ejecutar las sentencias de creación de las tablas
+                                de Hive.
+                            </p>
+
+                        </div>
+
+
+                        <div class="codigo">
+
+                            CREATE DATABASE IF NOT EXISTS healthcare;<br>
+                            USE healthcare;
+
+                        </div>
+
+
+                        <p>
+                            A partir de este momento, todas las operaciones de creación y gestión
+                            de tablas realizadas mediante Beeline se ejecutarán dentro de la base
+                            de datos seleccionada.
+                        </p>
+                        <div class="text-center mt-4">
+
+                            <a href="Ejer_Final3_2.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar script Creación tablas Beeline.
+
+                            </a>
+                            <a href="Ejer_Final3_2.html" download="Ejer_Final3_2.ipynb" class="btn btn-success">
+                                <i class="bi bi-journal-code"></i>
+                                Descargar notebook para ejecutar en Jupyter.
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bloque" id="tablas">
+
+                        <h2>Consulta de las tablas creadas en Hive</h2>
+
+                        <p>
+                            Finalmente, para consultar los objetos creados en Hive y sobre los
+                            cuales se podrán realizar las consultas posteriores, se puede ejecutar
+                            la instrucción <code>SHOW TABLES;</code>. Esta sentencia permite
+                            visualizar las tablas disponibles en la base de datos actualmente
+                            seleccionada.
+                        </p>
+
+                        <p>
+                            Desde la consola de Hive se ejecuta:
+                        </p>
+
+                        <div class="codigo">
+                            Jdbc:hive2://localhost:10000&gt; SHOW TABLES;
+                        </div>
+
+                        <p>
+                            Como se puede observar en la siguiente figura, Hive muestra el listado
+                            de las tablas creadas durante los ejercicios anteriores, incluyendo
+                            las correspondientes a los formatos CSV, Avro y Parquet.
+                        </p>
+
+                        <div class="figure">
+
+                            <img src="../img/show-tables-hive.png"
+                                alt="Listado de tablas creadas en Hive mediante SHOW TABLES">
+
+
+                        </div>
+
+                        <p>
+                            El resultado confirma que los objetos han sido creados correctamente
+                            y que se encuentran disponibles para realizar las consultas y
+                            operaciones de análisis posteriores.
+                        </p>
+
+                    </div>
+                    <div class="bloque" id="join">
+
+                        <h3>
+                            3.3 Creación del JOIN
+                        </h3>
+
+                        <p>
+                            Una vez creadas y cargadas las tablas, se ejecuta una
+                            operación <strong>INNER JOIN</strong> entre
+                            <strong>encounters</strong>, <strong>patients</strong>
+                            y <strong>organizations</strong>.
+                        </p>
+
+                        <p>
+                            El objetivo es obtener una visión integrada de la
+                            información clínica relacionando cada encuentro con
+                            el paciente y la organización sanitaria correspondiente.
+                        </p>
+                        <div class="text-center mt-4">
+                            <a href="Ejer_Final3_3.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar script JOIN Jupyter.
+
+                            </a>
+                            <a href="Ejer_Final3_3.ipynb" download="Ejer_Final3_3.ipynb" class="btn btn-success">
+                                <i class="bi bi-journal-code"></i>
+                                Descargar notebook para ejecutar en Jupyter.
+                            </a>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
                      RENDIMIENTO
                 ================================================== -->
 
-            <section id="rendimiento">
+                <section id="rendimiento">
 
-                <h2>
-                    4. Ejecución y comparación de resultados
-                </h2>
+                    <h2>
+                        4. Ejecución y comparación de resultados
+                    </h2>
 
-                <p>
-                    Para evaluar las diferentes soluciones se ejecuta el mismo
-                    proceso de integración utilizando dos mecanismos de
-                    procesamiento distribuido:
-                </p>
+                    <p>
+                        Para evaluar las diferentes soluciones se ejecuta el mismo
+                        proceso de integración utilizando dos mecanismos de
+                        procesamiento distribuido:
+                    </p>
 
-                <ul>
-
-                    <li>
-                        <strong>Hadoop Streaming mediante MapReduce.</strong>
-                    </li>
-
-                    <li>
-                        <strong>Apache Hive.</strong>
-                    </li>
-
-                </ul>
-
-                <p>
-                    Las pruebas se realizan utilizando los mismos conjuntos de
-                    datos y condiciones equivalentes, permitiendo comparar el
-                    efecto del formato de almacenamiento y del framework de
-                    procesamiento.
-                </p>
-
-
-                <div class="objetivo">
-
-                    <h3>
-                        Indicadores analizados
-                    </h3>
-
-                    <ul class="mb-0">
+                    <ul>
 
                         <li>
-                            Tiempo total de ejecución.
+                            <strong>Hadoop Streaming mediante MapReduce.</strong>
                         </li>
 
                         <li>
-                            Consumo de memoria.
+                            <strong>Apache Hive.</strong>
                         </li>
 
                     </ul>
-                    <div class="text-center mt-4">
-                        <a href="EjerFinal3_4.html" target="_blank" class="btn btn-success">
 
-                            <i class="bi bi-journal-code"></i>
+                    <p>
+                        Las pruebas se realizan utilizando los mismos conjuntos de
+                        datos y condiciones equivalentes, permitiendo comparar el
+                        efecto del formato de almacenamiento y del framework de
+                        procesamiento.
+                    </p>
 
-                            Consultar script Monitorizar Proceso.
 
-                        </a>
-                        <a href="Ejer_Final3_4.ipynb" download="Ejer_Final3_4.ipynb" class="btn btn-success">
-                            <i class="bi bi-journal-code"></i>
-                            Descargar notebook para ejecutar en Jupyter.
-                        </a>
+                    <div class="objetivo">
+
+                        <h3>
+                            Indicadores analizados
+                        </h3>
+
+                        <ul class="mb-0">
+
+                            <li>
+                                Tiempo total de ejecución.
+                            </li>
+
+                            <li>
+                                Consumo de memoria.
+                            </li>
+
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="EjerFinal3_4.html" target="_blank" class="btn btn-success">
+
+                                <i class="bi bi-journal-code"></i>
+
+                                Consultar script Monitorizar Proceso.
+
+                            </a>
+                            <a href="Ejer_Final3_4.ipynb" download="Ejer_Final3_4.ipynb" class="btn btn-success">
+                                <i class="bi bi-journal-code"></i>
+                                Descargar notebook para ejecutar en Jupyter.
+                            </a>
+                        </div>
                     </div>
-                </div>
 
 
-                <h3>
-                    Resultados con Hadoop Streaming
-                </h3>
+                    <h3>
+                        Resultados con Hadoop Streaming
+                    </h3>
 
-                <table class="table table-bordered table-striped tabla-resultados">
+                    <table class="table table-bordered table-striped tabla-resultados">
 
-                    <thead>
+                        <thead>
 
-                        <tr>
-                            <th>Formato</th>
-                            <th>Tiempo de ejecución</th>
-                        </tr>
+                            <tr>
+                                <th>Formato</th>
+                                <th>Tiempo de ejecución</th>
+                            </tr>
 
-                    </thead>
+                        </thead>
 
-                    <tbody>
+                        <tbody>
 
-                        <tr>
-                            <td>Parquet</td>
-                            <td><strong>7,55 segundos</strong></td>
-                        </tr>
+                            <tr>
+                                <td>Parquet</td>
+                                <td><strong>7,55 segundos</strong></td>
+                            </tr>
 
-                        <tr>
-                            <td>Avro</td>
-                            <td><strong>13,96 segundos</strong></td>
-                        </tr>
+                            <tr>
+                                <td>Avro</td>
+                                <td><strong>13,96 segundos</strong></td>
+                            </tr>
 
-                        <tr>
-                            <td>CSV</td>
-                            <td><strong>104,86 segundos</strong></td>
-                        </tr>
+                            <tr>
+                                <td>CSV</td>
+                                <td><strong>104,86 segundos</strong></td>
+                            </tr>
 
-                    </tbody>
+                        </tbody>
 
-                </table>
-
-
-                <p>
-                    En las pruebas realizadas mediante Hadoop Streaming,
-                    <strong>Parquet</strong> obtuvo el mejor tiempo de ejecución,
-                    seguido de Avro y, finalmente, CSV.
-                </p>
+                    </table>
 
 
-                <h3>
-                    Resultados con Apache Hive
-                </h3>
-
-                <table class="table table-bordered table-striped tabla-resultados">
-
-                    <thead>
-
-                        <tr>
-                            <th>Formato</th>
-                            <th>Tiempo de ejecución</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>CSV</td>
-                            <td><strong>76,43 segundos</strong></td>
-                        </tr>
-
-                        <tr>
-                            <td>Avro</td>
-                            <td><strong>76,68 segundos</strong></td>
-                        </tr>
-
-                        <tr>
-                            <td>Parquet</td>
-                            <td><strong>161,61 segundos</strong></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-                <p>
-                    En el entorno experimental utilizado, los resultados
-                    obtenidos mediante Hive presentan un comportamiento
-                    diferente al observado con Hadoop Streaming. El formato
-                    CSV obtuvo el menor tiempo, seguido de Avro, mientras que
-                    Parquet presentó el mayor tiempo de ejecución.
-                </p>
-
-            </section>
+                    <p>
+                        En las pruebas realizadas mediante Hadoop Streaming,
+                        <strong>Parquet</strong> obtuvo el mejor tiempo de ejecución,
+                        seguido de Avro y, finalmente, CSV.
+                    </p>
 
 
-            <!-- =================================================
+                    <h3>
+                        Resultados con Apache Hive
+                    </h3>
+
+                    <table class="table table-bordered table-striped tabla-resultados">
+
+                        <thead>
+
+                            <tr>
+                                <th>Formato</th>
+                                <th>Tiempo de ejecución</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>CSV</td>
+                                <td><strong>76,43 segundos</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Avro</td>
+                                <td><strong>76,68 segundos</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Parquet</td>
+                                <td><strong>161,61 segundos</strong></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <p>
+                        En el entorno experimental utilizado, los resultados
+                        obtenidos mediante Hive presentan un comportamiento
+                        diferente al observado con Hadoop Streaming. El formato
+                        CSV obtuvo el menor tiempo, seguido de Avro, mientras que
+                        Parquet presentó el mayor tiempo de ejecución.
+                    </p>
+
+                </section>
+
+
+                <!-- =================================================
                      MEDICION
                 ================================================== -->
 
-            <section>
+                <section>
 
-                <h2>
-                    Medición del proceso
-                </h2>
+                    <h2>
+                        Medición del proceso
+                    </h2>
 
-                <p>
-                    Para automatizar la ejecución de las pruebas se desarrollaron
-                    dos componentes en Python:
-                    <strong>MonitorProceso</strong> y
-                    <strong>MedirProceso.py</strong>.
-                </p>
+                    <p>
+                        Para automatizar la ejecución de las pruebas se desarrollaron
+                        dos componentes en Python:
+                        <strong>MonitorProceso</strong> y
+                        <strong>MedirProceso.py</strong>.
+                    </p>
 
-                <p>
-                    La clase <strong>MonitorProceso</strong> permite ejecutar
-                    procesos externos y supervisar su comportamiento durante
-                    la ejecución. Para ello se emplean las bibliotecas
-                    <strong>subprocess</strong>, <strong>time</strong> y
-                    <strong>psutil</strong>.
-                </p>
+                    <p>
+                        La clase <strong>MonitorProceso</strong> permite ejecutar
+                        procesos externos y supervisar su comportamiento durante
+                        la ejecución. Para ello se emplean las bibliotecas
+                        <strong>subprocess</strong>, <strong>time</strong> y
+                        <strong>psutil</strong>.
+                    </p>
 
-                <p>
-                    El script permite obtener información relacionada con el
-                    tiempo de ejecución y el consumo de memoria de cada prueba.
-                </p>
+                    <p>
+                        El script permite obtener información relacionada con el
+                        tiempo de ejecución y el consumo de memoria de cada prueba.
+                    </p>
 
-                <div class="codigo">
+                    <div class="codigo">
 
-                    !python3 /media/notebooks/EjercicioFinal/medir_procesos.py
+                        !python3 /media/notebooks/EjercicioFinal/medir_procesos.py
 
-                </div>
+                    </div>
 
-            </section>
+                </section>
 
 
-            <!-- =================================================
+                <!-- =================================================
                      CONCLUSIONES
                 ================================================== -->
 
-            <section id="conclusiones">
+                <section id="conclusiones">
 
-                <h2>
-                    Conclusiones
-                </h2>
-
-                <p>
-                    Los resultados obtenidos muestran diferencias significativas
-                    entre los formatos CSV, Avro y Parquet, especialmente cuando
-                    se utiliza Hadoop Streaming.
-                </p>
-
-                <p>
-                    En las pruebas realizadas con MapReduce, <strong>Parquet</strong>
-                    presentó el mejor rendimiento, con un tiempo de
-                    <strong>7,55 segundos</strong>. Avro obtuvo un tiempo de
-                    <strong>13,96 segundos</strong>, mientras que CSV alcanzó
-                    <strong>104,86 segundos</strong>.
-                </p>
-
-                <p>
-                    En cambio, mediante Apache Hive los resultados fueron
-                    diferentes: CSV presentó un tiempo de
-                    <strong>76,43 segundos</strong>, Avro de
-                    <strong>76,68 segundos</strong> y Parquet de
-                    <strong>161,61 segundos</strong>.
-                </p>
-
-                <p>
-                    Estos resultados deben interpretarse teniendo en cuenta las
-                    características del entorno experimental, especialmente
-                    el reducido tamaño del clúster docente y el volumen moderado
-                    de datos utilizados.
-                </p>
-
-                <div class="objetivo">
-
-                    <h3>
-                        Comparación de paradigmas
-                    </h3>
+                    <h2>
+                        Conclusiones
+                    </h2>
 
                     <p>
-                        <strong>MapReduce</strong> proporciona un mayor control
-                        sobre las diferentes fases del procesamiento mediante
-                        los componentes Mapper y Reducer, aunque requiere un
-                        mayor esfuerzo de programación.
+                        Los resultados obtenidos muestran diferencias significativas
+                        entre los formatos CSV, Avro y Parquet, especialmente cuando
+                        se utiliza Hadoop Streaming.
                     </p>
 
-                    <p class="mb-0">
-                        Por otro lado, <strong>Apache Hive</strong> simplifica
-                        considerablemente la realización de operaciones complejas
-                        mediante sentencias SQL, reduciendo el esfuerzo necesario
-                        para implementar y mantener los procesos.
+                    <p>
+                        En las pruebas realizadas con MapReduce, <strong>Parquet</strong>
+                        presentó el mejor rendimiento, con un tiempo de
+                        <strong>7,55 segundos</strong>. Avro obtuvo un tiempo de
+                        <strong>13,96 segundos</strong>, mientras que CSV alcanzó
+                        <strong>104,86 segundos</strong>.
+                    </p>
+
+                    <p>
+                        En cambio, mediante Apache Hive los resultados fueron
+                        diferentes: CSV presentó un tiempo de
+                        <strong>76,43 segundos</strong>, Avro de
+                        <strong>76,68 segundos</strong> y Parquet de
+                        <strong>161,61 segundos</strong>.
+                    </p>
+
+                    <p>
+                        Estos resultados deben interpretarse teniendo en cuenta las
+                        características del entorno experimental, especialmente
+                        el reducido tamaño del clúster docente y el volumen moderado
+                        de datos utilizados.
+                    </p>
+
+                    <div class="objetivo">
+
+                        <h3>
+                            Comparación de paradigmas
+                        </h3>
+
+                        <p>
+                            <strong>MapReduce</strong> proporciona un mayor control
+                            sobre las diferentes fases del procesamiento mediante
+                            los componentes Mapper y Reducer, aunque requiere un
+                            mayor esfuerzo de programación.
+                        </p>
+
+                        <p class="mb-0">
+                            Por otro lado, <strong>Apache Hive</strong> simplifica
+                            considerablemente la realización de operaciones complejas
+                            mediante sentencias SQL, reduciendo el esfuerzo necesario
+                            para implementar y mantener los procesos.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     REFERENCIA
+                ================================================== -->
+
+                <div class="referencia">
+
+                    <strong>Referencia:</strong>
+
+                    <p class="mb-0 mt-2">
+
+                        Ejercicio Final 3. Integración y comparación de información
+                        clínica mediante Hadoop Streaming y Apache Hive sobre el
+                        clúster Hadoop desarrollado en el proyecto.
+
                     </p>
 
                 </div>
 
-            </section>
-
-
-            <!-- =================================================
-                     REFERENCIA
-                ================================================== -->
-
-            <div class="referencia">
-
-                <strong>Referencia:</strong>
-
-                <p class="mb-0 mt-2">
-
-                    Ejercicio Final 3. Integración y comparación de información
-                    clínica mediante Hadoop Streaming y Apache Hive sobre el
-                    clúster Hadoop desarrollado en el proyecto.
-
-                </p>
-
             </div>
-
         </div>
     </div>
     <div class="text-center mt-5">
