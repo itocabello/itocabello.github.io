@@ -430,226 +430,241 @@
                                     <code>meddocan_anonimizados.csv</code> en pares clave-valor y
                                     agruparlos para calcular el número de registros de cada combinación
                                     de especialidad médica y grupo de edad.
+                                <p>
+                                    El fichero <code>meddocan_anonimizados.csv</code>, utilizado como
+                                    entrada en este ejercicio, se obtiene mediante el proceso de
+                                    anonimización desarrollado en el siguiente ejercicio :
                                 </p>
+
+                                <div class="enlace-ejercicio">
+                                    <i class="bi bi-file-earmark-code"></i>
+                                    <a href="https://itocabello.github.io/capitulo4/ejerP6.html" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Ejercicio de anonimización y generación del fichero CSV
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
 
 
-                        <div class="card section-card">
-                            <div class="card-body">
-                                <h2><i class="bi bi-database icon-title"></i>1. Datos de entrada</h2>
-                                <p>
-                                    El ejercicio utiliza el archivo CSV almacenado en HDFS en la ruta:
-                                </p>
+                            <div class="card section-card">
+                                <div class="card-body">
+                                    <h2><i class="bi bi-database icon-title"></i>1. Datos de entrada</h2>
+                                    <p>
+                                        El ejercicio utiliza el archivo CSV almacenado en HDFS en la ruta:
+                                    </p>
 
-                                <pre><code>/datasets/meddocan/csv/meddocan_anonimizados.csv</code></pre>
+                                    <pre><code>/datasets/meddocan/csv/meddocan_anonimizados.csv</code></pre>
 
-                                <p>
-                                    El programa trabaja con dos campos del archivo:
-                                </p>
+                                    <p>
+                                        El programa trabaja con dos campos del archivo:
+                                    </p>
 
-                                <ul>
-                                    <li><strong>Edad:</strong> columna con índice 11, comenzando la numeración en
-                                        cero.</li>
-                                    <li><strong>Especialidad:</strong> columna con índice 14.</li>
-                                </ul>
+                                    <ul>
+                                        <li><strong>Edad:</strong> columna con índice 11, comenzando la numeración en
+                                            cero.</li>
+                                        <li><strong>Especialidad:</strong> columna con índice 14.</li>
+                                    </ul>
 
-                                <p>
-                                    Antes de realizar el análisis, el mapper comprueba que cada registro
-                                    contiene las 24 columnas esperadas y descarta la cabecera del CSV.
-                                    Los registros con una edad válida se clasifican en los intervalos
-                                    definidos por el programa. Cuando la edad no se puede interpretar
-                                    como un número, se asigna la categoría
-                                    <code>EDAD_DESCONOCIDA</code>. Las especialidades vacías se
-                                    agrupan como <code>SIN_ESPECIALIDAD</code>.
-                                </p>
+                                    <p>
+                                        Antes de realizar el análisis, el mapper comprueba que cada registro
+                                        contiene las 24 columnas esperadas y descarta la cabecera del CSV.
+                                        Los registros con una edad válida se clasifican en los intervalos
+                                        definidos por el programa. Cuando la edad no se puede interpretar
+                                        como un número, se asigna la categoría
+                                        <code>EDAD_DESCONOCIDA</code>. Las especialidades vacías se
+                                        agrupan como <code>SIN_ESPECIALIDAD</code>.
+                                    </p>
 
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div class="card section-card">
-                            <div class="card-body">
-                                <h2><i class="bi bi-diagram-3 icon-title"></i>Flujo de procesamiento</h2>
-                                <div class="row g-3">
-                                    <div class="col-md-4">
-                                        <div class="flow-step"><span class="num">1</span>
-                                            <h3>Mapper</h3>
-                                            <p class="mb-0">El programa <code>mapper_meddocan.py</code> procesa cada
-                                                registro
-                                                y construye una clave compuesta por la especialidad y el grupo
-                                                de edad. A cada clave le asigna inicialmente el valor
-                                                <code>1</code>, que representa un registro.
-                                            <p>Por ejemplo, un registro de Oncología correspondiente al grupo de edad de
-                                                30 a 44 años genera:</p>
+                            <div class="card section-card">
+                                <div class="card-body">
+                                    <h2><i class="bi bi-diagram-3 icon-title"></i>Flujo de procesamiento</h2>
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <div class="flow-step"><span class="num">1</span>
+                                                <h3>Mapper</h3>
+                                                <p class="mb-0">El programa <code>mapper_meddocan.py</code> procesa cada
+                                                    registro
+                                                    y construye una clave compuesta por la especialidad y el grupo
+                                                    de edad. A cada clave le asigna inicialmente el valor
+                                                    <code>1</code>, que representa un registro.
+                                                <p>Por ejemplo, un registro de Oncología correspondiente al grupo de
+                                                    edad de
+                                                    30 a 44 años genera:</p>
 
-                                            <pre><code>Oncología|30_44    1</code></pre>
-                                            </p>
+                                                <pre><code>Oncología|30_44    1</code></pre>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="flow-step"><span class="num">2</span>
-                                            <h3>Shuffle y sort</h3>
-                                            <p class="mb-0">Hadoop agrupa los registros por especialidad y el grupo
-                                                de edad, y se envía juntos al
-                                                Reducer .</p>
+                                        <div class="col-md-4">
+                                            <div class="flow-step"><span class="num">2</span>
+                                                <h3>Shuffle y sort</h3>
+                                                <p class="mb-0">Hadoop agrupa los registros por especialidad y el grupo
+                                                    de edad, y se envía juntos al
+                                                    Reducer .</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="flow-step"><span class="num">3</span>
-                                            <h3>Fase Reduce: agregación de los registros</h3>
-                                            <p>
-                                                El programa <code>reducer_meddocan.py</code> recibe los pares
-                                                generados por el mapper, acumula los valores correspondientes
-                                                a cada clave y obtiene el total de registros por especialidad
-                                                y grupo de edad. Finalmente, ordena las categorías y presenta
-                                                los resultados en forma tabular.
-                                            </p>
+                                        <div class="col-md-4">
+                                            <div class="flow-step"><span class="num">3</span>
+                                                <h3>Fase Reduce: agregación de los registros</h3>
+                                                <p>
+                                                    El programa <code>reducer_meddocan.py</code> recibe los pares
+                                                    generados por el mapper, acumula los valores correspondientes
+                                                    a cada clave y obtiene el total de registros por especialidad
+                                                    y grupo de edad. Finalmente, ordena las categorías y presenta
+                                                    los resultados en forma tabular.
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card section-card">
-                            <div class="card-body">
-                                <h2><i class="bi bi-terminal icon-title"></i>Ejecución con Hadoop Streaming</h2>
-                                <p>
-                                    El trabajo se ejecuta mediante el JAR de Hadoop Streaming,
-                                    indicando los dos programas Python, el archivo de entrada
-                                    almacenado en HDFS y el directorio de salida:
-                                </p>
-                                <pre><code>!hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
+                            <div class="card section-card">
+                                <div class="card-body">
+                                    <h2><i class="bi bi-terminal icon-title"></i>Ejecución con Hadoop Streaming</h2>
+                                    <p>
+                                        El trabajo se ejecuta mediante el JAR de Hadoop Streaming,
+                                        indicando los dos programas Python, el archivo de entrada
+                                        almacenado en HDFS y el directorio de salida:
+                                    </p>
+                                    <pre><code>!hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar \
 -files mapper_meddocan.py,reducer_meddocan.py 
 -mapper "python3 mapper_meddocan.py" 
 -reducer "python3 reducer_meddocan.py" 
 -input /datasets/meddocan/csv/meddocan_anonimizados.csv 
 -output /datasets/meddocan/resultados/analisis_edad_diagnosticos</code></pre>
-                                <p>
-                                    Una vez finalizado el trabajo, los resultados se consultan
-                                    leyendo los archivos generados en el directorio de salida:
-                                </p>
+                                    <p>
+                                        Una vez finalizado el trabajo, los resultados se consultan
+                                        leyendo los archivos generados en el directorio de salida:
+                                    </p>
 
-                                <pre><code>!hdfs dfs -cat /datasets/meddocan/resultados/analisis_edad_diagnosticos/part-*</code></pre>
-                            </div>
-                        </div>
-                        <div class="card section-card">
-                            <div class="card-body">
-                                <h2><i class="bi bi-table icon-title"></i>Resultados obtenidos</h2>
-                                <p>
-                                    La ejecución genera la siguiente distribución de registros
-                                    según la especialidad médica y el grupo de edad:
-                                </p>
-                                <div class="tabla-contenedor">
-                                    <table class="tabla-resultados">
-                                        <thead>
-                                            <tr>
-                                                <th>Especialidad médica</th>
-                                                <th>Grupo de edad</th>
-                                                <th>Número de registros</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Cirugía general y del Aparato digestivo</td>
-                                                <td>30_44</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Neurología</td>
-                                                <td>45_59</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Oncología</td>
-                                                <td>18_29</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Oncología</td>
-                                                <td>30_44</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>SIN_ESPECIALIDAD</td>
-                                                <td>60_74</td>
-                                                <td>6</td>
-                                            </tr>
-                                            <tr>
-                                                <td>SIN_ESPECIALIDAD</td>
-                                                <td>30_44</td>
-                                                <td>3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>SIN_ESPECIALIDAD</td>
-                                                <td>45_59</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urgencias</td>
-                                                <td>menor_18</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urologia</td>
-                                                <td>18_29</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urología</td>
-                                                <td>18_29</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urología</td>
-                                                <td>30_44</td>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Urología</td>
-                                                <td>60_74</td>
-                                                <td>2</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <pre><code>!hdfs dfs -cat /datasets/meddocan/resultados/analisis_edad_diagnosticos/part-*</code></pre>
                                 </div>
+                            </div>
+                            <div class="card section-card">
+                                <div class="card-body">
+                                    <h2><i class="bi bi-table icon-title"></i>Resultados obtenidos</h2>
+                                    <p>
+                                        La ejecución genera la siguiente distribución de registros
+                                        según la especialidad médica y el grupo de edad:
+                                    </p>
+                                    <div class="tabla-contenedor">
+                                        <table class="tabla-resultados">
+                                            <thead>
+                                                <tr>
+                                                    <th>Especialidad médica</th>
+                                                    <th>Grupo de edad</th>
+                                                    <th>Número de registros</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cirugía general y del Aparato digestivo</td>
+                                                    <td>30_44</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Neurología</td>
+                                                    <td>45_59</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Oncología</td>
+                                                    <td>18_29</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Oncología</td>
+                                                    <td>30_44</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SIN_ESPECIALIDAD</td>
+                                                    <td>60_74</td>
+                                                    <td>6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SIN_ESPECIALIDAD</td>
+                                                    <td>30_44</td>
+                                                    <td>3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SIN_ESPECIALIDAD</td>
+                                                    <td>45_59</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urgencias</td>
+                                                    <td>menor_18</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urologia</td>
+                                                    <td>18_29</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urología</td>
+                                                    <td>18_29</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urología</td>
+                                                    <td>30_44</td>
+                                                    <td>2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Urología</td>
+                                                    <td>60_74</td>
+                                                    <td>2</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div class="card section-card">
+                                <div class="card-body">
+
+                                    <h3>Conclusión</h3>
+                                    <p>
+                                        El ejercicio demuestra la integración de Python con Hadoop
+                                        Streaming para procesar registros clínicos y obtener resultados
+                                        agregados mediante MapReduce. La fase Map transforma cada registro
+                                        en un par clave-valor y la fase Reduce agrupa y suma los valores
+                                        asociados a cada combinación de especialidad y grupo de edad.
+                                    </p>
+
+
+                                </div>
                             </div>
                         </div>
-                        <div class="card section-card">
-                            <div class="card-body">
-
-                                <h3>Conclusión</h3>
-                                <p>
-                                    El ejercicio demuestra la integración de Python con Hadoop
-                                    Streaming para procesar registros clínicos y obtener resultados
-                                    agregados mediante MapReduce. La fase Map transforma cada registro
-                                    en un par clave-valor y la fase Reduce agrupa y suma los valores
-                                    asociados a cada combinación de especialidad y grupo de edad.
-                                </p>
 
 
-                            </div>
-                        </div>
                     </div>
+                    <div class="text-center mt-4">
+
+                        <a href="jupyter_leccion3.6.html" target="_blank" class="btn btn-success">
+
+                            <i class="bi bi-journal-code"></i>
+
+                            Ver solución completa en Jupyter.
+
+                        </a>
+
+                        <a href="down_jupyter_leccion3.6.ipynb" download="down_jupyter_leccion3.4.ipynb"
+                            class="btn btn-success">
+                            <i class="bi bi-journal-code"></i>
+                            Descargar notebook para ejecutar en Jupyter.
+                        </a>
 
 
-                </div>
-                <div class="text-center mt-4">
-
-                    <a href="jupyter_leccion3.6.html" target="_blank" class="btn btn-success">
-
-                        <i class="bi bi-journal-code"></i>
-
-                        Ver solución completa en Jupyter.
-
-                    </a>
-
-                    <a href="down_jupyter_leccion3.6.ipynb" download="down_jupyter_leccion3.4.ipynb"
-                        class="btn btn-success">
-                        <i class="bi bi-journal-code"></i>
-                        Descargar notebook para ejecutar en Jupyter.
-                    </a>
+                    </div>
 
 
                 </div>
@@ -657,21 +672,18 @@
 
             </div>
 
-
         </div>
 
-    </div>
 
+        <!-- ========================================================= -->
+        <!-- BOTÓN VOLVER -->
+        <!-- ========================================================= -->
 
-    <!-- ========================================================= -->
-    <!-- BOTÓN VOLVER -->
-    <!-- ========================================================= -->
-
-    <div class="text-center mt-4 mb-4">
-        <button type="button" class="btn btn-outline-success" onclick="window.close()">
-            <i class="bi bi-x-circle"></i> Cerrar Ejercicio
-        </button>
-    </div>
+        <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-outline-success" onclick="window.close()">
+                <i class="bi bi-x-circle"></i> Cerrar Ejercicio
+            </button>
+        </div>
 
     </div>
 
