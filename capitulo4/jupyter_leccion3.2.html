@@ -8270,18 +8270,12 @@ Found 1 items
           <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
             <div class="cm-editor cm-s-jupyter">
               <div class="highlight hl-ipython3">
-                <pre><span></span><span class="c1"># Ejecutar Hadoop Streaming para contar las apariciones de cada palabra.</span>
-            <span class="c1"># El archivo JAR permite ejecutar los programas Mapper y Reducer escritos en Python.</span>
+                <pre><span></span>
             <span class="o">!</span>hadoop<span class="w"> </span>jar<span class="w"> </span>/usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.0.jar<span class="w"> </span><span class="err">\</span>
-                <span class="c1"># Distribuir los scripts Python necesarios para el procesamiento.</span>
                 <span class="o">-</span><span class="n">files</span> <span class="n">mapper</span><span class="o">.</span><span class="n">py</span><span class="p">,</span><span class="n">reduce</span><span class="o">.</span><span class="n">py</span> \
-                <span class="c1"># Indicar el directorio de HDFS que contiene los documentos MEDDOCAN.</span>
                 <span class="o">-</span><span class="nb">input</span> <span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">MEDDOCAN</span> \
-                <span class="c1"># Especificar el directorio de HDFS donde se almacenarán los resultados.</span>
                 <span class="o">-</span><span class="n">output</span> <span class="o">/</span><span class="n">resultados</span><span class="o">/</span><span class="n">wordcount</span> \
-                <span class="c1"># Ejecutar mapper.py para extraer las palabras y emitir cada una con el valor 1.</span>
                 <span class="o">-</span><span class="n">mapper</span> <span class="s2">"python3 mapper.py"</span> \
-                <span class="c1"># Ejecutar reduce.py para sumar las apariciones de cada palabra.</span>
                 <span class="o">-</span><span class="n">reducer</span> <span class="s2">"python3 reduce.py"</span>
             </pre>
               </div>
