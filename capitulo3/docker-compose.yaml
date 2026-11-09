@@ -1,13 +1,12 @@
 services:
   namenode:
-    image: namenode
-#itocabello/namenode:1.0
+    image: itocabello/namenode:1.0
     container_name: namenode
     hostname: namenode
     command: bash -c /etc/start.sh
-    networks: 
+    networks:
       hadoop:
-         ipv4_address: 172.18.0.2
+        ipv4_address: 172.18.0.2
     ports:
       - 9000:9000 # namenode
       - 9870:9870 # hadoop
@@ -15,7 +14,7 @@ services:
       - 10000:10000 # hive
       - 10002:10002 # hiveServer2
       - 41414:41414 # avro
-    volumes: 
+    volumes:
       - /media/notebooks:/media/notebooks
     tty: true
     stdin_open: true
@@ -43,7 +42,7 @@ services:
       - 50021:50075
       - 8042:8042
       - 9864:9864
-      - 9866:9866  
+      - 9866:9866
 
   datanode2:
     image: itocabello/datanode:2.0
@@ -52,7 +51,7 @@ services:
     networks:
       hadoop:
         ipv4_address: 172.18.0.5
-  
+
   datanode3:
     image: itocabello/datanode:2.0
     container_name: datanode3
@@ -60,7 +59,7 @@ services:
     networks:
       hadoop:
         ipv4_address: 172.18.0.6
- 
+
   datanode4:
     image: itocabello/datanode:2.0
     container_name: datanode4
@@ -68,7 +67,6 @@ services:
     networks:
       hadoop:
         ipv4_address: 172.18.0.7
-  
 
 networks:
   hadoop:
